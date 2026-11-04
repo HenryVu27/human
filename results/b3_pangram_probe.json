@@ -1,0 +1,21 @@
+{
+ "date": "2026-11-04",
+ "judge": "Pangram 4.1 free dashboard (Henry's account)",
+ "rule": "first three dev drafts where the more faithful of two 13B LoRA samples passes every claim (lora13best2), fixed before scanning",
+ "scans": [
+  {
+   "id": "a0601",
+   "seed": 1,
+   "words_scanned": 445,
+   "verdict": "AI Generated",
+   "p_ai_percent": 100,
+   "local_detector_v2_p_ai": 5e-06
+  }
+ ],
+ "not_scanned": [
+  "a0604 (403 words)",
+  "a0607 (771 words)"
+ ],
+ "why_stopped": "Credits are charged by length: this 445-word scan used 5 of the 8 credits, leaving 3, too few for the next text under the rule.",
+ "credits_left": 3
+}

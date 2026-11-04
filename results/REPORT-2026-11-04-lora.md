@@ -1,12 +1,12 @@
 # Humanizer: fine-tuned writer report, 2026-11-04
 
-This follows the overnight report (`REPORT-2026-11-05.md`, misdated by a day; it was written on 2026-11-04). That report's next step was a writer fine-tuned on (notes, human article) pairs. It now exists at two sizes. Spend so far: still $0. Pangram has not been used since the overnight report.
+This follows the overnight report (`REPORT-2026-11-05.md`, misdated by a day; it was written on 2026-11-04). That report's next step was a writer fine-tuned on (notes, human article) pairs. It now exists at two sizes. Spend so far: still $0. Pangram: one free dashboard scan (section 6); 3 credits left on your free plan.
 
 ## The short version
 
 1. **Fine-tuning fixed control.** The fine-tuned OLMo-2-13B follows its notes in order, writes to the requested length (median 1.0 times the target) and stops on its own (38 of 40 generations). The same 13B model without the adapter, on the same prompts, gave seven empty or near-empty outputs and four runaways.
 2. **It is the most faithful writer tested.** 96% of its claims are supported by the draft, against 88% for a Claude rewrite. Choosing the more faithful of two samples, a choice the pipeline can make by itself, raises that to 97.5% and the share of outputs where every claim passes to 45%, against 20% for Claude.
-3. **The local detector reads every fine-tuned output as human** (P(AI) about 0.0001). That detector is not a Pangram stand-in for base-model text (overnight report, finding 5), so this is encouraging but unproven. A Pangram probe is the real test and needs your OK.
+3. **Pangram says AI.** The local detector reads every fine-tuned output as human (P(AI) about 0.0001), but the one Pangram scan, on an output picked by a fixed rule, came back "AI Generated, 100%" (section 6). The likely cause is the notes: they carry the AI draft's structure and framing into the output. A $5 test can confirm this.
 4. **Quality is the open problem.** The judge prefers the fine-tuned 13B over the AI draft 7.5% to 15% of the time, depending on the sample. Real human articles on the same topics win 32.5% against the same drafts, and the Claude rewrite wins 42.5%. Reading the outputs, the losses come from logic slips that contradict the notes, a repeated paragraph now and then, and a flat textbook register.
 5. **13B beats 7B on every measure.** The 7B, trained on this Mac, never beat the draft and supports 92% of its claims.
 6. **The unguarded 13B still invents some names.** The 13B ran without the decode-time grounding guard, which exists only for MLX (Apple's machine learning framework on this Mac). Of 40 samples, 7 added real organizations or people (NASA, USGS, the American Heart Association, Carnegie Mellon, Marty Becker, Mark Sisson) or web boilerplate ("Updated April"). Porting the guard to the PC fixes most of this.
@@ -52,7 +52,7 @@ From reading outputs against their notes (example: draft a0610, a piece on tort 
 
 The fine-tuned model writes section headings as plain lines, as its human training articles do. The claim check reads title-case lines such as "Consensus Matters" or "How Often Should You Measure Your Blood Pressure" as new names. In 8 of the 23 flagged 13B samples, every flag is a heading or a list number ("6."). The "no new names or numbers" column understates the 13B arms somewhat; the real inventions are the ones in finding 6. I have not changed the check: a fix must not let a real name through in a heading.
 
-## 4. What I need from you
+## 4. What I needed from you (done: one scan, section 6)
 
 - **A Pangram probe of the fine-tuned 13B.** This is the question everything else depends on: does fine-tuning keep the human verdict that untuned OLMo earned? Three outputs fit one day of the free dashboard's scans. I would pick three by a rule fixed in advance (the first three dev drafts where every claim passes) and scan nothing else. This is a held-out check, not a selection step.
 
@@ -66,3 +66,18 @@ If Pangram says human, the fine-tuned 13B becomes the writer, and the work is qu
 4. **Then train longer or on more data.** The 7B validation loss was still falling slowly at the end of its epoch (0.981, 0.978, 0.970 over the last 200 iterations); the 13B was measured only before and after.
 
 If Pangram says AI, the fine-tune taught the assistant register through the notes format, and the next step is to look at which features of the outputs carry it before training further.
+
+## 6. Pangram probe (added after your yes)
+
+**Result: the one scan came back "AI Generated, 100%".** Pangram 4.1, free dashboard. The text was dev draft a0601 (seed 1, 445 words), the first output chosen by the rule fixed in section 4. The local detector gave the same text P(AI) 0.000005, so it fails here as it did on the Qwen base text. Record: `results/b3_pangram_probe.json`.
+
+Only one of the three texts was scanned. Credits are charged by length: this scan used 5 of the 8 credits, and the next text under the rule (403 words) does not fit in the 3 left. I did not swap in a shorter text, because that would break the rule.
+
+One scan is thin evidence, but it fits a clear hypothesis: **the AI signal travels through the notes, not the writer's register.** The notes come from an AI draft, and the fine-tuned model reproduces what they give it. The scanned text keeps the draft's AI structure almost line for line: headings such as "Community Ownership: Built With, Not For", "not just treated as service users; they are also treated as partners", label-colon paragraphs ("Early parenthood: ..."), and an argument laid out as problem, then response, then why it lasts. Untuned OLMo passed Pangram when it continued human openings, where nothing came from an AI text.
+
+The test that separates the two explanations, at $5 of API credits:
+
+- **Arm A:** 10 fine-tuned 13B outputs written from notes of AI drafts (the dev drafts, as here).
+- **Arm B:** 10 outputs from the same model written from notes of held-out human articles (the 30 validation articles; the PC can generate these at $0).
+
+If B passes and A fails, the notes carry the signal, and the fix is in the editor: notes that keep facts and drop the draft's structure and framing. If both fail, the fine-tune itself learned an AI register, and the writer needs work first. Until this is settled, the quality work in section 5 should wait.
