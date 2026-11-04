@@ -92,7 +92,8 @@ def sectional_prompt(plan: Plan, done: list[str], examples: list[tuple[Plan, lis
     return f"{shots}=== ARTICLE ===\n{_doc(plan, done)}{render_section_notes(s)}\n{head}"
 
 
-WORD = re.compile(r"[A-Za-z][\w'\-]*|\d[\d,.]*")
+WORD = re.compile(r"[A-Za-z][\w']*|\d[\d,.]*")
+QUOTES = ('"', "\u201c", "\u201d")
 
 
 def allowed_specifics(*texts: str) -> set[str]:
@@ -105,44 +106,100 @@ def allowed_specifics(*texts: str) -> set[str]:
     return out
 
 
-class Guard:
-    """mlx_lm logits processor: block new names and numbers mid-sentence. Masks are built on first call."""
+def common_capitalized(min_count: int = 2) -> set[str]:
+    """Ordinary English words, capitalized: words seen lowercase in the human corpus at least min_count times."""
+    from collections import Counter
 
-    def __init__(self, tok, allowed: set[str]):
-        self.tok, self.allowed = tok, list(allowed)
-        self.block_mid = self.block_any = self.ends = None
+    c = Counter(w for d in map(json.loads, (ROOT / "data" / "human.jsonl").open())
+                for w in re.findall(r"\b[a-z][a-z']*\b", d["text"]))
+    return {w.capitalize() for w, n in c.items() if n >= min_count}
+
+
+def _prefixes(words) -> set[str]:
+    return {w[:i] for w in words for i in range(1, len(w) + 1)}
+
+
+class Guard:
+    """mlx_lm logits processor that keeps names and numbers to the draft's own.
+
+    Word level: a capitalized word or a number may only grow into, and end as, a
+    word the draft contains. At a sentence start, ordinary English words
+    (common_capitalized) are also allowed. Quote marks are blocked when the
+    draft has none. Lowercase words are never touched.
+    """
+
+    def __init__(self, tok, allowed: set[str], common: set[str] = frozenset(), allow_quotes: bool = True):
+        self.tok, self.allow_quotes = tok, allow_quotes
+        self.complete = {"mid": set(allowed), "sent": set(allowed) | set(common)}
+        self.prefix = {k: _prefixes(v) for k, v in self.complete.items()}
+        self.text = None
 
     def _build(self, vocab: int):
-        import mlx.core as mx
         import numpy as np
 
-        caps, digits, ends, ok = (np.zeros(vocab, bool) for _ in range(4))
+        self.text = [""] * vocab
         for i in range(vocab):
             try:
-                t = self.tok.decode([i])
+                self.text[i] = self.tok.decode([i])
             except Exception:  # noqa: BLE001  padded rows past the tokenizer's vocab
-                continue
-            core = t.strip()
-            if not core:
-                ends[i] = "\n" in t
-                continue
-            ends[i] = core.endswith(SENTENCE_END) or "\n" in t
-            digits[i] = any(c.isdigit() for c in core)
-            caps[i] = t[0] in " \n" and core[0].isupper()
-            if digits[i] or caps[i]:
-                ok[i] = any(a.startswith(core) or (digits[i] and core.strip(".,") in a) for a in self.allowed)
-        self.block_mid = mx.array((caps | digits) & ~ok)
-        self.block_any = mx.array(digits & ~ok)
-        self.ends = ends
+                pass
+        core = [t.strip() for t in self.text]
+        lead = np.array([bool(t) and t[0] in " \n\t" for t in self.text])
+        alnum = np.array([bool(c) and c[0].isalnum() for c in core])
+        self.cont = ~lead & alnum  # continues the word in progress
+        self.ends = np.array([bool(c) and c.endswith(SENTENCE_END) or "\n" in t for c, t in zip(core, self.text)])
+        constrained = np.array([bool(c) and (c[0].isupper() or c[0].isdigit()) for c in core])
+        quote = np.array([any(q in t for q in QUOTES) for t in self.text])
+        self.cont_ids = np.flatnonzero(self.cont)
+        self.block = {}
+        for mode in ("mid", "sent"):
+            ok = np.array([not k or c in self.prefix[mode] for k, c in zip(constrained, core)])
+            self.block[mode] = {
+                "new_word": alnum & ~ok,          # any alnum token may start a word when no word is in progress
+                "after_word": lead & alnum & ~ok,  # after a finished word only a spaced token starts a new one
+            }
+        self.quote = quote
+
+    def _state(self, ids: list[int]):
+        """(current word, mode) for the word in progress at the end of ids, or (None, mode for the next word)."""
+        i = len(ids) - 1
+        while i > 0 and self.cont[ids[i]] and not self._is_start(ids, i):
+            i -= 1
+        if i < 0 or not self.text[ids[i]].strip()[:1].isalnum():
+            return None, "sent" if (ids and self.ends[ids[-1]]) else "mid"
+        word = "".join(self.text[t] for t in ids[i:]).strip()
+        mode = "sent" if i == 0 or self.ends[ids[i - 1]] else "mid"
+        return word, mode
+
+    def _is_start(self, ids, i):
+        prev = self.text[ids[i - 1]]
+        return not prev.strip() or not prev.strip()[-1].isalnum()
 
     def __call__(self, tokens, logits):
         import mlx.core as mx
+        import numpy as np
 
-        if self.ends is None:
+        if self.text is None:
             self._build(logits.shape[-1])
-        last = int(tokens[-1]) if tokens.size else 0
-        mask = self.block_any if self.ends[last] else self.block_mid
-        return mx.where(mask, -mx.inf, logits)
+        ids = tokens[-24:].tolist() if tokens.size else []
+        word, mode = self._state(ids)
+        if word is None:
+            block = self.block[mode]["new_word"].copy()
+        elif not (word[0].isupper() or word[0].isdigit()):
+            block = self.block["mid"]["after_word"].copy()
+        else:
+            block = np.ones_like(self.cont)
+            pre = self.prefix[mode]
+            for t in self.cont_ids:
+                if word + self.text[t].strip() in pre:
+                    block[t] = False
+            if word in self.complete[mode]:
+                block[~self.cont] = self.block["mid"]["after_word"][~self.cont]
+        if not self.allow_quotes:
+            block |= self.quote
+        if block.all():  # never leave the sampler with nothing
+            block = np.zeros_like(block)
+        return mx.where(mx.array(block), -mx.inf, logits)
 
 
 def _stop_at_marker(text: str) -> tuple[str, bool]:
@@ -161,6 +218,7 @@ def write_sectional(plan: Plan, model_id: str, draft: str, *, seed: int = 0, k: 
 
     examples = _sectioned_examples(k, seed)
     allowed = allowed_specifics(draft, plan.render_notes())
+    quotes = any(q in draft for q in QUOTES)
     model, tok = load_mlx(model_id)
     g = None
     done: list[str] = []
@@ -171,11 +229,11 @@ def write_sectional(plan: Plan, model_id: str, draft: str, *, seed: int = 0, k: 
         while shots and len(tok.encode(prompt)) + max_new > CONTEXT - 16:
             shots = shots[:-1]  # drop examples before overflowing the 4k context
             prompt = sectional_prompt(plan, done, shots)
-        key = _key("sectional", model_id, prompt, max_new, temp, top_p, seed, guard, sorted(allowed))
+        key = _key("sectional-g2", model_id, prompt, max_new, temp, top_p, seed, guard, sorted(allowed), quotes)
         text = _cache_get(key)
         if text is None:
             if guard and g is None:
-                g = Guard(tok, allowed)
+                g = Guard(tok, allowed, common_capitalized(), allow_quotes=quotes)
             procs = make_logits_processors(repetition_penalty=1.05) + ([g] if guard else [])
             mx.random.seed(seed * 1000 + idx)
             text = ""

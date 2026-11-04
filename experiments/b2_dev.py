@@ -23,7 +23,10 @@ from humanizer.pipeline.editor import edit_plan
 from humanizer.pipeline.writer import write
 
 BASE = f"mlx:{ROOT / 'models' / 'olmo2-13b-base-4bit'}"
-ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": BASE.replace("mlx:", "sec:", 1)}
+SEC = BASE.replace("mlx:", "sec:", 1)
+# sec: sectional writer with the token-level guard (first run, 2026-11-04 morning).
+# sec2: same writer with the word-level guard, the current sectional.py.
+ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC}
 TEXTS = ROOT / "results" / "b2_dev_texts.jsonl"
 OUT = ROOT / "results" / "b2_dev_rows.jsonl"
 
@@ -87,7 +90,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=["generate", "score"])
     ap.add_argument("--n", type=int, default=20)
-    ap.add_argument("--arms", default="claude,base,sec")
+    ap.add_argument("--arms", default="claude,base,sec2")
     ap.add_argument("--detector", default="detector-v2")
     a = ap.parse_args()
     generate(a.n, a.arms.split(",")) if a.step == "generate" else score(a.detector)

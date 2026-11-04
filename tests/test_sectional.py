@@ -27,17 +27,33 @@ def test_sectional_prompt_ends_on_next_section_notes():
 
 
 class Tok:
-    words = ["x", " the", " Wang", " China", " 1999", ".", " Chi", "\n"]
+    words = ["x", " the", " Wang", " China", " 30", ".", " Ma", "pping", "rine", "\n", " Researchers", ' "']
 
     def decode(self, ids):
         return "".join(self.words[i] for i in ids)
 
 
-def test_guard_blocks_new_names_and_numbers_mid_sentence_only():
-    g = Guard(Tok(), allowed_specifics("Researchers in China"))
-    logits = mx.zeros((1, 8))
-    mid = g(mx.array([1]), logits)  # after " the"
-    blocked = {i for i in range(8) if mid[0, i].item() == float("-inf")}
-    assert blocked == {2, 4}  # " Wang" and " 1999"; " China" and its prefix " Chi" are allowed
-    start = g(mx.array([5]), logits)  # after "."
-    assert {i for i in range(8) if start[0, i].item() == float("-inf")} == {4}
+def _blocked(g, history):
+    out = g(mx.array(history), mx.zeros((1, len(Tok.words))))
+    return {Tok.words[i] for i in range(len(Tok.words)) if out[0, i].item() == float("-inf")}
+
+
+def test_guard_blocks_new_names_and_numbers_mid_sentence():
+    g = Guard(Tok(), allowed_specifics("Mapping cropland in China"), {"Researchers"}, allow_quotes=False)
+    b = _blocked(g, [0, 1])  # "... the"
+    assert {" Wang", " 30", " Researchers", ' "'} <= b
+    assert " China" not in b and " Ma" not in b  # " Ma" is a prefix of Mapping
+
+
+def test_guard_forces_a_started_name_to_finish_as_a_draft_word():
+    g = Guard(Tok(), allowed_specifics("Mapping cropland in China"), set())
+    b = _blocked(g, [0, 1, 6])  # "... the Ma"
+    assert "pping" not in b and "rine" in b  # Mapping yes, Marine no
+    assert " the" in b and "." in b  # cannot stop at "Ma"
+    assert "rine" in _blocked(g, [0, 1, 6, 7]) and " the" not in _blocked(g, [0, 1, 6, 7])  # after "Mapping"
+
+
+def test_guard_allows_common_words_at_sentence_start():
+    g = Guard(Tok(), set(), {"Researchers"})
+    assert " Researchers" not in _blocked(g, [0, 5])  # after "."
+    assert " Researchers" in _blocked(g, [0, 1])      # mid-sentence
