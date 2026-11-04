@@ -1,0 +1,49 @@
+{
+ "n": 20,
+ "draft_mean_p_ai": 0.9999999942382176,
+ "claude": {
+  "mean_p_ai": 0.9999999935428302,
+  "share_below_0.5": 0.0,
+  "claim_pass_rate": 0.2,
+  "no_new_specifics_rate": 0.65,
+  "entailed_share": 0.8795270000893202,
+  "quality_win_rate": 0.425,
+  "mean_words": 698.85
+ },
+ "base": {
+  "mean_p_ai": 0.761158639726873,
+  "share_below_0.5": 0.2,
+  "claim_pass_rate": 0.0,
+  "no_new_specifics_rate": 0.1,
+  "entailed_share": 0.3968173874809525,
+  "quality_win_rate": 0.05,
+  "mean_words": 753.25
+ },
+ "sec": {
+  "mean_p_ai": 0.8263708018886221,
+  "share_below_0.5": 0.15,
+  "claim_pass_rate": 0.0,
+  "no_new_specifics_rate": 0.3,
+  "entailed_share": 0.4404008224997417,
+  "quality_win_rate": 0.0,
+  "mean_words": 733.2
+ },
+ "sec2": {
+  "mean_p_ai": 0.8652101881685964,
+  "share_below_0.5": 0.05,
+  "claim_pass_rate": 0.0,
+  "no_new_specifics_rate": 0.3,
+  "entailed_share": 0.4625600551450894,
+  "quality_win_rate": 0.0,
+  "mean_words": 956.1
+ },
+ "sec2p": {
+  "mean_p_ai": 0.9063123029886422,
+  "share_below_0.5": 0.05,
+  "claim_pass_rate": 0.0,
+  "no_new_specifics_rate": 0.55,
+  "entailed_share": 0.6183301259264814,
+  "quality_win_rate": 0.0,
+  "mean_words": 580.15
+ }
+}

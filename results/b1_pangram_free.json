@@ -34,6 +34,14 @@
     "detail": "Human Written, 100% of text human-written"
    }
   ],
-  "local_detector_v2_p_ai": null
+  "local_detector_v2_p_ai": {
+   "h0601": 0.0,
+   "h0602": 0.0,
+   "h0603": 0.0,
+   "h0600:qwen": 0.0,
+   "h0600:instruct": 1.0,
+   "h0600:olmo": 0.0
+  },
+  "local_detector_v2_note": "h0600 rows are the first 391 words of each model's continuation, an approximation of the scanned text"
  }
 }

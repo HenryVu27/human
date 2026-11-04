@@ -45,3 +45,9 @@ def test_title_case_headings_are_not_names():
     out = "# One Workflow, Two Very Different Countries\n\nThe maps used Landsat data.\n\n## Why It Scales\n\nIt scales."
     assert unsupported_specifics("Landsat data mapped fields.", out) == set()
     assert unsupported_specifics("Landsat data.", "We met Jane Doe there.") == {"Jane Doe"}
+
+
+def test_names_do_not_span_lines():
+    from humanizer.checks.claims import specifics
+    found = specifics("We went to Dunkeld\n## Old Stones\nThe fountain stood there.")
+    assert not any(" " in s and "Dunkeld" in s for s in found)

@@ -26,7 +26,7 @@ from humanizer.pipeline.writer import write
 BASE = f"mlx:{ROOT / 'models' / 'olmo2-13b-base-4bit'}"
 SEC = BASE.replace("mlx:", "sec:", 1)
 # sec: sectional writer with the token-level guard (first run, 2026-11-04 morning).
-# sec2: same writer with the word-level guard, the current sectional.py.
+# sec2: word-level guard, content-only notes and a minimum section length (cache "sectional-g3").
 # sec2p: sec2 after the deletion-only pruner (no new words).
 ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC, "sec2p": "prune:sec2"}
 TEXTS = ROOT / "results" / "b2_dev_texts.jsonl"
@@ -77,6 +77,11 @@ def score(detector: str):
     summarize()
 
 
+def _share(frac: str) -> float:
+    a, b = map(int, frac.split("/"))
+    return a / b if b else 1.0
+
+
 def summarize():
     rows = [json.loads(line) for line in OUT.open()]
     res = {"n": len(rows), "draft_mean_p_ai": statistics.mean(r["draft_p_ai"] for r in rows)}
@@ -85,6 +90,8 @@ def summarize():
             "mean_p_ai": statistics.mean(r[arm]["p_ai"] for r in rows),
             "share_below_0.5": sum(r[arm]["p_ai"] < 0.5 for r in rows) / len(rows),
             "claim_pass_rate": sum(r[arm]["claim_pass"] for r in rows) / len(rows),
+            "no_new_specifics_rate": sum(not r[arm]["unsupported_specifics"] for r in rows) / len(rows),
+            "entailed_share": statistics.mean(_share(r[arm]["entailed"]) for r in rows),
             "quality_win_rate": statistics.mean(r[arm]["quality_vs_draft"] for r in rows),
             "mean_words": statistics.mean(r[arm]["words"] for r in rows),
         }
