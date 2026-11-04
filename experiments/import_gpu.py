@@ -13,10 +13,14 @@ from humanizer import ROOT
 TEXTS = ROOT / "results" / "b2_dev_texts.jsonl"
 
 
-def main(zip_path: str):
+def main(path: str):
+    """path: the results zip (Taildrop) or a folder already copied back (scp)."""
     out = ROOT / "results" / "gpu13b"
-    with zipfile.ZipFile(zip_path) as z:
-        z.extractall(out)
+    if path.endswith(".zip"):
+        with zipfile.ZipFile(path) as z:
+            z.extractall(out)
+    else:
+        out = ROOT / path
     found = {p.name: p for p in out.rglob("*.jsonl")}
     rows = {r["id"]: r for r in map(json.loads, TEXTS.open())}
     for arm, name in [("lora13", "dev_generations.jsonl"), ("base13", "dev_generations_base.jsonl")]:
