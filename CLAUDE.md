@@ -1,6 +1,6 @@
 # Humanizer
 
-Research project: turn any AI draft into prose that Pangram 4.x and blind expert readers judge human-written, editing like a human editor and inventing nothing. Spec: `docs/specs/2026-11-04-humanizer-design.md`. Plan: `docs/plans/2026-11-04-humanizer-phase1.md`. Latest status: newest `results/REPORT-*.md`.
+Research project: turn any AI draft into prose that Pangram 4.x and blind expert readers judge human-written, editing like a human editor and inventing nothing. Spec: `docs/specs/2026-11-04-humanizer-design.md`. Plan: `docs/plans/2026-11-04-humanizer-phase1.md`. Latest status: `results/REPORT-2026-11-04-lora.md` (the overnight report `REPORT-2026-11-05.md` is misdated; it came first).
 
 ## Rules
 

@@ -30,9 +30,10 @@ SEC = BASE.replace("mlx:", "sec:", 1)
 # sec2p: sec2 after the deletion-only pruner (no new words).
 # lora: OLMo-2-7B base fine-tuned on (notes, human article), writing from dense notes the editor selected.
 LORA = f"lora:{ROOT / 'models' / 'olmo2-7b-base-4bit'}+{ROOT / 'models' / 'lora-7b-v1'}"
-# lora13, base13: 13B with and without the adapter, generated on the Windows GPU (experiments/import_gpu.py).
+# lora13, lora13s1, base13: 13B with (seeds 0, 1) and without the adapter, generated on the Windows GPU
+# (experiments/import_gpu.py). lora13best2 is derived in summarize: per draft, the more faithful of the two seeds.
 ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC, "sec2p": "prune:sec2", "lora": LORA,
-        "lora13": "import:gpu", "base13": "import:gpu"}
+        "lora13": "import:gpu", "lora13s1": "import:gpu", "base13": "import:gpu"}
 TEXTS = ROOT / "results" / "b2_dev_texts.jsonl"
 OUT = ROOT / "results" / "b2_dev_rows.jsonl"
 
@@ -86,10 +87,18 @@ def _share(frac: str) -> float:
     return a / b if b else 1.0
 
 
+def _faithfulness(r: dict) -> tuple:
+    """Selection key the pipeline can compute without a reader: claim pass, entailed share, fewer new specifics."""
+    return r["claim_pass"], _share(r["entailed"]), -len(r["unsupported_specifics"])
+
+
 def summarize():
     rows = [json.loads(line) for line in OUT.open()]
+    for r in rows:
+        if "lora13" in r and "lora13s1" in r:
+            r["lora13best2"] = max(r["lora13"], r["lora13s1"], key=_faithfulness)
     res = {"n": len(rows), "draft_mean_p_ai": statistics.mean(r["draft_p_ai"] for r in rows)}
-    for arm in [a for a in ARMS if all(a in r for r in rows)]:
+    for arm in [a for a in [*ARMS, "lora13best2"] if all(a in r for r in rows)]:
         res[arm] = {
             "mean_p_ai": statistics.mean(r[arm]["p_ai"] for r in rows),
             "share_below_0.5": sum(r[arm]["p_ai"] < 0.5 for r in rows) / len(rows),

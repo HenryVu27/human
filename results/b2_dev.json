@@ -45,5 +45,50 @@
   "entailed_share": 0.6183301259264814,
   "quality_win_rate": 0.0,
   "mean_words": 580.15
+ },
+ "lora": {
+  "mean_p_ai": 2.988831919689498e-05,
+  "share_below_0.5": 1.0,
+  "claim_pass_rate": 0.15,
+  "no_new_specifics_rate": 0.45,
+  "entailed_share": 0.9184798742934114,
+  "quality_win_rate": 0.0,
+  "mean_words": 510.1
+ },
+ "lora13": {
+  "mean_p_ai": 8.722977519350176e-05,
+  "share_below_0.5": 1.0,
+  "claim_pass_rate": 0.3,
+  "no_new_specifics_rate": 0.5,
+  "entailed_share": 0.9569380486536153,
+  "quality_win_rate": 0.075,
+  "mean_words": 509.85
+ },
+ "lora13s1": {
+  "mean_p_ai": 2.8121481066042027e-05,
+  "share_below_0.5": 1.0,
+  "claim_pass_rate": 0.3,
+  "no_new_specifics_rate": 0.45,
+  "entailed_share": 0.9487245592279779,
+  "quality_win_rate": 0.15,
+  "mean_words": 508.1
+ },
+ "base13": {
+  "mean_p_ai": 0.5038989525766084,
+  "share_below_0.5": 0.5,
+  "claim_pass_rate": 0.0,
+  "no_new_specifics_rate": 0.2,
+  "entailed_share": 0.42769225201400657,
+  "quality_win_rate": 0.0,
+  "mean_words": 374.3
+ },
+ "lora13best2": {
+  "mean_p_ai": 7.651937570945696e-05,
+  "share_below_0.5": 1.0,
+  "claim_pass_rate": 0.45,
+  "no_new_specifics_rate": 0.55,
+  "entailed_share": 0.9750207879377097,
+  "quality_win_rate": 0.075,
+  "mean_words": 521.6
  }
 }

@@ -1,0 +1,707 @@
+{
+ "split": "dev",
+ "n": 100,
+ "human_win_rate": 0.21,
+ "rows": [
+  {
+   "id": "a0600",
+   "source_id": "h0600",
+   "human_vs_draft": 1.0,
+   "human_words": 605,
+   "draft_words": 1084
+  },
+  {
+   "id": "a0601",
+   "source_id": "h0601",
+   "human_vs_draft": 0.0,
+   "human_words": 1400,
+   "draft_words": 1076
+  },
+  {
+   "id": "a0602",
+   "source_id": "h0602",
+   "human_vs_draft": 1.0,
+   "human_words": 426,
+   "draft_words": 1107
+  },
+  {
+   "id": "a0603",
+   "source_id": "h0603",
+   "human_vs_draft": 0.5,
+   "human_words": 376,
+   "draft_words": 1059
+  },
+  {
+   "id": "a0604",
+   "source_id": "h0604",
+   "human_vs_draft": 1.0,
+   "human_words": 401,
+   "draft_words": 1026
+  },
+  {
+   "id": "a0605",
+   "source_id": "h0605",
+   "human_vs_draft": 0.0,
+   "human_words": 514,
+   "draft_words": 1094
+  },
+  {
+   "id": "a0606",
+   "source_id": "h0606",
+   "human_vs_draft": 1.0,
+   "human_words": 613,
+   "draft_words": 1044
+  },
+  {
+   "id": "a0607",
+   "source_id": "h0607",
+   "human_vs_draft": 0.0,
+   "human_words": 1046,
+   "draft_words": 1075
+  },
+  {
+   "id": "a0608",
+   "source_id": "h0608",
+   "human_vs_draft": 0.0,
+   "human_words": 489,
+   "draft_words": 1127
+  },
+  {
+   "id": "a0609",
+   "source_id": "h0609",
+   "human_vs_draft": 1.0,
+   "human_words": 583,
+   "draft_words": 1106
+  },
+  {
+   "id": "a0610",
+   "source_id": "h0610",
+   "human_vs_draft": 0.0,
+   "human_words": 1117,
+   "draft_words": 1199
+  },
+  {
+   "id": "a0611",
+   "source_id": "h0611",
+   "human_vs_draft": 0.0,
+   "human_words": 733,
+   "draft_words": 970
+  },
+  {
+   "id": "a0612",
+   "source_id": "h0612",
+   "human_vs_draft": 0.0,
+   "human_words": 609,
+   "draft_words": 1153
+  },
+  {
+   "id": "a0613",
+   "source_id": "h0613",
+   "human_vs_draft": 0.0,
+   "human_words": 458,
+   "draft_words": 1044
+  },
+  {
+   "id": "a0614",
+   "source_id": "h0614",
+   "human_vs_draft": 0.0,
+   "human_words": 454,
+   "draft_words": 1089
+  },
+  {
+   "id": "a0615",
+   "source_id": "h0615",
+   "human_vs_draft": 0.0,
+   "human_words": 1245,
+   "draft_words": 1118
+  },
+  {
+   "id": "a0616",
+   "source_id": "h0616",
+   "human_vs_draft": 0.0,
+   "human_words": 574,
+   "draft_words": 1125
+  },
+  {
+   "id": "a0617",
+   "source_id": "h0617",
+   "human_vs_draft": 1.0,
+   "human_words": 694,
+   "draft_words": 1012
+  },
+  {
+   "id": "a0618",
+   "source_id": "h0618",
+   "human_vs_draft": 0.0,
+   "human_words": 697,
+   "draft_words": 1112
+  },
+  {
+   "id": "a0619",
+   "source_id": "h0619",
+   "human_vs_draft": 0.0,
+   "human_words": 1144,
+   "draft_words": 1014
+  },
+  {
+   "id": "a0620",
+   "source_id": "h0620",
+   "human_vs_draft": 0.0,
+   "human_words": 969,
+   "draft_words": 1130
+  },
+  {
+   "id": "a0621",
+   "source_id": "h0621",
+   "human_vs_draft": 0.0,
+   "human_words": 1352,
+   "draft_words": 1038
+  },
+  {
+   "id": "a0622",
+   "source_id": "h0622",
+   "human_vs_draft": 0.0,
+   "human_words": 759,
+   "draft_words": 1005
+  },
+  {
+   "id": "a0623",
+   "source_id": "h0623",
+   "human_vs_draft": 0.0,
+   "human_words": 438,
+   "draft_words": 1194
+  },
+  {
+   "id": "a0624",
+   "source_id": "h0624",
+   "human_vs_draft": 0.0,
+   "human_words": 1048,
+   "draft_words": 1109
+  },
+  {
+   "id": "a0625",
+   "source_id": "h0625",
+   "human_vs_draft": 0.0,
+   "human_words": 927,
+   "draft_words": 1034
+  },
+  {
+   "id": "a0626",
+   "source_id": "h0626",
+   "human_vs_draft": 0.0,
+   "human_words": 668,
+   "draft_words": 1135
+  },
+  {
+   "id": "a0627",
+   "source_id": "h0627",
+   "human_vs_draft": 0.0,
+   "human_words": 1414,
+   "draft_words": 1044
+  },
+  {
+   "id": "a0628",
+   "source_id": "h0628",
+   "human_vs_draft": 1.0,
+   "human_words": 623,
+   "draft_words": 1027
+  },
+  {
+   "id": "a0629",
+   "source_id": "h0629",
+   "human_vs_draft": 0.5,
+   "human_words": 1060,
+   "draft_words": 1006
+  },
+  {
+   "id": "a0630",
+   "source_id": "h0630",
+   "human_vs_draft": 1.0,
+   "human_words": 853,
+   "draft_words": 951
+  },
+  {
+   "id": "a0631",
+   "source_id": "h0631",
+   "human_vs_draft": 0.0,
+   "human_words": 417,
+   "draft_words": 1024
+  },
+  {
+   "id": "a0632",
+   "source_id": "h0632",
+   "human_vs_draft": 0.0,
+   "human_words": 561,
+   "draft_words": 1169
+  },
+  {
+   "id": "a0633",
+   "source_id": "h0633",
+   "human_vs_draft": 0.0,
+   "human_words": 362,
+   "draft_words": 935
+  },
+  {
+   "id": "a0634",
+   "source_id": "h0634",
+   "human_vs_draft": 0.0,
+   "human_words": 442,
+   "draft_words": 1047
+  },
+  {
+   "id": "a0635",
+   "source_id": "h0635",
+   "human_vs_draft": 0.0,
+   "human_words": 998,
+   "draft_words": 1080
+  },
+  {
+   "id": "a0636",
+   "source_id": "h0636",
+   "human_vs_draft": 0.0,
+   "human_words": 505,
+   "draft_words": 1032
+  },
+  {
+   "id": "a0637",
+   "source_id": "h0637",
+   "human_vs_draft": 0.0,
+   "human_words": 388,
+   "draft_words": 1040
+  },
+  {
+   "id": "a0638",
+   "source_id": "h0638",
+   "human_vs_draft": 0.0,
+   "human_words": 728,
+   "draft_words": 1062
+  },
+  {
+   "id": "a0639",
+   "source_id": "h0639",
+   "human_vs_draft": 0.0,
+   "human_words": 553,
+   "draft_words": 982
+  },
+  {
+   "id": "a0640",
+   "source_id": "h0640",
+   "human_vs_draft": 0.5,
+   "human_words": 397,
+   "draft_words": 1223
+  },
+  {
+   "id": "a0641",
+   "source_id": "h0641",
+   "human_vs_draft": 0.0,
+   "human_words": 763,
+   "draft_words": 1150
+  },
+  {
+   "id": "a0642",
+   "source_id": "h0642",
+   "human_vs_draft": 0.0,
+   "human_words": 628,
+   "draft_words": 1015
+  },
+  {
+   "id": "a0643",
+   "source_id": "h0643",
+   "human_vs_draft": 0.0,
+   "human_words": 1422,
+   "draft_words": 1102
+  },
+  {
+   "id": "a0644",
+   "source_id": "h0644",
+   "human_vs_draft": 0.0,
+   "human_words": 1096,
+   "draft_words": 1188
+  },
+  {
+   "id": "a0645",
+   "source_id": "h0645",
+   "human_vs_draft": 0.0,
+   "human_words": 459,
+   "draft_words": 995
+  },
+  {
+   "id": "a0646",
+   "source_id": "h0646",
+   "human_vs_draft": 0.5,
+   "human_words": 1405,
+   "draft_words": 1087
+  },
+  {
+   "id": "a0647",
+   "source_id": "h0647",
+   "human_vs_draft": 1.0,
+   "human_words": 624,
+   "draft_words": 1046
+  },
+  {
+   "id": "a0648",
+   "source_id": "h0648",
+   "human_vs_draft": 0.0,
+   "human_words": 536,
+   "draft_words": 1091
+  },
+  {
+   "id": "a0649",
+   "source_id": "h0649",
+   "human_vs_draft": 0.0,
+   "human_words": 375,
+   "draft_words": 1112
+  },
+  {
+   "id": "a0650",
+   "source_id": "h0650",
+   "human_vs_draft": 1.0,
+   "human_words": 1081,
+   "draft_words": 830
+  },
+  {
+   "id": "a0651",
+   "source_id": "h0651",
+   "human_vs_draft": 0.0,
+   "human_words": 959,
+   "draft_words": 972
+  },
+  {
+   "id": "a0652",
+   "source_id": "h0652",
+   "human_vs_draft": 0.0,
+   "human_words": 453,
+   "draft_words": 1139
+  },
+  {
+   "id": "a0653",
+   "source_id": "h0653",
+   "human_vs_draft": 0.0,
+   "human_words": 488,
+   "draft_words": 1207
+  },
+  {
+   "id": "a0654",
+   "source_id": "h0654",
+   "human_vs_draft": 0.0,
+   "human_words": 895,
+   "draft_words": 1272
+  },
+  {
+   "id": "a0655",
+   "source_id": "h0655",
+   "human_vs_draft": 0.0,
+   "human_words": 440,
+   "draft_words": 1024
+  },
+  {
+   "id": "a0656",
+   "source_id": "h0656",
+   "human_vs_draft": 1.0,
+   "human_words": 1095,
+   "draft_words": 1061
+  },
+  {
+   "id": "a0657",
+   "source_id": "h0657",
+   "human_vs_draft": 0.5,
+   "human_words": 427,
+   "draft_words": 1078
+  },
+  {
+   "id": "a0658",
+   "source_id": "h0658",
+   "human_vs_draft": 0.0,
+   "human_words": 1004,
+   "draft_words": 1103
+  },
+  {
+   "id": "a0659",
+   "source_id": "h0659",
+   "human_vs_draft": 0.0,
+   "human_words": 708,
+   "draft_words": 1139
+  },
+  {
+   "id": "a0660",
+   "source_id": "h0660",
+   "human_vs_draft": 1.0,
+   "human_words": 739,
+   "draft_words": 1014
+  },
+  {
+   "id": "a0661",
+   "source_id": "h0661",
+   "human_vs_draft": 0.0,
+   "human_words": 644,
+   "draft_words": 1081
+  },
+  {
+   "id": "a0662",
+   "source_id": "h0662",
+   "human_vs_draft": 1.0,
+   "human_words": 1152,
+   "draft_words": 1096
+  },
+  {
+   "id": "a0663",
+   "source_id": "h0663",
+   "human_vs_draft": 0.0,
+   "human_words": 701,
+   "draft_words": 1122
+  },
+  {
+   "id": "a0664",
+   "source_id": "h0664",
+   "human_vs_draft": 0.0,
+   "human_words": 515,
+   "draft_words": 1167
+  },
+  {
+   "id": "a0665",
+   "source_id": "h0665",
+   "human_vs_draft": 0.0,
+   "human_words": 1135,
+   "draft_words": 1079
+  },
+  {
+   "id": "a0666",
+   "source_id": "h0666",
+   "human_vs_draft": 0.0,
+   "human_words": 353,
+   "draft_words": 1026
+  },
+  {
+   "id": "a0667",
+   "source_id": "h0667",
+   "human_vs_draft": 1.0,
+   "human_words": 432,
+   "draft_words": 1162
+  },
+  {
+   "id": "a0668",
+   "source_id": "h0668",
+   "human_vs_draft": 0.0,
+   "human_words": 1044,
+   "draft_words": 1047
+  },
+  {
+   "id": "a0669",
+   "source_id": "h0669",
+   "human_vs_draft": 0.0,
+   "human_words": 1192,
+   "draft_words": 1065
+  },
+  {
+   "id": "a0670",
+   "source_id": "h0670",
+   "human_vs_draft": 0.0,
+   "human_words": 1324,
+   "draft_words": 1065
+  },
+  {
+   "id": "a0671",
+   "source_id": "h0671",
+   "human_vs_draft": 0.0,
+   "human_words": 640,
+   "draft_words": 1230
+  },
+  {
+   "id": "a0672",
+   "source_id": "h0672",
+   "human_vs_draft": 1.0,
+   "human_words": 625,
+   "draft_words": 966
+  },
+  {
+   "id": "a0673",
+   "source_id": "h0673",
+   "human_vs_draft": 0.0,
+   "human_words": 472,
+   "draft_words": 1055
+  },
+  {
+   "id": "a0674",
+   "source_id": "h0674",
+   "human_vs_draft": 1.0,
+   "human_words": 582,
+   "draft_words": 1020
+  },
+  {
+   "id": "a0675",
+   "source_id": "h0675",
+   "human_vs_draft": 0.0,
+   "human_words": 470,
+   "draft_words": 1081
+  },
+  {
+   "id": "a0676",
+   "source_id": "h0676",
+   "human_vs_draft": 0.0,
+   "human_words": 796,
+   "draft_words": 1124
+  },
+  {
+   "id": "a0677",
+   "source_id": "h0677",
+   "human_vs_draft": 1.0,
+   "human_words": 441,
+   "draft_words": 1027
+  },
+  {
+   "id": "a0678",
+   "source_id": "h0678",
+   "human_vs_draft": 0.0,
+   "human_words": 1083,
+   "draft_words": 997
+  },
+  {
+   "id": "a0679",
+   "source_id": "h0679",
+   "human_vs_draft": 0.0,
+   "human_words": 1081,
+   "draft_words": 1013
+  },
+  {
+   "id": "a0680",
+   "source_id": "h0680",
+   "human_vs_draft": 0.0,
+   "human_words": 895,
+   "draft_words": 1193
+  },
+  {
+   "id": "a0681",
+   "source_id": "h0681",
+   "human_vs_draft": 0.0,
+   "human_words": 1310,
+   "draft_words": 1137
+  },
+  {
+   "id": "a0682",
+   "source_id": "h0682",
+   "human_vs_draft": 0.0,
+   "human_words": 1053,
+   "draft_words": 1029
+  },
+  {
+   "id": "a0683",
+   "source_id": "h0683",
+   "human_vs_draft": 0.0,
+   "human_words": 476,
+   "draft_words": 984
+  },
+  {
+   "id": "a0684",
+   "source_id": "h0684",
+   "human_vs_draft": 0.0,
+   "human_words": 586,
+   "draft_words": 1016
+  },
+  {
+   "id": "a0685",
+   "source_id": "h0685",
+   "human_vs_draft": 0.0,
+   "human_words": 915,
+   "draft_words": 1029
+  },
+  {
+   "id": "a0686",
+   "source_id": "h0686",
+   "human_vs_draft": 0.0,
+   "human_words": 1132,
+   "draft_words": 986
+  },
+  {
+   "id": "a0687",
+   "source_id": "h0687",
+   "human_vs_draft": 0.0,
+   "human_words": 869,
+   "draft_words": 1115
+  },
+  {
+   "id": "a0688",
+   "source_id": "h0688",
+   "human_vs_draft": 0.0,
+   "human_words": 680,
+   "draft_words": 1148
+  },
+  {
+   "id": "a0689",
+   "source_id": "h0689",
+   "human_vs_draft": 0.0,
+   "human_words": 571,
+   "draft_words": 1120
+  },
+  {
+   "id": "a0690",
+   "source_id": "h0690",
+   "human_vs_draft": 1.0,
+   "human_words": 508,
+   "draft_words": 970
+  },
+  {
+   "id": "a0691",
+   "source_id": "h0691",
+   "human_vs_draft": 0.0,
+   "human_words": 432,
+   "draft_words": 1064
+  },
+  {
+   "id": "a0692",
+   "source_id": "h0692",
+   "human_vs_draft": 0.0,
+   "human_words": 483,
+   "draft_words": 1209
+  },
+  {
+   "id": "a0693",
+   "source_id": "h0693",
+   "human_vs_draft": 0.0,
+   "human_words": 457,
+   "draft_words": 1010
+  },
+  {
+   "id": "a0694",
+   "source_id": "h0694",
+   "human_vs_draft": 0.0,
+   "human_words": 419,
+   "draft_words": 949
+  },
+  {
+   "id": "a0695",
+   "source_id": "h0695",
+   "human_vs_draft": 0.5,
+   "human_words": 377,
+   "draft_words": 1043
+  },
+  {
+   "id": "a0696",
+   "source_id": "h0696",
+   "human_vs_draft": 0.0,
+   "human_words": 500,
+   "draft_words": 1047
+  },
+  {
+   "id": "a0697",
+   "source_id": "h0697",
+   "human_vs_draft": 0.0,
+   "human_words": 460,
+   "draft_words": 1051
+  },
+  {
+   "id": "a0698",
+   "source_id": "h0698",
+   "human_vs_draft": 0.0,
+   "human_words": 420,
+   "draft_words": 1093
+  },
+  {
+   "id": "a0699",
+   "source_id": "h0699",
+   "human_vs_draft": 0.0,
+   "human_words": 1050,
+   "draft_words": 946
+  }
+ ]
+}
