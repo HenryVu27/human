@@ -20,13 +20,15 @@ from humanizer import ROOT
 from humanizer.checks.claims import claim_check
 from humanizer.checks.quality import quality_pair
 from humanizer.pipeline.editor import edit_plan
+from humanizer.pipeline.prune import prune
 from humanizer.pipeline.writer import write
 
 BASE = f"mlx:{ROOT / 'models' / 'olmo2-13b-base-4bit'}"
 SEC = BASE.replace("mlx:", "sec:", 1)
 # sec: sectional writer with the token-level guard (first run, 2026-11-04 morning).
 # sec2: same writer with the word-level guard, the current sectional.py.
-ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC}
+# sec2p: sec2 after the deletion-only pruner (no new words).
+ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC, "sec2p": "prune:sec2"}
 TEXTS = ROOT / "results" / "b2_dev_texts.jsonl"
 OUT = ROOT / "results" / "b2_dev_rows.jsonl"
 
@@ -42,7 +44,11 @@ def generate(n: int, arms: list[str]):
             continue
         plan = edit_plan(d["text"])  # cached, so every arm sees the same plan
         row |= {"target_words": plan.target_words, "notes": plan.render_notes()}
-        row |= {a: write(plan, ARMS[a], draft=d["text"]) for a in missing}
+        for a in missing:
+            if ARMS[a].startswith("prune:"):
+                row[a] = prune(d["text"], row[ARMS[a].split(":", 1)[1]])
+            else:
+                row[a] = write(plan, ARMS[a], draft=d["text"])
         rows[d["id"]] = row
         TEXTS.write_text("".join(json.dumps(r) + "\n" for r in rows.values()))
         print(d["id"], {a: len(row[a].split()) for a in arms}, flush=True)
@@ -90,7 +96,7 @@ if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("step", choices=["generate", "score"])
     ap.add_argument("--n", type=int, default=20)
-    ap.add_argument("--arms", default="claude,base,sec2")
+    ap.add_argument("--arms", default="claude,base,sec2,sec2p")
     ap.add_argument("--detector", default="detector-v2")
     a = ap.parse_args()
     generate(a.n, a.arms.split(",")) if a.step == "generate" else score(a.detector)

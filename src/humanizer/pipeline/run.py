@@ -6,6 +6,7 @@ from dataclasses import dataclass, field
 
 from humanizer.checks.claims import claim_check
 from humanizer.pipeline.editor import Plan, edit_plan
+from humanizer.pipeline.prune import prune
 from humanizer.pipeline.writer import write
 
 MIN_WORDS = 50
@@ -33,6 +34,8 @@ def humanize(draft: str, *, writer: str, detector=None, editor_model: str = "opu
     best = None
     for attempt in range(MAX_RETRIES + 1):
         text = write(plan, writer, seed=attempt, draft=draft)
+        if not writer.startswith("claude:"):
+            text = prune(draft, text)  # base-model writers ramble; cut, never reword
         checks = claim_check(draft, text)
         rank = (checks["pass"], -len(checks["unsupported_specifics"]),
                 checks["claims_entailed"] / max(1, checks["claims_total"]))
