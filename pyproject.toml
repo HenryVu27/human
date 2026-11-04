@@ -12,6 +12,7 @@ dependencies = [
     "httpx>=0.28.1",
     "mlx-lm>=0.32.2",
     "numpy>=2.5.4",
+    "requests>=2.34.2",
     "scikit-learn>=1.9.1",
     "torch>=2.15.0",
     "transformers>=5.22.1",

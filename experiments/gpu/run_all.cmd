@@ -1,5 +1,6 @@
 @echo off
 rem Whole 13B run on the Windows box: env, download, smoke test, train, generate. Logs to C:\hgpu\run.log.
+rem GPU steps hold C:\gpu-lock (shared with umwelt on this PC): mkdir is atomic, owner says who holds it.
 cd /d C:\hgpu
 set UV=C:\Users\Vuduc\.local\bin\uv.exe
 set PY=C:\hgpu\.venv\Scripts\python.exe
@@ -12,11 +13,22 @@ if not exist .venv %UV% venv --python 3.12 .venv || exit /b 1
 %PY% -c "import torch,bitsandbytes as b;print(torch.__version__,torch.cuda.get_device_name(0),b.__version__)" || exit /b 1
 echo [%date% %time%] download
 %PY% -c "from huggingface_hub import snapshot_download as s;print(s('allenai/OLMo-2-1124-13B'))" || exit /b 1
-echo [%date% %time%] smoke
 if not exist out mkdir out
+:lock
+mkdir C:\gpu-lock 2>nul || (timeout /t 60 /nobreak >nul & goto lock)
+echo humanizer run_all.cmd %date% %time% > C:\gpu-lock\owner
+call :gpu
+set RC=%errorlevel%
+rmdir /s /q C:\gpu-lock
+if %RC% neq 0 exit /b %RC%
+echo [%date% %time%] ALL_DONE
+exit /b 0
+
+:gpu
+echo [%date% %time%] smoke
 %PY% train13b.py --data data --out out --smoke 5 || exit /b 1
 echo [%date% %time%] train
 %PY% train13b.py --data data --out out || exit /b 1
 echo [%date% %time%] generate
 %PY% gen13b.py --data data --out out || exit /b 1
-echo [%date% %time%] ALL_DONE
+exit /b 0

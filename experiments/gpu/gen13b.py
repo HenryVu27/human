@@ -3,7 +3,7 @@
 Same sampling as the MLX writer: temperature 0.8, top_p 0.95, repetition penalty 1.05, stop at EOS.
 No grounding guard here (it is an MLX logits processor), so new names or numbers are not blocked.
 
-Usage: python gen13b.py --data DIR --out DIR
+Usage: python gen13b.py --data DIR --out DIR [--prompts valid_prompts.jsonl --name valid_generations --seeds 0 --no-base]
 """
 
 import argparse
@@ -18,6 +18,10 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument("--data", required=True)
     ap.add_argument("--out", required=True)
+    ap.add_argument("--prompts", default="dev_prompts.jsonl")
+    ap.add_argument("--name", default="dev_generations")
+    ap.add_argument("--seeds", default="0,1")
+    ap.add_argument("--no-base", action="store_true")
     a = ap.parse_args()
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig
@@ -28,7 +32,7 @@ def main():
         quantization_config=BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_quant_type="nf4",
                                                bnb_4bit_use_double_quant=True, bnb_4bit_compute_dtype=torch.bfloat16))
     model = PeftModel.from_pretrained(base, f"{a.out}/lora-13b-v1").eval()
-    rows = [json.loads(line) for line in open(f"{a.data}/dev_prompts.jsonl", encoding="utf-8")]
+    rows = [json.loads(line) for line in open(f"{a.data}/{a.prompts}", encoding="utf-8")]
 
     def one(r, seed):
         ids = tok(r["prompt"], return_tensors="pt").input_ids.to("cuda")
@@ -41,14 +45,17 @@ def main():
         return {"id": r["id"], "seed": seed, "text": text, "words": len(text.split()),
                 "new_tokens": int(out.shape[0]), "hit_eos": hit}
 
-    with open(f"{a.out}/dev_generations.jsonl", "w", encoding="utf-8") as f:
-        for seed in (0, 1):
+    with open(f"{a.out}/{a.name}.jsonl", "w", encoding="utf-8") as f:
+        for seed in map(int, a.seeds.split(",")):
             for r in rows:
                 g = one(r, seed)
                 f.write(json.dumps(g) + "\n")
                 f.flush()
                 print("lora", r["id"], seed, g["words"], g["hit_eos"], flush=True)
-    with open(f"{a.out}/dev_generations_base.jsonl", "w", encoding="utf-8") as f, model.disable_adapter():
+    if a.no_base:
+        print("GEN_OK", flush=True)
+        return
+    with open(f"{a.out}/{a.name}_base.jsonl", "w", encoding="utf-8") as f, model.disable_adapter():
         for r in rows:
             g = one(r, 0)
             f.write(json.dumps(g) + "\n")
