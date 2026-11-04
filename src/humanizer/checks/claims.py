@@ -13,6 +13,7 @@ import re
 from humanizer.llm import claude
 
 CODE = re.compile(r"```.*?```|`[^`\n]+`", re.S)
+HEADING = re.compile(r"^\s{0,3}#{1,6}\s.*$", re.M)  # headings come from the editor's plan and are Title Case
 NUMBER = re.compile(r"(?<![\w.])\d[\d,]*(?:\.\d+)?%?")
 QUOTE = re.compile(r"[\"“]([^\"”\n]{3,160})[\"”]")
 NAME = re.compile(r"\b[A-Z][a-z]+(?:\s+[A-Z][a-z]+)+\b|\b[A-Z]{2,}[a-z]?\b")
@@ -38,7 +39,7 @@ def _clean_name(n: str) -> str:
 
 
 def specifics(text: str) -> set[str]:
-    text = CODE.sub(" ", text)
+    text = HEADING.sub(" ", CODE.sub(" ", text))
     found = {m.group(0).replace(",", "") for m in NUMBER.finditer(text)}
     found |= {m.group(1).strip() for m in QUOTE.finditer(text)}
     for m in NAME.finditer(text):
