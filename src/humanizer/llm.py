@@ -95,9 +95,15 @@ def load_mlx(model_id: str):
 
 
 def local_generate(model_id: str, prompt: str, *, max_tokens: int, temp: float = 0.8,
-                   top_p: float = 0.95, chat: bool = False, seed: int = 0) -> str:
-    """Sample from a local MLX model. chat=True applies the instruct chat template."""
-    key = _key("mlx", model_id, prompt, max_tokens, temp, top_p, chat, seed)
+                   top_p: float = 0.95, chat: bool = False, seed: int = 0, kv_bits: int | None = None) -> str:
+    """Sample from a local MLX model. chat=True applies the instruct chat template.
+
+    kv_bits quantizes the KV cache: OLMo-2-13B has no grouped-query attention, so a
+    4k-token prompt needs about 3.3 GB of cache on top of 8.5 GB of weights, past the
+    Metal limit on a 16 GB Mac. kv_bits=4 brings the cache under 1 GB.
+    """
+    parts = ("mlx", model_id, prompt, max_tokens, temp, top_p, chat, seed)
+    key = _key(*parts) if kv_bits is None else _key(*parts, kv_bits)
     if (hit := _cache_get(key)) is not None:
         return hit
     import mlx.core as mx
@@ -111,6 +117,7 @@ def local_generate(model_id: str, prompt: str, *, max_tokens: int, temp: float =
     mx.random.seed(seed)
     text = generate(model, tok, prompt, max_tokens=max_tokens,
                     sampler=make_sampler(temp=temp, top_p=top_p),
-                    logits_processors=make_logits_processors(repetition_penalty=1.05))
+                    logits_processors=make_logits_processors(repetition_penalty=1.05),
+                    prefill_step_size=512, kv_bits=kv_bits, quantized_kv_start=0)
     _cache_put(key, text)
     return text

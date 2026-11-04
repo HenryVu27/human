@@ -32,7 +32,7 @@ def humanize(draft: str, *, writer: str, detector=None, editor_model: str = "opu
     plan = edit_plan(draft, model=editor_model)
     best = None
     for attempt in range(MAX_RETRIES + 1):
-        text = write(plan, writer, seed=attempt)
+        text = write(plan, writer, seed=attempt, draft=draft)
         checks = claim_check(draft, text)
         rank = (checks["pass"], -len(checks["unsupported_specifics"]),
                 checks["claims_entailed"] / max(1, checks["claims_total"]))

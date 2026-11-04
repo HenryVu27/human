@@ -28,7 +28,7 @@ def test_cli_rejects_short_input(tmp_path, capsys):
 def test_humanize_retries_then_keeps_best(monkeypatch):
     monkeypatch.setattr(run, "edit_plan", lambda d, model: PLAN)
     texts = iter(["bad 99", "better", "best"])
-    monkeypatch.setattr(run, "write", lambda plan, writer, seed: next(texts))
+    monkeypatch.setattr(run, "write", lambda plan, writer, seed, draft: next(texts))
     verdicts = iter([
         {"pass": False, "unsupported_specifics": ["99"], "claims_total": 2, "claims_entailed": 1},
         {"pass": True, "unsupported_specifics": [], "claims_total": 2, "claims_entailed": 2},

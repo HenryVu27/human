@@ -51,15 +51,19 @@ def base_prompt(plan: Plan, *, k: int = 2, seed: int = 0) -> str:
     return "\n".join(parts)
 
 
-def write(plan: Plan, writer: str, *, seed: int = 0) -> str:
+def write(plan: Plan, writer: str, *, seed: int = 0, draft: str = "") -> str:
+    """writer is claude:<model>, mlx:<base model> (whole article) or sec:<base model> (sectional + guard)."""
     kind, model = writer.split(":", 1)
     if kind == "claude":
         return claude(CLAUDE_WRITE.format(notes=plan.render_notes()), model=model).strip()
+    if kind == "sec":
+        from humanizer.pipeline.sectional import write_sectional
+        return write_sectional(plan, model, draft, seed=seed)
     from humanizer.llm import load_mlx
 
     prompt = base_prompt(plan, seed=seed)
     room = CONTEXT - len(load_mlx(model)[1].encode(prompt)) - 16
     raw = local_generate(model, prompt, max_tokens=max(256, min(int(plan.target_words * 1.8) + 64, room)),
-                         temp=0.8, top_p=0.95, seed=seed)
+                         temp=0.8, top_p=0.95, seed=seed, kv_bits=4)
     text = truncate_at_document_break(raw)
     return re.sub(rf"^{re.escape(plan.title)}\s*\n", "", text).strip()

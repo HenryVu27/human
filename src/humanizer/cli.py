@@ -11,7 +11,7 @@ from pathlib import Path
 from humanizer import ROOT
 from humanizer.pipeline.run import TooShort, humanize
 
-DEFAULT_WRITER = f"mlx:{ROOT / 'models' / 'olmo2-13b-base-4bit'}"
+DEFAULT_WRITER = f"sec:{ROOT / 'models' / 'olmo2-13b-base-4bit'}"
 
 
 def main(argv: list[str] | None = None) -> int:
