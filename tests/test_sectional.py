@@ -57,3 +57,29 @@ def test_guard_allows_common_words_at_sentence_start():
     g = Guard(Tok(), set(), {"Researchers"})
     assert " Researchers" not in _blocked(g, [0, 5])  # after "."
     assert " Researchers" in _blocked(g, [0, 1])      # mid-sentence
+
+
+def test_content_notes_keeps_sections_and_targets(monkeypatch):
+    from humanizer.pipeline import sectional
+    plan = Plan("T", [Section("A", [{"note": "open on scene; no preamble"}], 90), Section(None, [{"note": "end here"}], 40)])
+    monkeypatch.setattr(sectional, "claude", lambda p, model: '{"sections": [["kids alone in the alleys"], ["centers run by mothers"]]}')
+    out = sectional.content_notes(plan)
+    assert [s.target_words for s in out.sections] == [90, 40] and out.sections[0].heading == "A"
+    assert out.sections[1].points[0]["note"] == "centers run by mothers"
+    monkeypatch.setattr(sectional, "claude", lambda p, model: '{"sections": [["only one"]]}')
+    assert sectional.content_notes(plan) is plan  # section count changed: keep the original
+
+
+def test_min_length_blocks_markers_until_enough_tokens():
+    from humanizer.pipeline.sectional import MinLength
+
+    class T:
+        words = ["a", " <<", "=", "\n\n\n", " b"]
+
+        def decode(self, ids):
+            return "".join(self.words[i] for i in ids)
+
+    ml = MinLength(T(), prompt_len=3, min_new=2)
+    out = ml(mx.array([0, 0, 0, 4]), mx.zeros((1, 5)))  # 1 new token so far
+    assert [out[0, i].item() == float("-inf") for i in range(5)] == [False, True, True, True, False]
+    assert ml(mx.array([0, 0, 0, 4, 4]), mx.zeros((1, 5)))[0, 1].item() == 0.0

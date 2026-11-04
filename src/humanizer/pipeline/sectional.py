@@ -36,6 +36,50 @@ NOTES_SECTIONED = """Write the editor's notes that this finished article could h
 </article>"""
 
 
+CONTENT_NOTES = """These are an editor's section notes for an article. Some fragments say what the section says; others are instructions to the writer (how to open, what to lead with, "no wrap-up", "end here", "compress"). Rewrite every section's notes as content only: terse fragments of what the section says, in the same order. Drop pure instructions; turn mixed ones into their content. Add nothing that is not in the notes. Keep the same number of sections.
+
+Return only JSON: {{"sections": [["fragment", "fragment"], ...]}}
+
+{notes}"""
+
+
+def content_notes(plan: Plan) -> Plan:
+    """The base writer copies instructions into prose; the human examples' notes are content only."""
+    raw = claude(CONTENT_NOTES.format(notes=plan.render_notes()), model="sonnet")
+    try:
+        secs = json.loads(re.search(r"\{.*\}", raw, re.S).group(0))["sections"]
+    except Exception:  # noqa: BLE001
+        return plan
+    if len(secs) != len(plan.sections) or not all(secs):
+        return plan
+    return Plan(plan.title, [Section(s.heading, [{"note": n, "quote": ""} for n in f], s.target_words)
+                             for s, f in zip(plan.sections, secs)], plan.cut)
+
+
+class MinLength:
+    """Block the section-end markers until min_new tokens have been generated."""
+
+    def __init__(self, tok, prompt_len: int, min_new: int):
+        self.tok, self.start, self.min_new, self.block = tok, prompt_len, min_new, None
+
+    def __call__(self, tokens, logits):
+        import mlx.core as mx
+        import numpy as np
+
+        if tokens.size - self.start >= self.min_new:
+            return logits
+        if self.block is None:
+            b = np.zeros(logits.shape[-1], bool)
+            for i in range(logits.shape[-1]):
+                try:
+                    t = self.tok.decode([i])
+                except Exception:  # noqa: BLE001
+                    continue
+                b[i] = "<" in t or "=" in t or t.count("\n") >= 3
+            self.block = mx.array(b)
+        return mx.where(self.block, -mx.inf, logits)
+
+
 def render_section_notes(s: Section) -> str:
     return f"{OPEN} " + " | ".join(p["note"] for p in s.points) + f" | about {s.target_words} words{CLOSE}"
 
@@ -218,9 +262,10 @@ def write_sectional(plan: Plan, model_id: str, draft: str, *, seed: int = 0, k: 
 
     examples = _sectioned_examples(k, seed)
     allowed = allowed_specifics(draft, plan.render_notes())
+    plan = content_notes(plan)
     quotes = any(q in draft for q in QUOTES)
     model, tok = load_mlx(model_id)
-    g = None
+    g, min_block = None, None
     done: list[str] = []
     for idx, s in enumerate(plan.sections):
         max_new = int(s.target_words * 1.7) + 40
@@ -229,12 +274,16 @@ def write_sectional(plan: Plan, model_id: str, draft: str, *, seed: int = 0, k: 
         while shots and len(tok.encode(prompt)) + max_new > CONTEXT - 16:
             shots = shots[:-1]  # drop examples before overflowing the 4k context
             prompt = sectional_prompt(plan, done, shots)
-        key = _key("sectional-g2", model_id, prompt, max_new, temp, top_p, seed, guard, sorted(allowed), quotes)
+        min_new = int(s.target_words * 0.9)  # about 70% of the target in words
+        key = _key("sectional-g3", model_id, prompt, max_new, min_new, temp, top_p, seed, guard, sorted(allowed), quotes)
         text = _cache_get(key)
         if text is None:
             if guard and g is None:
                 g = Guard(tok, allowed, common_capitalized(), allow_quotes=quotes)
-            procs = make_logits_processors(repetition_penalty=1.05) + ([g] if guard else [])
+            ml = MinLength(tok, len(tok.encode(prompt)), min_new)
+            if min_block is not None:
+                ml.block = min_block
+            procs = make_logits_processors(repetition_penalty=1.05) + ([g] if guard else []) + [ml]
             mx.random.seed(seed * 1000 + idx)
             text = ""
             for r in stream_generate(model, tok, prompt, max_tokens=max_new,
@@ -244,6 +293,7 @@ def write_sectional(plan: Plan, model_id: str, draft: str, *, seed: int = 0, k: 
                 text, stop = _stop_at_marker(text)
                 if stop:
                     break
+            min_block = ml.block
             text = text.strip()
             _cache_put(key, text)
         done.append(text)
