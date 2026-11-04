@@ -1,0 +1,7 @@
+{
+ "note": "Free-tier Pangram dashboard scans (Henry's account, 8 free credits). Model shown in dashboard: current default (Pangram 4.1 per pricing page). Texts are unselected: the first base-model continuation in results/b1_generations.jsonl, cut to under 400 words.",
+ "scans": [
+  {"date": "2026-11-04", "source_id": "h0600", "writer": "Qwen3.5-9B-Base 4-bit MLX, plain continuation of a 120-word human opening",
+   "words": 391, "verdict": "AI", "segments": "2 of 2 AI; 374-word segment AI 100%, High confidence; 20-word segment AI, Medium"}
+ ]
+}
