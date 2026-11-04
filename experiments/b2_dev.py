@@ -64,6 +64,6 @@ def summarize():
 if __name__ == "__main__":
     ap = argparse.ArgumentParser()
     ap.add_argument("--n", type=int, default=20)
-    ap.add_argument("--detector", default="detector-v1")
+    ap.add_argument("--detector", default="detector-v2")
     a = ap.parse_args()
     run(a.n, a.detector)

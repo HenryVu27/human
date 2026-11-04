@@ -124,7 +124,7 @@ def generate_set(model, tok, prompts):
     return out
 
 
-def evaluate(variant: str, alpha: float, n: int):
+def evaluate(variant: str, alpha: float, n: int, detector: str = "detector-v2"):
     from mlx_lm import load
 
     r = np.load(RES / f"b0_dir_{variant}.npy")
@@ -140,14 +140,14 @@ def evaluate(variant: str, alpha: float, n: int):
     path.write_text("".join(json.dumps(x) + "\n" for x in rows))
     del model
     mx.clear_cache()
-    score(path)
+    score(path, detector)
 
 
-def score(path):
+def score(path, detector: str = "detector-v2"):
     from humanizer.checks.quality import quality_pair
     from humanizer.detect.score import Detector
 
-    det = Detector.load(ROOT / "models" / "detector-v1")
+    det = Detector.load(ROOT / "models" / detector)
     rows = [json.loads(line) for line in path.open()]
     pb = [det.score(x["before"]) for x in rows]
     pa = [det.score(x["after"]) for x in rows]
@@ -169,10 +169,11 @@ if __name__ == "__main__":
     ap.add_argument("--alpha", type=float, default=1.0)
     ap.add_argument("--n", type=int, default=20)
     ap.add_argument("--path")
+    ap.add_argument("--detector", default="detector-v2")
     a = ap.parse_args()
     if a.step == "directions":
         directions(a.variant)
     elif a.step == "evaluate":
-        evaluate(a.variant, a.alpha, a.n)
+        evaluate(a.variant, a.alpha, a.n, a.detector)
     else:
-        score(ROOT / "results" / a.path)
+        score(ROOT / "results" / a.path, a.detector)

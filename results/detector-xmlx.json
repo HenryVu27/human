@@ -1,0 +1,10 @@
+{
+  "name": "detector-xmlx",
+  "exclude_generator": "mlx:mlx-community/Qwen3.5-4B-MLX-4bit",
+  "train_docs": 628,
+  "train_windows": 1529,
+  "val_auroc": 1.0,
+  "test_auroc": 1.0,
+  "heldout_generator_auroc": 1.0,
+  "heldout_generator_docs": 400
+}

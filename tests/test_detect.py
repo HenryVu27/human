@@ -29,3 +29,15 @@ def test_score_long_text_uses_windows(monkeypatch):
     assert abs(det.score("x") - 0.3) < 1e-9
     # the real window count for 2000 tokens at 510/256 is at least 7
     assert len(windows(list(range(2000)), 510, 256)) >= 7
+
+
+def test_crops_vary_offset_and_length_within_bounds():
+    import random
+
+    from humanizer.detect.train import crops
+    ids = list(range(1000))
+    cs = crops(ids, 20, random.Random(0), lo=64, hi=510)
+    assert len(cs) == 20
+    assert all(64 <= len(c) <= 510 and c == ids[c[0]:c[0] + len(c)] for c in cs)
+    assert len({c[0] for c in cs}) > 5 and len({len(c) for c in cs}) > 5
+    assert crops(list(range(30)), 3, random.Random(0)) == []

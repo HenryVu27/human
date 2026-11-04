@@ -1,0 +1,8 @@
+{
+  "name": "detector-v1",
+  "exclude_generator": null,
+  "train_docs": 948,
+  "train_windows": 2242,
+  "val_auroc": 1.0,
+  "test_auroc": 1.0
+}
