@@ -64,10 +64,14 @@ def stress(det) -> dict:
         for m in sorted({r["model"] for r in rows}):
             s = [det.score(r["continuation"]) for r in rows if r["model"] == m and len(r["continuation"].split()) > 50]
             out[f"b1_{m}_auroc"] = auroc([1] * len(s) + [0] * len(hs), s + hs)
+            out[f"b1_{m}_flagged"] = sum(x > 0.5 for x in s) / len(s)
+        out["b1_human_flagged"] = sum(x > 0.5 for x in hs) / len(hs)
     drafts = [json.loads(line) for line in (ROOT / "data/drafts/dev.jsonl").open()][:50]
     hs = [det.score(d["text"]) for d in dev[:50]]
     ds = [det.score(d["text"]) for d in drafts]
     out["dev_drafts_auroc"] = auroc([1] * len(ds) + [0] * len(hs), ds + hs)
+    out["dev_drafts_flagged"] = sum(x > 0.5 for x in ds) / len(ds)
+    out["dev_human_flagged"] = sum(x > 0.5 for x in hs) / len(hs)
     return out
 
 

@@ -1,0 +1,9 @@
+{
+ "n": 20,
+ "before_mean_p_ai": 0.9999999850988388,
+ "after_mean_p_ai": 0.9999999692042668,
+ "after_share_below_0.5": 0.0,
+ "quality_after_vs_before": 0.375,
+ "words_before": 643.65,
+ "words_after": 633.45
+}

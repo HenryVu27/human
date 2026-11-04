@@ -1,7 +1,39 @@
 {
  "note": "Free-tier Pangram dashboard scans (Henry's account, 8 free credits). Model shown in dashboard: current default (Pangram 4.1 per pricing page). Texts are unselected: the first base-model continuation in results/b1_generations.jsonl, cut to under 400 words.",
  "scans": [
-  {"date": "2026-11-04", "source_id": "h0600", "writer": "Qwen3.5-9B-Base 4-bit MLX, plain continuation of a 120-word human opening",
-   "words": 391, "verdict": "AI", "segments": "2 of 2 AI; 374-word segment AI 100%, High confidence; 20-word segment AI, Medium"}
- ]
+  {
+   "date": "2026-11-04",
+   "source_id": "h0600",
+   "writer": "Qwen3.5-9B-Base 4-bit MLX, plain continuation of a 120-word human opening",
+   "words": 391,
+   "verdict": "AI",
+   "segments": "2 of 2 AI; 374-word segment AI 100%, High confidence; 20-word segment AI, Medium"
+  }
+ ],
+ "olmo_probes": {
+  "date": "2026-11-04",
+  "model": "Pangram 4.1 (free dashboard, browser verified as this Mac by one-time token)",
+  "rule": "first 3 dev docs whose OLMo-2-13B base continuation has >=380 words, cut to <=385 words at a sentence end; picked before any Pangram result",
+  "results": [
+   {
+    "source_id": "h0601",
+    "words_counted_by_pangram": 374,
+    "prediction": "Human",
+    "detail": "0 of 3 segments AI; 263-word segment Human 100% High; 2-word segment Human Medium; 109-word segment Human High"
+   },
+   {
+    "source_id": "h0602",
+    "words_counted_by_pangram": 383,
+    "prediction": "Human",
+    "detail": "Human Written, 100% of text human-written"
+   },
+   {
+    "source_id": "h0603",
+    "words_counted_by_pangram": 347,
+    "prediction": "Human",
+    "detail": "Human Written, 100% of text human-written"
+   }
+  ],
+  "local_detector_v2_p_ai": null
+ }
 }
