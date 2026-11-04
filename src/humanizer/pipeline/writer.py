@@ -52,10 +52,15 @@ def base_prompt(plan: Plan, *, k: int = 2, seed: int = 0) -> str:
 
 
 def write(plan: Plan, writer: str, *, seed: int = 0, draft: str = "") -> str:
-    """writer is claude:<model>, mlx:<base model> (whole article) or sec:<base model> (sectional + guard)."""
+    """writer is claude:<model>, mlx:<base model> (whole article), sec:<base model> (sectional + guard)
+    or lora:<base model>+<adapter dir> (fine-tuned writer from dense notes)."""
     kind, model = writer.split(":", 1)
     if kind == "claude":
         return claude(CLAUDE_WRITE.format(notes=plan.render_notes()), model=model).strip()
+    if kind == "lora":
+        from humanizer.pipeline.lora_writer import write_lora
+        base, adapter = model.split("+", 1)
+        return write_lora(plan, base, adapter, draft, seed=seed)
     if kind == "sec":
         from humanizer.pipeline.sectional import write_sectional
         return write_sectional(plan, model, draft, seed=seed)

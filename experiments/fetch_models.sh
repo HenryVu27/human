@@ -12,3 +12,9 @@ if [ ! -d models/qwen3.5-9b-base-4bit ]; then
   uv run python -m mlx_lm convert --hf-path Qwen/Qwen3.5-9B-Base --mlx-path models/qwen3.5-9b-base-4bit -q --q-bits 4
   echo "done: 9B base converted"
 fi
+if [ ! -d models/olmo2-7b-base-4bit ]; then
+  # LoRA writer: 13B training at 2,048 tokens runs out of Metal memory on 16 GB (2026-11-04)
+  uv run hf download allenai/OLMo-2-1124-7B >/dev/null
+  uv run python -m mlx_lm convert --hf-path allenai/OLMo-2-1124-7B --mlx-path models/olmo2-7b-base-4bit -q --q-bits 4
+  echo "done: OLMo-2 7B base converted"
+fi

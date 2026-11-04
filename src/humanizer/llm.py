@@ -80,9 +80,10 @@ def claude_many(prompts: list[str], *, model: str = "haiku", system: str | None 
 _loaded: dict[str, tuple] = {}
 
 
-def load_mlx(model_id: str):
-    """Keep at most one MLX model in memory (16 GB machine)."""
-    if model_id not in _loaded:
+def load_mlx(model_id: str, adapter: str | None = None):
+    """Keep at most one MLX model in memory (16 GB machine). adapter is a LoRA adapter directory."""
+    key = model_id if adapter is None else f"{model_id}+{adapter}"
+    if key not in _loaded:
         _loaded.clear()
         import gc
 
@@ -90,8 +91,8 @@ def load_mlx(model_id: str):
         gc.collect()
         mx.clear_cache()
         from mlx_lm import load
-        _loaded[model_id] = load(model_id)
-    return _loaded[model_id]
+        _loaded[key] = load(model_id, adapter_path=adapter)
+    return _loaded[key]
 
 
 def local_generate(model_id: str, prompt: str, *, max_tokens: int, temp: float = 0.8,
