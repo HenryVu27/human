@@ -44,4 +44,4 @@ def test_title_case_headings_are_not_names():
     from humanizer.checks.claims import unsupported_specifics
     out = "# One Workflow, Two Very Different Countries\n\nThe maps used Landsat data.\n\n## Why It Scales\n\nIt scales."
     assert unsupported_specifics("Landsat data mapped fields.", out) == set()
-    assert unsupported_specifics("Landsat data.", "Then Jane Doe said hi.") == {"Jane Doe"}
+    assert unsupported_specifics("Landsat data.", "We met Jane Doe there.") == {"Jane Doe"}
