@@ -1,8 +1,7 @@
 [project]
 name = "humanizer"
 version = "0.1.0"
-description = "Add your description here"
-readme = "README.md"
+description = "Turn AI drafts into human-register prose (research project)"
 authors = [
     { email = "Vuducdung28@gmail.com" }
 ]
@@ -17,6 +16,9 @@ dependencies = [
     "torch>=2.15.0",
     "transformers>=5.22.1",
 ]
+
+[project.scripts]
+humanize = "humanizer.cli:main"
 
 [build-system]
 requires = ["uv_build>=0.12.23,<0.13.0"]
