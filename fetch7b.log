@@ -1,3 +1,11 @@
 done: 4B instruct 4bit
 done: 9B instruct 4bit
 Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[INFO] Loading
+Fetching 14 files:   0%|          | 0/14 [00:00<?, ?it/s]Fetching 14 files: 100%|██████████| 14/14 [00:00<00:00, 530.33it/s]
+Warning: You are sending unauthenticated requests to the HF Hub. Please set a HF_TOKEN to enable higher rate limits and faster downloads.
+[INFO] Using dtype: float32
+[INFO] Quantizing
+[INFO] Quantized model with 5.002 bits per weight.
+done: OLMo-2 7B base converted
+FETCH_DONE

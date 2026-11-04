@@ -28,7 +28,11 @@ SEC = BASE.replace("mlx:", "sec:", 1)
 # sec: sectional writer with the token-level guard (first run, 2026-11-04 morning).
 # sec2: word-level guard, content-only notes and a minimum section length (cache "sectional-g3").
 # sec2p: sec2 after the deletion-only pruner (no new words).
-ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC, "sec2p": "prune:sec2"}
+# lora: OLMo-2-7B base fine-tuned on (notes, human article), writing from dense notes the editor selected.
+LORA = f"lora:{ROOT / 'models' / 'olmo2-7b-base-4bit'}+{ROOT / 'models' / 'lora-7b-v1'}"
+# lora13, base13: 13B with and without the adapter, generated on the Windows GPU (experiments/import_gpu.py).
+ARMS = {"claude": "claude:sonnet", "base": BASE, "sec": SEC, "sec2": SEC, "sec2p": "prune:sec2", "lora": LORA,
+        "lora13": "import:gpu", "base13": "import:gpu"}
 TEXTS = ROOT / "results" / "b2_dev_texts.jsonl"
 OUT = ROOT / "results" / "b2_dev_rows.jsonl"
 
@@ -39,7 +43,7 @@ def generate(n: int, arms: list[str]):
     rows = {r["id"]: r for r in map(json.loads, TEXTS.open())} if TEXTS.exists() else {}
     for d in drafts:
         row = rows.get(d["id"], {"id": d["id"]})
-        missing = [a for a in arms if a not in row]
+        missing = [a for a in arms if a not in row and not ARMS[a].startswith("import:")]
         if not missing:
             continue
         plan = edit_plan(d["text"])  # cached, so every arm sees the same plan

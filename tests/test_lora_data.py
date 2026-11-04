@@ -33,3 +33,4 @@ def test_selection_groups_and_scales():
     assert [s.heading for s in out.sections] == ["B", "A"]
     assert [p["note"] for p in out.sections[0].points] == ["b1", "b2"]
     assert [s.target_words for s in out.sections] == [100, 50]
+    assert all(isinstance(s.target_words, int) for s in out.sections)

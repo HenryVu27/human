@@ -64,7 +64,7 @@ def apply_selection(plan: Plan, flat: list[tuple[int, dict]], keep: list[int]) -
     secs = []
     for si, pts in parts:
         src = plan.sections[si]
-        secs.append(Section(src.heading, pts, max(30, round(src.target_words * len(pts) / max(1, len(src.points)), -1))))
+        secs.append(Section(src.heading, pts, max(30, int(round(src.target_words * len(pts) / max(1, len(src.points)), -1)))))
     return Plan(plan.title, secs)
 
 

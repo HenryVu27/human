@@ -5,7 +5,8 @@ base model has none. The fix is a sibling model directory whose template is
 plain concatenation (notes, then article, then EOS), so prompt masking works and
 no role tokens are ever trained. Weights are symlinked, not copied.
 
-13B at 2,048 tokens ran out of Metal memory on 16 GB (2026-11-04); 7B fits.
+13B at 2,048 tokens ran out of Metal memory on 16 GB (2026-11-04); 7B is the local writer.
+max-seq-length 2,560 covers 95% of pairs (dense notes plus article); longer ones are truncated.
 """
 
 import argparse
@@ -43,7 +44,7 @@ def main():
     out = ROOT / "models" / a.name
     cmd = [sys.executable, "-m", "mlx_lm", "lora", "--model", notes_model(a.model), "--train",
            "--data", a.data, "--mask-prompt", "--batch-size", "1", "--grad-accumulation-steps", "4",
-           "--num-layers", "32", "--grad-checkpoint", "--max-seq-length", "2048",
+           "--num-layers", "32", "--grad-checkpoint", "--max-seq-length", "2560",
            "--learning-rate", "1e-4", "--iters", str(a.iters), "--steps-per-report", "10",
            "--steps-per-eval", "100", "--val-batches", "30", "--save-every", "100",
            "--adapter-path", str(out)]
