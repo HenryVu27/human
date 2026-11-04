@@ -1,0 +1,141 @@
+{
+ "date": "2026-11-04",
+ "judge": "Pangram 4.x dashboard, file upload (.docx via macOS textutil), Individual plan trial; API returned 402 (trial has no API credit)",
+ "credits_used": 127,
+ "summary": {
+  "A_ai_notes": {
+   "n": 10,
+   "AI": 10,
+   "Human": 0
+  },
+  "B_human_notes": {
+   "n": 10,
+   "AI": 0,
+   "Human": 10
+  },
+  "fisher_exact_p_two_sided": 1.082508822446903e-05
+ },
+ "rows": [
+  {
+   "group": "A_ai_notes",
+   "id": "a0600",
+   "words": 591,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0601",
+   "words": 415,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0602",
+   "words": 575,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0603",
+   "words": 447,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0604",
+   "words": 403,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0605",
+   "words": 462,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0606",
+   "words": 468,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0607",
+   "words": 771,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0608",
+   "words": 840,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_notes",
+   "id": "a0609",
+   "words": 363,
+   "pangram": "AI"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0336",
+   "words": 469,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0005",
+   "words": 742,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0017",
+   "words": 773,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0480",
+   "words": 758,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0860",
+   "words": 735,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0423",
+   "words": 617,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0034",
+   "words": 542,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0529",
+   "words": 701,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0589",
+   "words": 285,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_notes",
+   "id": "h0896",
+   "words": 690,
+   "pangram": "Human"
+  }
+ ],
+ "credits_note": "dashboard credits (1 per 100 words), sum of the 20 per-file charges"
+}

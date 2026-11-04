@@ -6,7 +6,7 @@ This follows the overnight report (`REPORT-2026-11-05.md`, misdated by a day; it
 
 1. **Fine-tuning fixed control.** The fine-tuned OLMo-2-13B follows its notes in order, writes to the requested length (median 1.0 times the target) and stops on its own (38 of 40 generations). The same 13B model without the adapter, on the same prompts, gave seven empty or near-empty outputs and four runaways.
 2. **It is the most faithful writer tested.** 96% of its claims are supported by the draft, against 88% for a Claude rewrite. Choosing the more faithful of two samples, a choice the pipeline can make by itself, raises that to 97.5% and the share of outputs where every claim passes to 45%, against 20% for Claude.
-3. **Pangram says AI.** The local detector reads every fine-tuned output as human (P(AI) about 0.0001), but the one Pangram scan, on an output picked by a fixed rule, came back "AI Generated, 100%" (section 6). The likely cause is the notes: they carry the AI draft's structure and framing into the output. A $5 test can confirm this.
+3. **The writer passes Pangram; the AI draft's notes do not.** Same fine-tuned 13B, same prompt format, same seed: 10 of 10 outputs written from notes of held-out human articles read Human on Pangram, and 10 of 10 written from notes of AI drafts read AI (section 7; Fisher exact p = 0.00001). The AI signal travels through what the notes carry over from the draft, not through the writer's register.
 4. **Quality is the open problem.** The judge prefers the fine-tuned 13B over the AI draft 7.5% to 15% of the time, depending on the sample. Real human articles on the same topics win 32.5% against the same drafts, and the Claude rewrite wins 42.5%. Reading the outputs, the losses come from logic slips that contradict the notes, a repeated paragraph now and then, and a flat textbook register.
 5. **13B beats 7B on every measure.** The 7B, trained on this Mac, never beat the draft and supports 92% of its claims.
 6. **The unguarded 13B still invents some names.** The 13B ran without the decode-time grounding guard, which exists only for MLX (Apple's machine learning framework on this Mac). Of 40 samples, 7 added real organizations or people (NASA, USGS, the American Heart Association, Carnegie Mellon, Marty Becker, Mark Sisson) or web boilerplate ("Updated April"). Porting the guard to the PC fixes most of this.
@@ -81,3 +81,30 @@ The test that separates the two explanations, at $5 of API credits:
 - **Arm B:** 10 outputs from the same model written from notes of held-out human articles (the 30 validation articles; the PC can generate these at $0).
 
 If B passes and A fails, the notes carry the signal, and the fix is in the editor: notes that keep facts and drop the draft's structure and framing. If both fail, the fine-tune itself learned an AI register, and the writer needs work first. Until this is settled, the quality work in section 5 should wait.
+
+## 7. B3: does the signal travel through the notes? (Pangram, 20 texts)
+
+**Result: yes, decisively.** Same model (OLMo-2-13B plus the adapter), same notes format and sampling (seed 0), selection by file order fixed before scanning:
+
+| Group | Notes made from | Pangram: Human | Pangram: AI | Mean words |
+|---|---|---|---|---|
+| A | AI drafts (dev a0600 to a0609) | 0 | 10 | 534 |
+| B | held-out human articles (first 10 validation rows, never trained on) | 10 | 0 | 631 |
+
+Fisher exact test, two-sided: p = 0.00001. Source: `results/b3_notes_leak.json`, texts in `results/b3_notes_leak_texts.jsonl`.
+
+How it ran: the API key returned 402 Payment Required, because the Individual plan's 7-day trial carries no API credit, so nothing was charged there. The same 20 texts went through the dashboard's file upload instead (.docx made with macOS textutil; Pangram's word counts match ours to within a few percent). This used 127 of the plan's 3,000 monthly dashboard credits. The dashboard gives verdicts, not per-window scores, for uploads.
+
+What this rules out and what it does not:
+
+- **It rules out the writer.** The fine-tuned model can write from notes and pass Pangram. Fine-tuning did not teach it the assistant register.
+- **The signal is in the content plan.** A dense note list taken from an AI draft carries the draft's structure, framing and choice of points, and a faithful writer reproduces them. Pangram detects that even in human-register prose. One sentence of the a0601 output shows it: "not just treated as service users; they are also treated as partners", a contrast that came straight from the draft.
+- **Caveats.** Group B is longer, which gives Pangram more text to find AI in, so it works against this result rather than for it. Group B's notes come from articles in the training distribution (held out, but similar sources and era), and Group A's topics come from AI mirrors of the same corpus. Ten texts per group.
+
+What this changes: the editor stage, not the writer, is now the bottleneck. A human editor cutting an AI draft keeps the facts and throws away the draft's architecture. The notes must do the same:
+
+1. **Fact-only notes.** Extract atomic facts from the draft (claims, numbers, names, examples) with no headings, no order, no framing, no contrasts.
+2. **Train the writer on the same shape.** Rebuild the 648 training pairs with fact-only notes from the human articles, so the writer learns to choose structure itself. One more 24-minute run on the PC.
+3. **Test the same way.** 10 fine-tuned outputs from fact-only notes of AI drafts versus 10 from fact-only notes of human articles, on the dashboard (about 120 credits).
+
+If fact-only notes from AI drafts pass, the humanizer works end to end, and the quality work in section 5 follows. If they still fail, the signal is in the choice of facts itself, and the editor has to add what a human writer would: a point of view the draft lacks. That cannot happen without inventing, and would change the project's premise.
