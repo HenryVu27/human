@@ -18,6 +18,8 @@ from humanizer.pipeline.editor import Plan, notes_for_article
 BREAK = "=== NOTES ==="
 ARTICLE = "=== ARTICLE ==="
 EXAMPLE_IDS = range(850, 900)  # the corpus "spare" split, never used for detector pairs or drafts
+MAX_EXAMPLE_WORDS = 550  # OLMo-2 has a 4,096-token context; two examples must leave room to write
+CONTEXT = 4096
 
 CLAUDE_WRITE = """Write the article these editor's notes describe. Use only what the notes contain; add no facts, names, numbers or quotes. Output only the article.
 
@@ -36,7 +38,7 @@ def truncate_at_document_break(text: str) -> str:
 
 def _examples(k: int, seed: int) -> list[tuple[Plan, str]]:
     docs = [json.loads(line) for line in (ROOT / "data" / "human.jsonl").open()]
-    pool = [docs[i] for i in EXAMPLE_IDS if i < len(docs) and docs[i]["words"] <= 900]
+    pool = [docs[i] for i in EXAMPLE_IDS if i < len(docs) and docs[i]["words"] <= MAX_EXAMPLE_WORDS]
     picks = random.Random(seed).sample(pool, k)
     return [(notes_for_article(d["text"]), d["text"].strip()) for d in picks]
 
@@ -53,7 +55,11 @@ def write(plan: Plan, writer: str, *, seed: int = 0) -> str:
     kind, model = writer.split(":", 1)
     if kind == "claude":
         return claude(CLAUDE_WRITE.format(notes=plan.render_notes()), model=model).strip()
-    raw = local_generate(model, base_prompt(plan, seed=seed), max_tokens=int(plan.target_words * 1.8) + 64,
+    from humanizer.llm import load_mlx
+
+    prompt = base_prompt(plan, seed=seed)
+    room = CONTEXT - len(load_mlx(model)[1].encode(prompt)) - 16
+    raw = local_generate(model, prompt, max_tokens=max(256, min(int(plan.target_words * 1.8) + 64, room)),
                          temp=0.8, top_p=0.95, seed=seed)
     text = truncate_at_document_break(raw)
     return re.sub(rf"^{re.escape(plan.title)}\s*\n", "", text).strip()

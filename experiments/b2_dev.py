@@ -18,7 +18,7 @@ from humanizer.detect.score import Detector
 from humanizer.pipeline.editor import edit_plan
 from humanizer.pipeline.writer import write
 
-BASE = f"mlx:{ROOT / 'models' / 'qwen3.5-9b-base-4bit'}"
+BASE = f"mlx:{ROOT / 'models' / 'olmo2-13b-base-4bit'}"
 ARMS = {"claude": "claude:sonnet", "base": BASE}
 OUT = ROOT / "results" / "b2_dev_rows.jsonl"
 
