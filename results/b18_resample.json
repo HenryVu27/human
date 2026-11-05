@@ -1,0 +1,23 @@
+{
+ "checks": {
+  "texts": 6,
+  "words": 346.6666666666667,
+  "length_ratio": 0.31248799783513154,
+  "claim_support": 0.8194677871148459,
+  "coverage": 0.16861880970336854,
+  "quality_vs_human_cut": 0.4166666666666667
+ },
+ "pangram_summary": {
+  "AI": 0,
+  "Mixed": 2,
+  "Human": 4
+ },
+ "pangram": {
+  "W_a0610": "Human",
+  "W_a0611": "Human",
+  "W_a0612": "Human",
+  "W_a0613": "Human",
+  "W_a0614": "Mixed",
+  "W_a0615": "Mixed"
+ }
+}
