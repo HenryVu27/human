@@ -429,3 +429,58 @@ The B14 pipeline ran on the 7 prose sections of `~/personal/blog/series/ai-engin
 Source: `results/b15_blog.json`, texts in `results/b15_texts.jsonl`.
 
 **What this means for Henry's blog:** the method transfers, but the writer has to be trained on the target genre. The fix is a pool writer fine-tuned on first-person technical blog posts by human authors: engineering blogs, personal ML blogs, older posts from before 2023. Their facts come from the same extractor. This is a data-collection task. The PC trains it in about 25 minutes.
+
+## 22. B18: write, check and resample one paragraph at a time (Pangram, 6 texts)
+
+**Question:** can the pipeline keep the draft's length? B14's pieces are about 40% of the draft because pruning deletes whole stretches the draft does not support.
+
+**Design:**
+1. A paragraph server on the PC runs the pool writer (13B, NF4, Guard on). The Mac reaches it over an SSH tunnel, under the shared GPU lock.
+2. Each step asks for 4 candidate next paragraphs. Sonnet marks the sentences in each that the draft does not support.
+3. The step keeps the candidate with the most supported words, with its unsupported sentences and repeats deleted. The article grows only from checked text.
+4. The piece stops at the draft's length, at the article's end, after 2 steps that keep nothing, or after 40 steps.
+
+**What happened to the run:**
+- The first server stopped at its 1.9-hour limit with 2 of 20 drafts done. Claude calls had slowed about tenfold for an hour.
+- Before any scan, B18 was cut to the 6 drafts the blind read needs (a0610 to a0615).
+- A second JSON object in one Sonnet reply crashed a0615. The parser now reads only the first object, and a0615 was rerun.
+
+| Same 6 drafts (a0610 to a0615) | Human | Mixed | AI | Words | Share of draft length |
+|---|---|---|---|---|---|
+| B14 (whole piece, best of 4, pruned) | 4 | 2 | 0 | 373 | about 35% |
+| B18 (paragraph by paragraph) | 4 | 2 | 0 | 347 | 31% |
+
+- **Claims supported:** 82%.
+- **Coverage:** the pieces state 17% of the draft's facts (9% to 23%).
+- **Verdicts:** a0610, the longest piece at 687 words, reads Human.
+
+**Result: resampling does not add length.** The step logs show the mechanism:
+- For the first 10 to 15 steps, each step keeps 20 to 35 words.
+- Once the writer has used the ~6 facts in its prompt, its paragraphs shrink to 7 to 11 words. They state things the draft does not say, the check deletes them, and the loop stalls.
+- The length limit therefore comes from how few facts the prompt carries, not from how the output is chosen. B20 tests this directly.
+
+**A cost found on the way:** each step slowed from about 10 to 60-80 seconds as the article grew. Four candidates at once filled the PC's 16 GB of GPU memory. B20 shows the writer only the last ~500 words to avoid this.
+
+Source: `results/b18_resample.json`, texts in `results/b18_texts.jsonl`, step logs in `results/b18_steps.jsonl`.
+
+## 23. Asking the author: B19 (simulated) and B21 (real), neither scanned
+
+B9 says pieces read Human once about two-thirds of their content comes from a human source. For a real user, that human source would be the author.
+
+**B19, simulated.**
+- Setup: Sonnet, playing an editor, asked 5 questions about each of 10 AI drafts. Sonnet, playing the author, answered only from the human original.
+- Result: 7 of 10 "authors" answered none of the questions, and 13 of 50 questions got an answer in all.
+- Why: the editor asks for first-hand experience (what happened, what you saw, real numbers). The human originals are mostly third-person articles that have none.
+- Verdict: the simulation cannot stand in for an author, so its write step was not run.
+
+**B21, real.**
+- Henry got 21 questions (3 per section) about his context-engineering post on a private page.
+- He wrote the post months ago and cannot recall the specifics the questions ask for. Not run.
+- Finding: the interview route needs the author at the time of writing, while the material is fresh.
+
+**Using the author's project records instead.** The project behind the post is client work, so its records stay out of third-party tools. Not run.
+
+**Henry's objection to the interview route:** the questions are chosen by an AI, so part of the plan stays AI's. There is evidence on both sides:
+- Against the objection: in B5 and B9, Sonnet chose which facts to pull from human articles, and those pieces read Human 10 of 10. AI selection over human material does not by itself read AI.
+- For the objection: questions written from the AI draft steer the answers toward the draft's outline.
+- Status: untested.
