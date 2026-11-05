@@ -1,0 +1,36 @@
+{
+ "checks": {
+  "sections": 7,
+  "words_original": 4481,
+  "words_output": 1498,
+  "claim_support": 0.8525371687136393
+ },
+ "pangram_summary": {
+  "O": {
+   "AI": 4,
+   "Mixed": 3,
+   "Human": 0
+  },
+  "B": {
+   "AI": 2,
+   "Mixed": 1,
+   "Human": 4
+  }
+ },
+ "pangram": {
+  "O_s1": "AI",
+  "O_s2": "Mixed",
+  "O_s3": "Mixed",
+  "O_s4": "Mixed",
+  "O_s5": "AI",
+  "O_s6": "AI",
+  "O_s7": "AI",
+  "B_s1": "Human",
+  "B_s2": "Human",
+  "B_s3": "AI",
+  "B_s4": "Human",
+  "B_s5": "AI",
+  "B_s6": "Human",
+  "B_s7": "Mixed"
+ }
+}
