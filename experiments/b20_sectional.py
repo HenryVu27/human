@@ -33,6 +33,9 @@ via research/r2-primary-sources.md). If windows passed independently at B14's ra
 three-window piece would read Human about 0.65^3, so 2 to 4 of 10. The test that separates the two
 readings is the AI count: per-window reading predicts AI at B14's level (0 to 1 of 10) with Mixed for
 most of the rest; whole-plan reading predicts AI verdicts near B9 S0 (7 of 10).
+Amended 10:05, before any B20 text existed: after the facts, the prompt carries only the last 500 or
+so words written (whole paragraphs), not the whole article. B18's steps slowed from about 10 to 60-80
+seconds as its prompt grew, because 4 candidates at once fill the PC's 16 GB of GPU memory.
 
 Usage (paragraph server running and tunnelled, as for B18):
   uv run python experiments/b20_sectional.py write
@@ -56,7 +59,7 @@ from b18_resample import MIN_END, N, _check, _coverage, _post, _sentences  # noq
 from judge_calibrate import _cut  # noqa: E402
 
 IDS = [f"a{n:04d}" for n in range(610, 620)]
-PER, SEC_WORDS, SEC_STEPS = 6, 400, 10
+PER, SEC_WORDS, SEC_STEPS, CONTEXT = 6, 400, 10, 500
 PROMPTS = ROOT / "results" / "b12_prompts.jsonl"
 STEPS = ROOT / "results" / "b20_steps.jsonl"
 TEXTS = ROOT / "results" / "b20_texts.jsonl"
@@ -71,6 +74,17 @@ def sections(facts: list[str], target: int) -> list[list[str]]:
     return [picked[i * m // k:(i + 1) * m // k] for i in range(k)]
 
 
+def _tail(paras: list[str]) -> str:
+    """The last CONTEXT or so words written, as whole paragraphs."""
+    out, n = [], 0
+    for p in reversed(paras):
+        out.insert(0, p)
+        n += len(p.split())
+        if n >= CONTEXT:
+            break
+    return "".join(p + "\n" for p in out)
+
+
 def write_one(row: dict, idx: int, draft: str) -> dict:
     f = extract(draft)
     target = row["target_words"]
@@ -82,7 +96,7 @@ def write_one(row: dict, idx: int, draft: str) -> dict:
         head = facts_prompt(Facts(f.topic, chunk), target, f"{row['source']}-s{j}")
         start, empty, last = words(), 0, j == len(secs) - 1
         for step in range(SEC_STEPS):
-            got = _post({"prompt": head + "".join(p + "\n" for p in paras), "allowed_text": allowed, "n": N,
+            got = _post({"prompt": head + _tail(paras), "allowed_text": allowed, "n": N,
                          "max_new_tokens": 300, "seed": idx * 1000 + j * 100 + step})
             cands = [_sentences(t) for t in got["texts"]]
             bad = _check(draft, cands) if any(cands) else [set() for _ in cands]
