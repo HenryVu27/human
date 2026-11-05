@@ -20,6 +20,7 @@ Usage:
 
 from __future__ import annotations
 
+import base64
 import hashlib
 import html
 import json
@@ -60,7 +61,7 @@ def fetch(url: str) -> str:
                 time.sleep(float(r.headers.get("Retry-After") or 2 ** (attempt + 2)))
                 continue
             break
-    if r.status_code != 200:
+    if r.status_code not in (200, 206):  # Kalzumeus answers 206
         return ""
     CACHE.mkdir(parents=True, exist_ok=True)
     r.encoding = r.encoding if r.encoding and r.encoding.lower() != "iso-8859-1" else r.apparent_encoding
@@ -131,13 +132,12 @@ def wordpress(author: str, host: str, pages: int = 12):
 
 
 def substack(author: str, host: str, want: int):
-    slugs = []
-    for offset in range(0, 6000, 50):
-        got = json.loads(fetch(f"https://{host}/api/v1/archive?sort=new&limit=50&offset={offset}") or "[]")
-        got = got.get("posts", []) if isinstance(got, dict) else got
-        slugs += [(x["slug"], x["post_date"]) for x in got if x["post_date"][:10] < CUTOFF and x.get("audience") != "only_paid"]
-        if not got or len(slugs) >= want:
-            break
+    """Substack pages its archive by a cursor that encodes a post date, so start at CUTOFF and walk back."""
+    slugs, cursor = [], base64.b64encode(json.dumps({"post_date": f"{CUTOFF}T00:00:00.000Z"}).encode()).decode()
+    while cursor and len(slugs) < 4 * want:
+        got = json.loads(fetch(f"https://{host}/api/v1/archive?sort=new&limit=50&cursor={cursor}") or "{}")
+        slugs += [(x["slug"], x["post_date"]) for x in got.get("posts", []) if x.get("audience") == "everyone"]
+        cursor = got.get("nextCursor") if got.get("posts") else None
     for slug, date in sorted(slugs, key=lambda s: _rank(s[0]))[:want]:
         d = json.loads(fetch(f"https://{host}/api/v1/posts/{slug}") or "{}")
         if d.get("body_html"):
@@ -208,7 +208,7 @@ AUTHORS = {
     "Joel Spolsky": lambda a: wordpress(a, "www.joelonsoftware.com"),
     "Scott Alexander": lambda a: wordpress(a, "slatestarcodex.com"),
     "Scott Sumner": lambda a: wordpress(a, "www.themoneyillusion.com"),
-    "Noah Smith": lambda a: blogger(a, "noahpinion.blogspot.com"),
+    "Noah Smith": lambda a: substack(a, "www.noahpinion.blog", 3 * CAP),  # the old Blogspot keeps 3 posts
     "John Cochrane": lambda a: blogger(a, "johnhcochrane.blogspot.com"),
     "Branko Milanovic": lambda a: blogger(a, "glineq.blogspot.com"),
     "Robin Hanson": lambda a: substack(a, "www.overcomingbias.com", 3 * CAP),
