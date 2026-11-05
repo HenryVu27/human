@@ -1,0 +1,66 @@
+{
+ "pangram_summary": {
+  "S0": {
+   "AI": 7,
+   "Mixed": 3,
+   "Human": 0
+  },
+  "S1": {
+   "AI": 1,
+   "Mixed": 8,
+   "Human": 1
+  },
+  "S2": {
+   "AI": 0,
+   "Mixed": 3,
+   "Human": 7
+  },
+  "S3": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 10
+  }
+ },
+ "pangram": {
+  "S0_a0600": "Mixed",
+  "S0_a0601": "AI",
+  "S0_a0602": "Mixed",
+  "S0_a0603": "AI",
+  "S0_a0604": "AI",
+  "S0_a0605": "Mixed",
+  "S0_a0606": "AI",
+  "S0_a0607": "AI",
+  "S0_a0608": "AI",
+  "S0_a0609": "AI",
+  "S1_a0600": "Mixed",
+  "S1_a0601": "AI",
+  "S1_a0602": "Mixed",
+  "S1_a0603": "Human",
+  "S1_a0604": "Mixed",
+  "S1_a0605": "Mixed",
+  "S1_a0606": "Mixed",
+  "S1_a0607": "Mixed",
+  "S1_a0608": "Mixed",
+  "S1_a0609": "Mixed",
+  "S2_a0600": "Human",
+  "S2_a0601": "Human",
+  "S2_a0602": "Human",
+  "S2_a0603": "Mixed",
+  "S2_a0604": "Mixed",
+  "S2_a0605": "Human",
+  "S2_a0606": "Human",
+  "S2_a0607": "Mixed",
+  "S2_a0608": "Human",
+  "S2_a0609": "Human",
+  "S3_a0600": "Human",
+  "S3_a0601": "Human",
+  "S3_a0602": "Human",
+  "S3_a0603": "Human",
+  "S3_a0604": "Human",
+  "S3_a0605": "Human",
+  "S3_a0606": "Human",
+  "S3_a0607": "Human",
+  "S3_a0608": "Human",
+  "S3_a0609": "Human"
+ }
+}
