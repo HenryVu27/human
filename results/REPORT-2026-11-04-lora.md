@@ -512,6 +512,6 @@ B9 says pieces read Human once about two-thirds of their content comes from a hu
 - No piece read AI, which fits the per-window reading, but 3 pieces of about one window each cannot separate the two readings.
 - This fits the B5 finding that the AI signal is the content plan. Following the draft's sequence of points brings back the draft's outline, even at low density.
 
-**A gap in the checks:** the claim check and the repeat filter pass a writer stuck in a template loop. Any full-length writer needs a template-repeat guard, for example deleting a sentence when more than half of its word trigrams already appear in the piece.
+**A gap in the checks:** the claim check and the repeat filter pass a writer stuck in a template loop. Any full-length writer needs a template-repeat guard. `humanizer.checks.repeats` now deletes a sentence when more than 60% of its word trigrams already appear in the piece. It catches 63 of a0612's 64 loop sentences (the first is new) and flags 0.8% of the 38,089 sentences in the human corpus, mostly lists and parallel phrasing. The threshold cannot go higher: each loop sentence reuses about two-thirds of its trigrams, so at 70% the guard catches none.
 
 Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step logs in `results/b20_steps.jsonl`.
