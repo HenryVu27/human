@@ -99,6 +99,33 @@ def record(pairs: list[str]):
     print(json.dumps(summary, indent=1))
 
 
+
+
+def check():
+    """Claim check of every P and Q text against its draft, plus the repeated-sentence share."""
+    import re
+    from concurrent.futures import ThreadPoolExecutor
+
+    from humanizer.checks.claims import claim_check
+
+    src = _sources()
+    rows = [r for r in map(json.loads, (ROOT / "results" / "b7_generations.jsonl").open()) if r["id"][0] in "PQ"]
+
+    def one(r):
+        cc = claim_check(src[r["id"][2:]], r["text"])
+        sents = [x.strip() for x in re.split(r"(?<=[.!?])\s+|\n", r["text"]) if len(x.strip()) > 30]
+        return {"id": r["id"], "words": r["words"], "repeat_share": round(1 - len(set(sents)) / max(1, len(sents)), 2),
+                "claims_total": cc["claims_total"], "claims_entailed": cc["claims_entailed"],
+                "unsupported_specifics": cc["unsupported_specifics"], "claim_pass": cc["pass"]}
+
+    with ThreadPoolExecutor(2) as ex:
+        res = list(ex.map(one, rows))
+    out = json.loads(OUT.read_text())
+    OUT.write_text(json.dumps(out | {"claim_rows": res}, indent=1))
+    for r in res:
+        print(r["id"], r["words"], r["repeat_share"], f"{r['claims_entailed']}/{r['claims_total']}", r["unsupported_specifics"][:3])
+
+
 if __name__ == "__main__":
     step = sys.argv[1]
-    {"data": data, "prompts": prompts}.get(step, lambda: record(sys.argv[2:]))()
+    {"data": data, "prompts": prompts, "check": check}.get(step, lambda: record(sys.argv[2:]))()

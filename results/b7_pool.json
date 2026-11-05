@@ -1,0 +1,281 @@
+{
+ "pangram_summary": {
+  "H": {
+   "AI": 1,
+   "Mixed": 4,
+   "Human": 5
+  },
+  "P": {
+   "AI": 1,
+   "Mixed": 3,
+   "Human": 6
+  },
+  "Q": {
+   "AI": 1,
+   "Mixed": 6,
+   "Human": 3
+  }
+ },
+ "pangram": {
+  "H_a0600": "Human",
+  "H_a0601": "Mixed",
+  "H_a0602": "Human",
+  "H_a0603": "Mixed",
+  "H_a0604": "Human",
+  "H_a0605": "Human",
+  "H_a0606": "Mixed",
+  "H_a0607": "Human",
+  "H_a0608": "Mixed",
+  "H_a0609": "AI",
+  "P_a0600": "Human",
+  "P_a0601": "Human",
+  "P_a0602": "Human",
+  "P_a0603": "Mixed",
+  "P_a0604": "Mixed",
+  "P_a0605": "Human",
+  "P_a0606": "AI",
+  "P_a0607": "Human",
+  "P_a0608": "Human",
+  "P_a0609": "Mixed",
+  "Q_a0600": "Human",
+  "Q_a0601": "Mixed",
+  "Q_a0602": "Mixed",
+  "Q_a0603": "AI",
+  "Q_a0604": "Mixed",
+  "Q_a0605": "Mixed",
+  "Q_a0606": "Mixed",
+  "Q_a0607": "Mixed",
+  "Q_a0608": "Human",
+  "Q_a0609": "Human"
+ },
+ "claim_rows": [
+  {
+   "id": "P_a0600",
+   "words": 1061,
+   "repeat_share": 0.0,
+   "claims_total": 43,
+   "claims_entailed": 19,
+   "unsupported_specifics": [
+    "1080",
+    "Although Australia",
+    "Sensing Teluguntla"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0601",
+   "words": 1911,
+   "repeat_share": 0.59,
+   "claims_total": 25,
+   "claims_entailed": 9,
+   "unsupported_specifics": [
+    "1080"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0602",
+   "words": 1070,
+   "repeat_share": 0.0,
+   "claims_total": 48,
+   "claims_entailed": 23,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0603",
+   "words": 1906,
+   "repeat_share": 0.0,
+   "claims_total": 26,
+   "claims_entailed": 10,
+   "unsupported_specifics": [
+    "Catholic Church",
+    "Catholic disciplines"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0604",
+   "words": 843,
+   "repeat_share": 0.13,
+   "claims_total": 43,
+   "claims_entailed": 25,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0605",
+   "words": 1692,
+   "repeat_share": 0.85,
+   "claims_total": 19,
+   "claims_entailed": 6,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0606",
+   "words": 1710,
+   "repeat_share": 0.66,
+   "claims_total": 26,
+   "claims_entailed": 18,
+   "unsupported_specifics": [
+    "dumb"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0607",
+   "words": 1041,
+   "repeat_share": 0.0,
+   "claims_total": 43,
+   "claims_entailed": 10,
+   "unsupported_specifics": [
+    "1.5",
+    "Peace Council",
+    "Social Inclusion",
+    "Unlike Canada",
+    "While Australia",
+    "change the polarised debate about immigrants and migrants"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0608",
+   "words": 985,
+   "repeat_share": 0.0,
+   "claims_total": 47,
+   "claims_entailed": 22,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "P_a0609",
+   "words": 857,
+   "repeat_share": 0.02,
+   "claims_total": 52,
+   "claims_entailed": 25,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0600",
+   "words": 1207,
+   "repeat_share": 0.0,
+   "claims_total": 55,
+   "claims_entailed": 22,
+   "unsupported_specifics": [
+    "1080%",
+    "2018%",
+    "30.2018%",
+    "8.8%"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0601",
+   "words": 908,
+   "repeat_share": 0.0,
+   "claims_total": 37,
+   "claims_entailed": 20,
+   "unsupported_specifics": [
+    "1080",
+    "Early Community Centers",
+    "Kampala Children"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0602",
+   "words": 701,
+   "repeat_share": 0.0,
+   "claims_total": 40,
+   "claims_entailed": 22,
+   "unsupported_specifics": [
+    "sheep dog trials"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0603",
+   "words": 1286,
+   "repeat_share": 0.0,
+   "claims_total": 3,
+   "claims_entailed": 0,
+   "unsupported_specifics": [
+    "Every Catholic"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0604",
+   "words": 1638,
+   "repeat_share": 0.43,
+   "claims_total": 36,
+   "claims_entailed": 20,
+   "unsupported_specifics": [
+    "Blair Atholl Visiting",
+    "water supplied by the estate of the Duke of Atholl"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0605",
+   "words": 1828,
+   "repeat_share": 0.57,
+   "claims_total": 34,
+   "claims_entailed": 15,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0606",
+   "words": 1019,
+   "repeat_share": 0.06,
+   "claims_total": 43,
+   "claims_entailed": 27,
+   "unsupported_specifics": [
+    "do we really need this?"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0607",
+   "words": 1774,
+   "repeat_share": 0.61,
+   "claims_total": 36,
+   "claims_entailed": 10,
+   "unsupported_specifics": [
+    "Aotearoa New Zealand Civil Dialogue",
+    "Civic Dialogue",
+    "Civil Dialogue",
+    "Multiculturalism Council",
+    "National Dialogue",
+    "New Zealand Council",
+    "New Zealand Multiculturalism",
+    "Social Inclusion Council"
+   ],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0608",
+   "words": 1851,
+   "repeat_share": 0.42,
+   "claims_total": 40,
+   "claims_entailed": 23,
+   "unsupported_specifics": [],
+   "claim_pass": false
+  },
+  {
+   "id": "Q_a0609",
+   "words": 1603,
+   "repeat_share": 0.5,
+   "claims_total": 42,
+   "claims_entailed": 25,
+   "unsupported_specifics": [
+    "Learning Te Reo",
+    "Te Reo Reo"
+   ],
+   "claim_pass": false
+  }
+ ]
+}
