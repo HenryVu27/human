@@ -397,3 +397,17 @@ Source: `results/b14_bestof.json`, texts in `results/b14_texts.jsonl`.
 4. The sample that keeps the most supported claims wins.
 
 **On 20 held-out AI drafts:** Pangram 4.1 gives 13 Human, 7 Mixed and 0 AI. 86% of claims are supported, and the output is about 40% of the draft's length.
+
+## 20. B8: a writer trained to drop AI-typical facts (Pangram, 20 texts)
+
+- **Writer:** the 13B adapter retrained on pools that mix a random 20 to 60% of a human article's facts with facts from the AI mirror of the same topic (on average 44% of the pool), with the human article as the target. Validation loss 1.69 to 1.63.
+- **Test:** each B12 draft gets all of its facts, the draft's full length, the Guard, seed 0, then B11's pruning and B13's cleanup.
+
+| Same 20 drafts | Human | Mixed | AI | Words | Claims supported | Quality vs same-topic human text |
+|---|---|---|---|---|---|---|
+| B14 (pool writer, specific facts, best of 4) | 13 | 7 | 0 | 408 | 86% | 0.275 |
+| B8 (mixed-pool writer, all facts, 1 sample) | 5 | 10 | 5 | 452 | 86% | 0.575 |
+
+**Result: a trade-off, not a win.** Given every fact, the writer keeps more of the AI's plan. The judge rates it as better quality, but Pangram reads it as more AI. Across these 40 texts, judged quality and Pangram humanness are weakly anti-correlated (Spearman -0.24, p = 0.13). That fits section 17: the Sonnet judge partly rewards AI style.
+
+**Next, B16 (queued):** the mixed-pool writer with B14's input (specific facts only), best of 4. This tests whether the better planner keeps B14's Pangram result. Source: `results/b8_mixpool.json`.
