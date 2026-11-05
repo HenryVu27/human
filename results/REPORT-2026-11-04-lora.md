@@ -548,7 +548,7 @@ Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step l
 - A third of its raw words restate points it already made. The guard over-counts a little, because a first statement can share topic phrases, but the sentences checked by hand are mostly real restatements.
 - A narrower prune would add about 5 points of length, not 25.
 
-## Where this stands (2026-11-05, about 14:00)
+## Where this stands (2026-11-05, about 12:40)
 
 **The full-length problem now has a clear shape.** Five results fit together:
 

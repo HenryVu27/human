@@ -9,7 +9,7 @@ transitions. B14 reads Human because the writer, not the AI draft, chooses what 
 facts; if elaboration is most of what the prune deletes, a narrower rule might keep both length and
 the writer's plan.
 
-Fixed before any B23 output exists (2026-11-05 13:30):
+Fixed before any B23 output exists (2026-11-05 12:36):
 - Texts: B14's seed-1 raw generations (results/b14_gen_s1.jsonl) for the 20 drafts a0610 to a0629.
   One fixed seed, not B14's pick, so the sample is not chosen by any score.
 - Sonnet labels every sentence against the draft: S restates or connects the draft; N a new

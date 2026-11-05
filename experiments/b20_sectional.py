@@ -36,7 +36,7 @@ most of the rest; whole-plan reading predicts AI verdicts near B9 S0 (7 of 10).
 Amended 10:05, before any B20 text existed: after the facts, the prompt carries only the last 500 or
 so words written (whole paragraphs), not the whole article. B18's steps slowed from about 10 to 60-80
 seconds as its prompt grew, because 4 candidates at once fill the PC's 16 GB of GPU memory.
-Amended 12:40, before any B20 text was scanned: stopped at 4 of 10 drafts (a0610, a0611, a0612, a0613),
+Amended 12:30, before any B20 text was scanned: stopped at 4 of 10 drafts (a0610, a0611, a0612, a0613),
 when the server reached its 1.9 hour cap. The length precondition failed: the 3 usable pieces reached
 23 to 36% of T, B18's range, because a step keeps about 20 words after pruning (candidates median 25
 words, 41% of sentences unsupported) and a section gets at most 10 steps. Reaching T would take about
@@ -69,7 +69,7 @@ from judge_calibrate import _cut  # noqa: E402
 
 IDS = [f"a{n:04d}" for n in range(610, 620)]
 PER, SEC_WORDS, SEC_STEPS, CONTEXT = 6, 400, 10, 500
-DEGENERATE = {"S_a0612"}  # template loop; excluded from cell S, scanned as a probe (12:40 amendment)
+DEGENERATE = {"S_a0612"}  # template loop; excluded from cell S, scanned as a probe (12:30 amendment)
 PROMPTS = ROOT / "results" / "b12_prompts.jsonl"
 STEPS = ROOT / "results" / "b20_steps.jsonl"
 TEXTS = ROOT / "results" / "b20_texts.jsonl"
