@@ -411,3 +411,21 @@ Source: `results/b14_bestof.json`, texts in `results/b14_texts.jsonl`.
 **Result: a trade-off, not a win.** Given every fact, the writer keeps more of the AI's plan. The judge rates it as better quality, but Pangram reads it as more AI. Across these 40 texts, judged quality and Pangram humanness are weakly anti-correlated (Spearman -0.24, p = 0.13). That fits section 17: the Sonnet judge partly rewards AI style.
 
 **Next, B16 (queued):** the mixed-pool writer with B14's input (specific facts only), best of 4. This tests whether the better planner keeps B14's Pangram result. Source: `results/b8_mixpool.json`.
+
+## 21. B15: Henry's own post (Pangram, 14 texts)
+
+The B14 pipeline ran on the 7 prose sections of `~/personal/blog/series/ai-engineering/part1.html` ("context engineering"). Code, tables and figures were left out.
+
+| | Human | Mixed | AI | Words |
+|---|---|---|---|---|
+| Original sections | 0 | 3 | 4 | 4,481 |
+| Pipeline | 4 | 1 | 2 | 1,498 |
+
+- **The original is not uniformly AI.** "Seven Components", "Write / Select / Compress / Isolate" and "How Context Fails" read Mixed. The opening, the token budget, measurement and the lesson read AI.
+- **The pipeline moves the post toward Human but damages it as an essay.** It keeps a third of the words. Lists come out as fragments ("- Context windows have grown to 200 K tokens"), and the writer refers to "the author" in the third person.
+- **Why:** the writer was trained on general web articles (FineWeb-Edu style). It has never seen a first-person technical essay with lists, code and a series structure.
+- **Claims supported:** 85%.
+
+Source: `results/b15_blog.json`, texts in `results/b15_texts.jsonl`.
+
+**What this means for Henry's blog:** the method transfers, but the writer has to be trained on the target genre. The fix is a pool writer fine-tuned on first-person technical blog posts by human authors: engineering blogs, personal ML blogs, older posts from before 2023. Their facts come from the same extractor. This is a data-collection task. The PC trains it in about 25 minutes.
