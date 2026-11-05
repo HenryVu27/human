@@ -23,6 +23,10 @@ Fixed before any B23 output exists (2026-11-05 12:36):
 - Only if SE averages 60% or more of the draft's length: build SE texts for a0610 to a0619 (B13
   cleanup after deletion), run the claim check, and scan all 10 (cell E). That scan is the held-out
   judge; nothing about the rule is changed after it.
+Amended 12:38, after the first summary (SE 43%, so no scan) and before any scan: each row also keeps
+Sonnet's own label for X sentences, and the summary adds SE counted with repeats, an upper bound
+(the guard also flags some first statements that share topic phrases). The scan condition stays on
+SE as defined above; the upper bound (61%) does not trigger it.
 
 Usage:
   uv run python experiments/b23_prune_tiers.py label
