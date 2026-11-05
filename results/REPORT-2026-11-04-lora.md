@@ -372,3 +372,28 @@ The cleanup keeps the verdicts and narrows the quality gap. Source: `results/b13
 2. **A bigger base model.** HALO found raw OLMo-2-32B continuations at 0.03 AI against 0.27 for 7B. It does not fit 16 GB at 4 bits, so this needs a 3-bit build or rented compute, which would cost money.
 3. **The retrieval route (B9).** Two thirds of the content from human sources, kept as citations.
 4. **Henry's own posts**, through the pipeline, read blind by Henry.
+
+## 19. B14: best of 4 samples, picked by the claim check (Pangram, 20 texts)
+
+**Result: no AI verdicts.** For each B12 draft, the pool writer wrote 3 more samples (seeds 1 to 3) on the same prompt. Each sample was pruned (B11) and cleaned (B13). The one with the most claims supported by the draft was kept; ties went to the highest supported share. The pick used the local claim check only, never Pangram.
+
+| Same 20 drafts (a0610 to a0629) | Human | Mixed | AI | Words | Claims supported |
+|---|---|---|---|---|---|
+| Sonnet condensation (B12 K) | 0 | 0 | 20 | 642 | 100% |
+| Pipeline, seed 0 (B12 R) | 12 | 4 | 4 | 393 | 81% |
+| Plus cleanup (B13 C) | 12 | 5 | 3 | 309 | 80% |
+| Plus best of 4 (B14) | 13 | 7 | 0 | 408 | 86% |
+
+- **Significance:** against the condensation, Human p = 0.00001 and AI p = 1e-11.
+- **Quality against same-topic human text:** 0.275, in line with B13's 0.325.
+- **Repeatable scans:** seed 0 was picked 7 times. Those texts are identical to B13's and were scanned again, and Pangram gave the same verdict all 7 times.
+
+Source: `results/b14_bestof.json`, texts in `results/b14_texts.jsonl`.
+
+**The humanizer as it stands:**
+1. Sonnet extracts the draft's facts and keeps the specific ones.
+2. The pool writer (OLMo-2-13B base, QLoRA on partial fact pools, run on the Mac in MLX) writes the draft's full length 4 times, with the Guard on.
+3. Each sample loses every sentence the draft does not support, then repeats, empty lead-ins and fragments. Nothing is reworded.
+4. The sample that keeps the most supported claims wins.
+
+**On 20 held-out AI drafts:** Pangram 4.1 gives 13 Human, 7 Mixed and 0 AI. 86% of claims are supported, and the output is about 40% of the draft's length.

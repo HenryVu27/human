@@ -29,6 +29,7 @@ One index of every experiment and every literature search: what was asked, how i
 | B11 | 11-05 | Does the B7 gain survive deleting unsupported sentences? | Sonnet marks sentences the draft does not support; they and repeats are deleted, nothing reworded; all 20 P and Q texts | P pruned: 7 Human, 1 Mixed, 2 AI at 76% claim support, 419 words (p = 0.02 against B5 A) | b11_prune.json |
 | B12 | 11-05 | Does the B7-P plus B11 pipeline replicate? | 20 new drafts a0610 to a0629; pipeline against Sonnet condensing the draft (overshot to 642 words against 393) | Pipeline 12 Human, 4 Mixed, 4 AI at 81% claim support; condensation 20 of 20 AI (p = 0.00005) | b12_replicate.json |
 | Judge check | 11-05 | Is the quality judge fair to non-Sonnet prose? | 20 human articles cut to about 400 words against Sonnet condensations of the same articles | Judge prefers Sonnet 20 of 20: biased; use same-topic human text as the reference | judge_calibrate.json |
+| B14 | 11-05 | Does best of 4 (picked by claim check) keep more of the draft? | 3 more pool-writer seeds per B12 draft, each pruned and cleaned; keep the most supported claims | 13 Human, 7 Mixed, 0 AI at 86% claim support, 408 words; rescans of identical texts gave the same verdict 7 of 7 | b14_bestof.json |
 | B13 | 11-05 | Does a deletion-only cleanup help quality? | Delete repeats, empty lead-ins and fragments from B12 output | 12 Human, 5 Mixed, 3 AI; quality against same-topic human text 0.20 to 0.325 | b13_cleanup.json |
 | B8 | 11-05 | Can the writer learn to drop AI-typical facts? | Writer trained on pools that mix human facts with facts from the AI mirror of the same topic; target is the human article | Mirror facts being extracted; training on the PC next | b8_mixpool.py |
 | B10 | 11-05 | Does compression fall in Pangram's blind spot? | Sonnet condenses each AI draft to 25% and 50%, adding nothing and with no instruction to sound human; 10 drafts | 20 of 20 AI: an instruct-model writer is caught whatever the compression | b10_compress.json |
@@ -65,7 +66,8 @@ One index of every experiment and every literature search: what was asked, how i
 | B9 | 40 | about 330 |
 | B12 | 40 | about 220 |
 | B13 | 20 | about 70 |
-| Remaining on the Individual plan after B13 | | about 900 of 3,000 |
+| B14 | 20 | 87 |
+| Remaining on the Individual plan after B14 | | about 820 of 3,000 |
 
 ## Current hypothesis
 
