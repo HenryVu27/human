@@ -1,0 +1,59 @@
+{
+ "checks": {
+  "words": 308.75,
+  "deleted": 5.7,
+  "quality_vs_condensed": 0.0,
+  "quality_vs_draft": 0.0,
+  "claim_support": 0.8030997601038239
+ },
+ "quality_C_vs_human_cut_mean": 0.325,
+ "quality_C_vs_human_cut": {
+  "a0610": 0.5,
+  "a0611": 0.0,
+  "a0612": 0.0,
+  "a0613": 1.0,
+  "a0614": 1.0,
+  "a0615": 0.5,
+  "a0616": 1.0,
+  "a0617": 0.0,
+  "a0618": 0.0,
+  "a0619": 0.0,
+  "a0620": 0.0,
+  "a0621": 1.0,
+  "a0622": 0.0,
+  "a0623": 0.0,
+  "a0624": 1.0,
+  "a0625": 0.0,
+  "a0626": 0.0,
+  "a0627": 0.5,
+  "a0628": 0.0,
+  "a0629": 0.0
+ },
+ "pangram_summary": {
+  "AI": 3,
+  "Mixed": 5,
+  "Human": 12
+ },
+ "pangram": {
+  "C_a0610": "Mixed",
+  "C_a0611": "Human",
+  "C_a0612": "Human",
+  "C_a0613": "Human",
+  "C_a0614": "Mixed",
+  "C_a0615": "AI",
+  "C_a0616": "AI",
+  "C_a0617": "Human",
+  "C_a0618": "Human",
+  "C_a0619": "AI",
+  "C_a0620": "Human",
+  "C_a0621": "Human",
+  "C_a0622": "Mixed",
+  "C_a0623": "Human",
+  "C_a0624": "Human",
+  "C_a0625": "Human",
+  "C_a0626": "Human",
+  "C_a0627": "Mixed",
+  "C_a0628": "Human",
+  "C_a0629": "Mixed"
+ }
+}

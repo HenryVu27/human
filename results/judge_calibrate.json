@@ -1,0 +1,125 @@
+{
+ "human_win_rate_vs_sonnet_condensation": 0.0,
+ "rows": [
+  {
+   "id": "h0610",
+   "human_words": 404,
+   "sonnet_words": 724,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0611",
+   "human_words": 418,
+   "sonnet_words": 638,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0612",
+   "human_words": 468,
+   "sonnet_words": 497,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0613",
+   "human_words": 401,
+   "sonnet_words": 416,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0614",
+   "human_words": 401,
+   "sonnet_words": 324,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0615",
+   "human_words": 416,
+   "sonnet_words": 834,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0616",
+   "human_words": 444,
+   "sonnet_words": 536,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0617",
+   "human_words": 465,
+   "sonnet_words": 594,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0618",
+   "human_words": 458,
+   "sonnet_words": 615,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0619",
+   "human_words": 421,
+   "sonnet_words": 752,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0620",
+   "human_words": 401,
+   "sonnet_words": 593,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0621",
+   "human_words": 403,
+   "sonnet_words": 590,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0622",
+   "human_words": 488,
+   "sonnet_words": 675,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0623",
+   "human_words": 405,
+   "sonnet_words": 341,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0624",
+   "human_words": 400,
+   "sonnet_words": 654,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0625",
+   "human_words": 407,
+   "sonnet_words": 548,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0626",
+   "human_words": 424,
+   "sonnet_words": 510,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0627",
+   "human_words": 429,
+   "sonnet_words": 636,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0628",
+   "human_words": 425,
+   "sonnet_words": 552,
+   "human_beats_sonnet": 0.0
+  },
+  {
+   "id": "h0629",
+   "human_words": 417,
+   "sonnet_words": 687,
+   "human_beats_sonnet": 0.0
+  }
+ ]
+}
