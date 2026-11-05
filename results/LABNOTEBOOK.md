@@ -27,6 +27,7 @@ One index of every experiment and every literature search: what was asked, how i
 | Surrogate | 11-04 | Can a local detector stand in for Pangram? | AUROC of detector-v1 and v2 on 96 Pangram-labelled texts | 0.83 to 0.87 overall but 0.54 to 0.67 among AI-sourced texts: not usable for selection | surrogate.json, pangram_labels.jsonl |
 | B7 | 11-05 | Does a writer that plans for itself help? | Pool writer trained on partial fact lists (20 to 60%); cells H (old writer), P (specific facts), Q (random 40%) at full draft length, with the Guard | Running | b7_pool.py |
 | B8 | 11-05 | Can the writer learn to drop AI-typical facts? | Writer trained on pools that mix human facts with facts from the AI mirror of the same topic; target is the human article | Mirror facts being extracted; training on the PC next | b8_mixpool.py |
+| B10 | 11-05 | Does compression fall in Pangram's blind spot? | Sonnet condenses each AI draft to 25% and 50%, adding nothing and with no instruction to sound human; 10 drafts | 20 of 20 AI: an instruct-model writer is caught whatever the compression | b10_compress.json |
 | B9 | 11-05 | How much human-sourced content is needed? | Dose-response: 0, 1/3 and 2/3 human facts at a fixed count (B5 cell D is the 1 point) | Queued on the Mac after B7 | b9_dose.py |
 
 ## Literature search log
@@ -39,7 +40,7 @@ One index of every experiment and every literature search: what was asked, how i
 | 2 | 11-05 | Primary sources in depth: HALO, PASTA, Pangram 4 report, DFT, Emulate-1, HIP, Unslopper | WebFetch on full arXiv HTML, Wayback Machine for the deleted DFT page, GitHub data | Pangram's mirror labels explain B5; HALO's copy rate and model-size ablations; red-team hole | research/r2-primary-sources.md |
 | 2 | 11-05 | Adjacent fields: mode collapse, content planning, stylometry, deception, distribution matching | WebSearch, WebFetch; arXiv, ACL Anthology | 5 ranked experiments, including dose-response (now B9) | research/r2-adjacent-fields.md |
 | 2 | 11-05 | Reddit, Hacker News, Substack, LessWrong, GitHub issues | Hacker News Algolia API, WebFetch; Reddit and Lobsters were blocked | Independent source-effect replication; wording pipelines fail on 4.x | research/r2-forums-hn.md |
-| 2 | 11-05 | X thread follow-ups | Claude in Chrome, read only | Running | |
+| 2 | 11-05 | X thread follow-ups | Claude in Chrome, read only, own tab | Base model in continuation mode passes; instruct-model sentence picking is caught; a base model's completion takes the label of the notes in its context; IdeaLens (arXiv 2610.06778): Pangram follows who wrote the prose | research/r2-x-followups.md |
 
 **Spot checks against primary pages:** HALO's abstract (Pangram v4, detection 77% to 24%) and phuryn/work-humanizer's page (Pangram 4; AI drafts 4% human; writer's own notes 4 of 4) both match what the agents reported. Everything else in the agent reports is unverified unless the report says it read the primary source.
 
@@ -54,7 +55,8 @@ One index of every experiment and every literature search: what was asked, how i
 | B4 | 20 | 218 |
 | B5 | 40 | about 450 |
 | B6 | 16 | 61 |
-| Remaining on the Individual plan after B6 | | about 2,140 of 3,000 |
+| B10 | 20 | 140 |
+| Remaining on the Individual plan after B10 | | about 2,000 of 3,000 |
 
 ## Current hypothesis
 
@@ -62,6 +64,6 @@ Pangram 4 labels an instruct model's content plan for a topic as AI, because tha
 
 1. The base model's own plan: B7, B8, and HALO's 90% copy rate.
 2. Human-sourced content: B9, and retrieval of human sources for the draft's claims.
-3. Compression of a large source into a shorter text: the red team's one admitted hole, untested here.
+3. Compression of a large source into a shorter text: the red team's one admitted hole. B10 shows it does not work with an instruct-model writer.
 
 At every step the claim check and the Guard keep the output from inventing facts.
