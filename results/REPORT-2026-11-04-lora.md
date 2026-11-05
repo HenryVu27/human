@@ -282,3 +282,27 @@ P pruned against B5 A, Human: p = 0.02. One P text is 86 words; leaving it out g
 The base model's plan survives the cuts, and most of what remains is supported by the draft.
 
 **Next: B12 (running).** A replication on 20 new drafts (a0610 to a0629), with a length-matched control: Sonnet condenses each draft to the same word count as the pipeline's output. It also runs the quality judge against the draft. Ten texts per cell is too few to trust on their own.
+
+## 15. B9: how much human-sourced content is needed? (Pangram, 40 texts)
+
+**Result: a clean dose-response with a threshold between one third and two thirds.**
+- **Design:** each topic got a fixed number of facts, equal to the human article's fact count. A share s came from the human article and the rest from the AI draft, shuffled.
+- **Writer:** the B4 facts adapter on the PC, seed 0, no Guard.
+- **Topics:** dev 600 to 609.
+
+| Human-sourced share | Human | Mixed | AI |
+|---|---|---|---|
+| 0 | 0 | 3 | 7 |
+| 1/3 | 1 | 8 | 1 |
+| 2/3 | 7 | 3 | 0 |
+| 1 (B5 cell D, regenerated on the PC) | 10 | 0 | 0 |
+
+Spearman correlation between share and verdict (AI, Mixed, Human as 0, 1, 2): 0.86, p = 2e-12. The 1/3 cell is almost all Mixed. That fits Pangram's document rule: Human needs at least 90% of characters labelled Human, AI needs at least 80% labelled AI, and anything between is Mixed. A third of AI content keeps a text out of Human, and two thirds of human content is enough most of the time. The PC's 100% cell matches B5 cell D on the Mac (10 of 10 both times), so the machine does not change this result. Source: `results/b9_dose.json`, texts in `results/b9_generations.jsonl`.
+
+**What this opens: a second route to a full humanizer, retrieval.**
+1. Keep the draft's main claims as about a third of the content.
+2. Source the other two thirds from real human documents on the same topic: news, forums and pre-2023 web pages, found by search.
+3. The base-model writer writes from the mix.
+4. The claim check runs against the draft plus the cited sources, so nothing is invented. What is added comes from a named human source.
+
+This changes what the draft says, so it is a product decision for Henry. Route one (B7 to B12: the base model plans, then unsupported sentences are deleted) keeps to the draft's content but drops some of it.

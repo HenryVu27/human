@@ -30,7 +30,7 @@ One index of every experiment and every literature search: what was asked, how i
 | B12 | 11-05 | Does the B7-P plus B11 pipeline replicate? | 20 new drafts a0610 to a0629; pipeline against Sonnet condensing the draft to the same length; quality judge | Running | b12_replicate.py |
 | B8 | 11-05 | Can the writer learn to drop AI-typical facts? | Writer trained on pools that mix human facts with facts from the AI mirror of the same topic; target is the human article | Mirror facts being extracted; training on the PC next | b8_mixpool.py |
 | B10 | 11-05 | Does compression fall in Pangram's blind spot? | Sonnet condenses each AI draft to 25% and 50%, adding nothing and with no instruction to sound human; 10 drafts | 20 of 20 AI: an instruct-model writer is caught whatever the compression | b10_compress.json |
-| B9 | 11-05 | How much human-sourced content is needed? | Dose-response: 0, 1/3 and 2/3 human facts at a fixed count (B5 cell D is the 1 point) | Queued on the Mac after B7 | b9_dose.py |
+| B9 | 11-05 | How much human-sourced content is needed? | Dose-response: 0, 1/3, 2/3 and 1 human-sourced facts at a fixed count, all on the PC | Human 0, 1, 7, 10 of 10; AI 7, 1, 0, 0; Spearman 0.86, p = 2e-12; threshold between 1/3 and 2/3 | b9_dose.json |
 
 ## Literature search log
 
@@ -60,7 +60,8 @@ One index of every experiment and every literature search: what was asked, how i
 | B10 | 20 | 140 |
 | B7 | 30 | about 400 |
 | B11 | 20 | about 100 |
-| Remaining on the Individual plan after B11 | | about 1,500 of 3,000 |
+| B9 | 40 | about 330 |
+| Remaining on the Individual plan after B9 | | about 1,200 of 3,000 |
 
 ## Current hypothesis
 
