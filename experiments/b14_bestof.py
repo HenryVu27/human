@@ -32,14 +32,19 @@ TEXTS = ROOT / "results" / "b14_texts.jsonl"
 OUT = ROOT / "results" / "b14_bestof.json"
 
 
-def pick():
+def pick(prefix: str = "b14", seeds: tuple = (1, 2, 3), seed0_from_b13: bool = True, cell: str = "B"):
+    """Prune, clean and claim-check every sample, keep the one with the most supported claims.
+    B14 reuses B13's cleaned seed-0 texts; other runs (B16) pass all four seeds."""
     drafts = _drafts()
     human = [json.loads(line)["text"] for line in (ROOT / "data" / "human.jsonl").open()]
-    b13 = {r["id"][2:]: r for r in map(json.loads, (ROOT / "results" / "b13_texts.jsonl").open())}
-    samples = {k: [{"seed": 0, "text": b13[k]["text"], "claims_entailed": b13[k]["claims_entailed"],
-                    "claims_total": b13[k]["claims_total"]}] for k in drafts}
-    gens = [(s, json.loads(line)) for s in (1, 2, 3)
-            for line in (ROOT / "results" / f"b14_gen_s{s}.jsonl").open()]
+    samples = {k: [] for k in drafts}
+    if seed0_from_b13:
+        b13 = {r["id"][2:]: r for r in map(json.loads, (ROOT / "results" / "b13_texts.jsonl").open())}
+        for k in drafts:
+            samples[k].append({"seed": 0, "text": b13[k]["text"], "claims_entailed": b13[k]["claims_entailed"],
+                               "claims_total": b13[k]["claims_total"]})
+    gens = [(s, json.loads(line)) for s in seeds
+            for line in (ROOT / "results" / f"{prefix}_gen_s{s}.jsonl").open()]
 
     def one(item):
         s, g = item
@@ -56,18 +61,18 @@ def pick():
     for key, cands in samples.items():
         best = max(cands, key=lambda c: (c["claims_entailed"], c["claims_entailed"] / max(1, c["claims_total"])))
         cut = _cut(human[int(key[1:])], len(best["text"].split()))
-        rows.append({"id": f"B_{key}", "seed": best["seed"], "text": best["text"], "words": len(best["text"].split()),
+        rows.append({"id": f"{cell}_{key}", "seed": best["seed"], "text": best["text"], "words": len(best["text"].split()),
                      "claims_entailed": best["claims_entailed"], "claims_total": best["claims_total"],
                      "quality_vs_human_cut": quality_pair(cut, best["text"]),
                      "candidates": [{k: c[k] for k in ("seed", "claims_entailed", "claims_total")} | {"words": len(c["text"].split())}
                                     for c in cands]})
-    TEXTS.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    (ROOT / "results" / f"{prefix}_texts.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
     summary = {"words": statistics.mean(r["words"] for r in rows),
                "claims_entailed": statistics.mean(r["claims_entailed"] for r in rows),
                "claim_support": statistics.mean(r["claims_entailed"] / max(1, r["claims_total"]) for r in rows),
                "quality_vs_human_cut": statistics.mean(r["quality_vs_human_cut"] for r in rows),
                "seed0_picked": sum(r["seed"] == 0 for r in rows)}
-    OUT.write_text(json.dumps({"checks": summary}, indent=1))
+    (ROOT / "results" / f"{prefix}_bestof.json").write_text(json.dumps({"checks": summary}, indent=1))
     print(json.dumps(summary, indent=1))
 
 
