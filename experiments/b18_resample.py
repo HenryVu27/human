@@ -39,7 +39,6 @@ Usage (server running and tunnelled: ssh -N -L 8765:127.0.0.1:8765 <user>@<pc-ta
 """
 
 import json
-import re
 import statistics
 import sys
 import urllib.request
@@ -106,15 +105,24 @@ def _sentences(text: str) -> list[str]:
     return [s for s in SPLIT.split(text.strip()) if s.strip()]
 
 
+def _first_json(raw: str) -> dict | None:
+    """The first JSON object in a reply; text or a second object after it is ignored."""
+    i = raw.find("{")
+    try:
+        return json.JSONDecoder().raw_decode(raw[i:])[0] if i >= 0 else None
+    except json.JSONDecodeError:
+        return None
+
+
 def _check(draft: str, cands: list[list[str]]) -> list[set[int]]:
     """Unsupported sentence indexes (0-based) per candidate; a missing answer keeps nothing."""
     listing = "\n\n".join(f"Candidate {c}:\n" + "\n".join(f"{i}. {s}" for i, s in enumerate(ss, 1))
                           for c, ss in enumerate(cands, 1))
     raw = claude(CHECK.format(n=len(cands), draft=draft, candidates=listing), model="sonnet")
-    m = re.search(r"\{.*\}", raw, re.S)
-    if not m:
+    obj = _first_json(raw)
+    if not isinstance(obj, dict):
         return [set(range(len(ss))) for ss in cands]
-    got = json.loads(m.group(0)).get("unsupported", {})
+    got = obj.get("unsupported", {})
     return [{int(n) - 1 for n in got.get(str(c), [])} for c in range(1, len(cands) + 1)]
 
 
@@ -158,8 +166,8 @@ def write_one(row: dict, idx: int, support: str | None = None, cell: str = "W") 
 def _coverage(draft: str, text: str) -> float:
     facts = extract(draft).facts
     listing = "\n".join(f"{i}. {x}" for i, x in enumerate(facts, 1))
-    m = re.search(r"\{.*\}", claude(COVER.format(facts=listing, article=text), model="sonnet"), re.S)
-    stated = {int(n) for n in json.loads(m.group(0))["stated"]} if m else set()
+    obj = _first_json(claude(COVER.format(facts=listing, article=text), model="sonnet"))
+    stated = {int(n) for n in obj.get("stated", [])} if isinstance(obj, dict) else set()
     return len(stated & set(range(1, len(facts) + 1))) / max(1, len(facts))
 
 
