@@ -484,3 +484,34 @@ B9 says pieces read Human once about two-thirds of their content comes from a hu
 - Against the objection: in B5 and B9, Sonnet chose which facts to pull from human articles, and those pieces read Human 10 of 10. AI selection over human material does not by itself read AI.
 - For the objection: questions written from the AI draft steer the answers toward the draft's outline.
 - Status: untested.
+
+## 24. B20: full length written section by section (Pangram, 3 usable texts and 1 probe)
+
+**Question:** at B14's fact density but full length, does B14's verdict hold? The drafts state about 5 facts per 100 words and B14's pieces about 1.5, so a full-length piece at B14's density carries about a third of the draft's facts.
+
+**Design:**
+1. Split the piece into k = round(length / 400) sections, each given 6 of the draft's facts. The facts are evenly spaced through the draft and kept in its order.
+2. Write each section with B18's step (4 candidate paragraphs, Sonnet's check, keep the most supported words). The writer sees only the last ~500 words written.
+3. Prediction, fixed before any scan: if Pangram judges each 512-token window on its own, pieces read mostly Mixed with AI at B14's level (0 to 1 of 10). If it judges the article's overall plan, AI verdicts approach B9 S0 (7 of 10).
+
+**What happened to the run:** the PC server stopped at its 1.9-hour cap with 4 of 10 drafts written. Before any scan, B20 was stopped there, for two reasons.
+- **Length precondition failed.** The 3 usable pieces reached 23 to 36% of the draft's length, B18's range. After pruning, a step keeps about 20 words: candidates are about 25 words and 41% of their sentences are unsupported. A section gets at most 10 steps. Reaching full length would take about 55 steps a draft, about 5 more GPU hours for the other 6.
+- **One piece is degenerate.** In a0612, after 5 paragraphs the writer looped on "What words would you use to explain your X to someone?" for 13 paragraphs, and every check passed it. Questions state no facts, and the repeat filter catches only exact repeats, not repeated templates. It was scanned only as a probe and is not counted.
+
+| Same 3 drafts (a0610, a0611, a0613) | Human | Mixed | AI | Words |
+|---|---|---|---|---|
+| B14 (best of 4, pruned) | 1 | 2 | 0 | 350 |
+| B18 (paragraph by paragraph, one prompt) | 3 | 0 | 0 | 424 |
+| B20 (sections spread across the draft) | 0 | 3 | 0 | 327 |
+
+- **Claims supported:** 74%, lower than B18's 82%. **Coverage:** 15% of the draft's facts.
+- **Degenerate probe (a0612, 963 words):** Mixed. Pangram did not call content-free repetition Human, but it did not call it AI either.
+
+**Result:** B20 does not answer its question, because it never reached full length. What it does show, on only 3 drafts:
+- Walking through the draft's facts in order, a section at a time, read worse than B18 on the same drafts at the same length (0 Human against 3).
+- No piece read AI, which fits the per-window reading, but 3 pieces of about one window each cannot separate the two readings.
+- This fits the B5 finding that the AI signal is the content plan. Following the draft's sequence of points brings back the draft's outline, even at low density.
+
+**A gap in the checks:** the claim check and the repeat filter pass a writer stuck in a template loop. Any full-length writer needs a template-repeat guard, for example deleting a sentence when more than half of its word trigrams already appear in the piece.
+
+Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step logs in `results/b20_steps.jsonl`.
