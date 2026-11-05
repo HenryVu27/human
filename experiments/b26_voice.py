@@ -14,6 +14,10 @@ Fixed before training:
 - The 13 test texts are scanned on Pangram and paired with N essay by essay. Checks as B25.
 Prediction: V reads Human at least as often as N; keeps more of T (it learned to write from a
 complete list, so less is pruned); first person nearer the essay's; quality against the essay above N.
+Amended 18:12, during training and before any V text exists: B25's AI drafts read 8 Human, 5 Mixed,
+0 AI, so B25 stopped before scanning N, and Pangram cannot show what a writer adds on this bench. V is
+not scanned. It is judged on the local checks against N and D (length, claim support, copying, first
+person and sentence-length spread against the essay, quality against the essay) and in a blind read.
 
 Usage:
   uv run python -m humanizer.data.essaypool          (Sonnet notes for the training essays)

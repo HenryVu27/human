@@ -1,0 +1,158 @@
+{
+ "pangram_summary": {
+  "H": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 13
+  },
+  "D": {
+   "AI": 0,
+   "Mixed": 5,
+   "Human": 8
+  },
+  "P": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 0
+  },
+  "N": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 0
+  }
+ },
+ "pangram": {
+  "H_e0024944a": "Human",
+  "H_e00279af1": "Human",
+  "H_e00a47ad2": "Human",
+  "H_e00afe510": "Human",
+  "H_e00c5dbe3": "Human",
+  "H_e012341fb": "Human",
+  "H_e015297cc": "Human",
+  "H_e01b9acdb": "Human",
+  "H_e021dc050": "Human",
+  "H_e075ab572": "Human",
+  "H_e1574e17c": "Human",
+  "H_e1aac9b0d": "Human",
+  "H_e2ee0c4c0": "Human",
+  "D_e0024944a": "Mixed",
+  "D_e00279af1": "Human",
+  "D_e00a47ad2": "Human",
+  "D_e00afe510": "Human",
+  "D_e00c5dbe3": "Mixed",
+  "D_e012341fb": "Human",
+  "D_e015297cc": "Mixed",
+  "D_e01b9acdb": "Human",
+  "D_e021dc050": "Mixed",
+  "D_e075ab572": "Human",
+  "D_e1574e17c": "Mixed",
+  "D_e1aac9b0d": "Human",
+  "D_e2ee0c4c0": "Human"
+ },
+ "d_checks": {
+  "D_e0024944a": {
+   "author": "Robin Hanson",
+   "draft_over_essay": 1.0027285129604366,
+   "notes_per_100_words": 4.502046384720328,
+   "copied_from_essay": 0.27453580901856767,
+   "essay_beyond_notes": 0.046419098143236075,
+   "notes_copied_from_essay": 0.4269293924466338
+  },
+  "D_e00279af1": {
+   "author": "John Cochrane",
+   "draft_over_essay": 1.0033783783783783,
+   "notes_per_100_words": 6.587837837837838,
+   "copied_from_essay": 0.53156146179402,
+   "essay_beyond_notes": 0.10465116279069768,
+   "notes_copied_from_essay": 0.6003401360544217
+  },
+  "D_e00a47ad2": {
+   "author": "Noah Smith",
+   "draft_over_essay": 0.9220489977728286,
+   "notes_per_100_words": 5.79064587973274,
+   "copied_from_essay": 0.23918269230769232,
+   "essay_beyond_notes": 0.08653846153846154,
+   "notes_copied_from_essay": 0.33288948069241014
+  },
+  "D_e00afe510": {
+   "author": "Paul Graham",
+   "draft_over_essay": 0.8801724137931034,
+   "notes_per_100_words": 5.517241379310345,
+   "copied_from_essay": 0.2958579881656805,
+   "essay_beyond_notes": 0.10059171597633136,
+   "notes_copied_from_essay": 0.43673012318029114
+  },
+  "D_e00c5dbe3": {
+   "author": "Patrick McKenzie",
+   "draft_over_essay": 0.9079159935379645,
+   "notes_per_100_words": 5.815831987075929,
+   "copied_from_essay": 0.1125,
+   "essay_beyond_notes": 0.030357142857142857,
+   "notes_copied_from_essay": 0.19696969696969696
+  },
+  "D_e012341fb": {
+   "author": "Branko Milanovic",
+   "draft_over_essay": 0.905982905982906,
+   "notes_per_100_words": 4.594017094017094,
+   "copied_from_essay": 0.22104018912529552,
+   "essay_beyond_notes": 0.04609929078014184,
+   "notes_copied_from_essay": 0.32975460122699385
+  },
+  "D_e015297cc": {
+   "author": "Julia Evans",
+   "draft_over_essay": 1.0524344569288389,
+   "notes_per_100_words": 5.056179775280899,
+   "copied_from_essay": 0.1543859649122807,
+   "essay_beyond_notes": 0.0824561403508772,
+   "notes_copied_from_essay": 0.2233502538071066
+  },
+  "D_e01b9acdb": {
+   "author": "Scott Alexander",
+   "draft_over_essay": 1.0496987951807228,
+   "notes_per_100_words": 8.132530120481928,
+   "copied_from_essay": 0.5959885386819485,
+   "essay_beyond_notes": 0.022922636103151862,
+   "notes_copied_from_essay": 0.6513994910941476
+  },
+  "D_e021dc050": {
+   "author": "Scott Sumner",
+   "draft_over_essay": 1.1812080536912752,
+   "notes_per_100_words": 5.87248322147651,
+   "copied_from_essay": 0.32959326788218796,
+   "essay_beyond_notes": 0.030855539971949508,
+   "notes_copied_from_essay": 0.4791666666666667
+  },
+  "D_e075ab572": {
+   "author": "Joel Spolsky",
+   "draft_over_essay": 0.9624697336561744,
+   "notes_per_100_words": 5.5690072639225185,
+   "copied_from_essay": 0.25534591194968553,
+   "essay_beyond_notes": 0.13081761006289308,
+   "notes_copied_from_essay": 0.3328290468986384
+  },
+  "D_e1574e17c": {
+   "author": "Fernando Borretti",
+   "draft_over_essay": 1.20817843866171,
+   "notes_per_100_words": 6.319702602230484,
+   "copied_from_essay": 0.19938650306748465,
+   "essay_beyond_notes": 0.05674846625766871,
+   "notes_copied_from_essay": 0.33849557522123896
+  },
+  "D_e1aac9b0d": {
+   "author": "Dan Luu",
+   "draft_over_essay": 0.9439592430858806,
+   "notes_per_100_words": 3.7117903930131004,
+   "copied_from_essay": 0.20061967467079783,
+   "essay_beyond_notes": 0.027885360185902403,
+   "notes_copied_from_essay": 0.33049946865037194
+  },
+  "D_e2ee0c4c0": {
+   "author": "Richard Sutton",
+   "draft_over_essay": 1.030520646319569,
+   "notes_per_100_words": 4.757630161579892,
+   "copied_from_essay": 0.6397569444444444,
+   "essay_beyond_notes": 0.4774305555555556,
+   "notes_copied_from_essay": 0.5151515151515151
+  }
+ }
+}

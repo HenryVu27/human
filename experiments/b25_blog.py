@@ -36,6 +36,10 @@ B24: texts written from extracted facts copy the source's wording through the fa
 base model (OLMo-2) was pretrained on web text that likely includes these essays, so it may recall
 them. N's verdicts are read next to both numbers.
 Credits: about 125 (H) + 125 (D) + 50 (P) + 65 (N), of about 415 left after B24.
+Recorded 18:10: D was scanned as plain text (markdown heading, emphasis and list marks removed, `plain`),
+like the essays. H read 13 Human; D read 8 Human, 5 Mixed, 0 AI, so the stop rule above applies: P and N
+are not scanned. Their texts are still made, for the local checks and for B26. D copies 11 to 64% of
+its words from the essay in 8-word runs, mostly through the notes (`d_checks`).
 Amended 16:48, before any bench text exists: a P or N text under 150 words is not scanned (Pangram is
 unreliable below that) and counts as not Human; essays have few numbers and names, so P's
 specific-facts prompt may leave the writer little to keep.
@@ -199,8 +203,33 @@ def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tupl
     for cell, key in (("H", "text"), ("D", "draft")):
         summary[cell] = {"texts": len(b), "words": statistics.mean(len(r[key].split()) for r in b),
                          **{k: statistics.mean(voice(r[key])[k] for r in b) for k in ("first_person", "sentence_sd")}}
-    out.write_text(json.dumps({"checks": summary}, indent=1))
+    prev = json.loads(out.read_text()) if out.exists() else {}
+    out.write_text(json.dumps(prev | {"checks": summary}, indent=1))
     print(json.dumps(summary, indent=1))
+
+
+def plain(md: str) -> str:
+    """Markdown to plain text for the scan: heading, emphasis, list and rule marks removed."""
+    t = re.sub(r"(?m)^#{1,6}\s*", "", md)
+    t = re.sub(r"\*\*|__", "", t)
+    t = re.sub(r"(?<!\w)\*(?!\s)|(?<!\s)\*(?!\w)", "", t)
+    t = re.sub(r"(?m)^\s*[-*]\s+", "", t)
+    t = re.sub(r"(?m)^---+\s*$", "", t)
+    return re.sub(r"\n{3,}", "\n\n", t).strip()
+
+
+def d_checks():
+    """Per draft: length against the essay, notes per 100 words, verbatim copying from the essay and beyond the notes."""
+    per = {}
+    for r in _bench():
+        notes = "\n".join(r["notes"])
+        per[f"D_{r['id']}"] = {"author": r["author"], "draft_over_essay": r["draft_words"] / r["words"],
+                               "notes_per_100_words": 100 * len(r["notes"]) / r["words"],
+                               "copied_from_essay": copied_share(r["draft"], r["text"]),
+                               "essay_beyond_notes": copied_share(r["draft"], r["text"], beyond=notes),
+                               "notes_copied_from_essay": copied_share(notes, r["text"])}
+    prev = json.loads(OUT.read_text()) if OUT.exists() else {}
+    OUT.write_text(json.dumps(prev | {"d_checks": per}, indent=1))
 
 
 def scan_files(dest: str):
@@ -210,7 +239,7 @@ def scan_files(dest: str):
     d.mkdir(parents=True, exist_ok=True)
     for r in _bench():
         (d / f"H_{r['id']}.txt").write_text(r["text"])
-        (d / f"D_{r['id']}.txt").write_text(r["draft"])
+        (d / f"D_{r['id']}.txt").write_text(plain(r["draft"]))
     if TEXTS.exists():
         for r in map(json.loads, TEXTS.open()):
             (d / f"{r['id']}.txt").write_text(r["text"])
@@ -227,7 +256,7 @@ def record(pairs: list[str]):
 
 if __name__ == "__main__":
     cmd = sys.argv[1]
-    {"bench": bench, "prompts": prompts, "pick": pick}.get(cmd, lambda: None)()
+    {"bench": bench, "prompts": prompts, "pick": pick, "d_checks": d_checks}.get(cmd, lambda: None)()
     if cmd == "scan_files":
         scan_files(sys.argv[2])
     elif cmd == "record":
