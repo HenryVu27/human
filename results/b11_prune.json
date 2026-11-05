@@ -1,0 +1,36 @@
+{
+ "pangram_summary": {
+  "P": {
+   "AI": 2,
+   "Mixed": 1,
+   "Human": 7
+  },
+  "Q": {
+   "AI": 2,
+   "Mixed": 4,
+   "Human": 4
+  }
+ },
+ "pangram": {
+  "P_a0600": "Human",
+  "P_a0601": "Human",
+  "P_a0602": "Human",
+  "P_a0603": "Mixed",
+  "P_a0604": "Human",
+  "P_a0605": "Human",
+  "P_a0606": "AI",
+  "P_a0607": "Human",
+  "P_a0608": "Human",
+  "P_a0609": "AI",
+  "Q_a0600": "Mixed",
+  "Q_a0601": "Mixed",
+  "Q_a0602": "Human",
+  "Q_a0603": "Human",
+  "Q_a0604": "Human",
+  "Q_a0605": "AI",
+  "Q_a0606": "Mixed",
+  "Q_a0607": "Human",
+  "Q_a0608": "Mixed",
+  "Q_a0609": "AI"
+ }
+}
