@@ -34,3 +34,15 @@ def test_selection_groups_and_scales():
     assert [p["note"] for p in out.sections[0].points] == ["b1", "b2"]
     assert [s.target_words for s in out.sections] == [100, 50]
     assert all(isinstance(s.target_words, int) for s in out.sections)
+
+
+def test_facts_prompt_shuffles_deterministically_and_ends_at_article():
+    from humanizer.data.facts import Facts, facts_prompt, parse_facts
+
+    f = parse_facts('noise {"topic": "Sleep habits", "facts": ["a fact", "b fact", "c fact", "d fact", " "]}')
+    assert f.facts == ["a fact", "b fact", "c fact", "d fact"]
+    p = facts_prompt(f, 433, "h0001")
+    assert p == facts_prompt(Facts(f.topic, list(f.facts)), 433, "h0001")
+    assert p.startswith("Facts:\nTopic: Sleep habits\nLength: about 430 words\n- ")
+    assert p.endswith("\n\nArticle:\n")
+    assert sorted(line[2:] for line in p.splitlines() if line.startswith("- ")) == f.facts
