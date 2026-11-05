@@ -3,15 +3,18 @@
 B5: on the same topics, facts from the human article read Human 10/10 (cell D), facts from the
 AI draft 1/10 (cell A). Here each topic gets a fixed number of facts N (the human article's fact
 count, so the 100% cell is B5 cell D itself) with a share s taken from the human article and the
-rest from the AI draft, shuffled. B4 facts adapter on the Mac, seed 0, length N x median words
-per fact, same as B5. Levels s = 0, 1/3, 2/3 are new (30 texts); s = 1 is B5 cell D.
+rest from the AI draft, shuffled. B4 facts adapter, seed 0, length N x median words per fact, same
+as B5. Levels s = 0, 1/3, 2/3 and 1 (S3, the B5 cell D facts in a new order), all generated on the
+PC (gpu/gen13b.py, no Guard, like B5) so the whole curve comes from one machine; B5 cell D on the
+Mac is a cross-machine check of S3.
 
 If 1/3 flips most texts, a retrieve-and-cite step (human sources for the draft's claims) is worth
 building. If 2/3 or more is needed, the content has to come mostly from a human or a base model.
 
 Usage:
   uv run python experiments/b9_dose.py prompts
-  uv run python experiments/gen_mlx.py results/b9_prompts.jsonl results/b9_generations.jsonl
+  copy results/gpu13b/b9_prompts_{1,2}.jsonl to C:/hgpu/data_facts and run gpu/b9.cmd on the PC
+  cat results/gpu13b/out_facts/b9_gen_{1,2}.jsonl > results/b9_generations.jsonl
   uv run python experiments/b9_dose.py record S0_a0600=AI ...
 """
 
@@ -29,7 +32,7 @@ from b5_matched import _sources  # noqa: E402
 PROMPTS = ROOT / "results" / "b9_prompts.jsonl"
 GENS = ROOT / "results" / "b9_generations.jsonl"
 OUT = ROOT / "results" / "b9_dose.json"
-LEVELS = {"S0": 0.0, "S1": 1 / 3, "S2": 2 / 3}
+LEVELS = {"S0": 0.0, "S1": 1 / 3, "S2": 2 / 3, "S3": 1.0}
 
 
 def prompts():
@@ -49,6 +52,9 @@ def prompts():
                          "prompt": facts_prompt(f, words, f"{cell}{i}"), "target_words": int(round(words, -1)),
                          "max_new_tokens": int(words * 1.3 * 1.5) + 64, "n_facts": len(items)})
     PROMPTS.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    for part, cells in ((1, ("S0", "S1")), (2, ("S2", "S3"))):  # two GPU-lock chunks on the PC
+        (ROOT / "results" / "gpu13b" / f"b9_prompts_{part}.jsonl").write_text(
+            "".join(json.dumps(r) + "\n" for r in rows if r["cell"] in cells))
     print(len(rows), "prompts;", [(r["id"], r["n_facts"], r["human_share"]) for r in rows])
 
 
