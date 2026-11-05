@@ -27,6 +27,12 @@ Fixed before any B20 text exists:
   human cut.
 Prediction: if Pangram reads AI content per window, S matches B14 (about 6 or 7 of 10 Human) at 70% or
 more of T; if it reads the whole article's plan, S falls toward B9 S0.
+Sharpened at 09:20, before any B20 text was scanned: Pangram 4 reads 512-token windows (stride 256) and
+calls a document Human only when 90% of its characters are Human (technical report, arXiv 2607.27183,
+via research/r2-primary-sources.md). If windows passed independently at B14's rate (13 of 20), a
+three-window piece would read Human about 0.65^3, so 2 to 4 of 10. The test that separates the two
+readings is the AI count: per-window reading predicts AI at B14's level (0 to 1 of 10) with Mixed for
+most of the rest; whole-plan reading predicts AI verdicts near B9 S0 (7 of 10).
 
 Usage (paragraph server running and tunnelled, as for B18):
   uv run python experiments/b20_sectional.py write
