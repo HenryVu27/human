@@ -1,0 +1,71 @@
+{
+ "checks": {
+  "texts": 10,
+  "words": 706.8,
+  "length_ratio": 0.6597220772823865,
+  "claim_support": 0.9189243868218117,
+  "source_share": 0.5509442939581519,
+  "draft_share": 0.2992624793412589,
+  "coverage": 0.21637831742294217,
+  "quality_vs_human_cut": 0.3
+ },
+ "copying": {
+  "mean": {
+   "from_sources": 0.20804864900612036,
+   "from_draft": 0.0956393413475624,
+   "sources_beyond_prompt": 0.02071978652663728
+  },
+  "per_text": {
+   "R_a0610": {
+    "from_sources": 0.14590163934426228,
+    "from_draft": 0.06885245901639345,
+    "sources_beyond_prompt": 0.013114754098360656
+   },
+   "R_a0611": {
+    "from_sources": 0.236986301369863,
+    "from_draft": 0.13835616438356163,
+    "sources_beyond_prompt": 0.0
+   },
+   "R_a0612": {
+    "from_sources": 0.24130434782608695,
+    "from_draft": 0.08695652173913043,
+    "sources_beyond_prompt": 0.08478260869565217
+   },
+   "R_a0613": {
+    "from_sources": 0.1763888888888889,
+    "from_draft": 0.12222222222222222,
+    "sources_beyond_prompt": 0.03611111111111111
+   },
+   "R_a0614": {
+    "from_sources": 0.08123249299719888,
+    "from_draft": 0.0392156862745098,
+    "sources_beyond_prompt": 0.012605042016806723
+   },
+   "R_a0615": {
+    "from_sources": 0.16826265389876882,
+    "from_draft": 0.057455540355677154,
+    "sources_beyond_prompt": 0.0
+   },
+   "R_a0616": {
+    "from_sources": 0.2717842323651452,
+    "from_draft": 0.11099585062240663,
+    "sources_beyond_prompt": 0.024896265560165973
+   },
+   "R_a0617": {
+    "from_sources": 0.2493857493857494,
+    "from_draft": 0.15847665847665848,
+    "sources_beyond_prompt": 0.019656019656019656
+   },
+   "R_a0618": {
+    "from_sources": 0.2665330661322645,
+    "from_draft": 0.0,
+    "sources_beyond_prompt": 0.01603206412825651
+   },
+   "R_a0619": {
+    "from_sources": 0.2427071178529755,
+    "from_draft": 0.17386231038506417,
+    "sources_beyond_prompt": 0.0
+   }
+  }
+ }
+}

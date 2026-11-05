@@ -34,12 +34,21 @@ Fixed before any B24 text exists (2026-11-05, committed before the sources step 
 Prediction: R reads like B9 S2 (6 or more of 10 Human, at most 1 AI) at 70% or more of T. If it reads
 like B14 at full length, cited human sources solve the length problem. If AI verdicts rise, the
 draft's third carries its plan even when outnumbered, unlike in B9.
+Amended 17:06, after the pick and before any scan: about a fifth of the kept words sit in 8-word runs
+copied verbatim from the Wikipedia sources (8 to 27%; B14's texts share none with them), almost all
+of it through the facts, whose extraction keeps source wording; the writer adds 0 to 8% beyond the
+prompt. B5 and B9's human cells copied as much (B5 D 8 to 57%, 10 of 10 Human; reworded E median about
+3%, 7 of 10 Human). The `copying` step records, per text, the share copied from the sources, from the
+draft, and from the sources beyond the prompt (humanizer.checks.copying); the report gives R's verdicts
+next to it. Nothing about the texts or the scan changes. Verbatim source sentences without quotation
+are not acceptable in a product; a reworded-facts cell is the follow-up, not part of B24.
 
 Usage:
   uv run python experiments/b24_cited.py sources
   uv run python experiments/b24_cited.py prompts
   for s in 0 1 2 3: uv run python experiments/gen_mlx.py results/b24_prompts.jsonl results/b24_gen_s$s.jsonl --guard --adapter models/lora-13b-pool-mlx --seed $s
   uv run python experiments/b24_cited.py pick
+  uv run python experiments/b24_cited.py copying
   uv run python experiments/b24_cited.py record R_a0610=AI ...
 """
 
@@ -52,6 +61,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from humanizer import ROOT
 from humanizer.checks.claims import claim_check
+from humanizer.checks.copying import copied_share
 from humanizer.checks.quality import quality_pair
 from humanizer.checks.repeats import template_repeats
 from humanizer.data import wiki
@@ -279,6 +289,21 @@ def pick():
     print(json.dumps(summary, indent=1))
 
 
+def copying():
+    """Verbatim 8-word runs shared with the sources, with the draft, and with the sources beyond the prompt."""
+    drafts, prm = _drafts(), {r["id"]: r for r in map(json.loads, PROMPTS.open())}
+    src = {r["id"]: r for r in map(json.loads, SOURCES.open())}
+    per = {}
+    for r in map(json.loads, TEXTS.open()):
+        refs = "\n".join(s["text"] for s in src[r["source"] if "source" in r else r["id"][2:]]["sources"])
+        per[r["id"]] = {"from_sources": copied_share(r["text"], refs), "from_draft": copied_share(r["text"], drafts[r["id"][2:]]),
+                        "sources_beyond_prompt": copied_share(r["text"], refs, beyond=prm[r["id"]]["prompt"])}
+    mean = {k: statistics.mean(v[k] for v in per.values()) for k in ("from_sources", "from_draft", "sources_beyond_prompt")}
+    out = json.loads(OUT.read_text())
+    OUT.write_text(json.dumps(out | {"copying": {"mean": mean, "per_text": per}}, indent=1))
+    print(json.dumps(mean, indent=1))
+
+
 def record(pairs: list[str]):
     verdicts = dict(p.split("=") for p in pairs)
     ids = [json.loads(line)["id"] for line in TEXTS.open()]
@@ -290,4 +315,4 @@ def record(pairs: list[str]):
 
 
 if __name__ == "__main__":
-    {"sources": sources, "prompts": prompts, "pick": pick}.get(sys.argv[1], lambda: record(sys.argv[2:]))()
+    {"sources": sources, "prompts": prompts, "pick": pick, "copying": copying}.get(sys.argv[1], lambda: record(sys.argv[2:]))()

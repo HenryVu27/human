@@ -30,6 +30,11 @@ per 100 words against the essay's, sentence length spread (standard deviation, a
 quality_pair against the essay itself cut to the same length.
 Prediction: H 12 or more of 13 Human. D 2 or fewer Human. P about B14's rate (half Human) at about 40%
 of T. N 9 or more Human with at most 1 AI (B9: human-chosen facts read Human), at 50% or more of T.
+Amended 17:06, before any bench text exists: each P and N text also records its verbatim copying
+(humanizer.checks.copying, 8-word runs) from the essay, and from the essay beyond its prompt. Found in
+B24: texts written from extracted facts copy the source's wording through the facts; and the writer's
+base model (OLMo-2) was pretrained on web text that likely includes these essays, so it may recall
+them. N's verdicts are read next to both numbers.
 Credits: about 125 (H) + 125 (D) + 50 (P) + 65 (N), of about 415 left after B24.
 Amended 16:48, before any bench text exists: a P or N text under 150 words is not scanned (Pangram is
 unreliable below that) and counts as not Human; essays have few numbers and names, so P's
@@ -52,6 +57,7 @@ from concurrent.futures import ThreadPoolExecutor
 
 from humanizer import ROOT
 from humanizer.checks.claims import claim_check
+from humanizer.checks.copying import copied_share
 from humanizer.checks.quality import quality_pair
 from humanizer.data.essays import OUT as ESSAYS, _rank
 from humanizer.data.facts import FACTS, Facts, extract, facts_prompt, parse_facts
@@ -170,6 +176,8 @@ def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tupl
                 "text": best["text"], "words": n, "target_words": prm[key]["target_words"], "raw_words": best["raw_words"],
                 "claims_entailed": best["claims_entailed"], "claims_total": best["claims_total"],
                 "voice": voice(best["text"]), "essay_voice": voice(essay["text"]),
+                "copied_from_essay": copied_share(best["text"], essay["text"]),
+                "essay_beyond_prompt": copied_share(best["text"], essay["text"], beyond=prm[key]["prompt"]),
                 "quality_vs_essay": quality_pair(_cut(essay["text"], n), best["text"]),
                 "candidates": [{k: c[k] for k in ("seed", "claims_entailed", "claims_total", "raw_words", "hit_eos")}
                                | {"words": len(c["text"].split())} for c in samples[key]]}
@@ -184,6 +192,8 @@ def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tupl
                          "length_ratio": statistics.mean(r["words"] / r["target_words"] for r in cr),
                          "claim_support": statistics.mean(r["claims_entailed"] / max(1, r["claims_total"]) for r in cr),
                          "quality_vs_essay": statistics.mean(r["quality_vs_essay"] for r in cr),
+                         "copied_from_essay": statistics.mean(r["copied_from_essay"] for r in cr),
+                         "essay_beyond_prompt": statistics.mean(r["essay_beyond_prompt"] for r in cr),
                          **{k: statistics.mean(r["voice"][k] for r in cr) for k in ("first_person", "sentence_sd")}}
     b = list(bench_rows.values())
     for cell, key in (("H", "text"), ("D", "draft")):
