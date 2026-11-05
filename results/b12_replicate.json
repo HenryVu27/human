@@ -1,0 +1,67 @@
+{
+ "checks": {
+  "R": {
+   "words": 393.4,
+   "claim_support": 0.8108257191172643,
+   "quality_win_rate": 0.025
+  },
+  "K": {
+   "words": 641.55,
+   "claim_support": 1.0
+  }
+ },
+ "pangram_summary": {
+  "R": {
+   "AI": 4,
+   "Mixed": 4,
+   "Human": 12
+  },
+  "K": {
+   "AI": 20,
+   "Mixed": 0,
+   "Human": 0
+  }
+ },
+ "pangram": {
+  "R_a0610": "AI",
+  "R_a0611": "Human",
+  "R_a0612": "Human",
+  "R_a0613": "Human",
+  "R_a0614": "Mixed",
+  "R_a0615": "AI",
+  "R_a0616": "AI",
+  "R_a0617": "Human",
+  "R_a0618": "Human",
+  "R_a0619": "AI",
+  "R_a0620": "Human",
+  "R_a0621": "Human",
+  "R_a0622": "Human",
+  "R_a0623": "Human",
+  "R_a0624": "Human",
+  "R_a0625": "Human",
+  "R_a0626": "Mixed",
+  "R_a0627": "Mixed",
+  "R_a0628": "Human",
+  "R_a0629": "Mixed",
+  "K_a0610": "AI",
+  "K_a0611": "AI",
+  "K_a0612": "AI",
+  "K_a0613": "AI",
+  "K_a0614": "AI",
+  "K_a0615": "AI",
+  "K_a0616": "AI",
+  "K_a0617": "AI",
+  "K_a0618": "AI",
+  "K_a0619": "AI",
+  "K_a0620": "AI",
+  "K_a0621": "AI",
+  "K_a0622": "AI",
+  "K_a0623": "AI",
+  "K_a0624": "AI",
+  "K_a0625": "AI",
+  "K_a0626": "AI",
+  "K_a0627": "AI",
+  "K_a0628": "AI",
+  "K_a0629": "AI"
+ }
+}
