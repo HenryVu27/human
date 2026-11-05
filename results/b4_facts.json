@@ -1,0 +1,239 @@
+{
+ "group_a_checks": {
+  "claim_pass_rate": 0.3,
+  "no_new_specifics_rate": 0.6,
+  "entailed_share": 0.9261111599957972,
+  "quality_win_rate": 0.0,
+  "mean_words": 1125.5
+ },
+ "group_a_rows": [
+  {
+   "id": "a0600",
+   "words": 730,
+   "claim_pass": true,
+   "unsupported_specifics": [],
+   "entailed": "29/30",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0601",
+   "words": 1514,
+   "claim_pass": false,
+   "unsupported_specifics": [
+    "Our Cities",
+    "Our Future"
+   ],
+   "entailed": "34/36",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0602",
+   "words": 1388,
+   "claim_pass": false,
+   "unsupported_specifics": [],
+   "entailed": "41/44",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0603",
+   "words": 1541,
+   "claim_pass": false,
+   "unsupported_specifics": [
+    "Our Catholic",
+    "Our Curriculum"
+   ],
+   "entailed": "32/33",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0604",
+   "words": 709,
+   "claim_pass": true,
+   "unsupported_specifics": [],
+   "entailed": "39/40",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0605",
+   "words": 791,
+   "claim_pass": false,
+   "unsupported_specifics": [],
+   "entailed": "39/43",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0606",
+   "words": 888,
+   "claim_pass": true,
+   "unsupported_specifics": [],
+   "entailed": "39/39",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0607",
+   "words": 1502,
+   "claim_pass": false,
+   "unsupported_specifics": [],
+   "entailed": "30/33",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0608",
+   "words": 972,
+   "claim_pass": false,
+   "unsupported_specifics": [
+    "American Heart Association",
+    "the silent killer"
+   ],
+   "entailed": "47/51",
+   "quality_vs_draft": 0.0
+  },
+  {
+   "id": "a0609",
+   "words": 1220,
+   "claim_pass": false,
+   "unsupported_specifics": [
+    "Learning Te Reo",
+    "Our Languages"
+   ],
+   "entailed": "39/53",
+   "quality_vs_draft": 0.0
+  }
+ ],
+ "pangram_summary": {
+  "A_ai_facts": {
+   "AI": 9,
+   "Mixed": 1,
+   "Human": 0,
+   "n": 10
+  },
+  "B_human_facts": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 10,
+   "n": 10
+  }
+ },
+ "pangram_rows": [
+  {
+   "group": "A_ai_facts",
+   "id": "a0600",
+   "words": 730,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0601",
+   "words": 1514,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0602",
+   "words": 1388,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0603",
+   "words": 1541,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0604",
+   "words": 709,
+   "pangram": "Mixed"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0605",
+   "words": 791,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0606",
+   "words": 888,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0607",
+   "words": 1502,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0608",
+   "words": 972,
+   "pangram": "AI"
+  },
+  {
+   "group": "A_ai_facts",
+   "id": "a0609",
+   "words": 1220,
+   "pangram": "AI"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0336",
+   "words": 657,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0005",
+   "words": 855,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0017",
+   "words": 1448,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0480",
+   "words": 1006,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0860",
+   "words": 1721,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0423",
+   "words": 641,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0034",
+   "words": 628,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0529",
+   "words": 836,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0589",
+   "words": 409,
+   "pangram": "Human"
+  },
+  {
+   "group": "B_human_facts",
+   "id": "h0896",
+   "words": 928,
+   "pangram": "Human"
+  }
+ ]
+}

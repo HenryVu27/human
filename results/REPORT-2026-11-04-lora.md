@@ -108,3 +108,47 @@ What this changes: the editor stage, not the writer, is now the bottleneck. A hu
 3. **Test the same way.** 10 fine-tuned outputs from fact-only notes of AI drafts versus 10 from fact-only notes of human articles, on the dashboard (about 120 credits).
 
 If fact-only notes from AI drafts pass, the humanizer works end to end, and the quality work in section 5 follows. If they still fail, the signal is in the choice of facts itself, and the editor has to add what a human writer would: a point of view the draft lacks. That cannot happen without inventing, and would change the project's premise.
+
+## 8. B4: fact-only notes (Pangram, 20 texts)
+
+**Result: the signal survives fact-only notes.** The 13B adapter was retrained on 620 pairs of shuffled, standalone facts (no headings, order or contrasts) and the article they came from: validation loss went from 1.10 to 0.97 in 155 steps on the PC. It then wrote 20 texts with seed 0. Group selection was the same as B3 and was fixed before the scan.
+
+| Group | Facts extracted from | Pangram: Human | Mixed | AI | Mean words |
+|---|---|---|---|---|---|
+| A | AI drafts (dev a0600 to a0609) | 0 | 1 (a0604) | 9 | 1,126 |
+| B | the same 10 held-out human articles as B3 | 10 | 0 | 0 | 913 |
+
+Fisher exact test, two-sided (AI or Mixed against Human): p = 0.00001. The scan used 218 dashboard credits, leaving about 2,657. Source: `results/b4_facts.json`, texts in `results/b4_texts.jsonl`.
+
+Group A on the other checks (vs the source draft, as in section 2): claim check pass 3 of 10, no new specifics 6 of 10, entailed share 0.93, quality wins against the draft 0 of 10. The writer is worse on fact lists than on section notes:
+
+- **Repetition loops.** On average 29% of a group A text's sentences are repeats (B: 10%). Four group A texts ran past their length target into loops (a0601 1,514 words against a target of 910). This should bias Pangram toward Human, if anything. Group B also loops in places and still reads Human, so the loops do not explain the verdicts.
+- **The new specifics are mostly headings** the writer made up from the topic ("Our Curriculum"). One is a real addition: "American Heart Association" in a0608.
+
+**Finding: fact-only notes still carry the source's wording.** I measured word 4-gram overlap, which costs nothing to compute:
+
+| | A (AI source) | B (human source) |
+|---|---|---|
+| Output 4-grams found in the fact list | 50% | 41% |
+| Fact-list 4-grams copied verbatim from the source | 47% | 35% |
+| Output 4-grams found in the source text | 37% | 26% |
+| Output 4-grams found in the source but not in the facts | 3% | 4% |
+| A only: output 4-grams found in the human article the AI draft was mirrored from | 0.6% | |
+
+The extractor keeps about half of the source's phrasing inside the facts, and the writer copies about half its text from the facts. So more than a third of each group A output is the AI draft's own wording. B3's conclusion that the signal is in the content plan still holds, but B4 cannot tell apart two explanations: Pangram reads the AI phrasing that passes through the facts, or it reads which facts an AI chooses to state.
+
+**Confound in both B3 and B4: topic.** Groups A and B are about different subjects. Each AI draft is a mirror of a human article on the same subject (a0600 comes from h0600), and h0600 to h0609 were never trained on. That gives a matched control.
+
+### Next: B5, a 2 by 2 on the same 10 topics
+
+| | Facts kept in the source's words (as B4) | Facts reworded (only names, numbers and quotes kept verbatim) |
+|---|---|---|
+| AI draft a0600 to a0609 | A (done, B4) | C |
+| Its human original h0600 to h0609 | D | E |
+
+- D against A isolates the source with the topic held fixed. If D reads Human, the signal comes from the AI draft, not from the subject.
+- C against A isolates the wording. If C reads Human, rewording the facts is the editor's fix and the humanizer works end to end. If C stays AI while E reads Human, the signal is in which facts the AI chose, and the editor has to cut or replace the AI's choice of points.
+- Rewording uses the same extractor on both sources, so its own style is the same in C and E.
+- Writer: the B4 adapter, unchanged, seed 0. About 30 texts and 330 dashboard credits, inside the plan.
+
+The PC is offline for an Ubuntu install, so B5 generation waits for it, or for a port of the writer to the Mac.
