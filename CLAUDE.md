@@ -10,6 +10,7 @@ Research project: turn any AI draft into prose that Pangram 4.x and blind expert
 - 16 GB Mac: keep one large model in memory at a time (`humanizer.llm.load_mlx` does this within a process). Never run two GPU jobs (MLX or PyTorch MPS) in parallel processes; on 2026-11-04 that crashed both with a Metal out-of-memory error. Chain them in one background command.
 - Bulk `claude -p` calls go through `humanizer.llm` (cached, lean flags, at most 4 workers). The Claude account is shared with Henry's work computer.
 - Before using Claude in Chrome, confirm it is the Chrome on this Mac (serve a one-time token on 127.0.0.1 and load it).
+- Every experiment gets a row in `results/LABNOTEBOOK.md` (question, design, result, files) and every literature search a row in its search log, with the agent's raw report saved under `results/research/`. Fix the selection rule in the script docstring and commit it before scanning.
 - Docs and reports: no em dashes, no emojis, acronyms spelled out on first use.
 
 ## Commands
