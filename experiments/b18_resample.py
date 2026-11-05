@@ -26,8 +26,14 @@ Fixed before any B18 text exists:
   states (coverage, new here and also measured on B14's pieces) and B14's quality judge.
 - Cell W: one text per draft, all 20 scanned. Pangram only scores; it selects nothing.
 
+Amended 2026-11-05 09:30, before any B18 text was scanned: the first run finished 2 drafts (a0611 at
+229 of 970 words, a0612 at 172 of 1150) before its server reached the 1.9-hour cap; Claude calls had
+slowed from about 48 to 4 per 10 minutes. Both stopped on 2 empty steps once the prompt's facts were
+used up, the length failure B20 now tests a fix for. B18 finishes only the other four blind-read
+drafts (a0610, a0613, a0614, a0615) and cell W becomes those 6 texts, all scanned.
+
 Usage (server running and tunnelled: ssh -N -L 8765:127.0.0.1:8765 <user>@<pc-tailscale-ip>):
-  uv run python experiments/b18_resample.py write
+  uv run python experiments/b18_resample.py write [a0610 a0613 ...]   only these drafts
   uv run python experiments/b18_resample.py coverage    B14 pieces, for comparison
   uv run python experiments/b18_resample.py record W_a0610=AI ...
 """
@@ -157,8 +163,8 @@ def _coverage(draft: str, text: str) -> float:
     return len(stated & set(range(1, len(facts) + 1))) / max(1, len(facts))
 
 
-def write():
-    rows = [json.loads(line) for line in PROMPTS.open()]
+def write(only: list[str] | None = None):
+    rows = [json.loads(line) for line in PROMPTS.open() if not only or json.loads(line)["source"] in only]
     done = {json.loads(line)["id"] for line in TEXTS.open()} if TEXTS.exists() else set()
     todo = [(r, i) for i, r in enumerate(rows) if f"W_{r['source']}" not in done]
     drafts = _drafts()
@@ -221,4 +227,7 @@ def record(pairs: list[str]):
 
 if __name__ == "__main__":
     step = sys.argv[1]
-    {"write": write, "coverage": coverage}.get(step, lambda: record(sys.argv[2:]))()
+    if step == "write":
+        write(sys.argv[2:])
+    else:
+        {"coverage": coverage}.get(step, lambda: record(sys.argv[2:]))()
