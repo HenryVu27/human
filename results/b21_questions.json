@@ -1,0 +1,72 @@
+[
+ {
+  "id": "s1",
+  "title": "From prompt engineering to context engineering",
+  "opening": "When GPT-3 landed in 2020, early adopters quickly discovered that tiny changes in phrasing produced wildly different outputs. Swap \u201csummarize\u201d for \u201cexplain briefly,\u201d add \u201cstep by step,\u201d rearrange a few words, tell it to roleplay as a character with no safety guidelines, and the same ...",
+  "questions": [
+   "Can you describe a specific agent failure you hit in your diabetes coaching agent where the model had the ability but lacked the right information, and what was missing from the context?",
+   "What does the actual token budget look like in your LangGraph agent, with approximate token counts for the system prompt, retrieved documents, tool definitions, memory, and conversation history?",
+   "What was a concrete change you made to what went into the context window, such as trimming, reordering, or adding information, and how did the agent's behavior or results change afterward?"
+  ]
+ },
+ {
+  "id": "s2",
+  "title": "The seven components",
+  "opening": "Every LLM call consumes a context window, a fixed-size buffer of tokens containing everything the model can see. What you put in that buffer determines what the model can do. Several people have converged on roughly the same decomposition (Manus, Anthropic, LangChain, Google), and seven ...",
+  "questions": [
+   "In your Claude Code research session with 70+ tools and subagents, what were the actual numbers for how the context budget split mid-session (e.g., system prompt, tools, history, retrieved content), and what surprised you most?",
+   "Can you describe a specific case where a 'small tweak' to your system prompt broke behavior three turns later: what did you change, what broke, and how did you trace it back?",
+   "In your patient-profile agent, what is a concrete example of the condition filter or pull-based retrieval changing an outcome, such as a query that returned the wrong guide before you added it, and what did the model do differently afterward?"
+  ]
+ },
+ {
+  "id": "s3",
+  "title": "Write, select, compress, isolate",
+  "opening": "Write: move information out of the window into external storage Select: retrieve relevant information back via RAG or memory queries Compress: tiered approach (raw context \u2192 compact by stripping filler \u2192 summarize only when needed), compress proactively at 80-90% capacity, trim in atomic turn groups. ...",
+  "questions": [
+   "Can you walk through one real conversation in your patient agent where compression or trimming changed the outcome, including roughly how many turns in it was and what the agent did differently before and after?",
+   "What measurable difference did the query rewriter make in your agent, such as retrieval hit rate, number of relevant documents returned, or a specific before-and-after query result?",
+   "When you split safety classification into separate input and output gate calls, what did you see before that change (a specific contamination or off-topic failure), and what did it cost in latency or tokens?"
+  ]
+ },
+ {
+  "id": "s4",
+  "title": "How context fails",
+  "opening": "Four context failure modes to watch for when an agent misbehaves: poisoning (errors compound), distraction (too much history), confusion (noise as signal), and clash (contradictory instructions). Different failures need different fixes. When an agent misbehaves, my first question is always \u201cwhat kind of context failure ...",
+  "questions": [
+   "You say you've noticed agents repeating actions from history beyond ~100k tokens. Can you describe a specific case: what was the agent doing, what did it repeat, and how did you confirm context length was the cause?",
+   "You suspect most context windows are 2-3x larger than needed. What did you trim in your own agent, and what were the before-and-after token counts and effect on behavior or quality?",
+   "In your patient-context agent, how often did it call the redundant tool despite the instruction, and what did you observe in logs or traces that showed the wasted round-trip (e.g., latency or cost)?"
+  ]
+ },
+ {
+  "id": "s5",
+  "title": "The diabetes coaching agent's token budget",
+  "opening": "Token budget from the diabetes coaching agent I built with LangGraph: All of the above is easier to understand with a concrete example, so let me walk through the diabetes management coaching assistant I built as a ReAct agent with LangGraph. The system prompt ranges ...",
+  "questions": [
+   "What did your actual token breakdown look like for the system prompt, such as how many tokens each block (identity, boundaries, examples, profile, state) used at early versus mature sessions?",
+   "After you moved the volatile state block to the end, what did you measure in cache hit rate or per-session cost, and what were the before and after numbers on your own agent?",
+   "After you removed the profile tool, what specifically did you see in the traces, such as how often the agent made redundant profile fetches before, and what example of the agent referencing profile data more confidently afterward?"
+  ]
+ },
+ {
+  "id": "s6",
+  "title": "Measuring it",
+  "opening": "Track cache hit rate, cost per task, and task completion rate vs. context size. Run A/B tests on context strategies, not just prompts. Benchmarks exist (ContextBench, Letta Context-Bench) but your own eval suite matters more. The one metric I track reliably is cache hit rate, ...",
+  "questions": [
+   "What exactly was the KV-cache violation you found in Section 5 (e.g., a timestamp or reordered tool list in the prefix), and how did you track it down and fix it?",
+   "What was your cost per conversation before and after the cache fix and any other changes, and how many sessions did you average over to get those numbers?",
+   "Have you run your own A/B test on a context strategy, and what did you compare, what did you measure, and which variant won?"
+  ]
+ },
+ {
+  "id": "s7",
+  "title": "The lesson",
+  "opening": "Context engineering is mostly about removal, not addition. Every improvement involved taking something out or moving it around. Context strategy isn\u2019t portable across providers; test on every model you support. Input tokens can outnumber output tokens by 100:1 in heavy agentic workloads, so context-side optimization ...",
+  "questions": [
+   "Which specific tool did you remove from your agent, and what changed in its behavior, accuracy, or token usage afterward?",
+   "What was the ordering mistake in your prompt that caused the 10x cost difference, and what were the actual before-and-after costs or token counts?",
+   "When a prompt that worked on one model failed on another, which models were involved, what exactly broke, and how did you fix it?"
+  ]
+ }
+]

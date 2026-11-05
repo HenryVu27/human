@@ -26,7 +26,7 @@ Fixed before any B18 text exists:
   states (coverage, new here and also measured on B14's pieces) and B14's quality judge.
 - Cell W: one text per draft, all 20 scanned. Pangram only scores; it selects nothing.
 
-Amended 2026-11-05 09:30, before any B18 text was scanned: the first run finished 2 drafts (a0611 at
+Amended 2026-11-05 09:14, before any B18 text was scanned: the first run finished 2 drafts (a0611 at
 229 of 970 words, a0612 at 172 of 1150) before its server reached the 1.9-hour cap; Claude calls had
 slowed from about 48 to 4 per 10 minutes. Both stopped on 2 empty steps once the prompt's facts were
 used up, the length failure B20 now tests a fix for. B18 finishes only the other four blind-read

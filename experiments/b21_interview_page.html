@@ -1,0 +1,143 @@
+<title>Humanizer Author Interview</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
+<style>
+/* Layout: one band per section of the post, its opening as a reminder, then three questions with answer boxes. */
+:root {
+  --paper: #f6f7f5;
+  --sheet: #ffffff;
+  --ink: #1c2321;
+  --muted: #5b6763;
+  --rule: #d7ddda;
+  --accent: #1f5c57;
+  --done: #2f6b3a;
+  --serif: "Literata", Georgia, "Times New Roman", serif;
+  --sans: "Public Sans", "Helvetica Neue", Arial, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, Menlo, monospace;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #111614; --sheet: #181e1c; --ink: #e2e8e5; --muted: #9aa7a2; --rule: #2b3431;
+    --accent: #79bdb4; --done: #8cc79a; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #111614; --sheet: #181e1c; --ink: #e2e8e5; --muted: #9aa7a2; --rule: #2b3431;
+  --accent: #79bdb4; --done: #8cc79a; color-scheme: dark;
+}
+body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
+.wrap { max-width: 820px; margin: 0 auto; padding-block: 28px 64px;
+  padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
+header { display: grid; gap: 10px; margin-bottom: 28px; }
+h1 { font-family: var(--serif); font-weight: 600; font-size: 1.9rem; line-height: 1.2; margin: 0; text-wrap: balance; }
+header p { margin: 0; color: var(--muted); max-width: 68ch; }
+.status { position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5; background: var(--paper);
+  border-bottom: 1px solid var(--rule); padding-block: 10px; margin-bottom: 8px;
+  display: flex; flex-wrap: wrap; gap: 8px 18px; align-items: center; font-size: 0.9rem; }
+body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper); }
+.meter { flex: 1 1 160px; height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; min-width: 120px; }
+.meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
+.conn { color: var(--muted); }
+section { border-top: 1px solid var(--rule); padding-block: 26px; display: grid; gap: 16px; }
+.sid { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
+h2 { font-family: var(--serif); font-weight: 600; font-size: 1.3rem; margin: 2px 0 0; }
+.opening { font-family: var(--serif); color: var(--muted); margin: 0; font-size: 0.95rem; }
+.q { display: grid; gap: 8px; }
+.q label { font-weight: 600; }
+.q .saved { font-weight: 400; font-size: 0.82rem; color: var(--done); margin-left: 8px; }
+textarea { width: 100%; box-sizing: border-box; min-height: 5.5em; font: inherit; font-family: var(--serif); font-size: 1rem;
+  color: var(--ink); background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 10px 12px; resize: vertical; }
+textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
+@media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
+</style>
+
+<div class="wrap">
+  <header>
+    <h1>Humanizer Author Interview</h1>
+    <p>These questions are about your context-engineering post, section by section. The humanizer will write each section from the post's specific facts plus what you say here, then Pangram scores it. Your answers are also scored on their own, as written.</p>
+    <p>Answer the way you would explain it to a colleague: rough, short and typos are all fine. Give a number only if you actually remember it, and skip anything you don't. Answers save as you type.</p>
+  </header>
+  <div class="status" role="status">
+    <strong id="count">0 of 0 answered</strong>
+    <div class="meter" aria-hidden="true"><i id="bar"></i></div>
+    <span class="conn" id="conn">Connecting to the answer store...</span>
+  </div>
+  <main id="sections"></main>
+</div>
+
+<script type="application/json" id="data">__SECTIONS__</script>
+<script>
+const sections = JSON.parse(document.getElementById("data").textContent);
+const ids = sections.flatMap(s => s.questions.map((_, i) => `${s.id}-q${i + 1}`));
+const answers = {};
+let db = null, readOnly = false;
+
+function render() {
+  const main = document.getElementById("sections");
+  sections.forEach((s, n) => {
+    const sec = document.createElement("section");
+    const tag = Object.assign(document.createElement("span"), { className: "sid", textContent: `Section ${n + 1} of ${sections.length}` });
+    const h = Object.assign(document.createElement("h2"), { textContent: s.title });
+    const open = Object.assign(document.createElement("p"), { className: "opening", textContent: s.opening });
+    sec.append(tag, h, open);
+    s.questions.forEach((q, i) => {
+      const id = `${s.id}-q${i + 1}`;
+      const box = Object.assign(document.createElement("div"), { className: "q" });
+      const label = Object.assign(document.createElement("label"), { htmlFor: id, textContent: q });
+      label.append(Object.assign(document.createElement("span"), { className: "saved", id: `${id}-saved` }));
+      const ta = Object.assign(document.createElement("textarea"), { id, placeholder: "Your answer, or leave blank to skip" });
+      let t;
+      ta.addEventListener("input", () => { answers[id] = ta.value; progress(); clearTimeout(t); t = setTimeout(() => save(id), 900); });
+      box.append(label, ta);
+      sec.append(box);
+    });
+    main.append(sec);
+  });
+}
+
+function paint(id) {
+  const ta = document.getElementById(id);
+  if (ta && document.activeElement !== ta && typeof answers[id] === "string") ta.value = answers[id];
+  const s = document.getElementById(`${id}-saved`);
+  if (s) s.textContent = answers[id]?.trim() ? "Saved" : "";
+}
+
+function progress() {
+  const n = ids.filter(id => answers[id]?.trim()).length;
+  document.getElementById("count").textContent = `${n} of ${ids.length} answered`;
+  document.getElementById("bar").style.width = `${(100 * n) / ids.length}%`;
+}
+
+const queue = {};
+async function save(id) {
+  if (!db || readOnly) return;
+  if (queue[id]) { queue[id].again = true; return; }
+  queue[id] = { again: false };
+  try {
+    do {
+      queue[id].again = false;
+      await db.doc(`answers/${id}`).set({ text: answers[id] || "", at: new Date().toISOString() });
+    } while (queue[id].again);
+    paint(id);
+    document.getElementById("conn").textContent = "Saved to the answer store";
+  } catch (e) {
+    if (e && e.code === "invalid_argument") { readOnly = true; document.getElementById("conn").textContent = "Read-only for you: answers will not be kept"; }
+    else document.getElementById("conn").textContent = "Could not save the last answer; it stays on this page";
+  } finally { delete queue[id]; }
+}
+
+render(); progress();
+
+(async () => {
+  const conn = document.getElementById("conn");
+  db = window.claude ? await window.claude.use("db") : null;
+  if (!db) { conn.textContent = "Answer store unavailable here: answers will not be kept"; return; }
+  const timer = setTimeout(() => { conn.textContent = "The answer store is not answering yet; answers may not be kept"; }, 10000);
+  db.collection("answers").onSnapshot(snap => {
+    if (!snap.metadata.fromCache) { clearTimeout(timer); conn.textContent = "Connected: answers save as you type"; }
+    for (const d of snap.docs) { if (!queue[d.id] && document.activeElement?.id !== d.id) { answers[d.id] = d.data().text ?? ""; paint(d.id); } }
+    progress();
+  }, () => { clearTimeout(timer); conn.textContent = "Lost the answer store: new answers stay on this page only"; });
+})();
+</script>
