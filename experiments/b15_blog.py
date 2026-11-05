@@ -74,9 +74,9 @@ def prompts():
     print([(r["id"], r["n_facts"], r["n_facts_all"], r["target_words"]) for r in rows])
 
 
-def pick():
+def pick(prefix: str = "b15", cell: str = "B"):
     secs = {r["id"]: r for r in map(json.loads, SECTIONS.open())}
-    gens = [(s, json.loads(line)) for s in (0, 1, 2, 3) for line in (ROOT / "results" / f"b15_gen_s{s}.jsonl").open()]
+    gens = [(s, json.loads(line)) for s in (0, 1, 2, 3) for line in (ROOT / "results" / f"{prefix}_gen_s{s}.jsonl").open()]
 
     def one(item):
         s, g = item
@@ -93,16 +93,17 @@ def pick():
     rows = []
     for key, sec in secs.items():
         best = max(cands[key], key=lambda c: (c["claims_entailed"], c["claims_entailed"] / max(1, c["claims_total"])))
-        rows.append({"id": f"O_{key}", "title": sec["title"], "text": sec["text"], "words": sec["words"]})
-        rows.append({"id": f"B_{key}", "title": sec["title"], "seed": best["seed"], "text": best["text"],
+        if cell == "B":
+            rows.append({"id": f"O_{key}", "title": sec["title"], "text": sec["text"], "words": sec["words"]})
+        rows.append({"id": f"{cell}_{key}", "title": sec["title"], "seed": best["seed"], "text": best["text"],
                      "words": len(best["text"].split()), "claims_entailed": best["claims_entailed"],
                      "claims_total": best["claims_total"]})
-    TEXTS.write_text("".join(json.dumps(r) + "\n" for r in rows))
-    b = [r for r in rows if r["id"][0] == "B"]
-    summary = {"sections": len(b), "words_original": sum(r["words"] for r in rows if r["id"][0] == "O"),
+    (ROOT / "results" / f"{prefix}_texts.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    b = [r for r in rows if r["id"][0] == cell]
+    summary = {"sections": len(b), "words_original": sum(r["words"] for r in secs.values()),
                "words_output": sum(r["words"] for r in b),
                "claim_support": statistics.mean(r["claims_entailed"] / max(1, r["claims_total"]) for r in b)}
-    OUT.write_text(json.dumps({"checks": summary}, indent=1))
+    (ROOT / "results" / f"{prefix}_blog.json").write_text(json.dumps({"checks": summary}, indent=1))
     print(json.dumps(summary, indent=1))
 
 
