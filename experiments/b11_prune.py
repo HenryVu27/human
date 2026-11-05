@@ -55,9 +55,12 @@ def _units(text: str) -> list[tuple[int, str]]:
 
 def prune_one(text: str, draft: str) -> tuple[str, dict]:
     units = _units(text)
+    if not units:
+        return text, {"sentences": 0, "unsupported": 0, "kept": 0}
     listing = "\n".join(f"{i}. {s}" for i, (_, s) in enumerate(units, 1))
     raw = claude(UNSUPPORTED.format(draft=draft, sentences=listing), model="sonnet")
-    bad = {int(n) - 1 for n in json.loads(re.search(r"\{.*\}", raw, re.S).group(0))["unsupported"]}
+    m = re.search(r"\{.*\}", raw, re.S)  # no JSON back: keep everything rather than guess
+    bad = {int(n) - 1 for n in json.loads(m.group(0))["unsupported"]} if m else set()
     seen, keep = set(), []
     for i, (p, s) in enumerate(units):
         if i in bad or s in seen:

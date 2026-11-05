@@ -47,9 +47,12 @@ Return only JSON: {{"delete": [numbers]}}
 
 def clean_one(text: str) -> tuple[str, int]:
     units = _units(text)
+    if not units:
+        return text, 0
     listing = "\n".join(f"{i}. {s}" for i, (_, s) in enumerate(units, 1))
     raw = claude(CLEAN.format(sentences=listing), model="sonnet")
-    bad = {int(n) - 1 for n in json.loads(re.search(r"\{.*\}", raw, re.S).group(0))["delete"]}
+    m = re.search(r"\{.*\}", raw, re.S)  # no JSON back: delete nothing rather than guess
+    bad = {int(n) - 1 for n in json.loads(m.group(0))["delete"]} if m else set()
     paras = {}
     for i, (p, s) in enumerate(units):
         if i not in bad:
