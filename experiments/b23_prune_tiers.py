@@ -94,22 +94,25 @@ def label():
         if labels is None:
             print("unparsed", g["id"])
             continue
-        labels = ["X" if i in rep else lab for i, lab in enumerate(labels)]
-        rows.append({"id": g["id"][2:], "units": [[p, s, lab] for (p, s), lab in zip(units, labels)]})
+        rows.append({"id": g["id"][2:], "units": [[p, s, "X" if i in rep else lab, lab]
+                                                  for i, ((p, s), lab) in enumerate(zip(units, labels))]})
     LABELS.write_text("".join(json.dumps(r) + "\n" for r in rows))
     target = {r["source"]: r["target_words"] for r in map(json.loads, (ROOT / "results" / "b12_prompts.jsonl").open())}
     b14 = {r["id"][2:]: r["words"] for r in map(json.loads, (ROOT / "results" / "b14_texts.jsonl").open())}
     per = []
     for r in rows:
-        w = {t: sum(len(s.split()) for _, s, lab in r["units"] if lab == t) for t in TIERS}
+        w = {t: sum(len(s.split()) for _, s, lab, _ in r["units"] if lab == t) for t in TIERS}
+        se_any = sum(len(s.split()) for _, s, _, lab in r["units"] if lab in "SE")
         raw_words = sum(w.values())
         per.append({"id": r["id"], "words": w, "raw": raw_words, "target": target[r["id"]],
-                    "se_ratio": (w["S"] + w["E"]) / target[r["id"]], "s_ratio": w["S"] / target[r["id"]],
+                    "se_ratio": (w["S"] + w["E"]) / target[r["id"]], "se_with_repeats_ratio": se_any / target[r["id"]],
+                    "s_ratio": w["S"] / target[r["id"]],
                     "b14_ratio": b14[r["id"]] / target[r["id"]]})
     total = sum(p["raw"] for p in per)
     summary = {"texts": len(per),
                "share_of_raw_words": {t: sum(p["words"][t] for p in per) / total for t in TIERS},
                "se_length_ratio": statistics.mean(p["se_ratio"] for p in per),
+               "se_with_repeats_length_ratio": statistics.mean(p["se_with_repeats_ratio"] for p in per),
                "s_length_ratio": statistics.mean(p["s_ratio"] for p in per),
                "b14_length_ratio": statistics.mean(p["b14_ratio"] for p in per),
                "se_at_least_60pct": sum(p["se_ratio"] >= 0.6 for p in per)}
