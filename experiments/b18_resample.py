@@ -179,7 +179,7 @@ def write():
               f"{out['claims_entailed']}/{out['claims_total']}", f"coverage {out['coverage']:.2f}", flush=True)
         return out
 
-    with ThreadPoolExecutor(3) as ex:
+    with ThreadPoolExecutor(4) as ex:  # 4 drafts at once: at most 4 Claude calls in flight
         list(ex.map(one, todo))
     res = [json.loads(line) for line in TEXTS.open()]
     summary = {"texts": len(res), "words": statistics.mean(r["words"] for r in res),
