@@ -1,0 +1,24 @@
+{
+ "checks": {
+  "texts": 3,
+  "words": 327.3333333333333,
+  "length_ratio": 0.30678473874350165,
+  "claim_support": 0.7369281045751633,
+  "coverage": 0.14673202614379086,
+  "quality_vs_human_cut": 0.6666666666666666
+ },
+ "pangram_summary": {
+  "AI": 0,
+  "Mixed": 3,
+  "Human": 0
+ },
+ "pangram": {
+  "S_a0610": "Mixed",
+  "S_a0611": "Mixed",
+  "S_a0612": "Mixed",
+  "S_a0613": "Mixed"
+ },
+ "degenerate_probe": {
+  "S_a0612": "Mixed"
+ }
+}

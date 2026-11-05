@@ -161,7 +161,11 @@ def write():
 
     with ThreadPoolExecutor(4) as ex:  # 4 drafts at once: at most 4 Claude calls in flight
         list(ex.map(one, [(i, k) for i, k in enumerate(IDS) if f"S_{k}" not in done]))
-    res = [json.loads(line) for line in TEXTS.open()]
+    _checks()
+
+
+def _checks():
+    res = [r for r in map(json.loads, TEXTS.open()) if r["id"] not in DEGENERATE]
     summary = {"texts": len(res), "words": statistics.mean(r["words"] for r in res),
                "length_ratio": statistics.mean(r["words"] / r["target_words"] for r in res),
                "claim_support": statistics.mean(r["claims_entailed"] / max(1, r["claims_total"]) for r in res),
@@ -176,6 +180,8 @@ def record(pairs: list[str]):
     ids = [json.loads(line)["id"] for line in TEXTS.open()]
     assert set(verdicts) == set(ids), "need a verdict for every text"
     cell = [i for i in ids if i not in DEGENERATE]
+    if not OUT.exists():  # write() stopped before its summary (server cap, 12:28)
+        _checks()
     summary = {v: sum(verdicts[i] == v for i in cell) for v in ("AI", "Mixed", "Human")}
     out = json.loads(OUT.read_text())
     OUT.write_text(json.dumps(out | {"pangram_summary": summary, "pangram": verdicts,
