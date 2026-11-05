@@ -42,6 +42,17 @@ Return only JSON: {{"topic": "neutral topic in 3 to 8 words", "facts": ["fact", 
 </text>"""
 
 
+REWORD = """Below is a numbered list of facts. Rewrite each one in plain, terse words of your own.
+
+- Keep every name, number, date and quoted phrase exactly as written.
+- Change all other wording: reuse no run of three or more words from the original, apart from names, numbers and quotes.
+- Same meaning, nothing added, nothing dropped. One rewritten fact per input fact, in the same order.
+
+Return only JSON: {{"facts": ["fact", "fact"]}} with exactly {n} items.
+
+{facts}"""
+
+
 @dataclass
 class Facts:
     topic: str
@@ -55,6 +66,16 @@ def parse_facts(raw: str) -> Facts:
 
 def extract(text: str) -> Facts:
     return parse_facts(claude(FACTS.format(text=text), model="sonnet"))
+
+
+def reword(f: Facts) -> Facts:
+    """B5: the same facts with the source's wording replaced, names, numbers and quotes kept."""
+    listing = "\n".join(f"{i}. {x}" for i, x in enumerate(f.facts, 1))
+    raw = claude(REWORD.format(n=len(f.facts), facts=listing), model="sonnet")
+    out = parse_facts('{"topic": "", ' + re.search(r"\{(.*)\}", raw, re.S).group(1) + "}").facts
+    if len(out) != len(f.facts):
+        raise ValueError(f"reword returned {len(out)} facts for {len(f.facts)}")
+    return Facts(f.topic, [x.removesuffix(".") for x in out])  # 97% of training facts end without one
 
 
 def facts_prompt(f: Facts, words: int, key: str) -> str:
