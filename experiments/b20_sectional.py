@@ -36,6 +36,15 @@ most of the rest; whole-plan reading predicts AI verdicts near B9 S0 (7 of 10).
 Amended 10:05, before any B20 text existed: after the facts, the prompt carries only the last 500 or
 so words written (whole paragraphs), not the whole article. B18's steps slowed from about 10 to 60-80
 seconds as its prompt grew, because 4 candidates at once fill the PC's 16 GB of GPU memory.
+Amended 12:40, before any B20 text was scanned: stopped at 4 of 10 drafts (a0610, a0611, a0612, a0613),
+when the server reached its 1.9 hour cap. The length precondition failed: the 3 usable pieces reached
+23 to 36% of T, B18's range, because a step keeps about 20 words after pruning (candidates median 25
+words, 41% of sentences unsupported) and a section gets at most 10 steps. Reaching T would take about
+55 steps a draft, about 5 more GPU hours for the 6 left. S_a0612 is degenerate: after 5 paragraphs the
+writer looped on "What words would you use to explain your X to someone?", 13 paragraphs of it, and
+every check passed it (questions state no facts; exact-repeat deletion misses template repeats). It is
+excluded from cell S and scanned only as a probe of whether Pangram calls content-free text Human.
+Cell S is the 3 usable pieces, paired with B14 cell B and B18 cell W on the same drafts.
 
 Usage (paragraph server running and tunnelled, as for B18):
   uv run python experiments/b20_sectional.py write
