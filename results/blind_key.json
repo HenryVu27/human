@@ -1,0 +1,64 @@
+{
+ "p01": {
+  "draft": "a0615",
+  "cells": {
+   "A": "B",
+   "B": "W",
+   "C": "human"
+  }
+ },
+ "p02": {
+  "draft": "a0612",
+  "cells": {
+   "A": "W",
+   "B": "B",
+   "C": "human"
+  }
+ },
+ "p03": {
+  "draft": "a0610",
+  "cells": {
+   "A": "B",
+   "B": "human",
+   "C": "W"
+  }
+ },
+ "p04": {
+  "draft": "a0611",
+  "cells": {
+   "A": "W",
+   "B": "human",
+   "C": "B"
+  }
+ },
+ "p05": {
+  "draft": "a0617",
+  "cells": {
+   "A": "K",
+   "B": "human"
+  }
+ },
+ "p06": {
+  "draft": "a0613",
+  "cells": {
+   "A": "W",
+   "B": "B",
+   "C": "human"
+  }
+ },
+ "p07": {
+  "draft": "a0616",
+  "cells": {
+   "A": "human",
+   "B": "K"
+  }
+ },
+ "p08": {
+  "draft": "a0614",
+  "cells": {
+   "A": "B",
+   "B": "human",
+   "C": "W"
+  }
+ }
+}

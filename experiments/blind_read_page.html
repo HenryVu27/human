@@ -3,7 +3,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Literata:opsz,wght@7..72,400;7..72,600&family=Public+Sans:wght@400;600&family=IBM+Plex+Mono:wght@500&display=swap">
 <style>
-/* Layout: one pair per band, two manuscripts side by side (stacked on phones), a ballot under each pair. */
+/* Layout: one item per band, its two or three manuscripts side by side (stacked when narrow), a label under each, one ballot under the item. */
 :root {
   --paper: #f6f7f5;
   --sheet: #ffffff;
@@ -11,7 +11,6 @@
   --muted: #5b6763;
   --rule: #d7ddda;
   --accent: #1f5c57;
-  --accent-soft: #e2eeec;
   --done: #2f6b3a;
   --serif: "Literata", Georgia, "Times New Roman", serif;
   --sans: "Public Sans", "Helvetica Neue", Arial, sans-serif;
@@ -20,15 +19,15 @@
 @media (prefers-color-scheme: dark) {
   :root:not([data-theme="light"]) {
     --paper: #111614; --sheet: #181e1c; --ink: #e2e8e5; --muted: #9aa7a2; --rule: #2b3431;
-    --accent: #79bdb4; --accent-soft: #1d2f2c; --done: #8cc79a; color-scheme: dark;
+    --accent: #79bdb4; --done: #8cc79a; color-scheme: dark;
   }
 }
 :root[data-theme="dark"] {
   --paper: #111614; --sheet: #181e1c; --ink: #e2e8e5; --muted: #9aa7a2; --rule: #2b3431;
-  --accent: #79bdb4; --accent-soft: #1d2f2c; --done: #8cc79a; color-scheme: dark;
+  --accent: #79bdb4; --done: #8cc79a; color-scheme: dark;
 }
 body { background: var(--paper); color: var(--ink); font-family: var(--sans); font-size: 15px; line-height: 1.5; }
-.wrap { max-width: 1180px; margin: 0 auto; padding-block: 28px 64px;
+.wrap { max-width: 1240px; margin: 0 auto; padding-block: 28px 64px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); }
 header { display: grid; gap: 10px; max-width: 68ch; margin-bottom: 28px; }
 h1 { font-family: var(--serif); font-weight: 600; font-size: 1.9rem; line-height: 1.2; margin: 0; text-wrap: balance; }
@@ -40,48 +39,50 @@ body::before { content: ""; position: fixed; inset: 0 0 auto; height: env(safe-a
 .meter { flex: 1 1 160px; height: 6px; background: var(--rule); border-radius: 3px; overflow: hidden; min-width: 120px; }
 .meter i { display: block; height: 100%; width: 0; background: var(--accent); transition: width .3s; }
 .conn { color: var(--muted); }
-.pair { border-top: 1px solid var(--rule); padding-block: 26px; display: grid; gap: 16px; }
-.pair-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
+.item { border-top: 1px solid var(--rule); padding-block: 26px; display: grid; gap: 16px; }
+.item-head { display: flex; gap: 12px; align-items: baseline; flex-wrap: wrap; }
 .pid { font-family: var(--mono); font-size: 0.8rem; letter-spacing: 0.06em; text-transform: uppercase; color: var(--accent); }
 .saved { font-size: 0.82rem; color: var(--done); }
-.texts { display: grid; grid-template-columns: 1fr 1fr; gap: 18px; }
-.ms { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 20px; min-width: 0; }
-.ms h3 { font-family: var(--mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.08em; margin: 0 0 10px; color: var(--muted); }
+.texts { display: grid; grid-template-columns: repeat(var(--n, 2), minmax(0, 1fr)); gap: 18px; }
+.ms { background: var(--sheet); border: 1px solid var(--rule); border-radius: 4px; padding: 18px 20px; min-width: 0;
+  display: grid; grid-template-rows: auto 1fr auto; gap: 10px; }
+.ms h3 { font-family: var(--mono); font-weight: 500; font-size: 0.78rem; letter-spacing: 0.08em; margin: 0; color: var(--muted); }
 .ms p { font-family: var(--serif); font-size: 1.02rem; line-height: 1.65; margin: 0 0 0.85em; max-width: 65ch; overflow-wrap: anywhere; }
+.ms .label { border-top: 1px solid var(--rule); padding-top: 12px; }
 .ballot { display: grid; gap: 12px; }
 .q { display: flex; flex-wrap: wrap; gap: 8px 14px; align-items: center; }
-.q > span { min-width: 15em; font-weight: 600; }
-.seg { display: inline-flex; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
+.q > span { min-width: 12em; font-weight: 600; }
+.seg { display: inline-flex; flex-wrap: wrap; border: 1px solid var(--rule); border-radius: 4px; overflow: hidden; }
 .seg input { position: absolute; opacity: 0; pointer-events: none; }
-.seg label { padding: 6px 14px; cursor: pointer; border-left: 1px solid var(--rule); user-select: none; }
+.seg label { padding: 6px 12px; cursor: pointer; border-left: 1px solid var(--rule); user-select: none; }
 .seg label:first-of-type { border-left: 0; }
 .seg input:checked + label { background: var(--accent); color: var(--sheet); }
 .seg input:focus-visible + label { outline: 2px solid var(--accent); outline-offset: -2px; }
 textarea { width: 100%; box-sizing: border-box; min-height: 2.6em; font: inherit; color: var(--ink); background: var(--sheet);
   border: 1px solid var(--rule); border-radius: 4px; padding: 8px 10px; resize: vertical; }
 textarea:focus-visible { outline: 2px solid var(--accent); outline-offset: 1px; }
-.note { font-size: 0.85rem; color: var(--muted); }
-@media (max-width: 860px) { .texts { grid-template-columns: 1fr; } .q > span { min-width: 0; flex-basis: 100%; } }
+@media (max-width: 960px) { .texts { grid-template-columns: 1fr; } .q > span { min-width: 0; flex-basis: 100%; } }
 @media (prefers-reduced-motion: reduce) { .meter i { transition: none; } }
 </style>
 
 <div class="wrap">
   <header>
     <h1>Humanizer Blind Read</h1>
-    <p>Each pair is two openings on the same topic, cut at a paragraph break after about 350 words. In most pairs one was written by a person before 2022 and the other came out of the humanizer pipeline; a few pairs use plain AI condensation as a check on the reader. Which side is which changes at random.</p>
-    <p>Answer two questions per pair. Go with your first read; "Same" and "Can't tell" are fine answers. A short note on what gave it away helps most. Answers save as you click.</p>
+    <p>Each item shows two or three openings on the same topic, cut at a paragraph break after about 350 words. In most items one was written by a person before 2022 and the others came out of the humanizer pipeline; two items use plain AI condensation as a check on the reader. The order changes at random, and titles and bylines are removed from all of them.</p>
+    <p>For each item, pick the one that reads best, and label every text as written by a person or with a machine's help. Go with your first read; "Same" and "Can't tell" are fine answers. A short note on what gave it away helps most. Answers save as you click.</p>
   </header>
   <div class="status" role="status">
     <strong id="count">0 of 0 answered</strong>
     <div class="meter" aria-hidden="true"><i id="bar"></i></div>
     <span class="conn" id="conn">Connecting to the answer store...</span>
   </div>
-  <main id="pairs"></main>
+  <main id="items"></main>
 </div>
 
 <script type="application/json" id="data">__PAIRS__</script>
 <script>
-const pairs = JSON.parse(document.getElementById("data").textContent);
+const items = JSON.parse(document.getElementById("data").textContent);
+const LETTERS = "ABC";
 const answers = {};
 let db = null, readOnly = false;
 
@@ -89,46 +90,55 @@ function paras(text) {
   return text.split("\n").filter(s => s.trim()).map(s => { const p = document.createElement("p"); p.textContent = s; return p; });
 }
 
-function seg(pid, field, options) {
+function seg(name, options, onPick) {
   const box = document.createElement("div");
   box.className = "seg";
   box.setAttribute("role", "radiogroup");
   for (const [value, label] of options) {
-    const id = `${pid}-${field}-${value}`;
-    const input = Object.assign(document.createElement("input"), { type: "radio", name: `${pid}-${field}`, id, value });
-    input.addEventListener("change", () => save(pid, { [field]: value }));
-    const l = Object.assign(document.createElement("label"), { htmlFor: id, textContent: label });
-    box.append(input, l);
+    const id = `${name}-${value}`;
+    const input = Object.assign(document.createElement("input"), { type: "radio", name, id, value });
+    input.addEventListener("change", () => onPick(value));
+    box.append(input, Object.assign(document.createElement("label"), { htmlFor: id, textContent: label }));
   }
   return box;
 }
 
+function letters(item) { return LETTERS.slice(0, item.texts.length).split(""); }
+
+function complete(item) {
+  const a = answers[item.id] || {};
+  return Boolean(a.best) && letters(item).every(l => a.labels?.[l]);
+}
+
 function render() {
-  const main = document.getElementById("pairs");
-  pairs.forEach((p, i) => {
+  const main = document.getElementById("items");
+  items.forEach((item, i) => {
     const sec = document.createElement("section");
-    sec.className = "pair"; sec.id = p.id;
-    const head = document.createElement("div"); head.className = "pair-head";
-    head.innerHTML = `<span class="pid">Pair ${i + 1} of ${pairs.length}</span><span class="saved" id="${p.id}-saved"></span>`;
+    sec.className = "item"; sec.id = item.id;
+    const head = document.createElement("div"); head.className = "item-head";
+    head.append(Object.assign(document.createElement("span"), { className: "pid", textContent: `Item ${i + 1} of ${items.length}` }),
+      Object.assign(document.createElement("span"), { className: "saved", id: `${item.id}-saved` }));
     const texts = document.createElement("div"); texts.className = "texts";
-    for (const side of ["a", "b"]) {
+    texts.style.setProperty("--n", item.texts.length);
+    item.texts.forEach((t, j) => {
+      const L = LETTERS[j];
       const ms = document.createElement("article"); ms.className = "ms";
-      const h = document.createElement("h3"); h.textContent = `TEXT ${side.toUpperCase()}`;
-      ms.append(h, ...paras(p[side]));
+      const body = document.createElement("div"); body.append(...paras(t));
+      const label = document.createElement("div"); label.className = "label";
+      label.append(seg(`${item.id}-label-${L}`, [["person", "Person"], ["machine", "Machine help"], ["unsure", "Can't tell"]],
+        v => save(item.id, { labels: { ...(answers[item.id]?.labels || {}), [L]: v } })));
+      ms.append(Object.assign(document.createElement("h3"), { textContent: `TEXT ${L}` }), body, label);
       texts.append(ms);
-    }
+    });
     const ballot = document.createElement("div"); ballot.className = "ballot";
-    const q1 = document.createElement("div"); q1.className = "q";
-    q1.append(Object.assign(document.createElement("span"), { textContent: "Which reads better?" }),
-      seg(p.id, "better", [["A", "A"], ["B", "B"], ["same", "Same"]]));
-    const q2 = document.createElement("div"); q2.className = "q";
-    q2.append(Object.assign(document.createElement("span"), { textContent: "Which one had a machine's help?" }),
-      seg(p.id, "machine", [["A", "A"], ["B", "B"], ["unsure", "Can't tell"]]));
-    const note = Object.assign(document.createElement("textarea"), { id: `${p.id}-note`, placeholder: "Optional: what gave it away, or what reads badly" });
-    note.setAttribute("aria-label", `Note for pair ${i + 1}`);
-    let t;
-    note.addEventListener("input", () => { clearTimeout(t); t = setTimeout(() => save(p.id, { note: note.value }), 900); });
-    ballot.append(q1, q2, note);
+    const q = document.createElement("div"); q.className = "q";
+    q.append(Object.assign(document.createElement("span"), { textContent: "Which reads best?" }),
+      seg(`${item.id}-best`, [...letters(item).map(l => [l, l]), ["same", "Same"]], v => save(item.id, { best: v })));
+    const note = Object.assign(document.createElement("textarea"), { id: `${item.id}-note`, placeholder: "Optional: what gave it away, or what reads badly" });
+    note.setAttribute("aria-label", `Note for item ${i + 1}`);
+    let timer;
+    note.addEventListener("input", () => { clearTimeout(timer); timer = setTimeout(() => save(item.id, { note: note.value }), 900); });
+    ballot.append(q, note);
     sec.append(head, texts, ballot);
     main.append(sec);
   });
@@ -136,19 +146,21 @@ function render() {
 
 function paint(pid) {
   const a = answers[pid] || {};
-  for (const f of ["better", "machine"]) {
-    document.querySelectorAll(`input[name="${pid}-${f}"]`).forEach(el => { el.checked = el.value === a[f]; });
+  document.querySelectorAll(`input[name="${pid}-best"]`).forEach(el => { el.checked = el.value === a.best; });
+  for (const L of LETTERS) {
+    document.querySelectorAll(`input[name="${pid}-label-${L}"]`).forEach(el => { el.checked = el.value === a.labels?.[L]; });
   }
   const note = document.getElementById(`${pid}-note`);
   if (note && document.activeElement !== note && typeof a.note === "string") note.value = a.note;
+  const item = items.find(x => x.id === pid);
   const s = document.getElementById(`${pid}-saved`);
-  if (s) s.textContent = a.better && a.machine ? "Answered" : "";
+  if (s && item) s.textContent = complete(item) ? "Answered" : "";
 }
 
 function progress() {
-  const n = pairs.filter(p => answers[p.id]?.better && answers[p.id]?.machine).length;
-  document.getElementById("count").textContent = `${n} of ${pairs.length} answered`;
-  document.getElementById("bar").style.width = `${(100 * n) / pairs.length}%`;
+  const n = items.filter(complete).length;
+  document.getElementById("count").textContent = `${n} of ${items.length} answered`;
+  document.getElementById("bar").style.width = `${(100 * n) / items.length}%`;
 }
 
 const queue = {};
