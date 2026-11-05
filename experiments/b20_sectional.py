@@ -69,6 +69,7 @@ from judge_calibrate import _cut  # noqa: E402
 
 IDS = [f"a{n:04d}" for n in range(610, 620)]
 PER, SEC_WORDS, SEC_STEPS, CONTEXT = 6, 400, 10, 500
+DEGENERATE = {"S_a0612"}  # template loop; excluded from cell S, scanned as a probe (12:40 amendment)
 PROMPTS = ROOT / "results" / "b12_prompts.jsonl"
 STEPS = ROOT / "results" / "b20_steps.jsonl"
 TEXTS = ROOT / "results" / "b20_texts.jsonl"
@@ -174,9 +175,11 @@ def record(pairs: list[str]):
     verdicts = dict(p.split("=") for p in pairs)
     ids = [json.loads(line)["id"] for line in TEXTS.open()]
     assert set(verdicts) == set(ids), "need a verdict for every text"
-    summary = {v: sum(verdicts[i] == v for i in ids) for v in ("AI", "Mixed", "Human")}
+    cell = [i for i in ids if i not in DEGENERATE]
+    summary = {v: sum(verdicts[i] == v for i in cell) for v in ("AI", "Mixed", "Human")}
     out = json.loads(OUT.read_text())
-    OUT.write_text(json.dumps(out | {"pangram_summary": summary, "pangram": verdicts}, indent=1))
+    OUT.write_text(json.dumps(out | {"pangram_summary": summary, "pangram": verdicts,
+                                     "degenerate_probe": {i: verdicts[i] for i in DEGENERATE}}, indent=1))
     print(json.dumps(summary, indent=1))
 
 
