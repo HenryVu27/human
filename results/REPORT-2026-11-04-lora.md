@@ -548,9 +548,45 @@ Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step l
 - A third of its raw words restate points it already made. The guard over-counts a little, because a first statement can share topic phrases, but the sentences checked by hand are mostly real restatements.
 - A narrower prune would add about 5 points of length, not 25.
 
-## Where this stands (2026-11-05, about 12:40)
+## 26. B16: the mixed-pool writer with specific facts only (Pangram, 20 texts)
 
-**The full-length problem now has a clear shape.** Five results fit together:
+**Question:** B14 (pool writer, the draft's specific facts, best of 4) reads Human 13 of 20 but judges poorly against same-topic human text (0.275). B8 (mixed-pool writer, all facts) judges better (0.575) but reads 5 Human, 5 AI. Does B8's writer with B14's input keep B14's verdicts and gain B8's quality?
+
+**Design:** the mixed-pool writer on B12's specific-fact prompts, seeds 0 to 3, each pruned and cleaned, with the most supported claims kept (B14's pick rule). Same 20 drafts.
+
+| Same 20 drafts | Human | Mixed | AI | Words | Quality against human cut |
+|---|---|---|---|---|---|
+| B14 (pool writer) | 13 | 7 | 0 | about 385 | 0.275 |
+| B16 (mixed-pool writer) | 14 | 4 | 2 | 394 | 0.25 |
+
+- **Per draft:** same on 11, better on 5, worse on 4. That is no difference.
+- **The 2 AI pieces:** one (a0624) is 69 words, below Pangram's 150-word floor.
+- **Claims supported:** 86%.
+
+**Result:** the writer does not matter once the input is specific facts only. B8's quality came from having all the facts, not from its writer, and all the facts bring the AI plan back.
+
+## 27. B17: a writer trained on first-person technical blogs, on Henry's post (Pangram, 7 sections)
+
+**Question:** B15 ran the pipeline on the 7 prose sections of Henry's post. It read 4 Human, 1 Mixed, 2 AI, but it kept a third of the words and turned "I" into "the author". Does a writer retrained on about 670 pre-2022 first-person technical blog posts fix that?
+
+| Henry's 7 sections | Human | Mixed | AI | Words kept | First person per 100 words |
+|---|---|---|---|---|---|
+| Original post | 0 | 3 | 4 | 4,481 | 1.2 |
+| B15 (pool writer) | 4 | 1 | 2 | 1,498 | 1.9 |
+| B17 (technical-blog writer) | 3 | 1 | 3 | 1,861 | 3.5 |
+
+- **Per section:** same on 5, worse on s2 (Human to Mixed) and s7 (Mixed to AI).
+- **Section s6:** 83 words, below Pangram's floor.
+- **Voice:** "the author" is gone, but first person now runs at 3 times the original's rate. The writer imitates first-person blogs rather than Henry.
+- **Claims supported:** 82%.
+
+**Result:** genre-matched training fixes voice, not verdicts.
+- **The same sections fail with both writers:** s3 and s5 read AI in B15 and B17. The failure follows the section, not the writer.
+- **Why those sections fail is open.** Their share of specific facts (36 to 40%) overlaps the sections that read Human (38 to 54%), so fact type does not explain it.
+
+## Where this stands (2026-11-05, about 13:05)
+
+**The full-length problem now has a clear shape.** Five results fit together. B16 and B17 add that neither the writer's training mix nor its genre changes the verdicts once the input is fixed:
 
 | Result | What it shows |
 |---|---|
