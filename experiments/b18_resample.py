@@ -112,8 +112,9 @@ def _check(draft: str, cands: list[list[str]]) -> list[set[int]]:
     return [{int(n) - 1 for n in got.get(str(c), [])} for c in range(1, len(cands) + 1)]
 
 
-def write_one(row: dict, idx: int) -> dict:
-    draft = _drafts()[row["source"]]
+def write_one(row: dict, idx: int, support: str | None = None, cell: str = "W") -> dict:
+    """support: what the text may say (default the draft; B19 adds the author's answers)."""
+    draft = support or _drafts()[row["source"]]
     allowed = draft + "\n" + row["prompt"]
     paras, seen, log, empty = [], set(), [], 0
     words = lambda: sum(len(p.split()) for p in paras)  # noqa: E731
@@ -145,7 +146,7 @@ def write_one(row: dict, idx: int) -> dict:
             break
     with STEPS.open("a") as f:
         f.writelines(json.dumps(r) + "\n" for r in log)
-    return {"id": f"W_{row['source']}", "raw": "\n".join(paras), "steps": len(log)}
+    return {"id": f"{cell}_{row['source']}", "raw": "\n".join(paras), "steps": len(log)}
 
 
 def _coverage(draft: str, text: str) -> float:
