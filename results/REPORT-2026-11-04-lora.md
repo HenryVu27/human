@@ -306,3 +306,69 @@ Spearman correlation between share and verdict (AI, Mixed, Human as 0, 1, 2): 0.
 4. The claim check runs against the draft plus the cited sources, so nothing is invented. What is added comes from a named human source.
 
 This changes what the draft says, so it is a product decision for Henry. Route one (B7 to B12: the base model plans, then unsupported sentences are deleted) keeps to the draft's content but drops some of it.
+
+## 16. B12: the pipeline replicates on 20 new drafts (Pangram, 40 texts)
+
+**Pipeline, fixed from B7 cell P and B11 before any B12 text existed:**
+1. Sonnet extracts the draft's facts and keeps the specific ones.
+2. The pool writer writes the draft's full length, Guard on.
+3. Sentences the draft does not support, and repeats, are deleted.
+
+**Control:** Sonnet condenses the same draft, adding nothing. **Drafts:** dev a0610 to a0629, by id.
+
+| Cell | Human | Mixed | AI | Mean words | Claims supported |
+|---|---|---|---|---|---|
+| R, pipeline | 12 | 4 | 4 | 393 | 81% |
+| K, Sonnet condensation | 0 | 0 | 20 | 642 | 100% |
+
+| Comparison | p |
+|---|---|
+| Human, R vs K | 0.00005 |
+| AI, R vs K | 0.0000002 |
+
+- **Length:** Sonnet overshot its length targets, so K is longer. Every K text reads AI, including those of 76, 210 and 332 words, so length does not explain the gap.
+- **Pooled:** with B11 P, the pipeline is 19 Human, 5 Mixed and 6 AI on 30 AI drafts.
+- Source: `results/b12_replicate.json`.
+
+## 17. The quality judge is biased toward Sonnet's style
+
+The pipeline lost every quality comparison: the judge preferred the AI draft 39 of 40 times and Sonnet's own condensation 20 of 20. To test the instrument, I cut 20 held-out human articles (h0610 to h0629) to about 400 words at a paragraph break, and had Sonnet condense each full article to the same length. **The judge preferred Sonnet's condensation over the real human article 20 of 20.** So the Sonnet quality judge rewards Sonnet's style and cannot tell whether base-model prose is good. Source: `results/judge_calibrate.json`.
+
+Fairer reference: the human article on the same topic, cut to the same length.
+
+| Text | Win rate against same-topic human text (parity = 0.5) |
+|---|---|
+| B12 pipeline (R) | 0.20 |
+| B13 cleaned pipeline (C) | 0.325 |
+
+## 18. B13: deletion-only cleanup (Pangram, 20 texts)
+
+Reading the B12 texts showed real defects:
+- the same point made two or three times;
+- list lead-ins left with nothing after them ("These behaviors may include:");
+- Guard fragments such as "(S.D.)" where an acronym was blocked.
+
+For each B12 R text, Sonnet marked repeats, empty lead-ins and headings, and broken fragments. Those were deleted, with nothing reworded.
+
+| | Human | Mixed | AI | Mean words | Claims supported | Quality vs same-topic human text |
+|---|---|---|---|---|---|---|
+| B12 R | 12 | 4 | 4 | 393 | 81% | 0.20 |
+| B13 cleaned | 12 | 5 | 3 | 309 | 80% | 0.325 |
+
+The cleanup keeps the verdicts and narrows the quality gap. Source: `results/b13_cleanup.json`.
+
+## Where this stands (2026-11-05, about 02:30)
+
+**The humanizer now works on AI drafts as Pangram 4.1 judges them**, in 30 drafts over two independent sets:
+- **Pipeline:** specific facts, then the pool writer plans and writes, then unsupported sentences and repeats are deleted.
+- **Pangram:** 19 or 20 Human of 30, depending on cleanup. Every instruct-model baseline on the same drafts reads AI.
+- **Faithfulness:** about 80% of claims are supported by the draft. The Guard blocks invented names, numbers and quotes. The rest are generic statements from the base model that the pruner judged supported or harmless; this needs a stricter check.
+- **Quality:** the main gap. The texts are short (about 300 words from 1,100-word drafts) and, against same-topic human writing, win 32.5% where parity is 50%. A blind read by a person is needed, because the LLM judge is biased.
+
+**Next experiments, by expected value:**
+1. **Keep more of the draft.**
+   - Best-of-N samples per draft, picked by claim support before pruning (local checks, never Pangram).
+   - The B8 mixed-pool writer (training on the PC), which should keep more draft facts in its own plan.
+2. **A bigger base model.** HALO found raw OLMo-2-32B continuations at 0.03 AI against 0.27 for 7B. It does not fit 16 GB at 4 bits, so this needs a 3-bit build or rented compute, which would cost money.
+3. **The retrieval route (B9).** Two thirds of the content from human sources, kept as citations.
+4. **Henry's own posts**, through the pipeline, read blind by Henry.
