@@ -515,3 +515,56 @@ B9 says pieces read Human once about two-thirds of their content comes from a hu
 **A gap in the checks:** the claim check and the repeat filter pass a writer stuck in a template loop. Any full-length writer needs a template-repeat guard. `humanizer.checks.repeats` now deletes a sentence when more than 60% of its word trigrams already appear in the piece. It catches 63 of a0612's 64 loop sentences (the first is new) and flags 0.8% of the 38,089 sentences in the human corpus, mostly lists and parallel phrasing. The threshold cannot go higher: each loop sentence reuses about two-thirds of its trigrams, so at 70% the guard catches none.
 
 Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step logs in `results/b20_steps.jsonl`.
+
+## 25. B23: what the prune deletes (no scan; the prediction failed)
+
+**Question:** B14's writer writes full length (raw median 1,218 words against a 1,065-word target), and the prune keeps about 385. The prune prompt deletes any "fact, number, claim, example, recommendation or explanation" the draft lacks, which is stricter than the project's rule (no new facts, numbers, names, dates or quotes). If most of what it deletes is the writer's own elaboration, a narrower rule could keep both length and the writer's plan.
+
+**Design (fixed before any output):**
+1. Use B14's seed-1 raw generations for all 20 drafts: one fixed seed, not B14's pick.
+2. Sonnet labels every sentence against the draft:
+   - **S:** restates the draft.
+   - **N:** a new specific.
+   - **C:** a new general claim that could be checked.
+   - **E:** the writer's elaboration, with no new checkable fact.
+3. The template-repeat guard labels repeats **X**, before Sonnet.
+4. Prediction: E is 30% or more of raw words, and keeping S and E reaches 60% of the draft's length.
+5. Scan condition: 10 texts are scanned only if that prediction holds.
+
+| Label | Share of raw words (repeats first) | Sonnet's labels alone |
+|---|---|---|
+| S, supported | 24% | 32% |
+| N, new specifics | 15% | 27% |
+| C, new general claims | 16% | 22% |
+| E, elaboration | 12% | 19% |
+| X, template repeats | 33% | |
+
+- **Keeping S and E** reaches 43% of the draft's length on average. The upper bound, counting repeated sentences by Sonnet's label, is 61%. B14's prune keeps 38%.
+- 5 of 20 drafts reach 60%.
+- **Prediction failed:** E is 12%, not 30%. No scan, as fixed in advance.
+
+**Result: the length is in new facts, not in elaboration.**
+- Given about 6 facts and asked for 1,000 words, the pool writer spends about half its words on facts the draft does not have (27% specifics, 22% general claims).
+- A third of its raw words restate points it already made. The guard over-counts a little, because a first statement can share topic phrases, but the sentences checked by hand are mostly real restatements.
+- A narrower prune would add about 5 points of length, not 25.
+
+## Where this stands (2026-11-05, about 14:00)
+
+**The full-length problem now has a clear shape.** Five results fit together:
+
+| Result | What it shows |
+|---|---|
+| B9 S0 | Every draft fact, shuffled, reads AI 7 of 10. Order is not the signal; the AI's choice of content is. |
+| B12 and B14 | Only the draft's ~6 specific facts reads Human 13 of 20, but at about 40% of the length. |
+| B18 and B20 | Writing paragraph by paragraph or section by section does not add length. Feeding the draft's facts in order reads worse (0 Human of 3). |
+| B23 | The writer fills length with new facts (about half its words). The project's rule forbids that, and elaboration is only 12 to 19%. |
+| B9 dose-response | Pieces read Human once about two-thirds of their content comes from a human source. |
+
+**Conclusion:** a full-length rewrite of an AI draft that adds nothing has to carry the AI's choice of content. Pangram's training label is exactly that choice. Faithful, full length and Human-reading cannot all hold for an AI draft with no other source.
+
+**What can hold:**
+1. **Condensing.** About 40% of the length, Human 13 of 20 (B14). This works today.
+2. **The author as the source, at writing time.** An interview while the material is fresh (B21 failed only because the post is months old).
+3. **Cited human sources.** Pull specifics from real pre-2022 human writing on the topic, with citations, so about two-thirds of the content is human-sourced (the B5 and B9 mechanism, 10 of 10 Human). Nothing is invented, but the piece then says things the draft did not.
+
+The choice among these is a product decision, not an experiment.
