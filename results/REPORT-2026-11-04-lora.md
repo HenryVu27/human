@@ -194,3 +194,35 @@ The AI pads with general claims and advice. The mirrors share only 0 to 11 of th
 This matches the outside evidence (`results/RESEARCH-2026-11-04-prior-work.md`). Pangram 4 is trained to label text by where its ideas came from, and to keep calling humanized AI text AI. Independent practitioners report the same split: their own notes pass, AI drafts do not.
 
 **Next: B6 (running).** Keep only the AI draft's specific facts (names, numbers, places, studies, concrete examples), against a random subset of the same size. If the specific-only cell reads Human and the random one does not, cutting generic padding is an editor's move that needs no human source.
+
+## 10. B6: cut the AI draft's generic facts (Pangram, 16 texts)
+
+**Result: cutting to specific facts is no better than cutting at random. Fewer facts helps a little either way.** Same adapter, Mac, seed 0.
+
+- **Cell F:** the AI draft's specific facts only (names, numbers, places, studies, concrete examples), as classified by Sonnet.
+- **Cell G:** a random subset of the same size.
+- **Rule:** fixed before generation, a draft needed at least 9 specific facts. That dropped a0602 (8) and a0605 (2).
+
+| Cell | Pangram: Human | Mixed | AI | Mean words |
+|---|---|---|---|---|
+| F, specific only | 3 | 3 | 2 | 284 |
+| G, random, same count | 2 | 3 | 3 | 380 |
+| B5 cell A, all facts (for reference) | 1 | 3 | 6 | 1,316 |
+
+**Caveats:**
+- These texts are short (99 to 601 words). Pangram says it is less certain under 150 words, and F a0603 came out at 99 words although its target was 160.
+- The gain from cutting may be length rather than content.
+- The first design, an oracle that kept only the AI facts the human original also states, could not run. The mirrors share only 0 to 11 of about 50 facts with their human original.
+
+## 11. Can the local detector stand in for Pangram? Not yet
+
+I collected every text Pangram has judged so far into `results/pangram_labels.jsonl`: 96 texts, from B3, B4, B5 and B6. Then I scored them with the local ModernBERT detectors, which were trained on the mirror corpus and never on these labels. Code: `experiments/surrogate.py`, output: `results/surrogate.json`.
+
+| | detector-v1 | detector-v2 |
+|---|---|---|
+| AUROC (area under the ROC curve, against "not Human") on B3 to B5, 80 texts | 0.84 | 0.87 |
+| Same, all 96 texts including B6 | 0.78 | 0.83 |
+| B6 only (short texts) | 0.42 | 0.47 |
+| **Texts written from AI drafts only, 56 texts (6 Human, 13 Mixed, 37 AI)** | **0.54** | **0.67** |
+
+The high overall numbers come from separating AI-source content from human-source content, which the content makes easy. Among outputs written from AI drafts, the comparison a best-of-N selector or a preference reward would need, the detectors are close to chance. A usable stand-in has to learn the content-plan signal itself. One way to get that without Pangram labels: train on writer outputs labelled by where their facts came from. B5 shows Pangram's verdict follows the source almost exactly.

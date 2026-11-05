@@ -1,0 +1,94 @@
+{
+ "selection": [
+  {
+   "id": "a0600",
+   "ai_facts": 52,
+   "specific": 12,
+   "oracle_overlap": 8
+  },
+  {
+   "id": "a0601",
+   "ai_facts": 51,
+   "specific": 14,
+   "oracle_overlap": 11
+  },
+  {
+   "id": "a0602",
+   "ai_facts": 49,
+   "specific": 8,
+   "oracle_overlap": 5
+  },
+  {
+   "id": "a0603",
+   "ai_facts": 54,
+   "specific": 9,
+   "oracle_overlap": 2
+  },
+  {
+   "id": "a0604",
+   "ai_facts": 44,
+   "specific": 21,
+   "oracle_overlap": 3
+  },
+  {
+   "id": "a0605",
+   "ai_facts": 49,
+   "specific": 2,
+   "oracle_overlap": 0
+  },
+  {
+   "id": "a0606",
+   "ai_facts": 51,
+   "specific": 18,
+   "oracle_overlap": 8
+  },
+  {
+   "id": "a0607",
+   "ai_facts": 53,
+   "specific": 9,
+   "oracle_overlap": 0
+  },
+  {
+   "id": "a0608",
+   "ai_facts": 59,
+   "specific": 16,
+   "oracle_overlap": 8
+  },
+  {
+   "id": "a0609",
+   "ai_facts": 66,
+   "specific": 25,
+   "oracle_overlap": 5
+  }
+ ],
+ "pangram_summary": {
+  "F": {
+   "AI": 2,
+   "Mixed": 3,
+   "Human": 3
+  },
+  "G": {
+   "AI": 3,
+   "Mixed": 3,
+   "Human": 2
+  }
+ },
+ "pangram": {
+  "F_a0600": "AI",
+  "F_a0601": "Mixed",
+  "F_a0603": "Human",
+  "F_a0604": "Human",
+  "F_a0606": "Mixed",
+  "F_a0607": "Human",
+  "F_a0608": "Mixed",
+  "F_a0609": "AI",
+  "G_a0600": "Mixed",
+  "G_a0601": "AI",
+  "G_a0603": "Human",
+  "G_a0604": "Human",
+  "G_a0606": "AI",
+  "G_a0607": "AI",
+  "G_a0608": "Mixed",
+  "G_a0609": "Mixed"
+ }
+}
