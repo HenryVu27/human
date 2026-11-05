@@ -152,3 +152,45 @@ The extractor keeps about half of the source's phrasing inside the facts, and th
 - Writer: the B4 adapter, unchanged, seed 0. About 30 texts and 330 dashboard credits, inside the plan.
 
 The PC is offline for an Ubuntu install, so B5 generation waits for it, or for a port of the writer to the Mac.
+
+## 9. B5: same topics, wording against source (Pangram, 40 texts)
+
+**Result: the signal is in which facts the AI chose, not in their wording or the topic.** All four cells were written on the Mac by the B4 adapter, converted from PEFT (Parameter-Efficient Fine-Tuning) to MLX format. The conversion matches the PC: validation loss falls by 0.132 with the adapter on the Mac and by 0.131 on the PC. Seed 0. Topics are dev 600 to 609; each AI draft a06xx is a mirror of human article h06xx. Selection was fixed before the scan.
+
+| Cell | Facts from | Wording | Pangram: Human | Mixed | AI | Mean words |
+|---|---|---|---|---|---|---|
+| A | AI draft | extractor's (as B4) | 1 | 3 | 6 | 1,316 |
+| C | AI draft | reworded | 0 | 3 | 7 | 1,229 |
+| D | human original, same topic | extractor's | 10 | 0 | 0 | 758 |
+| E | human original, same topic | reworded | 7 | 3 | 0 | 822 |
+
+Fisher exact tests (Human against not Human), two-sided:
+
+| Comparison | p |
+|---|---|
+| A vs D (source, topic fixed) | 0.0001 |
+| C vs E (source, topic fixed) | 0.003 |
+| A vs C (wording) | 1.0 |
+| D vs E (wording) | 0.21 |
+| AI source vs human source, all 40 | 0.0000004 |
+
+The scan used about 450 credits. Source: `results/b5_matched.json`, texts in `results/b5_generations.jsonl`.
+
+- **Topic is not the cause.** On the same 10 subjects, human-chosen facts read Human 17 of 20 times and AI-chosen facts 1 of 20.
+- **Wording is not the cause.** Rewording cut the AI source's 4-grams in the output from 28% to 6%, and the verdicts did not move. Rewording human facts added three Mixed verdicts, probably from the rewording model's own style.
+- **Length does not explain it.** The longest human-source text (D h0601, 1,862 words) reads Human, and a 756-word AI-source text (A a0604) reads Mixed.
+- **Machine noise.** Cell A uses the same prompts as B4 group A. It went from 9 AI and 1 Mixed on the PC to 6 AI, 3 Mixed and 1 Human on the Mac. That is the size of the difference from quantization and sampling.
+
+**What AI-chosen facts look like.** On the same topics, AI drafts give 53 facts per document against 35 for the human articles:
+
+| Share of facts that... | AI draft | Human original | Human training set |
+|---|---|---|---|
+| contain a number | 16% | 25% | 19% |
+| name someone or something | 28% | 43% | 37% |
+| hedge or generalize ("can", "helps", "important", "typically") | 18% | 12% | 16% |
+
+The AI pads with general claims and advice. The mirrors share only 0 to 11 of their roughly 50 facts with the human original on the same topic, because they were written from the topic alone.
+
+This matches the outside evidence (`results/RESEARCH-2026-11-04-prior-work.md`). Pangram 4 is trained to label text by where its ideas came from, and to keep calling humanized AI text AI. Independent practitioners report the same split: their own notes pass, AI drafts do not.
+
+**Next: B6 (running).** Keep only the AI draft's specific facts (names, numbers, places, studies, concrete examples), against a random subset of the same size. If the specific-only cell reads Human and the random one does not, cutting generic padding is an editor's move that needs no human source.
