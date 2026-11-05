@@ -83,7 +83,7 @@ One index of every experiment and every literature search: what was asked, how i
 | B20 | 4 | 21 |
 | B16 | 20 | 91 |
 | B17 | 7 | 22 |
-| Remaining on the Individual plan after B17 | | 491 |
+| Remaining on the Individual plan after B17 | | 492 (dashboard) |
 
 ## Current hypothesis
 
