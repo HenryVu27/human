@@ -8,6 +8,9 @@ import hashlib
 import html
 import json
 import re
+import threading
+import time
+import urllib.error
 import urllib.parse
 import urllib.request
 
@@ -17,16 +20,28 @@ API = "https://en.wikipedia.org/w/api.php"
 BEFORE = "2022-01-01T00:00:00Z"
 CACHE = ROOT / ".cache" / "wiki"
 UA = {"User-Agent": "humanizer-research/0.1 (personal research, low volume)"}
+GAP = 0.5
+_LOCK = threading.Lock()
 MARKER = re.compile(r"\[(\d+|[a-z]|citation needed|note \d+|clarification needed|when\?|who\?)\]")
 
 
 def _get(params: dict) -> dict:
+    """One API request at a time, at least GAP seconds apart, backing off on 429 (Wikimedia's etiquette)."""
     params = {**params, "format": "json", "formatversion": 2}
     p = CACHE / f"{hashlib.sha256(json.dumps(params, sort_keys=True).encode()).hexdigest()}.json"
     if p.exists():
         return json.loads(p.read_text())
     req = urllib.request.Request(API + "?" + urllib.parse.urlencode(params), headers=UA)
-    d = json.load(urllib.request.urlopen(req, timeout=30))
+    with _LOCK:
+        for attempt in range(6):
+            time.sleep(GAP)
+            try:
+                d = json.load(urllib.request.urlopen(req, timeout=30))
+                break
+            except urllib.error.HTTPError as e:
+                if e.code != 429 or attempt == 5:
+                    raise
+                time.sleep(float(e.headers.get("Retry-After") or 2 ** (attempt + 1)))
     CACHE.mkdir(parents=True, exist_ok=True)
     p.write_text(json.dumps(d))
     return d
