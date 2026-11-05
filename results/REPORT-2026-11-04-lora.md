@@ -584,6 +584,58 @@ Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step l
 - **The same sections fail with both writers:** s3 and s5 read AI in B15 and B17. The failure follows the section, not the writer.
 - **Why those sections fail is open.** Their share of specific facts (36 to 40%) overlaps the sections that read Human (38 to 54%), so fact type does not explain it.
 
+## 28. B24: cited human sources at full length (Pangram, 10 texts)
+
+**Question.** Henry chose this route at about 13:30. Does a piece read Human at full length when about two-thirds of its content comes from cited human sources, none of which is the draft's own original?
+
+**Design** (`experiments/b24_cited.py`, committed before any source or text existed):
+- **Drafts:** a0610 to a0619, paired with B14.
+- **Sources:** for each draft, Sonnet named Wikipedia articles a writer would read. Each was fetched as its last revision before 2022, and the first 3 usable ones were kept (for example Tort, Product liability and Strict liability for a0610; Albert Mehrabian, Body language and Nonverbal communication for a0613). Each piece cites the revision permalinks.
+- **Facts:** one per 17.87 words of target length, as in B9. A third are the draft's facts (its specific ones first). Two-thirds are source facts, which Sonnet chose to fit the draft's topic.
+- **Writing and selection:** pool writer with Guard, 4 seeds. Each sample was pruned against the draft plus sources, cleared of template repeats and cleaned up; the sample with the most supported claims was kept.
+- **Scan:** bodies only, without citation markers.
+
+| Measure | B24 (cell R) | B14 cell B, same drafts |
+|---|---|---|
+| Pangram | 10 Human, 0 Mixed, 0 AI | 7 Human, 3 Mixed, 0 AI |
+| Words, share of the draft's length | 707, 66% (5 of 10 at 70% or more) | about 40% |
+| Claim support (draft plus sources) | 92% | |
+| Words attributed to sources, to the draft (Sonnet) | 55%, 30% | |
+| Coverage of the draft's facts | 22% | |
+| Quality against the human cut (Sonnet judge) | 0.30 | 0.275 (mean over B14's 20) |
+| Words copied verbatim from the sources (8-word runs) | 21% (8 to 27%) | 0% |
+| Of which beyond the prompt | 2% | |
+
+**Prediction.** At least 6 Human and at most 1 AI: met (10 and 0). At 70% or more of the length: missed (66% on average). Against B14, 10 of 10 versus 7 of 10 is not significant (Fisher p = 0.21). But it comes at two-thirds of the length instead of 40%.
+
+**Finding: verbatim copying.** About a fifth of each piece's words sit in 8-word runs copied from Wikipedia. Almost all of it arrives through the facts, whose extraction keeps the source's wording; the writer adds only 2% on its own. This was checked before the scan and recorded as an amendment.
+- **Earlier experiments had it too:** B5's verbatim human cell copied 8 to 57% (10 of 10 Human) and B9's two-thirds cell 5 to 62%.
+- **B5 isolates it:** with the facts reworded, copying fell to a median of about 3% and the pieces still read Human 7 of 10. Texts with no copying at all read Human. So copied wording is not what drives the human-sourced result, though it may add to it. The least-copied B24 text (8%) also reads Human.
+- **For a product,** source sentences reproduced without quotation marks are plagiarism. Before this route ships, the source facts should be reworded (B5's REWORD prompt) and anything kept word for word should be quoted.
+
+**What the pieces are.** Only 22% of the draft's facts survive, and 55% of the words come from Wikipedia. The result is a cited article on the draft's topic, not the draft made human. That fits explainers, which is what the FineWeb drafts are. It does not fit a personal blog post, where the content is the author's own; see section 29.
+
+## 29. The blog track begins: B25 and B26 (running)
+
+**Henry's point (17:00),** checked against the raw data: every draft through B24 came from FineWeb pages, the 900 human texts in `data/human.jsonl` (essay mills, SEO sites, health sites). Their median first-person rate is 0 per 100 words, and 7% exceed 1 per 100. The humanizer's real use is a personal blog post that should sound like a person.
+
+**Corpus** (`humanizer.data.essays`): 13 named writers, posts published before ChatGPT's release (2022-11-30).
+- **Henry's picks:** Paul Graham, Richard Sutton, Fernando Borretti, and economists Noah Smith, John Cochrane, Scott Sumner, Branko Milanovic and Robin Hanson.
+- **Added for range:** Dan Luu, Julia Evans, Joel Spolsky, Scott Alexander and Patrick McKenzie.
+- **Split:** fixed by URL hash before any text was read. Each writer gives 2 benchmark essays of 500 to 1,500 words and up to 60 training essays. Texts stay out of git.
+
+**B25** (`experiments/b25_blog.py`) copies how a blogger uses AI: the blogger has the ideas, the AI writes the post.
+- **Input:** for each benchmark essay, Sonnet writes the notes, then the post from the notes. That post is the humanizer's input.
+- **Cells,** on each writer's test essay:
+  - H: the essay itself (calibration);
+  - D: the AI post;
+  - P: the current pipeline on the AI post;
+  - N: the pool writer from the notes alone.
+- **Prediction:** N reads Human on 9 or more of 13 at half the length or more.
+- **Copying:** recorded per text, including beyond the prompt, since OLMo-2 has likely seen these essays.
+
+**B26** (`experiments/b26_voice.py`) retrains the writer on the essay training split (notes to essay, all notes kept) and reruns N's prompts as cell V. This is the step aimed at "sounds personal": first-person rate and sentence-length spread are measured against each real essay.
+
 ## Where this stands (2026-11-05, about 13:05)
 
 **The full-length problem now has a clear shape.** Five results fit together. B16 and B17 add that neither the writer's training mix nor its genre changes the verdicts once the input is fixed:
