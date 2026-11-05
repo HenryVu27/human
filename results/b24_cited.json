@@ -67,5 +67,22 @@
     "sources_beyond_prompt": 0.0
    }
   }
+ },
+ "pangram_summary": {
+  "AI": 0,
+  "Mixed": 0,
+  "Human": 10
+ },
+ "pangram": {
+  "R_a0610": "Human",
+  "R_a0611": "Human",
+  "R_a0612": "Human",
+  "R_a0613": "Human",
+  "R_a0614": "Human",
+  "R_a0615": "Human",
+  "R_a0616": "Human",
+  "R_a0617": "Human",
+  "R_a0618": "Human",
+  "R_a0619": "Human"
  }
 }
