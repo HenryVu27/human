@@ -226,3 +226,59 @@ I collected every text Pangram has judged so far into `results/pangram_labels.js
 | **Texts written from AI drafts only, 56 texts (6 Human, 13 Mixed, 37 AI)** | **0.54** | **0.67** |
 
 The high overall numbers come from separating AI-source content from human-source content, which the content makes easy. Among outputs written from AI drafts, the comparison a best-of-N selector or a preference reward would need, the detectors are close to chance. A usable stand-in has to learn the content-plan signal itself. One way to get that without Pangram labels: train on writer outputs labelled by where their facts came from. B5 shows Pangram's verdict follows the source almost exactly.
+
+## 12. B10: instruct-model compression (Pangram, 20 texts)
+
+Sonnet condensed each AI draft (dev a0600 to a0609) to about 25% (K1) and about 50% (K2) of its length, adding nothing and with no instruction to sound human. **Result: 20 of 20 read AI.** Pangram's red team named compression of a large source as its one bypass, but with an instruct model doing the writing it does not work. Source: `results/b10_compress.json`.
+
+## 13. B7: let the base model plan (Pangram, 30 texts)
+
+**Result: AI drafts moved toward Human for the first time.** The writer got only part of the draft's facts and the draft's full length, so it had to plan and fill most of the article itself. The Guard was on (names, numbers and quotes only from the draft). Dev a0600 to a0609, Mac, seed 0.
+
+- **Pool writer:** the 13B adapter retrained on prompts that list a random 20 to 60% of a human article's facts, with the full article as the target. Validation loss 1.68 to 1.63.
+- **Cells:**
+  - H: the B4 writer with the draft's specific facts.
+  - P: the pool writer with the same specific facts.
+  - Q: the pool writer with a random 40% of the draft's facts.
+
+| Cell | Human | Mixed | AI | Clean texts (under 20% repeated sentences) |
+|---|---|---|---|---|
+| H | 5 | 4 | 1 | 6 clean: 1 Human, 4 Mixed, 1 AI |
+| P | 6 | 3 | 1 | 7 clean: 4 Human, 3 Mixed, 0 AI |
+| Q | 3 | 6 | 1 | 5 clean: 1 Human, 3 Mixed, 1 AI |
+| B5 A (all facts, B4 writer) | 1 | 3 | 6 | |
+
+Fisher exact tests:
+
+| Comparison | p |
+|---|---|
+| P vs B5 A, Human | 0.057 |
+| H, P and Q vs B5 A and C, Human | 0.002 |
+| H, P and Q vs B5 A and C, AI | 0.0001 |
+
+**Caveats:**
+- **Looping text fools Pangram.** All of H's Human verdicts are looping texts. This matches Max Spero's list of where Pangram does not generalize ("degraded output"), so the looping verdicts are not a usable win. P is the only cell that holds up on clean text.
+- **The cost is faithfulness.** Only about 45% of P's claims are supported by the draft (B4: 93%). The rest is the base model's own generic content. The Guard kept out invented names and numbers, apart from a few slips: "1080", the length number from the prompt, is allowed by mistake.
+
+Source: `results/b7_pool.json` (verdicts and claim rows), texts in `results/b7_generations.jsonl`.
+
+## 14. B11: write freely, then delete what the draft does not support (Pangram, 20 texts)
+
+**Result: the gain survives pruning.** For every P and Q text from B7, Sonnet marked the sentences whose content the draft does not support. Those sentences, and exact repeats, were deleted. No word was changed or added.
+
+| Cell | Human | Mixed | AI | Mean words | Claims supported |
+|---|---|---|---|---|---|
+| P pruned | 7 | 1 | 2 | 419 | 76% |
+| Q pruned | 4 | 4 | 2 | 565 | 78% |
+| B5 A, for reference | 1 | 3 | 6 | 1,316 | 93% |
+
+P pruned against B5 A, Human: p = 0.02. One P text is 86 words; leaving it out gives 6 of 9 Human. At about the same length, B6's cut fact lists reached 3 of 8 Human, so length alone does not explain the result. Source: `results/b11_prune.json`, texts in `results/b11_texts.jsonl`.
+
+**What this suggests the humanizer looks like:**
+1. Extract the draft's specific facts.
+2. A base-model writer trained on partial fact pools writes the full piece, planning it itself, with the Guard on.
+3. Delete every sentence the draft does not support.
+
+The base model's plan survives the cuts, and most of what remains is supported by the draft.
+
+**Next: B12 (running).** A replication on 20 new drafts (a0610 to a0629), with a length-matched control: Sonnet condenses each draft to the same word count as the pipeline's output. It also runs the quality judge against the draft. Ten texts per cell is too few to trust on their own.

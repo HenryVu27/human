@@ -25,7 +25,9 @@ One index of every experiment and every literature search: what was asked, how i
 | B5 | 11-04 | Wording, source or topic? | 2x2 on the same 10 topics: source (AI draft or human original) by wording (verbatim or reworded); Mac | Human-sourced 17 of 20 Human, AI-sourced 1 of 20 (p = 4e-7); rewording changes nothing | b5_matched.json |
 | B6 | 11-04 | Does cutting generic facts help? | AI facts cut to the specific ones, against a random cut of the same size; 8 drafts | 3 Human, 3 Mixed, 2 AI against 2, 3, 3: no better than random; short texts confound the result | b6_selection.json |
 | Surrogate | 11-04 | Can a local detector stand in for Pangram? | AUROC of detector-v1 and v2 on 96 Pangram-labelled texts | 0.83 to 0.87 overall but 0.54 to 0.67 among AI-sourced texts: not usable for selection | surrogate.json, pangram_labels.jsonl |
-| B7 | 11-05 | Does a writer that plans for itself help? | Pool writer trained on partial fact lists (20 to 60%); cells H (old writer), P (specific facts), Q (random 40%) at full draft length, with the Guard | Running | b7_pool.py |
+| B7 | 11-05 | Does a writer that plans for itself help? | Pool writer trained on partial fact lists (20 to 60%); cells H (old writer), P (specific facts), Q (random 40%) at full draft length, with the Guard | P: 6 Human, 3 Mixed, 1 AI (clean texts: 4, 3, 0); about 45% of claims supported; looping texts inflate H | b7_pool.json |
+| B11 | 11-05 | Does the B7 gain survive deleting unsupported sentences? | Sonnet marks sentences the draft does not support; they and repeats are deleted, nothing reworded; all 20 P and Q texts | P pruned: 7 Human, 1 Mixed, 2 AI at 76% claim support, 419 words (p = 0.02 against B5 A) | b11_prune.json |
+| B12 | 11-05 | Does the B7-P plus B11 pipeline replicate? | 20 new drafts a0610 to a0629; pipeline against Sonnet condensing the draft to the same length; quality judge | Running | b12_replicate.py |
 | B8 | 11-05 | Can the writer learn to drop AI-typical facts? | Writer trained on pools that mix human facts with facts from the AI mirror of the same topic; target is the human article | Mirror facts being extracted; training on the PC next | b8_mixpool.py |
 | B10 | 11-05 | Does compression fall in Pangram's blind spot? | Sonnet condenses each AI draft to 25% and 50%, adding nothing and with no instruction to sound human; 10 drafts | 20 of 20 AI: an instruct-model writer is caught whatever the compression | b10_compress.json |
 | B9 | 11-05 | How much human-sourced content is needed? | Dose-response: 0, 1/3 and 2/3 human facts at a fixed count (B5 cell D is the 1 point) | Queued on the Mac after B7 | b9_dose.py |
@@ -56,7 +58,9 @@ One index of every experiment and every literature search: what was asked, how i
 | B5 | 40 | about 450 |
 | B6 | 16 | 61 |
 | B10 | 20 | 140 |
-| Remaining on the Individual plan after B10 | | about 2,000 of 3,000 |
+| B7 | 30 | about 400 |
+| B11 | 20 | about 100 |
+| Remaining on the Individual plan after B11 | | about 1,500 of 3,000 |
 
 ## Current hypothesis
 
