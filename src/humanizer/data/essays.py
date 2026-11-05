@@ -89,8 +89,19 @@ def _strip(fragment: str) -> str:
     return html.unescape(re.sub(r"<[^>]+>", " ", fragment))
 
 
+def trim(text: str) -> str:
+    """Drop header lines (title, byline, date: paragraphs under 6 words) and trailing thanks-for-drafts lines."""
+    paras = text.split("\n\n")
+    while paras and len(paras[0].split()) < 6:
+        paras.pop(0)
+    while paras and re.match(r"(Thanks|Thank you)\b", paras[-1]):
+        paras.pop()
+    return "\n\n".join(paras)
+
+
 def _post(author: str, url: str, title: str, date: str, page_html: str) -> dict:
     text, quoted = text_of(page_html)
+    text = trim(text)
     return {"author": author, "url": url, "title": " ".join(_strip(title).split()), "date": date[:10],
             "words": len(text.split()), "quoted": round(quoted, 3), "text": text}
 

@@ -23,3 +23,9 @@ def test_split_is_fixed_and_filtered():
     assert all(eligible(p) for p in got) and "u0" not in {p["url"] for p in got}
     bench = [p for p in got if p["split"] == "bench"]
     assert len(bench) == 2 and all(500 <= p["words"] <= 1500 for p in bench)
+
+
+def test_trim_drops_header_lines_and_thanks():
+    from humanizer.data.essays import trim
+    text = "The Bitter Lesson\n\nRich Sutton\n\nMarch 13, 2019\n\nThe biggest lesson from seventy years of research.\n\nThanks to A and B for reading drafts of this."
+    assert trim(text) == "The biggest lesson from seventy years of research."
