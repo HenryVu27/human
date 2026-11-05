@@ -31,6 +31,9 @@ quality_pair against the essay itself cut to the same length.
 Prediction: H 12 or more of 13 Human. D 2 or fewer Human. P about B14's rate (half Human) at about 40%
 of T. N 9 or more Human with at most 1 AI (B9: human-chosen facts read Human), at 50% or more of T.
 Credits: about 125 (H) + 125 (D) + 50 (P) + 65 (N), of about 415 left after B24.
+Amended 16:48, before any bench text exists: a P or N text under 150 words is not scanned (Pangram is
+unreliable below that) and counts as not Human; essays have few numbers and names, so P's
+specific-facts prompt may leave the writer little to keep.
 
 Usage:
   uv run python -m humanizer.data.essays
