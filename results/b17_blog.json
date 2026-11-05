@@ -1,0 +1,22 @@
+{
+ "checks": {
+  "sections": 7,
+  "words_original": 4481,
+  "words_output": 1861,
+  "claim_support": 0.8152930402930403
+ },
+ "pangram_summary": {
+  "AI": 3,
+  "Mixed": 1,
+  "Human": 3
+ },
+ "pangram": {
+  "T_s1": "Human",
+  "T_s2": "Mixed",
+  "T_s3": "AI",
+  "T_s4": "Human",
+  "T_s5": "AI",
+  "T_s6": "Human",
+  "T_s7": "AI"
+ }
+}

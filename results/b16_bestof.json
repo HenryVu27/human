@@ -1,0 +1,36 @@
+{
+ "checks": {
+  "words": 394.35,
+  "claims_entailed": 21.35,
+  "claim_support": 0.8580031804297575,
+  "quality_vs_human_cut": 0.25,
+  "seed0_picked": 2
+ },
+ "pangram_summary": {
+  "AI": 2,
+  "Mixed": 4,
+  "Human": 14
+ },
+ "pangram": {
+  "X_a0610": "Mixed",
+  "X_a0611": "Mixed",
+  "X_a0612": "Human",
+  "X_a0613": "Human",
+  "X_a0614": "Human",
+  "X_a0615": "Human",
+  "X_a0616": "Human",
+  "X_a0617": "Human",
+  "X_a0618": "Human",
+  "X_a0619": "Human",
+  "X_a0620": "Human",
+  "X_a0621": "Human",
+  "X_a0622": "Human",
+  "X_a0623": "AI",
+  "X_a0624": "AI",
+  "X_a0625": "Mixed",
+  "X_a0626": "Human",
+  "X_a0627": "Human",
+  "X_a0628": "Mixed",
+  "X_a0629": "Human"
+ }
+}
