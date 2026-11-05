@@ -140,10 +140,11 @@ def voice(text: str) -> dict:
             "sentence_sd": statistics.pstdev(lens) if len(lens) > 1 else 0.0}
 
 
-def pick():
+def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tuple = ("P", "N")):
+    """Prune, drop repeats, clean and claim-check every sample; keep the one with the most supported claims."""
     bench_rows = {r["id"]: r for r in _bench()}
-    prm = {p["id"]: p for p in map(json.loads, PROMPTS.open())}
-    gens = [json.loads(line) for s in SEEDS for line in (ROOT / "results" / f"b25_gen_s{s}.jsonl").open()]
+    prm = {p["id"]: p for p in map(json.loads, prompts.open())}
+    gens = [json.loads(line) for s in SEEDS for line in (ROOT / "results" / f"{prefix}_gen_s{s}.jsonl").open()]
 
     def one(g):
         material = prm[g["id"]]["allowed_text"]
@@ -172,9 +173,9 @@ def pick():
 
     with ThreadPoolExecutor(4) as ex:
         rows = list(ex.map(finish, list(prm)))
-    TEXTS.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    texts.write_text("".join(json.dumps(r) + "\n" for r in rows))
     summary = {}
-    for cell in ("P", "N"):
+    for cell in cells:
         cr = [r for r in rows if r["cell"] == cell]
         summary[cell] = {"texts": len(cr), "words": statistics.mean(r["words"] for r in cr),
                          "length_ratio": statistics.mean(r["words"] / r["target_words"] for r in cr),
@@ -185,7 +186,7 @@ def pick():
     for cell, key in (("H", "text"), ("D", "draft")):
         summary[cell] = {"texts": len(b), "words": statistics.mean(len(r[key].split()) for r in b),
                          **{k: statistics.mean(voice(r[key])[k] for r in b) for k in ("first_person", "sentence_sd")}}
-    OUT.write_text(json.dumps({"checks": summary}, indent=1))
+    out.write_text(json.dumps({"checks": summary}, indent=1))
     print(json.dumps(summary, indent=1))
 
 
