@@ -29,6 +29,8 @@ Fixed before any B28 text exists (2026-11-05 18:28):
   Guard file and capitalized-word list, checked equal, the same sampling; bf16 key-value cache where the
   Mac quantizes it to 4 bits), seed 1 on the Mac with gen_mlx. Every prompt's pick sees one sample from
   each machine, so no cell leans on one machine. Rows carry "machine": "pc" for the PC samples.
+- Amended 20:46, still before any L or R text is picked or read: Henry needed the PC back after 27 of the
+  76 seed-0 samples. The other 49 seed-0 samples and all seed-1 samples are generated on the Mac.
 - Pangram on all 140 texts. Checks: length against T, claim support, copying from the essay (8-word
   runs), first person and sentence-length spread against the essay.
 The writer was fixed before B26's scan; no Pangram result chooses it.
