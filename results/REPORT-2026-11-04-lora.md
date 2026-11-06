@@ -853,3 +853,58 @@ Both validity gates pass: the human texts read Human 30 of 30, and each instruct
 **Spend.** Pangram 1,986 credits (1,909 main scan, 77 Llama extension; dashboard 14,076 at 23:55 to 12,090 at 00:31, matching the per-file charges exactly). Modal $3.01 of compute against the free credit (billed $0.00), weights on a Volume inside the free 1 TiB. Phase 2 (scanning the crawl itself) was conditional on H1 and was not run.
 
 **Files:** `experiments/b31_basedate.py`, `experiments/modal/b31_modal.py`, `experiments/modal/b31_gated.py`, `results/b31_summary.json`, `results/b31_model_level.json`, `results/b31_verdicts.json`, `results/b31_exclusions.json`, `results/b31_blind.json`, `results/research/b31-*.md`. Texts and openings stay local (`results/b31_*.jsonl`, gitignored).
+
+## 35. B30: a learned rewriter from an AI post to a human one (Pangram, 57 texts)
+
+**Question.** Can a local model turn an AI post itself, not notes taken from it, into a post that reads Human, with the same ideas? Every earlier writer learned notes to article. B28's Sonnet posts give the hard inputs: from 100%, 50% and 25% of a blogger's reworded notes they read 1/18/0, 0/6/13 and 0/1/18 (Human/Mixed/AI).
+
+**Design.** Fixed 2026-11-05 20:45, before any pair or text existed. Amended 23:10 and 2026-11-06 01:08, each before any B30 text was read. All in `experiments/b30_rewriter.py`.
+- **Training pairs:**
+  - Source: 630 essays by 13 bloggers (`data/essaypool`; no test essay).
+  - For each essay, Sonnet wrote a post from the essay's reworded notes. The pair is that post to the essay, cut to 1,300 words.
+  - The posts copy 3.5% of their essay's words (8-word runs), so the rewriter has to learn the human version rather than copy it.
+- **Training:** QLoRA on OLMo-2-13B (4-bit), 3,584 tokens, 158 steps, on the PC (00:11 to 00:53).
+- **Test:**
+  - Inputs: B28's 19 bench2 essays, none in training. T100, T50 and T25 are the rewriter on Sonnet's S100, S50 and S25 posts.
+  - Generation: the Guard over the post, seeds 0 and 1, pruning against the post, and the sample with the most supported claims kept.
+  - Pangram selected nothing.
+- **Generation hardware:**
+  - The PC wrote 3 samples. Modal wrote the other 111 on A10 and A10G GPUs, with the same script, 4-bit weights, adapter, Guard and seeds.
+  - It took 30 minutes and about $6, against an estimated 5 hours on the PC.
+
+| Same 19 essays | Human | Mixed | AI | Words | Claims supported | Copied from the input post |
+|---|---|---|---|---|---|---|
+| S100, Sonnet post from all the notes (B28) | 1 | 18 | 0 | 787 | | |
+| **T100, rewriter on S100** | **19** | 0 | 0 | 640 | 94% | 9% |
+| S50, from half the notes (B28) | 0 | 6 | 13 | 798 | | |
+| **T50, rewriter on S50** | **13** | 6 | 0 | 606 | 97% | 13% |
+| S25, from a quarter of the notes (B28) | 0 | 1 | 18 | 857 | | |
+| **T25, rewriter on S25** | 3 (2 by the 150-word rule) | **15** | 1 | 658 | 96% | 23% (median 14%) |
+| H, the essays themselves (B28) | 19 | 0 | 0 | | | |
+
+**Result: the rewriter moves every post toward Human and never away from it.**
+- **Paired by essay:** the rewrite reads more human than its input on 51 of 57 pairs and less human on none (ordering Human < Mixed < AI). Two-sided sign tests: p = 8e-6 (100), 3e-5 (50), 2e-5 (25).
+- **The pre-registered predictions:**
+  - T100 reads Human on 12 or more of 19: met, 19 of 19.
+  - T25 reads Human on 3. One of those is a broken 33-word text, which B25's rule (under 150 words counts as not Human) makes 2; the rule was applied after the scan and can only lower the count. Either way that is inside the "Pangram reads who chose the content" band (5 or fewer), not the re-planning band (10 or more).
+  - But the AI verdicts on that thinnest cell fall from 18 to 1. The rewriter shifts each input about one label toward Human, and content chosen by Sonnet still holds it at Mixed.
+- **Copying rises as the notes thin:** 9%, 13% and 23% of the output repeats the input post in 8-word runs. With less human content the rewriter keeps more of Sonnet's sentences, which fits the Mixed verdicts.
+
+**Cautions.**
+- **Held-out essays, not held-out writers.** Every bench author has about 60 essays in the training pairs, so the rewriter may have learned these bloggers' voices. A new writer, Henry included, is untested. The long-form program's split by author tests it.
+- **One degenerate text.** In T25_e7b687627 both seeds repeated a year until the token limit, and pruning left 33 words. Its Human verdict carries no weight. Without it, T25 is 2/15/1 of 18 (sign test p 3e-5).
+- **The one AI verdict is a copy.** T25_e279a1d91 repeats its input post at 99.8%: the rewriter handed back Sonnet's post.
+- **The pick leans toward copying.** Keeping the sample with the most supported claims chose the sample that copies the input more often in 36 of 57 cases (p 0.06). Mixed texts copy 21% of their input against 9% for Human ones. That works against the result, not for it, but a future pick should penalize copying the input.
+- **A small leak.** One training target (e148e3340) carries about 70 words of test essay e2cfe2cb2's opening, through a scraped next-post preview. The outputs for that essay copy 0 to 1.6% of it.
+- **Two scan days.** The S posts were scanned on 11-05 and the T texts on 11-06, so a change in Pangram's model between scans cannot be ruled out.
+- **Contamination is possible.** OLMo-2's pretraining data likely holds some of these well-known bloggers' essays. The outputs repeat the essay beyond what the input post explains in 2.2% (T100), 0.5% and 0.4% of words: small, but not zero.
+- **Not long-form yet.** The outputs average 600 to 660 words, 77 to 82% of the target length, from a model limited to 4,096 tokens.
+- **Quality.** The language-model judge prefers the original essay to the rewrite in 87 to 95% of pairs. That comparison is against the human original; the rewrite against the Sonnet post was not judged.
+
+**Outside check.** An outside-judge agent recomputed every number from the raw files and confirmed the tallies, the pairing and sign tests, the split and the order of commits and scans (`results/research/b30-outside-judge.md`). The cautions on the 33-word text, the copy, the pick and the leak are its findings.
+
+**What it means.** This is the first time the project has turned an AI post itself, rather than notes, into Human-reading text: all 19 when the content is the blogger's, and 13 of 19 with no AI verdict when Sonnet chose half of it. Pangram still reads who chose the content, but a learned rewriter moves each level about one label. The next tests are whether this holds on unseen writers, at full length, and on Henry's own drafts. Those are in the long-form program (`docs/briefs/2026-11-06-longform-head.md`).
+
+**Spend.** Pangram 386 credits (dashboard 12,090 to 11,704; per-file charges sum to 401). Modal about $6.
+
+**Files:** `experiments/b30_rewriter.py`, `experiments/modal/b30_gen.py`, `experiments/gpu/train13b.py`, `experiments/gpu/gen13b_guard.py`, `results/b30_rewriter.json`. Texts stay local (`results/b30_*.jsonl`, gitignored).
