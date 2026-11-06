@@ -1,0 +1,120 @@
+{
+ "pick": {
+  "rules": {
+   "C1_rule": {
+    "eligible": 77,
+    "form_only": 7
+   },
+   "L_rule": {
+    "form_ok": 29,
+    "none": 3
+   }
+  },
+  "C0": {
+   "texts": 32,
+   "words": 1398.03125,
+   "over_D": 0.8331867682644275,
+   "over_human": 0.7082032949095591,
+   "claim_support": 0.9591277512733725,
+   "sections_form_ok": 0.9285714285714286,
+   "copied_from_D": 0.3224807837064094,
+   "copied_from_human": 0.016454888384268663,
+   "max_copied_from_human": 0.06538049303322616
+  },
+  "C1": {
+   "texts": 32,
+   "words": 1375.90625,
+   "over_D": 0.8168540393401472,
+   "over_human": 0.6956231796661315,
+   "claim_support": 0.9487888878294257,
+   "sections_form_ok": 1.0,
+   "copied_from_D": 0.1957946821266726,
+   "copied_from_human": 0.011216568195516799,
+   "max_copied_from_human": 0.04778353483016695
+  },
+  "L": {
+   "texts": 32,
+   "words": 540.78125,
+   "over_D": 0.33658609410553064,
+   "over_human": 0.2774578020466752,
+   "claim_support": 0.8937365010062643,
+   "sections_form_ok": 0.90625,
+   "copied_from_D": 0.3184158568289077,
+   "copied_from_human": 0.029264944998613516,
+   "max_copied_from_human": 0.1935483870967742
+  },
+  "HR1": {
+   "sections": 13,
+   "form_ok": 13,
+   "claim_support": 0.9447513812154696,
+   "confidential_dropped": 0,
+   "copied_from_original": 0.4984129824182382
+  }
+ },
+ "dev": {
+  "threshold_T": -2.251,
+  "reference_windows": 720,
+  "arms": {
+   "C1": {
+    "posts": 32,
+    "windows": 152,
+    "per_window_rate": 0.066,
+    "posts_all_windows": 0,
+    "mean_window_score": 1.678,
+    "vs_C0": {
+     "pairs": 32,
+     "mean_score_diff": -0.119,
+     "p_wilcoxon": 0.814086,
+     "rate_diff": -0.001
+    }
+   },
+   "C0": {
+    "posts": 32,
+    "windows": 150,
+    "per_window_rate": 0.067,
+    "posts_all_windows": 0,
+    "mean_window_score": 1.849
+   },
+   "L": {
+    "posts": 32,
+    "windows": 60,
+    "per_window_rate": 0.25,
+    "posts_all_windows": 3,
+    "mean_window_score": 0.06,
+    "vs_C0": {
+     "pairs": 32,
+     "mean_score_diff": -1.684,
+     "p_wilcoxon": 3.9e-05,
+     "rate_diff": 0.183
+    }
+   }
+  },
+  "calibration": {
+   "D300": {
+    "n": 32,
+    "meld_human_like": 0,
+    "pangram_human": 0,
+    "agree": 32
+   },
+   "C300": {
+    "n": 32,
+    "meld_human_like": 1,
+    "pangram_human": 11,
+    "agree": 20
+   },
+   "H300": {
+    "n": 10,
+    "meld_human_like": 10,
+    "pangram_human": 10,
+    "agree": 10
+   }
+  }
+ },
+ "decision": {
+  "time": "2026-11-06 12:14 CST",
+  "test_B": "not run: no arm qualifies under the pre-registered rule",
+  "C1": "per-window rate 0.066 against C0 0.067 (needs +0.10); mean window score -0.12, Wilcoxon p 0.81",
+  "L": "per-window rate 0.25 (+0.18) and lower scores (p 4e-5), but length 28% of the human post (needs 60%), claim support 0.89 (needs 0.90), 91% of texts pass the form checks (needs 95%)",
+  "pangram_plan": "Henry arm, then the splice probe (credits allow)"
+ }
+}

@@ -1,0 +1,338 @@
+{
+ "cb012167": {
+  "key": "HO2_bandits_s1",
+  "cell": "HO2_sec",
+  "doc": "bandits_s1",
+  "words": 304,
+  "batch": 0
+ },
+ "3e0f0492": {
+  "key": "HR2_aieng_s1",
+  "cell": "HR2_sec",
+  "doc": "aieng_s1",
+  "words": 337,
+  "batch": 0
+ },
+ "6db0eb9e": {
+  "key": "SP_p9aebd0fe2d_240_start",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1455,
+  "batch": 0
+ },
+ "16de1be8": {
+  "key": "HR2_aieng_s7",
+  "cell": "HR2_sec",
+  "doc": "aieng_s7",
+  "words": 436,
+  "batch": 0
+ },
+ "b89cd82f": {
+  "key": "SP_pc71cc789ec_60_end",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1289,
+  "batch": 0
+ },
+ "00d47658": {
+  "key": "HR2_aieng_s5",
+  "cell": "HR2_sec",
+  "doc": "aieng_s5",
+  "words": 282,
+  "batch": 0
+ },
+ "5cc1106f": {
+  "key": "SP_p9aebd0fe2d_60_start",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1295,
+  "batch": 0
+ },
+ "c5b96a39": {
+  "key": "SP_p9aebd0fe2d_60_end",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1295,
+  "batch": 0
+ },
+ "2c548189": {
+  "key": "HR2_aieng_s3",
+  "cell": "HR2_sec",
+  "doc": "aieng_s3",
+  "words": 677,
+  "batch": 0
+ },
+ "cc3aef06": {
+  "key": "HO2_aieng_s6",
+  "cell": "HO2_sec",
+  "doc": "aieng_s6",
+  "words": 301,
+  "batch": 0
+ },
+ "ac2d2374": {
+  "key": "SP_pc71cc789ec_60_middle",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1289,
+  "batch": 0
+ },
+ "cbe48c5f": {
+  "key": "HR2_bandits_s4",
+  "cell": "HR2_sec",
+  "doc": "bandits_s4",
+  "words": 675,
+  "batch": 0
+ },
+ "48cccd89": {
+  "key": "HO2_aieng_s5",
+  "cell": "HO2_sec",
+  "doc": "aieng_s5",
+  "words": 521,
+  "batch": 0
+ },
+ "6fca8f8e": {
+  "key": "HO2_aieng",
+  "cell": "HO2_post",
+  "doc": "aieng",
+  "words": 4478,
+  "batch": 0
+ },
+ "c023a1f0": {
+  "key": "HO2_bandits_s4",
+  "cell": "HO2_sec",
+  "doc": "bandits_s4",
+  "words": 587,
+  "batch": 0
+ },
+ "2f220dee": {
+  "key": "HR2_bandits",
+  "cell": "HR2_post",
+  "doc": "bandits",
+  "words": 2511,
+  "batch": 0
+ },
+ "9fdcdae5": {
+  "key": "HO2_bandits_s6",
+  "cell": "HO2_sec",
+  "doc": "bandits_s6",
+  "words": 759,
+  "batch": 0
+ },
+ "aee6c24d": {
+  "key": "HO2_aieng_s2",
+  "cell": "HO2_sec",
+  "doc": "aieng_s2",
+  "words": 1244,
+  "batch": 0
+ },
+ "3b59d4c0": {
+  "key": "HO2_bandits_s3",
+  "cell": "HO2_sec",
+  "doc": "bandits_s3",
+  "words": 334,
+  "batch": 0
+ },
+ "d42eaa06": {
+  "key": "SP_pc71cc789ec_120_middle",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1327,
+  "batch": 0
+ },
+ "c00b999a": {
+  "key": "SP_pc71cc789ec_60_start",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1289,
+  "batch": 0
+ },
+ "1b515bdd": {
+  "key": "SP_p9aebd0fe2d_120_start",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1333,
+  "batch": 0
+ },
+ "79c8e378": {
+  "key": "HO2_aieng_s7",
+  "cell": "HO2_sec",
+  "doc": "aieng_s7",
+  "words": 458,
+  "batch": 0
+ },
+ "8d9358d0": {
+  "key": "SP_p9aebd0fe2d_120_middle",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1333,
+  "batch": 0
+ },
+ "f024d1f5": {
+  "key": "SP_p9aebd0fe2d_240_end",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1455,
+  "batch": 0
+ },
+ "d1351a97": {
+  "key": "SP_pc71cc789ec_120_start",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1327,
+  "batch": 0
+ },
+ "d7304d4d": {
+  "key": "SP_p9aebd0fe2d_60_middle",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1295,
+  "batch": 0
+ },
+ "44c7a664": {
+  "key": "HO2_aieng_s3",
+  "cell": "HO2_sec",
+  "doc": "aieng_s3",
+  "words": 903,
+  "batch": 0
+ },
+ "b1b756fc": {
+  "key": "SP_pc71cc789ec_240_end",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1449,
+  "batch": 0
+ },
+ "3fbe59e3": {
+  "key": "SP_pc71cc789ec_0_none",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1201,
+  "batch": 0
+ },
+ "a289f6db": {
+  "key": "HR2_aieng_s4",
+  "cell": "HR2_sec",
+  "doc": "aieng_s4",
+  "words": 663,
+  "batch": 0
+ },
+ "a04cdb49": {
+  "key": "HR2_bandits_s6",
+  "cell": "HR2_sec",
+  "doc": "bandits_s6",
+  "words": 536,
+  "batch": 0
+ },
+ "605f0af6": {
+  "key": "HO2_bandits",
+  "cell": "HO2_post",
+  "doc": "bandits",
+  "words": 2663,
+  "batch": 0
+ },
+ "ef36ea9f": {
+  "key": "HO2_bandits_s5",
+  "cell": "HO2_sec",
+  "doc": "bandits_s5",
+  "words": 575,
+  "batch": 0
+ },
+ "682253a0": {
+  "key": "SP_p9aebd0fe2d_120_end",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1333,
+  "batch": 0
+ },
+ "aec2f983": {
+  "key": "SP_pc71cc789ec_120_end",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1327,
+  "batch": 0
+ },
+ "9166251a": {
+  "key": "HR2_bandits_s1",
+  "cell": "HR2_sec",
+  "doc": "bandits_s1",
+  "words": 328,
+  "batch": 0
+ },
+ "54cae87b": {
+  "key": "HO2_aieng_s4",
+  "cell": "HO2_sec",
+  "doc": "aieng_s4",
+  "words": 692,
+  "batch": 0
+ },
+ "62b97bb6": {
+  "key": "SP_p9aebd0fe2d_0_none",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1207,
+  "batch": 0
+ },
+ "33174834": {
+  "key": "HR2_aieng",
+  "cell": "HR2_post",
+  "doc": "aieng",
+  "words": 3639,
+  "batch": 0
+ },
+ "1726f6bc": {
+  "key": "SP_pc71cc789ec_240_middle",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1449,
+  "batch": 0
+ },
+ "f00c68c6": {
+  "key": "HR2_aieng_s2",
+  "cell": "HR2_sec",
+  "doc": "aieng_s2",
+  "words": 1039,
+  "batch": 0
+ },
+ "a89e3d2f": {
+  "key": "HO2_aieng_s1",
+  "cell": "HO2_sec",
+  "doc": "aieng_s1",
+  "words": 359,
+  "batch": 0
+ },
+ "6d741ae9": {
+  "key": "HR2_bandits_s3",
+  "cell": "HR2_sec",
+  "doc": "bandits_s3",
+  "words": 209,
+  "batch": 0
+ },
+ "9689bde6": {
+  "key": "HR2_bandits_s5",
+  "cell": "HR2_sec",
+  "doc": "bandits_s5",
+  "words": 672,
+  "batch": 0
+ },
+ "48a487fa": {
+  "key": "HR2_aieng_s6",
+  "cell": "HR2_sec",
+  "doc": "aieng_s6",
+  "words": 205,
+  "batch": 0
+ },
+ "e0dde17d": {
+  "key": "SP_p9aebd0fe2d_240_middle",
+  "cell": "SP",
+  "doc": "p9aebd0fe2d",
+  "words": 1455,
+  "batch": 0
+ },
+ "5176d1a6": {
+  "key": "SP_pc71cc789ec_240_start",
+  "cell": "SP",
+  "doc": "pc71cc789ec",
+  "words": 1449,
+  "batch": 0
+ }
+}
