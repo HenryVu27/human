@@ -434,6 +434,36 @@ def _pick_metrics(pred: dict) -> dict:
             "pred_minus_pangram_all": statistics.mean(gaps_all) if gaps_all else None}
 
 
+def _post_metrics(pred: dict) -> dict:
+    """Added 13:42, after the scan, to summarise the same picks per post; no rule changes. A whole post's share is the
+    word-weighted mean of its sections' shares (B37: Pangram adds up flagged words). Random is the exact expectation over
+    every combination of one scanned candidate per section; the oracle takes each section's lowest share, as in
+    _pick_metrics; the label reading is Human under 0.10, AI from 0.80."""
+    import itertools
+
+    pang = {r["key"]: r for r in _load(PANGRAM) if r["cell"] == "K"}
+    cands = [c for c in _load(CANDS) if c["cid"] in pang and c["cid"] in pred]
+    out = {}
+    for doc in CALIB_POSTS:
+        secs = {}
+        for c in cands:
+            if c["doc"] == doc:
+                secs.setdefault(c["section"], []).append(c)
+        secs = [secs[k] for k in sorted(secs)]
+
+        def share(pick):
+            return sum(pang[c["cid"]]["ai_share"] * c["words"] for c in pick) / sum(c["words"] for c in pick)
+
+        combos = [share(p) for p in itertools.product(*secs)]
+        pick = share([min(cs, key=lambda c: pred[c["cid"]]) for cs in secs])
+        orc = share([min(cs, key=lambda c: pang[c["cid"]]["ai_share"]) for cs in secs])
+        out[doc] = {"sections": len(secs), "judge_pick": round(pick, 3), "random": round(statistics.mean(combos), 3),
+                    "oracle": round(orc, 3), "judge_reads_human": pick < 0.10,
+                    "random_p_human": round(sum(s < 0.10 for s in combos) / len(combos), 3),
+                    "oracle_reads_human": orc < 0.10}
+    return out
+
+
 def evaluate():
     rows = _load(DATA)
     res = {"judges": {}}
@@ -443,7 +473,12 @@ def evaluate():
         p = json.loads(f.read_text())
         res["judges"][name] = {"oof": _metrics(p["oof"], rows),
                                "loeo": _metrics(p["loeo"], [r for r in rows if r["loeo_test"]]),
-                               "calib_pick": _pick_metrics(p["calib"])}
+                               "calib_pick": _pick_metrics(p["calib"]),
+                               "calib_posts": _post_metrics(p["calib"])}
+    res["math_probe"] = {r["key"]: {"label": r["label"], "ai_share": r["ai_share"], "words": r["words"],
+                                    "pangram_words": r.get("pangram_words")}
+                         for r in _load(PANGRAM) if r["cell"] != "K"}
+    res["unscanned"] = [c["cid"] for c in _load(CANDS) if len(c["text"].split()) < 50]
     cands = {k: v["oof"]["rewrites"]["auroc"] or 0 for k, v in res["judges"].items()}
     if cands:
         best = max(cands, key=cands.get)
@@ -456,10 +491,105 @@ def evaluate():
     print(json.dumps(res, indent=1))
 
 
+def explore():
+    """Post hoc, added 13:50 after the evaluation; none of this was pre-registered and none of it changes the choice.
+
+    Looking at the J1 picks showed many short candidates. Two questions: does the gain come from picking short texts
+    (which drop content), and does a free heuristic do as well? Heuristics: the shortest candidate; the candidate that
+    copies the least from its input section (copied_from_input, 8-word runs, computed by calib_assess before the scan).
+    The length floor keeps candidates with at least 80% of the input's words (falling back to all when none does).
+    The copied-share heuristic is then checked on texts it was not found on: B36's C300 and Cfull rewrites of Sonnet's
+    post D, against J1's out-of-fold and leave-one-experiment-out predictions on the same rows."""
+    import numpy as np
+    from scipy.stats import spearmanr
+    from sklearn.metrics import roc_auc_score
+
+    pang = {r["key"]: r for r in _load(PANGRAM) if r["cell"] == "K"}
+    preds = {n: json.loads((RES / f"b38_{n.lower()}_preds.json").read_text()) for n in ("J1", "J2")}
+    cands = [c for c in _load(CANDS) if c["cid"] in pang]
+    for c in cands:
+        c["share"] = pang[c["cid"]]["ai_share"]
+        c["ratio"] = c["words"] / c["input_words"]
+        c["claims"] = c["claims_entailed"] / c["claims_total"]
+    by = {}
+    for c in cands:
+        by.setdefault(c["section"], []).append(c)
+    rules = {"J1": lambda c: preds["J1"]["calib"][c["cid"]], "J2": lambda c: preds["J2"]["calib"][c["cid"]],
+             "shortest": lambda c: c["words"], "least_copied": lambda c: c["copied_from_input"],
+             "oracle": lambda c: c["share"]}
+
+    def picks(rule, floor=0.0):
+        out = []
+        for cs in by.values():
+            pool = [c for c in cs if c["ratio"] >= floor] or cs
+            out.append(min(pool, key=rule))
+        return out
+
+    def summ(ps):
+        return {"share": round(statistics.mean(c["share"] for c in ps), 3),
+                "words_over_input": round(statistics.mean(c["ratio"] for c in ps), 2),
+                "claims_entailed": round(statistics.mean(c["claims"] for c in ps), 2),
+                "picks_under_70pct_words": sum(c["ratio"] < 0.7 for c in ps)}
+
+    def pair_acc(rule):
+        n = r = 0
+        for cs in by.values():
+            for i in range(len(cs)):
+                for j in range(i + 1, len(cs)):
+                    a, b = cs[i], cs[j]
+                    if abs(a["share"] - b["share"]) > 0.05:
+                        n += 1
+                        r += (rule(a) < rule(b)) == (a["share"] < b["share"])
+        return round(r / n, 3)
+
+    res = {"all_candidates": {"share": round(statistics.mean(c["share"] for c in cands), 3),
+                              "words_over_input": round(statistics.mean(c["ratio"] for c in cands), 2)}}
+    res["best_of_4"] = {k: summ(picks(f)) | {"pair_accuracy": pair_acc(f)} for k, f in rules.items()}
+    res["best_of_4_floor80"] = {k: summ(picks(f, 0.8)) for k, f in rules.items()}
+    res["best_of_4_floor80"]["random"] = {"share": round(statistics.mean(
+        statistics.mean(c["share"] for c in ([c for c in cs if c["ratio"] >= 0.8] or cs)) for cs in by.values()), 3)}
+    res["spearman_on_candidates"] = {
+        "J1_vs_share": round(float(spearmanr([rules["J1"](c) for c in cands], [c["share"] for c in cands]).statistic), 2),
+        "J1_vs_words_ratio": round(float(spearmanr([rules["J1"](c) for c in cands], [c["ratio"] for c in cands]).statistic), 2),
+        "share_vs_words_ratio": round(float(spearmanr([c["share"] for c in cands], [c["ratio"] for c in cands]).statistic), 2),
+        "copied_vs_share": round(float(spearmanr([c["copied_from_input"] for c in cands], [c["share"] for c in cands]).statistic), 2)}
+    rng = random.Random(0)
+    gain = [statistics.mean(c["share"] for c in cs) - min(cs, key=rules["J1"])["share"] for cs in by.values()]
+    diff = [g - (statistics.mean(c["share"] for c in cs) - min(cs, key=rules["least_copied"])["share"])
+            for g, cs in zip(gain, by.values())]
+
+    def ci(v):
+        bs = sorted(statistics.mean(rng.choice(v) for _ in v) for _ in range(10000))
+        return [round(statistics.mean(v), 3), round(bs[250], 3), round(bs[9750], 3)]
+
+    res["section_bootstrap_95"] = {"J1_gain_over_random": ci(gain), "J1_minus_least_copied_gain": ci(diff),
+                                   "sections_J1_better_than_random": sum(g > 0 for g in gain),
+                                   "sections_J1_worse": sum(g < 0 for g in gain)}
+    dtext = {r["id"]: r["D"] for r in _load(RES / "b36_inputs.jsonl")}
+    rows = [r for r in _load(DATA) if r["exp"] == "B36" and r["cell"] in ("C300", "Cfull") and r["doc"] in dtext
+            and r["ai_share"] is not None]
+    y = [int(r["label"] != "Human") for r in rows]
+    sh = [r["ai_share"] for r in rows]
+    cp = np.array([copied_share(r["text"], dtext[r["doc"]]) for r in rows])
+    held = {"n": len(rows), "not_human": sum(y),
+            "least_copied": {"auroc": round(float(roc_auc_score(y, cp)), 3),
+                             "spearman_share": round(float(spearmanr(cp, sh).statistic), 3)}}
+    for k in ("oof", "loeo"):
+        s = np.array([preds["J1"][k][r["uid"]] for r in rows])
+        z = (s - s.mean()) / s.std() + (cp - cp.mean()) / cp.std()
+        held[f"J1_{k}"] = {"auroc": round(float(roc_auc_score(y, s)), 3), "spearman_share": round(float(spearmanr(s, sh).statistic), 3)}
+        held[f"J1_{k}_plus_copied"] = {"auroc": round(float(roc_auc_score(y, z)), 3),
+                                       "spearman_share": round(float(spearmanr(z, sh).statistic), 3)}
+    res["b36_rewrites_of_D"] = held
+    prev = json.loads(OUT.read_text()) if OUT.exists() else {}
+    OUT.write_text(json.dumps(prev | {"explore_post_hoc": res}, indent=1))
+    print(json.dumps(res, indent=1))
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd in ("scanfiles", "record"):
         {"scanfiles": scanfiles, "record": record}[cmd](sys.argv[2])
     else:
         {"data": data, "calib_inputs": calib_inputs, "calib_prompts": calib_prompts, "calib_assess": calib_assess,
-         "features": features, "linear": linear, "evaluate": evaluate}[cmd]()
+         "features": features, "linear": linear, "evaluate": evaluate, "explore": explore}[cmd]()
