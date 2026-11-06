@@ -718,6 +718,49 @@ The choice among these is a product decision, not an experiment.
 
 **Voice writer.** Trained on 630 essay pairs in 43 minutes on the PC. Validation loss fell from 1.19 to 1.03, and 276 of the 630 pairs were truncated at 2,560 tokens. Its B26 and B28 cells generate overnight.
 
+## 32. B26: the voice writer on the blogger's reworded notes (Pangram, 13 texts)
+
+**Design** (`experiments/b26_voice.py`):
+- **Writer:** the pool writer retrained (QLoRA on OLMo-2-13B, PC, 43 minutes) on 630 essays by the 13 writers, notes to essay, with all notes kept.
+- **Input:** B27's reworded notes for the 13 test essays, with the same Guard, prune and best-of-4 pick as before.
+- **Comparison:** paired with W, Sonnet's post from the same notes.
+
+| Cell (same reworded notes) | Human | Mixed | AI | Length, share of the essay | Claims supported |
+|---|---|---|---|---|---|
+| W, Sonnet (B27) | 1 | 11 | 1 | 97% | (not checked) |
+| V, voice writer | 11 | 2 | 0 | 82% | 92% |
+
+- **Significance:** Fisher's exact test on Human gives p = 0.0002.
+- **Paired by essay:** V reads Human where W does not on 10 of 13, and the reverse never happens.
+- **Copying:** V copies 7% of its words from the essay in 8-word runs, and 2% from outside the notes.
+- **Prediction:** 7 or more Human, at most 1 AI. Met.
+
+**Reading.** This is the first full-length, faithful, Human-reading result on blogs. Given the blogger's own notes, the local writer trained on essayists produces a post of about four-fifths the essay's length that Pangram reads as human, where Sonnet from the same notes reads Mixed. The pool writer's notes route kept only 54% of the length (B25 N, original notes, not scanned). Keeping all notes in training, so the writer does not invent past them, is what restored the length.
+
+**Voice.** First person is close to the essays' (1.8 per 100 words against 1.7). Sentence length varies less than in the essays: the median spread is 8 to 10 words against the essays' 10 to 20.
+
+## 33. B29: imitating one writer with Sonnet (Pangram, 13 texts)
+
+**Henry's question:** have we tried mimicking a particular writer? We had not.
+
+**Design** (`experiments/b29_mimic.py`):
+- **Prompt:** Sonnet gets three of the same writer's training posts, unnamed ("Here are three posts I wrote"), and writes the next post "in my voice" from the same reworded notes. Nothing else changes from W.
+- **Authorship classifier:** character n-grams with logistic regression, trained on the 660 training essays, measures who the text sounds like.
+- **Recited essay excluded:** given three of Sutton's posts and notes on "The Bitter Lesson", Sonnet recited the essay verbatim (100% copied). That text read Human but is left out by an amendment made before the scan.
+
+| Cell, 12 counted essays | Human | Mixed | AI | Attributed to the right writer (13 texts) |
+|---|---|---|---|---|
+| The real essays (H) | 12 | 0 | 0 | 85% |
+| W, Sonnet | 1 | 10 | 1 | 38% |
+| Y, Sonnet imitating the writer | 3 | 8 | 1 | 46% |
+| V, voice writer | 10 | 2 | 0 | 69% |
+
+**Reading.** In-context imitation barely moves Sonnet, on Pangram or on the authorship test, as predicted. The local voice writer is attributed to the right writer more often than either Sonnet cell, although it is never told who the writer is. It picks the voice up from the notes' subject alone, and it saw these writers in training, so the classifier result is partly circular.
+
+**Next:**
+- **Single-writer imitation in a local model:** the base model prompted with the writer's own posts, and a fine-tune on one writer.
+- **A learned rewriter:** trained on pairs of an AI post and the human essay with the same ideas. It is the most direct test of humanizing an AI draft.
+
 ## Where this stands (2026-11-05, about 18:10)
 
 **Two routes work on the FineWeb explainer drafts.**
