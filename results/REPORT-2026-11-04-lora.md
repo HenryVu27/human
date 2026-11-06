@@ -908,3 +908,71 @@ Both validity gates pass: the human texts read Human 30 of 30, and each instruct
 **Spend.** Pangram 386 credits (dashboard 12,090 to 11,704; per-file charges sum to 401). Modal about $6.
 
 **Files:** `experiments/b30_rewriter.py`, `experiments/modal/b30_gen.py`, `experiments/gpu/train13b.py`, `experiments/gpu/gen13b_guard.py`, `results/b30_rewriter.json`. Texts stay local (`results/b30_*.jsonl`, gitignored).
+
+## 36. B28's local-writer cells, beside B30 (Pangram, 76 texts)
+
+**Question.** Section 31 left B28's local cells for the night:
+- **L:** the voice writer from the same reworded notes Sonnet got.
+- **R:** the voice writer from facts extracted from Sonnet's full-notes post.
+
+Section 35's rewriter (T) works on Sonnet's posts for the same 19 essays, so all four ways of using a blogger's notes can now be compared on the same essays.
+
+**Design.**
+- Fixed 2026-11-05 18:28 in `experiments/b28_dose.py`.
+- The voice writer was trained before B26's scan, with the Guard, pruning against the notes, 2 seeds, and the most supported claims kept.
+- Samples came from the Mac (37) and the PC (115), under the amendments of 19:46 to 23:10.
+- Amended 2026-11-06 04:07, after the pick and before the scan: a text under 150 words counts as not Human (B25's rule). Two L25 texts fall under it.
+
+| Same 19 essays | Human | Mixed | AI | Words | Share of the essay's length | Claims supported |
+|---|---|---|---|---|---|---|
+| S100, Sonnet from all the notes | 1 | 18 | 0 | 787 | | |
+| L100, voice writer from all the notes | 11 | 8 | 0 | 541 | 67% | 90% |
+| T100, rewriter on S100 (B30) | 19 | 0 | 0 | 640 | 82% | 94% |
+| R, voice writer from the S100 post's facts | 13 | 6 | 0 | 509 | 66% | 93% |
+| S50, Sonnet from half | 0 | 6 | 13 | 798 | | |
+| L50, voice writer from half | 14 | 5 | 0 | 361 | 45% | 85% |
+| T50, rewriter on S50 (B30) | 13 | 6 | 0 | 606 | 78% | 97% |
+| S25, Sonnet from a quarter | 0 | 1 | 18 | 857 | | |
+| L25, voice writer from a quarter | 17 (15 by the 150-word rule) | 2 | 0 | 280 | 35% | 72% |
+| T25, rewriter on S25 (B30) | 3 (2 by the rule) | 15 | 1 | 658 | 77% | 96% |
+
+**Paired by essay** (Human < Mixed < AI; two-sided sign tests):
+- **L against S:** L reads more human at every dose. It wins 10 to 0 (p 0.002), 19 to 0 and 19 to 0 (p 4e-6 each).
+- **T against L:**
+  - With all the notes, T100 is more human than L100 on 8 essays and less on none (p 0.008).
+  - At half, they tie (3 against 4).
+  - At a quarter, L25 is more human on 15 essays and T25 on 1 (p 5e-4; 14 against 1, p 0.001, under the 150-word rule).
+- **R:** R against L100 is 4 against 2 (p 0.69). R is more human than S100 on 12 essays and less on none (p 5e-4). T100 is more human than R on 6 and less on none (p 0.03).
+
+**Against the predictions fixed at 18:28:**
+- **Met:**
+  - H 19 of 19 Human.
+  - S at most 3 Human per dose, with AI rising as the notes thin.
+  - L beats S on Human count at every dose.
+  - L's length falls with dose.
+- **Missed:**
+  - L100 reads Human on 11 of 19, one short of the predicted 12 or more.
+  - L does not fall with dose; it rises: 11, 14, then 15 by the rule.
+  - R does not read Human less often than L100 (13 against 11).
+
+**Reading.**
+- **The L dose trend may be a length trend, and B28 cannot tell.** With fewer notes the voice writer writes less: 541, 361 and 280 words, or 67%, 45% and 35% of the essay. Its claim support also falls, from 90% to 72%, so more of each text is the base model's own generic material. Pooled over L, texts under 300 words read Human 17 of 20, 300 to 449 words 16 of 20, and 450 and over 9 of 17. But in a logistic model neither log words nor dose is significant. Within 300 to 449 words the cells read 5/5, 5/8 and 6/7. Paired L100 against L25 is 0 to 6 as scanned (p 0.03) and 2 to 6 under the 150-word rule (p 0.29). A length-matched control would separate the two: cut each L100 text to its L25 partner's length and scan both with a few S100 texts rescanned as an anchor. B34 measures Pangram against length directly.
+- **With the blogger's full content, rewriting Sonnet's post beats writing from the notes.** T100 reads 19 of 19 Human and is longer and better supported than L100. Given the whole AI post, the rewriter keeps more of the content than the notes writer does, and reads more human.
+- **With thin notes, the AI post is the problem.** T25 starts from a post in which Sonnet chose about three quarters of the content, and stays Mixed. L25 starts from the blogger's few notes and stays Human, but it is a third of the length and holds less of what the post said.
+- **R shows that extracting facts from an AI post works about as well as having the notes,** at about two thirds of the essay's length. B30's rewriter does better on the same input.
+
+**Further cautions** (from the outside judge, `results/research/b28-outside-judge.md`).
+- **Loops.** 15 of the picked raw samples loop (R_e2408017e repeats a number until the token cap), and 14 never reached end of text. Pruning removes the loops and no duplicate sentences survive. These 15 read Human 7 of 15, so they do not inflate the count.
+- **Machines.** 18 picks come from the Mac and 58 from the PC. Both read Human 72% of the time.
+- **Note order.** L's prompts shuffle the notes while S got them in order, although the docstring says "the notes' own order".
+- **A trace of the essay in R.** R's Topic line comes from the essay's notes, so R carries a trace of the blogger's content beyond the S100 post.
+- **Essay clustering.** Mixed labels cluster by essay: Sumner's e26077b9a is Mixed in all 4 local cells.
+- **Two scan days.** S was scanned on 11-05 and L and R on 11-06, with no rescanned anchor texts.
+
+**For Henry's use.** If his drafts carry his own content, rewriting the AI draft directly (B30) is now the strongest route, and it keeps the most length. Whether it holds on a writer the rewriter never saw is the open question, and the long-form program's B36 tests it.
+
+**Spend.** Pangram 355 credits (dashboard 11,704 to 11,349; per-file charges sum to 371).
+
+**Outside check.** An outside-judge agent recomputed every count, test and length from the raw files and the commit and file times, and confirmed them (one rounding slip, 68% for 67%). The length and caution paragraphs above are its findings.
+
+**Files:** `experiments/b28_dose.py`, `results/b28_dose.json`, `results/research/b28-outside-judge.md`. Texts stay local (`results/b28_*.jsonl`, gitignored).

@@ -75,7 +75,83 @@
   "S50_e7ce7f8ef": "AI",
   "S50_e7db32c31": "AI",
   "S50_eb5803246": "AI",
-  "S50_eb5e9c791": "Mixed"
+  "S50_eb5e9c791": "Mixed",
+  "L100_e261c079d": "Human",
+  "L100_e2b3ccb36": "Human",
+  "L100_e2582cfba": "Mixed",
+  "L100_e2ad38e17": "Mixed",
+  "L100_e26077b9a": "Mixed",
+  "L100_e272d5d5f": "Mixed",
+  "L100_e279a1d91": "Human",
+  "L100_e2408017e": "Human",
+  "L100_e2cddaea8": "Human",
+  "L100_e2cfe2cb2": "Human",
+  "L100_e5e675663": "Mixed",
+  "L100_e468649a7": "Human",
+  "L100_e7b687627": "Human",
+  "L100_e47d68fab": "Human",
+  "L100_e5c7a9dcc": "Human",
+  "L100_e7ce7f8ef": "Mixed",
+  "L100_e7db32c31": "Human",
+  "L100_eb5803246": "Mixed",
+  "L100_eb5e9c791": "Mixed",
+  "L25_e2408017e": "Human",
+  "L25_e2582cfba": "Human",
+  "L25_e261c079d": "Human",
+  "L25_e272d5d5f": "Human",
+  "L25_e26077b9a": "Mixed",
+  "L25_e2cfe2cb2": "Human",
+  "L25_e47d68fab": "Human",
+  "L25_e2ad38e17": "Human",
+  "L25_e279a1d91": "Human",
+  "L25_e5c7a9dcc": "Human",
+  "L25_e2b3ccb36": "Human",
+  "L25_e2cddaea8": "Human",
+  "L25_e468649a7": "Human",
+  "L25_eb5803246": "Human",
+  "L50_e2408017e": "Human",
+  "L25_e7ce7f8ef": "Human",
+  "L25_eb5e9c791": "Mixed",
+  "L25_e7db32c31": "Human",
+  "L25_e5e675663": "Human",
+  "L25_e7b687627": "Human",
+  "L50_e2582cfba": "Human",
+  "L50_e2ad38e17": "Human",
+  "L50_e279a1d91": "Human",
+  "L50_e272d5d5f": "Human",
+  "L50_e261c079d": "Human",
+  "L50_e26077b9a": "Mixed",
+  "L50_e2cddaea8": "Human",
+  "L50_e2cfe2cb2": "Human",
+  "L50_e2b3ccb36": "Human",
+  "L50_e468649a7": "Human",
+  "L50_e7ce7f8ef": "Mixed",
+  "L50_e47d68fab": "Human",
+  "L50_eb5803246": "Mixed",
+  "L50_e5e675663": "Mixed",
+  "L50_e5c7a9dcc": "Mixed",
+  "L50_e7b687627": "Human",
+  "L50_e7db32c31": "Human",
+  "R_e272d5d5f": "Human",
+  "R_e2408017e": "Human",
+  "L50_eb5e9c791": "Human",
+  "R_e2ad38e17": "Human",
+  "R_e279a1d91": "Human",
+  "R_e261c079d": "Human",
+  "R_e26077b9a": "Mixed",
+  "R_e2582cfba": "Mixed",
+  "R_e2cddaea8": "Mixed",
+  "R_e468649a7": "Human",
+  "R_e47d68fab": "Human",
+  "R_e7b687627": "Human",
+  "R_e5c7a9dcc": "Human",
+  "R_e2b3ccb36": "Mixed",
+  "R_e5e675663": "Human",
+  "R_e2cfe2cb2": "Human",
+  "R_e7ce7f8ef": "Human",
+  "R_e7db32c31": "Human",
+  "R_eb5803246": "Mixed",
+  "R_eb5e9c791": "Mixed"
  },
  "pangram_summary": {
   "H": {
@@ -100,23 +176,665 @@
   },
   "L100": {
    "AI": 0,
-   "Mixed": 0,
-   "Human": 0
+   "Mixed": 8,
+   "Human": 11
   },
   "L50": {
    "AI": 0,
-   "Mixed": 0,
-   "Human": 0
+   "Mixed": 5,
+   "Human": 14
   },
   "L25": {
    "AI": 0,
-   "Mixed": 0,
-   "Human": 0
+   "Mixed": 2,
+   "Human": 17
   },
   "R": {
    "AI": 0,
-   "Mixed": 0,
-   "Human": 0
+   "Mixed": 6,
+   "Human": 13
+  }
+ },
+ "checks": {
+  "L100": {
+   "texts": 19,
+   "words": 540.6315789473684,
+   "length_ratio": 0.6747139683621988,
+   "claim_support": 0.9011280489457731,
+   "quality_vs_essay": 0.0,
+   "copied_from_essay": 0.032418662545311734,
+   "essay_beyond_prompt": 0.0025729349604469744,
+   "first_person": 2.159728690669303,
+   "sentence_sd": 9.19117338006586
+  },
+  "L50": {
+   "texts": 19,
+   "words": 361.2105263157895,
+   "length_ratio": 0.44536525257707543,
+   "claim_support": 0.8481178441242817,
+   "quality_vs_essay": 0.0,
+   "copied_from_essay": 0.024752425097148548,
+   "essay_beyond_prompt": 0.008140506618420995,
+   "first_person": 2.4567203792341976,
+   "sentence_sd": 8.630870275364142
+  },
+  "L25": {
+   "texts": 19,
+   "words": 280.1578947368421,
+   "length_ratio": 0.34816718032430444,
+   "claim_support": 0.7194148821256493,
+   "quality_vs_essay": 0.0,
+   "copied_from_essay": 0.009250381656937113,
+   "essay_beyond_prompt": 0.0012145748987854252,
+   "first_person": 1.902716601765292,
+   "sentence_sd": 10.070099787621288
+  },
+  "R": {
+   "texts": 19,
+   "words": 509.05263157894734,
+   "length_ratio": 0.6589771223694908,
+   "claim_support": 0.9267772937290921,
+   "quality_vs_essay": 0.05263157894736842,
+   "copied_from_essay": 0.03169632408116726,
+   "essay_beyond_prompt": 0.014413923774661117,
+   "first_person": 2.132323114247392,
+   "sentence_sd": 9.193213465377895
+  }
+ },
+ "sonnet_checks": {
+  "S100": {
+   "words": 787.2631578947369,
+   "copied_from_essay": 0.03547036707493955,
+   "first_person": 2.3028715848903345,
+   "sentence_sd": 7.643653014873623
+  },
+  "S50": {
+   "words": 798.3157894736842,
+   "copied_from_essay": 0.012910504449628515,
+   "first_person": 2.4496743870986455,
+   "sentence_sd": 7.193348398778773
+  },
+  "S25": {
+   "words": 857.0526315789474,
+   "copied_from_essay": 0.006124090817795714,
+   "first_person": 2.4175516715274963,
+   "sentence_sd": 7.923383499306676
+  },
+  "H": {
+   "first_person": 2.2531483755801194,
+   "sentence_sd": 14.158055333168697
+  }
+ },
+ "sonnet_per_text": {
+  "S100_e7b687627": {
+   "words": 598,
+   "over_essay": 0.943217665615142,
+   "copied_from_essay": 0.14950166112956811,
+   "voice": {
+    "first_person": 4.013377926421405,
+    "sentence_mean": 14.238095238095237,
+    "sentence_sd": 6.042742690949611
+   }
+  },
+  "S50_e7b687627": {
+   "words": 612,
+   "over_essay": 0.9652996845425867,
+   "copied_from_essay": 0.01948051948051948,
+   "voice": {
+    "first_person": 6.045751633986928,
+    "sentence_mean": 14.232558139534884,
+    "sentence_sd": 6.843218368718671
+   }
+  },
+  "S25_e7b687627": {
+   "words": 737,
+   "over_essay": 1.162460567823344,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 3.6635006784260518,
+    "sentence_mean": 12.706896551724139,
+    "sentence_sd": 6.32185214209727
+   }
+  },
+  "S100_e7db32c31": {
+   "words": 820,
+   "over_essay": 0.9001097694840834,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 0.8536585365853658,
+    "sentence_mean": 15.185185185185185,
+    "sentence_sd": 8.33127546607555
+   }
+  },
+  "S50_e7db32c31": {
+   "words": 850,
+   "over_essay": 0.9330406147091108,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.1764705882352942,
+    "sentence_mean": 14.655172413793103,
+    "sentence_sd": 6.727585323176386
+   }
+  },
+  "S25_e7db32c31": {
+   "words": 908,
+   "over_essay": 0.9967069154774972,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 0.8810572687224669,
+    "sentence_mean": 14.885245901639344,
+    "sentence_sd": 7.008422007691392
+   }
+  },
+  "S100_e2ad38e17": {
+   "words": 536,
+   "over_essay": 0.8035982008995503,
+   "copied_from_essay": 0.10623946037099494,
+   "voice": {
+    "first_person": 4.664179104477612,
+    "sentence_mean": 14.105263157894736,
+    "sentence_sd": 5.73442730442154
+   }
+  },
+  "S50_e2ad38e17": {
+   "words": 576,
+   "over_essay": 0.863568215892054,
+   "copied_from_essay": 0.026622296173044926,
+   "voice": {
+    "first_person": 5.208333333333333,
+    "sentence_mean": 14.048780487804878,
+    "sentence_sd": 5.8349293870461185
+   }
+  },
+  "S25_e2ad38e17": {
+   "words": 760,
+   "over_essay": 1.1394302848575713,
+   "copied_from_essay": 0.02096177558569667,
+   "voice": {
+    "first_person": 3.6842105263157894,
+    "sentence_mean": 19.487179487179485,
+    "sentence_sd": 12.194727307159823
+   }
+  },
+  "S100_e2b3ccb36": {
+   "words": 890,
+   "over_essay": 1.1337579617834395,
+   "copied_from_essay": 0.059602649006622516,
+   "voice": {
+    "first_person": 2.808988764044944,
+    "sentence_mean": 17.115384615384617,
+    "sentence_sd": 10.155812746618494
+   }
+  },
+  "S50_e2b3ccb36": {
+   "words": 809,
+   "over_essay": 1.0305732484076433,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.2360939431396787,
+    "sentence_mean": 13.711864406779661,
+    "sentence_sd": 6.3620987035582734
+   }
+  },
+  "S25_e2b3ccb36": {
+   "words": 813,
+   "over_essay": 1.0356687898089172,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 3.8130381303813037,
+    "sentence_mean": 14.517857142857142,
+    "sentence_sd": 5.840104791833092
+   }
+  },
+  "S100_e2cddaea8": {
+   "words": 543,
+   "over_essay": 1.086,
+   "copied_from_essay": 0.05301645338208409,
+   "voice": {
+    "first_person": 4.051565377532229,
+    "sentence_mean": 11.804347826086957,
+    "sentence_sd": 8.81850713289557
+   }
+  },
+  "S50_e2cddaea8": {
+   "words": 488,
+   "over_essay": 0.976,
+   "copied_from_essay": 0.043121149897330596,
+   "voice": {
+    "first_person": 2.8688524590163933,
+    "sentence_mean": 16.266666666666666,
+    "sentence_sd": 7.801424371371053
+   }
+  },
+  "S25_e2cddaea8": {
+   "words": 511,
+   "over_essay": 1.022,
+   "copied_from_essay": 0.01761252446183953,
+   "voice": {
+    "first_person": 3.522504892367906,
+    "sentence_mean": 19.653846153846153,
+    "sentence_sd": 7.054416552728389
+   }
+  },
+  "S100_e2cfe2cb2": {
+   "words": 502,
+   "over_essay": 0.9261992619926199,
+   "copied_from_essay": 0.031936127744510975,
+   "voice": {
+    "first_person": 3.9840637450199203,
+    "sentence_mean": 16.733333333333334,
+    "sentence_sd": 9.986435244314604
+   }
+  },
+  "S50_e2cfe2cb2": {
+   "words": 567,
+   "over_essay": 1.0461254612546125,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 5.8201058201058204,
+    "sentence_mean": 13.5,
+    "sentence_sd": 6.4189080810041945
+   }
+  },
+  "S25_e2cfe2cb2": {
+   "words": 581,
+   "over_essay": 1.0719557195571956,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 4.991394148020654,
+    "sentence_mean": 12.630434782608695,
+    "sentence_sd": 7.984655653058597
+   }
+  },
+  "S100_e468649a7": {
+   "words": 923,
+   "over_essay": 0.925777331995988,
+   "copied_from_essay": 0.03659849300322928,
+   "voice": {
+    "first_person": 1.8418201516793067,
+    "sentence_mean": 15.64406779661017,
+    "sentence_sd": 6.834019369387706
+   }
+  },
+  "S50_e468649a7": {
+   "words": 1056,
+   "over_essay": 1.0591775325977935,
+   "copied_from_essay": 0.011246485473289597,
+   "voice": {
+    "first_person": 1.9886363636363635,
+    "sentence_mean": 15.304347826086957,
+    "sentence_sd": 8.74320331942556
+   }
+  },
+  "S25_e468649a7": {
+   "words": 890,
+   "over_essay": 0.892678034102307,
+   "copied_from_essay": 0.008938547486033519,
+   "voice": {
+    "first_person": 3.595505617977528,
+    "sentence_mean": 13.283582089552239,
+    "sentence_sd": 7.841348441281618
+   }
+  },
+  "S100_e47d68fab": {
+   "words": 611,
+   "over_essay": 1.0099173553719007,
+   "copied_from_essay": 0.022653721682847898,
+   "voice": {
+    "first_person": 4.582651391162029,
+    "sentence_mean": 13.886363636363637,
+    "sentence_sd": 7.640251986238617
+   }
+  },
+  "S50_e47d68fab": {
+   "words": 581,
+   "over_essay": 0.9603305785123967,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 3.442340791738382,
+    "sentence_mean": 12.361702127659575,
+    "sentence_sd": 7.447477173627161
+   }
+  },
+  "S25_e47d68fab": {
+   "words": 655,
+   "over_essay": 1.0826446280991735,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 4.122137404580153,
+    "sentence_mean": 17.7027027027027,
+    "sentence_sd": 9.483598544015175
+   }
+  },
+  "S100_e2408017e": {
+   "words": 1089,
+   "over_essay": 0.9404145077720207,
+   "copied_from_essay": 0.0071877807726864335,
+   "voice": {
+    "first_person": 2.3875114784205693,
+    "sentence_mean": 15.125,
+    "sentence_sd": 6.9620748423951255
+   }
+  },
+  "S50_e2408017e": {
+   "words": 1277,
+   "over_essay": 1.1027633851468048,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 2.8974158183241974,
+    "sentence_mean": 15.023529411764706,
+    "sentence_sd": 7.34843155828385
+   }
+  },
+  "S25_e2408017e": {
+   "words": 1310,
+   "over_essay": 1.1312607944732298,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 3.435114503816794,
+    "sentence_mean": 15.411764705882353,
+    "sentence_sd": 7.44121134611683
+   }
+  },
+  "S100_e2582cfba": {
+   "words": 847,
+   "over_essay": 1.0627352572145545,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 2.3612750885478158,
+    "sentence_mean": 15.685185185185185,
+    "sentence_sd": 7.140972218470375
+   }
+  },
+  "S50_e2582cfba": {
+   "words": 831,
+   "over_essay": 1.0426599749058971,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.203369434416366,
+    "sentence_mean": 13.403225806451612,
+    "sentence_sd": 5.7766484239156854
+   }
+  },
+  "S25_e2582cfba": {
+   "words": 895,
+   "over_essay": 1.122961104140527,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.452513966480447,
+    "sentence_mean": 15.982142857142858,
+    "sentence_sd": 8.378311864204958
+   }
+  },
+  "S100_e26077b9a": {
+   "words": 820,
+   "over_essay": 1.0933333333333333,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 2.5609756097560976,
+    "sentence_mean": 14.642857142857142,
+    "sentence_sd": 6.536787577758259
+   }
+  },
+  "S50_e26077b9a": {
+   "words": 681,
+   "over_essay": 0.908,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 2.790014684287812,
+    "sentence_mean": 14.804347826086957,
+    "sentence_sd": 7.739283095709754
+   }
+  },
+  "S25_e26077b9a": {
+   "words": 738,
+   "over_essay": 0.984,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.7615176151761518,
+    "sentence_mean": 15.702127659574469,
+    "sentence_sd": 6.937149128154607
+   }
+  },
+  "S100_e261c079d": {
+   "words": 632,
+   "over_essay": 0.9335302806499262,
+   "copied_from_essay": 0.028125,
+   "voice": {
+    "first_person": 0.9493670886075949,
+    "sentence_mean": 14.363636363636363,
+    "sentence_sd": 7.8163317049824625
+   }
+  },
+  "S50_e261c079d": {
+   "words": 730,
+   "over_essay": 1.0782865583456425,
+   "copied_from_essay": 0.025780189959294438,
+   "voice": {
+    "first_person": 1.2328767123287672,
+    "sentence_mean": 15.869565217391305,
+    "sentence_sd": 8.23462650786346
+   }
+  },
+  "S25_e261c079d": {
+   "words": 733,
+   "over_essay": 1.0827178729689808,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 0.8185538881309686,
+    "sentence_mean": 14.66,
+    "sentence_sd": 6.964510033017398
+   }
+  },
+  "S100_e5c7a9dcc": {
+   "words": 1246,
+   "over_essay": 0.880565371024735,
+   "copied_from_essay": 0.019062748212867357,
+   "voice": {
+    "first_person": 0.9630818619582665,
+    "sentence_mean": 18.597014925373134,
+    "sentence_sd": 9.313863365479548
+   }
+  },
+  "S50_e5c7a9dcc": {
+   "words": 1237,
+   "over_essay": 0.8742049469964664,
+   "copied_from_essay": 0.00642570281124498,
+   "voice": {
+    "first_person": 1.0509296685529508,
+    "sentence_mean": 14.552941176470588,
+    "sentence_sd": 7.847826049449755
+   }
+  },
+  "S25_e5c7a9dcc": {
+   "words": 1551,
+   "over_essay": 1.096113074204947,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.4829142488716958,
+    "sentence_mean": 14.913461538461538,
+    "sentence_sd": 8.556498404185465
+   }
+  },
+  "S100_e5e675663": {
+   "words": 830,
+   "over_essay": 0.9120879120879121,
+   "copied_from_essay": 0.009433962264150943,
+   "voice": {
+    "first_person": 1.4457831325301205,
+    "sentence_mean": 15.961538461538462,
+    "sentence_sd": 6.474688998950922
+   }
+  },
+  "S50_e5e675663": {
+   "words": 937,
+   "over_essay": 1.0296703296703296,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 2.0277481323372464,
+    "sentence_mean": 16.732142857142858,
+    "sentence_sd": 6.484847920423455
+   }
+  },
+  "S25_e5e675663": {
+   "words": 970,
+   "over_essay": 1.065934065934066,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.8556701030927836,
+    "sentence_mean": 14.477611940298507,
+    "sentence_sd": 7.819528193110023
+   }
+  },
+  "S100_e272d5d5f": {
+   "words": 796,
+   "over_essay": 1.0557029177718833,
+   "copied_from_essay": 0.01,
+   "voice": {
+    "first_person": 1.6331658291457287,
+    "sentence_mean": 13.964912280701755,
+    "sentence_sd": 6.701570678110381
+   }
+  },
+  "S50_e272d5d5f": {
+   "words": 781,
+   "over_essay": 1.0358090185676392,
+   "copied_from_essay": 0.010230179028132993,
+   "voice": {
+    "first_person": 1.408450704225352,
+    "sentence_mean": 13.016666666666667,
+    "sentence_sd": 6.040120491807722
+   }
+  },
+  "S25_e272d5d5f": {
+   "words": 906,
+   "over_essay": 1.2015915119363396,
+   "copied_from_essay": 0.00881057268722467,
+   "voice": {
+    "first_person": 1.434878587196468,
+    "sentence_mean": 13.938461538461539,
+    "sentence_sd": 6.497045300221948
+   }
+  },
+  "S100_e279a1d91": {
+   "words": 517,
+   "over_essay": 1.003883495145631,
+   "copied_from_essay": 0.11411992263056092,
+   "voice": {
+    "first_person": 1.1605415860735009,
+    "sentence_mean": 16.15625,
+    "sentence_sd": 11.088026692676204
+   }
+  },
+  "S50_e279a1d91": {
+   "words": 580,
+   "over_essay": 1.1262135922330097,
+   "copied_from_essay": 0.08275862068965517,
+   "voice": {
+    "first_person": 1.7241379310344827,
+    "sentence_mean": 16.11111111111111,
+    "sentence_sd": 10.28153084628986
+   }
+  },
+  "S25_e279a1d91": {
+   "words": 583,
+   "over_essay": 1.1320388349514563,
+   "copied_from_essay": 0.060034305317324184,
+   "voice": {
+    "first_person": 2.4013722126929675,
+    "sentence_mean": 18.806451612903224,
+    "sentence_sd": 11.453748097171735
+   }
+  },
+  "S100_eb5803246": {
+   "words": 891,
+   "over_essay": 0.9157245632065776,
+   "copied_from_essay": 0.011185682326621925,
+   "voice": {
+    "first_person": 0.8978675645342312,
+    "sentence_mean": 17.470588235294116,
+    "sentence_sd": 7.320004664030633
+   }
+  },
+  "S50_eb5803246": {
+   "words": 896,
+   "over_essay": 0.920863309352518,
+   "copied_from_essay": 0.011135857461024499,
+   "voice": {
+    "first_person": 1.1160714285714286,
+    "sentence_mean": 15.448275862068966,
+    "sentence_sd": 8.090378307921048
+   }
+  },
+  "S25_eb5803246": {
+   "words": 968,
+   "over_essay": 0.9948612538540597,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 0.9297520661157025,
+    "sentence_mean": 15.365079365079366,
+    "sentence_sd": 7.738384202988778
+   }
+  },
+  "S100_eb5e9c791": {
+   "words": 1221,
+   "over_essay": 0.9862681744749596,
+   "copied_from_essay": 0.01527331189710611,
+   "voice": {
+    "first_person": 0.7371007371007371,
+    "sentence_mean": 16.28,
+    "sentence_sd": 6.915798339068792
+   }
+  },
+  "S50_eb5e9c791": {
+   "words": 1039,
+   "over_essay": 0.8392568659127625,
+   "copied_from_essay": 0.0084985835694051,
+   "voice": {
+    "first_person": 0.9624639076034649,
+    "sentence_mean": 15.742424242424242,
+    "sentence_sd": 6.715677284963591
+   }
+  },
+  "S25_eb5e9c791": {
+   "words": 1171,
+   "over_essay": 0.9458804523424879,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 0.5977796754910333,
+    "sentence_mean": 16.728571428571428,
+    "sentence_sd": 8.58057844965083
+   }
+  },
+  "S100_e7ce7f8ef": {
+   "words": 646,
+   "over_essay": 1.0677685950413223,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.8575851393188854,
+    "sentence_mean": 15.380952380952381,
+    "sentence_sd": 5.415816259774439
+   }
+  },
+  "S50_e7ce7f8ef": {
+   "words": 640,
+   "over_essay": 1.0578512396694215,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 2.34375,
+    "sentence_mean": 15.238095238095237,
+    "sentence_sd": 5.935404362241099
+   }
+  },
+  "S25_e7ce7f8ef": {
+   "words": 604,
+   "over_essay": 0.9983471074380166,
+   "copied_from_essay": 0.0,
+   "voice": {
+    "first_person": 1.490066225165563,
+    "sentence_mean": 14.046511627906977,
+    "sentence_sd": 6.448196028138929
+   }
   }
  }
 }
