@@ -696,6 +696,28 @@ So the blog route is the local writer working from the blogger's own notes. B26 
 
 The choice among these is a product decision, not an experiment.
 
+## 31. B28: note density, Sonnet's cells (Pangram, 76 texts; local-writer cells overnight)
+
+**Question.** A blogger's real prompt is far sparser than notes taken from a finished essay. How does Sonnet's post read as the notes thin, and can the voice writer do better from the same notes?
+
+**Design** (`experiments/b28_dose.py`, committed before any text existed). Pangram is Professional now (15,000 credits), so every cell is scanned.
+- **Essays:** 20 fresh essays (`bench2`: 2 per writer from 10 writers, never in the voice writer's training). One Hanson essay, on deliberate COVID infection, was dropped because Sonnet refused to take notes on it, leaving 19.
+- **Notes:** reworded, then cut to 100%, 50% and 25% (nested subsets).
+- **S cells:** Sonnet's post from those notes.
+- **L cells:** the voice writer from the same notes.
+- **R cell:** the voice writer working only from the reworded facts of Sonnet's full-notes post.
+
+| Cell | Human | Mixed | AI |
+|---|---|---|---|
+| H, the 19 essays | 19 | 0 | 0 |
+| S100, Sonnet from all the notes | 1 | 18 | 0 |
+| S50, Sonnet from half | 0 | 6 | 13 |
+| S25, Sonnet from a quarter | 0 | 1 | 18 |
+
+**Reading.** The prediction (AI rising as notes thin) held far more steeply than expected. As the notes thin, Sonnet fills the same length with its own content, and Pangram reads that content as AI. Full notes replicate B27 on new essays: human content in Sonnet's prose reads Mixed. For a blogger who hands Sonnet a few bullet points (a quarter of an essay's notes is still 7 to 17 points), the post reads AI 18 of 19.
+
+**Voice writer.** Trained on 630 essay pairs in 43 minutes on the PC. Validation loss fell from 1.19 to 1.03, and 276 of the 630 pairs were truncated at 2,560 tokens. Its B26 and B28 cells generate overnight.
+
 ## Where this stands (2026-11-05, about 18:10)
 
 **Two routes work on the FineWeb explainer drafts.**
