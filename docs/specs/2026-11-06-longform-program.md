@@ -404,3 +404,22 @@ gate 2, after Henry sees B36. Rules are in the docstrings of `experiments/b34_le
   audit found them not to be single-author blog posts (one also shares a guest author with a train post), and are
   replaced by the next reserve posts that pass the same audit. The technical stratum is 7 or fewer posts, below the
   planned 8; Henry's genre rests on the Henry arm. Details in the B36 and B34 docstrings.
+
+### Amendment 2026-11-06 11:16 CST: gate 2a, before any of its generation, pick, score or scan
+
+The main session relayed gate 2a (inside the Modal free credit only; gate 2b not started; at most 800 Pangram
+credits). B36 found the bottleneck is the per-window Human rate (about 0.34 against the 0.8 whole posts need), so gate
+2a tests cheap levers before any training. Numbering: B37 is gate 2a (development arms, the Henry arm re-scan, and a
+test-B confirmation only if an arm clears a pre-registered margin); B38 is the training of gate 2b; B39 stays the
+final test. Rules are in `experiments/b37_gate2a.py`, committed with this amendment:
+
+- **Form checks** (`src/humanizer/checks/form.py`, tested) gate every output from now on: non-English runs, new
+  code, new framing, extra headers, and restarts at the start of later sections.
+- **Development arms on test-A** (development only now): C0 (B36's pick), C1 (copy-penalized pick over 4 seeds,
+  after the form checks and a 0.90 claim-support floor), L (B28's notes-first voice writer at full length). The
+  context arm is not run (it needs pick-then-generate rounds); restarts are rejected at pick time instead.
+- **Development judge:** MELD's per-window rate against a threshold set on 100 human train-split posts (label-free),
+  with a descriptive calibration against B36's Pangram labels.
+- **Pangram:** the Henry arm first (same-day originals and rewrites, LaTeX stripped in both); a test-B confirmation
+  only for an arm that beats C0 by at least 0.10 in MELD's per-window rate with the other conditions in the docstring;
+  a splice probe only if 150 credits remain.
