@@ -25,12 +25,12 @@ def load_rows(path):
     return [json.loads(line) for line in open(path, encoding="utf-8")]
 
 
-def encode(tok, row):
+def encode(tok, row, max_len=MAX_LEN):
     p = tok(row["prompt"]).input_ids
     c = tok(row["completion"], add_special_tokens=False).input_ids + [tok.eos_token_id]
-    ids = (p + c)[:MAX_LEN]
-    labels = ([-100] * len(p) + c)[:MAX_LEN]
-    return ids, labels, len(p) + len(c) > MAX_LEN
+    ids = (p + c)[:max_len]
+    labels = ([-100] * len(p) + c)[:max_len]
+    return ids, labels, len(p) + len(c) > max_len
 
 
 def chunked_loss(causal_lm, ids, labels, chunk=512):
@@ -66,6 +66,7 @@ def main():
     ap.add_argument("--data", required=True)
     ap.add_argument("--out", required=True)
     ap.add_argument("--smoke", type=int, default=0, help="optimizer steps for a smoke test; 0 = full epoch")
+    ap.add_argument("--max-len", type=int, default=MAX_LEN, help="tokens of prompt plus completion kept (B30: 3584)")
     a = ap.parse_args()
 
     import bitsandbytes as bnb
@@ -86,8 +87,8 @@ def main():
                                                              "gate_proj", "up_proj", "down_proj"]))
     causal_lm = model.base_model.model
 
-    train = [encode(tok, r) for r in load_rows(f"{a.data}/train.jsonl")]
-    valid = [encode(tok, r) for r in load_rows(f"{a.data}/valid.jsonl")]
+    train = [encode(tok, r, a.max_len) for r in load_rows(f"{a.data}/train.jsonl")]
+    valid = [encode(tok, r, a.max_len) for r in load_rows(f"{a.data}/valid.jsonl")]
     ids, labels, _ = train[0]
     b = labels.index(next(x for x in labels if x != -100))
     print("BOUNDARY:", repr(tok.decode(ids[max(0, b - 20):b])), "|||", repr(tok.decode(ids[b:b + 20])), flush=True)
@@ -99,7 +100,7 @@ def main():
     order = list(range(len(train)))
     random.Random(0).shuffle(order)
 
-    summary = {"model": MODEL, "max_len": MAX_LEN, "truncated": sum(t for *_, t in train),
+    summary = {"model": MODEL, "max_len": a.max_len, "truncated": sum(t for *_, t in train),
                "train_rows": len(train), "valid_rows": len(valid), "steps": steps, "loss_curve": [],
                "versions": {"torch": torch.__version__, "cuda": torch.version.cuda,
                             "gpu": torch.cuda.get_device_name(0)}}
