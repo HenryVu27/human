@@ -1,0 +1,92 @@
+{
+ "select": {
+  "pilot": 15132,
+  "listing": 2779,
+  "prior_cores": 1504,
+  "near_duplicate_posts": 0,
+  "pool_testA": 523,
+  "pool_calib": 347,
+  "testA_dropped_for_merged_group": 7,
+  "testA_labelled": 136,
+  "testA_eligible_seen": 93,
+  "b36_docs": 32,
+  "b36_tech": 8,
+  "b36_reserve": 61,
+  "calib_labelled": 40,
+  "b34_docs": 18,
+  "label_types": {
+   "company_or_marketing": 5,
+   "fiction_or_poetry": 6,
+   "listing_or_archive": 3,
+   "news_or_magazine": 9,
+   "other": 7,
+   "personal_post": 109,
+   "spam_or_machine_made": 3,
+   "technical_post": 9,
+   "transcript_or_interview": 25
+  }
+ },
+ "inputs": {
+  "docs": 32,
+  "replaced": [
+   {
+    "id": "p2358c4bdee",
+    "why": "D under 1,000 words (942)"
+   },
+   {
+    "id": "pd25d8ef947",
+    "why": "D under 1,000 words (992)"
+   },
+   {
+    "id": "p25679086d9",
+    "why": "D under 1,000 words (961)"
+   }
+  ],
+  "notes_per_100_words": 3.8379023693069554,
+  "notes_copied": 0.238557451219567,
+  "reworded_copied": 0.034883782543073005,
+  "D_copied_from_post": 0.012531427623150257,
+  "D_words": 1678.75,
+  "D_over_post": 0.8610681429673275,
+  "amendment": {
+   "dropped_after_audit": [
+    "p6d59a3ce68",
+    "p899ba31bed",
+    "p67cdcd8668"
+   ],
+   "added": [
+    "p35b2004659",
+    "pae98db1f7a",
+    "pe9ea594c27"
+   ],
+   "docs": 32,
+   "technical": 7
+  }
+ },
+ "checks": {
+  "C_texts": 32,
+  "C_words": 1398.03125,
+  "C_over_D": 0.8331867682644275,
+  "C_over_human": 0.7082032949095591,
+  "C_claim_support": 0.9591277512733725,
+  "C_copied_from_D": 0.3224807837064094,
+  "C_copied_from_human": 0.016454888384268663,
+  "C_over_15pct_copied_from_human": 0,
+  "henry": {
+   "HR_aieng": {
+    "words": 3241,
+    "claims_entailed": 197,
+    "claims_total": 201,
+    "copied_from_original": 0.664287838239667,
+    "confidential_dropped": 0
+   },
+   "HR_bandits": {
+    "words": 2689,
+    "claims_entailed": 155,
+    "claims_total": 158,
+    "copied_from_original": 0.35839880284324727,
+    "confidential_dropped": 0
+   }
+  }
+ }
+}

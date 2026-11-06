@@ -1,0 +1,312 @@
+{
+ "first_run": {
+  "texts": 20,
+  "excluded_B": [
+   "p628eb7501c",
+   "p403b5bed49",
+   "p98b10affcd",
+   "pad243a158d",
+   "p09104fa0b4",
+   "pd6b3a0ef19",
+   "p564d681f89",
+   "p4a1a6c1f1b"
+  ],
+  "tries": {
+   "p628eb7501c": [
+    {
+     "words": 2545,
+     "repeat4": 0.714,
+     "copied": 0.0
+    },
+    {
+     "words": 2526,
+     "repeat4": 0.634,
+     "copied": 0.0
+    },
+    {
+     "words": 2406,
+     "repeat4": 0.648,
+     "copied": 0.0
+    }
+   ],
+   "p403b5bed49": [
+    {
+     "words": 2424,
+     "repeat4": 0.793,
+     "copied": 0.025
+    },
+    {
+     "words": 1759,
+     "repeat4": 0.397,
+     "copied": 0.0
+    },
+    {
+     "words": 618,
+     "repeat4": 0.086,
+     "copied": 0.0
+    }
+   ],
+   "p98b10affcd": [
+    {
+     "words": 2398,
+     "repeat4": 0.348,
+     "copied": 0.0
+    },
+    {
+     "words": 1497,
+     "repeat4": 0.13,
+     "copied": 0.005
+    },
+    {
+     "words": 267,
+     "repeat4": 0.042,
+     "copied": 0.0
+    }
+   ],
+   "pad243a158d": [
+    {
+     "words": 349,
+     "repeat4": 0.026,
+     "copied": 0.0
+    },
+    {
+     "words": 2358,
+     "repeat4": 0.439,
+     "copied": 0.003
+    },
+    {
+     "words": 809,
+     "repeat4": 0.039,
+     "copied": 0.0
+    }
+   ],
+   "p09104fa0b4": [
+    {
+     "words": 549,
+     "repeat4": 0.005,
+     "copied": 0.0
+    },
+    {
+     "words": 589,
+     "repeat4": 0.021,
+     "copied": 0.0
+    },
+    {
+     "words": 2356,
+     "repeat4": 0.52,
+     "copied": 0.0
+    }
+   ],
+   "pd6b3a0ef19": [
+    {
+     "words": 812,
+     "repeat4": 0.384,
+     "copied": 0.0
+    },
+    {
+     "words": 413,
+     "repeat4": 0.017,
+     "copied": 0.0
+    },
+    {
+     "words": 2623,
+     "repeat4": 0.816,
+     "copied": 0.0
+    }
+   ],
+   "p564d681f89": [
+    {
+     "words": 2308,
+     "repeat4": 0.698,
+     "copied": 0.0
+    },
+    {
+     "words": 2397,
+     "repeat4": 0.217,
+     "copied": 0.0
+    },
+    {
+     "words": 2463,
+     "repeat4": 0.57,
+     "copied": 0.0
+    }
+   ],
+   "p4a1a6c1f1b": [
+    {
+     "words": 2626,
+     "repeat4": 0.669,
+     "copied": 0.0
+    },
+    {
+     "words": 2438,
+     "repeat4": 0.708,
+     "copied": 0.0
+    },
+    {
+     "words": 689,
+     "repeat4": 0.042,
+     "copied": 0.0
+    }
+   ]
+  },
+  "words": {
+   "H300": 283.1,
+   "Hfull": 2333.4
+  }
+ },
+ "pick": {
+  "texts": 20,
+  "excluded_B": [
+   "p628eb7501c",
+   "p403b5bed49",
+   "p98b10affcd",
+   "pad243a158d",
+   "p09104fa0b4",
+   "pd6b3a0ef19",
+   "p564d681f89",
+   "p4a1a6c1f1b"
+  ],
+  "tries": {
+   "p628eb7501c": [
+    {
+     "words": 162,
+     "repeat4": 0.043,
+     "copied": 0.0
+    },
+    {
+     "words": 1412,
+     "repeat4": 0.137,
+     "copied": 0.0
+    },
+    {
+     "words": 2419,
+     "repeat4": 0.67,
+     "copied": 0.0
+    }
+   ],
+   "p403b5bed49": [
+    {
+     "words": 2487,
+     "repeat4": 0.69,
+     "copied": 0.0
+    },
+    {
+     "words": 2435,
+     "repeat4": 0.895,
+     "copied": 0.0
+    },
+    {
+     "words": 2567,
+     "repeat4": 0.657,
+     "copied": 0.0
+    }
+   ],
+   "p98b10affcd": [
+    {
+     "words": 0,
+     "repeat4": 1.0,
+     "copied": 0.0
+    },
+    {
+     "words": 2164,
+     "repeat4": 0.665,
+     "copied": 0.0
+    },
+    {
+     "words": 1812,
+     "repeat4": 0.294,
+     "copied": 0.0
+    }
+   ],
+   "pad243a158d": [
+    {
+     "words": 200,
+     "repeat4": 0.0,
+     "copied": 0.0
+    },
+    {
+     "words": 127,
+     "repeat4": 0.0,
+     "copied": 0.0
+    },
+    {
+     "words": 418,
+     "repeat4": 0.019,
+     "copied": 0.0
+    }
+   ],
+   "p09104fa0b4": [
+    {
+     "words": 307,
+     "repeat4": 0.0,
+     "copied": 0.0
+    },
+    {
+     "words": 779,
+     "repeat4": 0.192,
+     "copied": 0.21
+    },
+    {
+     "words": 1325,
+     "repeat4": 0.091,
+     "copied": 0.0
+    }
+   ],
+   "pd6b3a0ef19": [
+    {
+     "words": 249,
+     "repeat4": 0.02,
+     "copied": 0.0
+    },
+    {
+     "words": 2498,
+     "repeat4": 0.738,
+     "copied": 0.0
+    },
+    {
+     "words": 2289,
+     "repeat4": 0.868,
+     "copied": 0.0
+    }
+   ],
+   "p564d681f89": [
+    {
+     "words": 2025,
+     "repeat4": 0.567,
+     "copied": 0.0
+    },
+    {
+     "words": 2227,
+     "repeat4": 0.723,
+     "copied": 0.004
+    },
+    {
+     "words": 1085,
+     "repeat4": 0.126,
+     "copied": 0.0
+    }
+   ],
+   "p4a1a6c1f1b": [
+    {
+     "words": 680,
+     "repeat4": 0.006,
+     "copied": 0.0
+    },
+    {
+     "words": 2088,
+     "repeat4": 0.686,
+     "copied": 0.0
+    },
+    {
+     "words": 2015,
+     "repeat4": 0.694,
+     "copied": 0.0
+    }
+   ]
+  },
+  "words": {
+   "H300": 283.1,
+   "Hfull": 2333.4
+  }
+ }
+}

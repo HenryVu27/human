@@ -70,3 +70,23 @@ Not verified:
 Most important next check: replace p6d59a3ce68, p899ba31bed and p67cdcd8668 from the reserve and decide what to do
 with pa5fd792f87. Haiku passed 3 non-blog pages out of 32 (about 9%), so hand-check the first reserve posts before
 they move in.
+
+## Follow-up: the reserve posts checked before replacement (same agent, about 09:45 CST)
+
+4 of the 5 reserve posts pass; 1 fails:
+
+- p35b2004659 (alienshore.com): PASS. A personal post on the 2006 Canadian election debate. Its site and names appear
+  nowhere else.
+- pae98db1f7a (torunningchiro.com): PASS. A runner's own marathon recap; it ends by asking for charity donations. No
+  overlap.
+- p0970e31d18 (motleyvision.org): FAIL. The same publication's newsletter, buttondown.email/motleyvision (p3936c2b9d7,
+  bucket 14, train), is in the pilot. The merge rule misses it because buttondown is not in its platform list. The
+  site is also a multi-author group blog, and this post has no byline.
+- pe9ea594c27 (sixfootcanasian.com): PASS, borderline. A personal food-blog round-up of Calgary Italian restaurants
+  that plugs another site, so it leans promotional. The only other "Canasian" is a common word in an unrelated post.
+- pa019a09e0e (bakersacres.blog): PASS. A personal story. Note it names and accuses a private individual.
+
+None of the 5 matches anything in data/ or B30's 13 authors. The near-duplicate check was not run on these 5.
+
+Action: the three excluded posts are replaced by p35b2004659, pae98db1f7a and pe9ea594c27 (the first three that pass,
+in reserve order).

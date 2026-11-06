@@ -1,0 +1,1185 @@
+{
+ "39f1e012": {
+  "key": "D300_p3bfd623027",
+  "cell": "D300",
+  "doc": "p3bfd623027",
+  "words": 297,
+  "batch": 0
+ },
+ "95fe3594": {
+  "key": "H300_p6f608380b8",
+  "cell": "H300",
+  "doc": "p6f608380b8",
+  "words": 292,
+  "batch": 0
+ },
+ "36b8dd12": {
+  "key": "C300_p3a84b9ccbc",
+  "cell": "C300",
+  "doc": "p3a84b9ccbc",
+  "words": 286,
+  "batch": 0
+ },
+ "1e45208f": {
+  "key": "D300_pa2b84bf758",
+  "cell": "D300",
+  "doc": "pa2b84bf758",
+  "words": 283,
+  "batch": 0
+ },
+ "02e67c26": {
+  "key": "C300_pa5fd792f87",
+  "cell": "C300",
+  "doc": "pa5fd792f87",
+  "words": 293,
+  "batch": 0
+ },
+ "2d10ed0c": {
+  "key": "D300_p61945fb568",
+  "cell": "D300",
+  "doc": "p61945fb568",
+  "words": 295,
+  "batch": 0
+ },
+ "e05c489e": {
+  "key": "D300_pbfd12ded77",
+  "cell": "D300",
+  "doc": "pbfd12ded77",
+  "words": 297,
+  "batch": 0
+ },
+ "92e8fabb": {
+  "key": "C300_p4ad56d5750",
+  "cell": "C300",
+  "doc": "p4ad56d5750",
+  "words": 300,
+  "batch": 0
+ },
+ "d8cd7387": {
+  "key": "C300_p4c5be6086d",
+  "cell": "C300",
+  "doc": "p4c5be6086d",
+  "words": 299,
+  "batch": 0
+ },
+ "ce35bb21": {
+  "key": "Hfull_pb41260ec9b",
+  "cell": "Hfull",
+  "doc": "pb41260ec9b",
+  "words": 2392,
+  "batch": 0
+ },
+ "fbb0b57a": {
+  "key": "D300_pc181d8f08b",
+  "cell": "D300",
+  "doc": "pc181d8f08b",
+  "words": 296,
+  "batch": 0
+ },
+ "d90448dd": {
+  "key": "Dfull_pce9bcaba2a",
+  "cell": "Dfull",
+  "doc": "pce9bcaba2a",
+  "words": 1277,
+  "batch": 0
+ },
+ "da9f1536": {
+  "key": "Cfull_pae98db1f7a",
+  "cell": "Cfull",
+  "doc": "pae98db1f7a",
+  "words": 974,
+  "batch": 0
+ },
+ "4f4fe90e": {
+  "key": "Cfull_p3a84b9ccbc",
+  "cell": "Cfull",
+  "doc": "p3a84b9ccbc",
+  "words": 1216,
+  "batch": 0
+ },
+ "42bcfc49": {
+  "key": "Cfull_pa5fd792f87",
+  "cell": "Cfull",
+  "doc": "pa5fd792f87",
+  "words": 1251,
+  "batch": 0
+ },
+ "ac79aec1": {
+  "key": "Cfull_p61945fb568",
+  "cell": "Cfull",
+  "doc": "p61945fb568",
+  "words": 1821,
+  "batch": 0
+ },
+ "b7486060": {
+  "key": "Dfull_pa5fd792f87",
+  "cell": "Dfull",
+  "doc": "pa5fd792f87",
+  "words": 1361,
+  "batch": 0
+ },
+ "864dd98f": {
+  "key": "D300_p2a4982704f",
+  "cell": "D300",
+  "doc": "p2a4982704f",
+  "words": 290,
+  "batch": 0
+ },
+ "5b4a8b1f": {
+  "key": "HR_aieng_s1",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 337,
+  "batch": 0
+ },
+ "24decf75": {
+  "key": "Hfull_p9aebd0fe2d",
+  "cell": "Hfull",
+  "doc": "p9aebd0fe2d",
+  "words": 1975,
+  "batch": 0
+ },
+ "0e438010": {
+  "key": "D300_p827b1c285d",
+  "cell": "D300",
+  "doc": "p827b1c285d",
+  "words": 291,
+  "batch": 0
+ },
+ "841fb6dd": {
+  "key": "HR_aieng_s5",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 282,
+  "batch": 0
+ },
+ "2478cc02": {
+  "key": "Dfull_pa2b84bf758",
+  "cell": "Dfull",
+  "doc": "pa2b84bf758",
+  "words": 1259,
+  "batch": 0
+ },
+ "5d1c0d9d": {
+  "key": "C300_p35b2004659",
+  "cell": "C300",
+  "doc": "p35b2004659",
+  "words": 285,
+  "batch": 0
+ },
+ "9a33456b": {
+  "key": "HR_bandits",
+  "cell": "HR_post",
+  "doc": "bandits",
+  "words": 2689,
+  "batch": 0
+ },
+ "e9a0097f": {
+  "key": "Dfull_pd870408b22",
+  "cell": "Dfull",
+  "doc": "pd870408b22",
+  "words": 1576,
+  "batch": 0
+ },
+ "2798fe00": {
+  "key": "Hfull_p57ff7fc44f",
+  "cell": "Hfull",
+  "doc": "p57ff7fc44f",
+  "words": 2009,
+  "batch": 0
+ },
+ "0494c99f": {
+  "key": "HR_aieng_s7",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 436,
+  "batch": 0
+ },
+ "58a78f30": {
+  "key": "C300_pe9ea594c27",
+  "cell": "C300",
+  "doc": "pe9ea594c27",
+  "words": 297,
+  "batch": 0
+ },
+ "f53a7a3d": {
+  "key": "HR_aieng_s6",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 257,
+  "batch": 0
+ },
+ "283d6b0d": {
+  "key": "D300_p3a84b9ccbc",
+  "cell": "D300",
+  "doc": "p3a84b9ccbc",
+  "words": 290,
+  "batch": 0
+ },
+ "2df20a0f": {
+  "key": "Cfull_pc181d8f08b",
+  "cell": "Cfull",
+  "doc": "pc181d8f08b",
+  "words": 1153,
+  "batch": 0
+ },
+ "0e35c5bc": {
+  "key": "C300_p8fb3502483",
+  "cell": "C300",
+  "doc": "p8fb3502483",
+  "words": 285,
+  "batch": 0
+ },
+ "6314bb28": {
+  "key": "C300_pfe6789384f",
+  "cell": "C300",
+  "doc": "pfe6789384f",
+  "words": 298,
+  "batch": 0
+ },
+ "c23d02a2": {
+  "key": "Dfull_p8fb3502483",
+  "cell": "Dfull",
+  "doc": "p8fb3502483",
+  "words": 1389,
+  "batch": 0
+ },
+ "d59ee897": {
+  "key": "Hfull_p21ca985156",
+  "cell": "Hfull",
+  "doc": "p21ca985156",
+  "words": 2651,
+  "batch": 0
+ },
+ "104f42ae": {
+  "key": "C300_p760e0a2d40",
+  "cell": "C300",
+  "doc": "p760e0a2d40",
+  "words": 280,
+  "batch": 0
+ },
+ "d45d0885": {
+  "key": "Cfull_p8e28b03c67",
+  "cell": "Cfull",
+  "doc": "p8e28b03c67",
+  "words": 1168,
+  "batch": 0
+ },
+ "d36ed4d1": {
+  "key": "Dfull_p3a84b9ccbc",
+  "cell": "Dfull",
+  "doc": "p3a84b9ccbc",
+  "words": 1742,
+  "batch": 0
+ },
+ "77794358": {
+  "key": "Dfull_p9ae3b6a467",
+  "cell": "Dfull",
+  "doc": "p9ae3b6a467",
+  "words": 2368,
+  "batch": 0
+ },
+ "9938c3d8": {
+  "key": "H300_pc71cc789ec",
+  "cell": "H300",
+  "doc": "pc71cc789ec",
+  "words": 300,
+  "batch": 0
+ },
+ "e9f98b6f": {
+  "key": "Cfull_p10267ee0c0",
+  "cell": "Cfull",
+  "doc": "p10267ee0c0",
+  "words": 1842,
+  "batch": 0
+ },
+ "36edbe3a": {
+  "key": "H300_pb41260ec9b",
+  "cell": "H300",
+  "doc": "pb41260ec9b",
+  "words": 284,
+  "batch": 0
+ },
+ "e06feeed": {
+  "key": "HR_bandits_s4",
+  "cell": "HR_sec",
+  "doc": "bandits",
+  "words": 721,
+  "batch": 0
+ },
+ "982139b7": {
+  "key": "D300_p35b2004659",
+  "cell": "D300",
+  "doc": "p35b2004659",
+  "words": 296,
+  "batch": 0
+ },
+ "c167ffd5": {
+  "key": "C300_p4b8e886641",
+  "cell": "C300",
+  "doc": "p4b8e886641",
+  "words": 286,
+  "batch": 0
+ },
+ "7dac5c32": {
+  "key": "Cfull_pa2b84bf758",
+  "cell": "Cfull",
+  "doc": "pa2b84bf758",
+  "words": 903,
+  "batch": 0
+ },
+ "ea31a98c": {
+  "key": "Cfull_p25d4111207",
+  "cell": "Cfull",
+  "doc": "p25d4111207",
+  "words": 1411,
+  "batch": 0
+ },
+ "09500eef": {
+  "key": "HO_bandits",
+  "cell": "HO_post",
+  "doc": "bandits",
+  "words": 3851,
+  "batch": 0
+ },
+ "53f84240": {
+  "key": "Dfull_p61945fb568",
+  "cell": "Dfull",
+  "doc": "p61945fb568",
+  "words": 1951,
+  "batch": 0
+ },
+ "adfc5122": {
+  "key": "C300_pd870408b22",
+  "cell": "C300",
+  "doc": "pd870408b22",
+  "words": 293,
+  "batch": 0
+ },
+ "c1e410db": {
+  "key": "C300_p1c9cb11d31",
+  "cell": "C300",
+  "doc": "p1c9cb11d31",
+  "words": 300,
+  "batch": 0
+ },
+ "d358ab8b": {
+  "key": "Dfull_pe9ea594c27",
+  "cell": "Dfull",
+  "doc": "pe9ea594c27",
+  "words": 1545,
+  "batch": 0
+ },
+ "f1ea4843": {
+  "key": "HO_aieng",
+  "cell": "HO_post",
+  "doc": "aieng",
+  "words": 4481,
+  "batch": 0
+ },
+ "f58d5fb0": {
+  "key": "H300_p7b3c4c0370",
+  "cell": "H300",
+  "doc": "p7b3c4c0370",
+  "words": 270,
+  "batch": 0
+ },
+ "1b9d395a": {
+  "key": "Cfull_pd3f07c3e66",
+  "cell": "Cfull",
+  "doc": "pd3f07c3e66",
+  "words": 1307,
+  "batch": 0
+ },
+ "5060c204": {
+  "key": "Dfull_p25d4111207",
+  "cell": "Dfull",
+  "doc": "p25d4111207",
+  "words": 2140,
+  "batch": 0
+ },
+ "1bc4f250": {
+  "key": "Cfull_p1c9cb11d31",
+  "cell": "Cfull",
+  "doc": "p1c9cb11d31",
+  "words": 1068,
+  "batch": 0
+ },
+ "ca19a2a4": {
+  "key": "Hfull_p12b626023a",
+  "cell": "Hfull",
+  "doc": "p12b626023a",
+  "words": 2088,
+  "batch": 0
+ },
+ "412b0f12": {
+  "key": "Dfull_p827b1c285d",
+  "cell": "Dfull",
+  "doc": "p827b1c285d",
+  "words": 2298,
+  "batch": 0
+ },
+ "9b1b0dd6": {
+  "key": "Cfull_p2a4982704f",
+  "cell": "Cfull",
+  "doc": "p2a4982704f",
+  "words": 1396,
+  "batch": 0
+ },
+ "eee41230": {
+  "key": "C300_p2a4982704f",
+  "cell": "C300",
+  "doc": "p2a4982704f",
+  "words": 294,
+  "batch": 0
+ },
+ "9c3b91a4": {
+  "key": "C300_p9ae3b6a467",
+  "cell": "C300",
+  "doc": "p9ae3b6a467",
+  "words": 297,
+  "batch": 0
+ },
+ "379fef6a": {
+  "key": "C300_pd3f07c3e66",
+  "cell": "C300",
+  "doc": "pd3f07c3e66",
+  "words": 260,
+  "batch": 0
+ },
+ "4e51387e": {
+  "key": "D300_p0f92b38ac3",
+  "cell": "D300",
+  "doc": "p0f92b38ac3",
+  "words": 295,
+  "batch": 0
+ },
+ "23857478": {
+  "key": "C300_pa2b84bf758",
+  "cell": "C300",
+  "doc": "pa2b84bf758",
+  "words": 272,
+  "batch": 0
+ },
+ "fe1d88a7": {
+  "key": "D300_p4b8e886641",
+  "cell": "D300",
+  "doc": "p4b8e886641",
+  "words": 297,
+  "batch": 0
+ },
+ "2915d647": {
+  "key": "H300_p21ca985156",
+  "cell": "H300",
+  "doc": "p21ca985156",
+  "words": 272,
+  "batch": 0
+ },
+ "ead245bb": {
+  "key": "Cfull_p3bfd623027",
+  "cell": "Cfull",
+  "doc": "p3bfd623027",
+  "words": 1342,
+  "batch": 0
+ },
+ "20a2a847": {
+  "key": "Dfull_p4ad56d5750",
+  "cell": "Dfull",
+  "doc": "p4ad56d5750",
+  "words": 2049,
+  "batch": 0
+ },
+ "2d23beae": {
+  "key": "Dfull_p40c33738de",
+  "cell": "Dfull",
+  "doc": "p40c33738de",
+  "words": 2628,
+  "batch": 0
+ },
+ "d30737e1": {
+  "key": "HO_bandits_s3",
+  "cell": "HO_sec",
+  "doc": "bandits",
+  "words": 455,
+  "batch": 0
+ },
+ "08fc6490": {
+  "key": "Hfull_p6f608380b8",
+  "cell": "Hfull",
+  "doc": "p6f608380b8",
+  "words": 2767,
+  "batch": 0
+ },
+ "e21b236c": {
+  "key": "HR_aieng_s3",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 711,
+  "batch": 0
+ },
+ "931377b8": {
+  "key": "D300_pae98db1f7a",
+  "cell": "D300",
+  "doc": "pae98db1f7a",
+  "words": 297,
+  "batch": 0
+ },
+ "a13b2860": {
+  "key": "Dfull_pae98db1f7a",
+  "cell": "Dfull",
+  "doc": "pae98db1f7a",
+  "words": 1225,
+  "batch": 0
+ },
+ "ea4de4dd": {
+  "key": "Cfull_pfe6789384f",
+  "cell": "Cfull",
+  "doc": "pfe6789384f",
+  "words": 1209,
+  "batch": 0
+ },
+ "88c95e52": {
+  "key": "C300_pd64b3e3aae",
+  "cell": "C300",
+  "doc": "pd64b3e3aae",
+  "words": 294,
+  "batch": 0
+ },
+ "3510d0c4": {
+  "key": "D300_p4c5be6086d",
+  "cell": "D300",
+  "doc": "p4c5be6086d",
+  "words": 285,
+  "batch": 0
+ },
+ "bdcc17cc": {
+  "key": "Cfull_p760e0a2d40",
+  "cell": "Cfull",
+  "doc": "p760e0a2d40",
+  "words": 1296,
+  "batch": 0
+ },
+ "20ddab42": {
+  "key": "D300_pd2849dd1e5",
+  "cell": "D300",
+  "doc": "pd2849dd1e5",
+  "words": 290,
+  "batch": 0
+ },
+ "102bda5c": {
+  "key": "Cfull_p827b1c285d",
+  "cell": "Cfull",
+  "doc": "p827b1c285d",
+  "words": 2065,
+  "batch": 0
+ },
+ "17de9b1f": {
+  "key": "Hfull_p950ad47859",
+  "cell": "Hfull",
+  "doc": "p950ad47859",
+  "words": 2691,
+  "batch": 0
+ },
+ "fbeaa5af": {
+  "key": "D300_p89e48932f5",
+  "cell": "D300",
+  "doc": "p89e48932f5",
+  "words": 297,
+  "batch": 0
+ },
+ "d0be9088": {
+  "key": "Cfull_p35b2004659",
+  "cell": "Cfull",
+  "doc": "p35b2004659",
+  "words": 1570,
+  "batch": 0
+ },
+ "096ed78c": {
+  "key": "Cfull_p01004974c5",
+  "cell": "Cfull",
+  "doc": "p01004974c5",
+  "words": 1158,
+  "batch": 0
+ },
+ "a3c5d84d": {
+  "key": "Hfull_pd0c5584b85",
+  "cell": "Hfull",
+  "doc": "pd0c5584b85",
+  "words": 2299,
+  "batch": 0
+ },
+ "0e05e8f9": {
+  "key": "Cfull_p40c33738de",
+  "cell": "Cfull",
+  "doc": "p40c33738de",
+  "words": 2205,
+  "batch": 0
+ },
+ "982cc5f4": {
+  "key": "C300_p3bfd623027",
+  "cell": "C300",
+  "doc": "p3bfd623027",
+  "words": 284,
+  "batch": 0
+ },
+ "0e6d6594": {
+  "key": "Cfull_pd870408b22",
+  "cell": "Cfull",
+  "doc": "pd870408b22",
+  "words": 1450,
+  "batch": 0
+ },
+ "92868ca7": {
+  "key": "HO_bandits_s1",
+  "cell": "HO_sec",
+  "doc": "bandits",
+  "words": 304,
+  "batch": 0
+ },
+ "dbb26f82": {
+  "key": "C300_p8e28b03c67",
+  "cell": "C300",
+  "doc": "p8e28b03c67",
+  "words": 281,
+  "batch": 0
+ },
+ "ad2bddb3": {
+  "key": "D300_pa5fd792f87",
+  "cell": "D300",
+  "doc": "pa5fd792f87",
+  "words": 279,
+  "batch": 0
+ },
+ "3b68bc10": {
+  "key": "D300_p01004974c5",
+  "cell": "D300",
+  "doc": "p01004974c5",
+  "words": 296,
+  "batch": 0
+ },
+ "8c108b3e": {
+  "key": "C300_p40c33738de",
+  "cell": "C300",
+  "doc": "p40c33738de",
+  "words": 296,
+  "batch": 0
+ },
+ "e94ed489": {
+  "key": "Dfull_p0f92b38ac3",
+  "cell": "Dfull",
+  "doc": "p0f92b38ac3",
+  "words": 1181,
+  "batch": 0
+ },
+ "1b11da6d": {
+  "key": "Dfull_pd2849dd1e5",
+  "cell": "Dfull",
+  "doc": "pd2849dd1e5",
+  "words": 1795,
+  "batch": 0
+ },
+ "f7274196": {
+  "key": "Dfull_pd3f07c3e66",
+  "cell": "Dfull",
+  "doc": "pd3f07c3e66",
+  "words": 1434,
+  "batch": 0
+ },
+ "df3bd66b": {
+  "key": "Dfull_p01004974c5",
+  "cell": "Dfull",
+  "doc": "p01004974c5",
+  "words": 1426,
+  "batch": 0
+ },
+ "de9d8f75": {
+  "key": "C300_p01004974c5",
+  "cell": "C300",
+  "doc": "p01004974c5",
+  "words": 293,
+  "batch": 0
+ },
+ "e60d387c": {
+  "key": "D300_pce9bcaba2a",
+  "cell": "D300",
+  "doc": "pce9bcaba2a",
+  "words": 296,
+  "batch": 1
+ },
+ "d75da3ed": {
+  "key": "Dfull_p2a4982704f",
+  "cell": "Dfull",
+  "doc": "p2a4982704f",
+  "words": 1873,
+  "batch": 1
+ },
+ "1683b2f1": {
+  "key": "D300_p10267ee0c0",
+  "cell": "D300",
+  "doc": "p10267ee0c0",
+  "words": 288,
+  "batch": 1
+ },
+ "6f193cd4": {
+  "key": "Cfull_pe9ea594c27",
+  "cell": "Cfull",
+  "doc": "pe9ea594c27",
+  "words": 1337,
+  "batch": 1
+ },
+ "3b11c157": {
+  "key": "Dfull_pd64b3e3aae",
+  "cell": "Dfull",
+  "doc": "pd64b3e3aae",
+  "words": 1301,
+  "batch": 1
+ },
+ "58ceb009": {
+  "key": "HO_bandits_s4",
+  "cell": "HO_sec",
+  "doc": "bandits",
+  "words": 915,
+  "batch": 1
+ },
+ "21e279ef": {
+  "key": "Cfull_p0f92b38ac3",
+  "cell": "Cfull",
+  "doc": "p0f92b38ac3",
+  "words": 634,
+  "batch": 1
+ },
+ "0860d27d": {
+  "key": "C300_pce9bcaba2a",
+  "cell": "C300",
+  "doc": "pce9bcaba2a",
+  "words": 298,
+  "batch": 1
+ },
+ "3f5a2b45": {
+  "key": "D300_p8fb3502483",
+  "cell": "D300",
+  "doc": "p8fb3502483",
+  "words": 297,
+  "batch": 1
+ },
+ "95cfa00c": {
+  "key": "Cfull_p8fb3502483",
+  "cell": "Cfull",
+  "doc": "p8fb3502483",
+  "words": 1300,
+  "batch": 1
+ },
+ "8ddad29c": {
+  "key": "HR_bandits_s5",
+  "cell": "HR_sec",
+  "doc": "bandits",
+  "words": 806,
+  "batch": 1
+ },
+ "0c71b20e": {
+  "key": "H300_pd0c5584b85",
+  "cell": "H300",
+  "doc": "pd0c5584b85",
+  "words": 267,
+  "batch": 1
+ },
+ "92773077": {
+  "key": "Dfull_pfe6789384f",
+  "cell": "Dfull",
+  "doc": "pfe6789384f",
+  "words": 1307,
+  "batch": 1
+ },
+ "007fc016": {
+  "key": "Dfull_p35b2004659",
+  "cell": "Dfull",
+  "doc": "p35b2004659",
+  "words": 1941,
+  "batch": 1
+ },
+ "30321a37": {
+  "key": "Cfull_pd2849dd1e5",
+  "cell": "Cfull",
+  "doc": "pd2849dd1e5",
+  "words": 1447,
+  "batch": 1
+ },
+ "6b3afa4f": {
+  "key": "H300_p9aebd0fe2d",
+  "cell": "H300",
+  "doc": "p9aebd0fe2d",
+  "words": 277,
+  "batch": 1
+ },
+ "92ee2389": {
+  "key": "D300_p4ad56d5750",
+  "cell": "D300",
+  "doc": "p4ad56d5750",
+  "words": 277,
+  "batch": 1
+ },
+ "46f65f5d": {
+  "key": "C300_pd2849dd1e5",
+  "cell": "C300",
+  "doc": "pd2849dd1e5",
+  "words": 300,
+  "batch": 1
+ },
+ "9d3dd19f": {
+  "key": "C300_pc181d8f08b",
+  "cell": "C300",
+  "doc": "pc181d8f08b",
+  "words": 298,
+  "batch": 1
+ },
+ "906c8ece": {
+  "key": "D300_p8e28b03c67",
+  "cell": "D300",
+  "doc": "p8e28b03c67",
+  "words": 288,
+  "batch": 1
+ },
+ "22fd0d90": {
+  "key": "Hfull_pc71cc789ec",
+  "cell": "Hfull",
+  "doc": "pc71cc789ec",
+  "words": 2347,
+  "batch": 1
+ },
+ "36e0a28a": {
+  "key": "HR_bandits_s3",
+  "cell": "HR_sec",
+  "doc": "bandits",
+  "words": 389,
+  "batch": 1
+ },
+ "26dc2a92": {
+  "key": "Cfull_p9ae3b6a467",
+  "cell": "Cfull",
+  "doc": "p9ae3b6a467",
+  "words": 2134,
+  "batch": 1
+ },
+ "796150d9": {
+  "key": "Cfull_p4b8e886641",
+  "cell": "Cfull",
+  "doc": "p4b8e886641",
+  "words": 1219,
+  "batch": 1
+ },
+ "761bb6cd": {
+  "key": "Dfull_p10267ee0c0",
+  "cell": "Dfull",
+  "doc": "p10267ee0c0",
+  "words": 2309,
+  "batch": 1
+ },
+ "703f6888": {
+  "key": "HR_bandits_s1",
+  "cell": "HR_sec",
+  "doc": "bandits",
+  "words": 331,
+  "batch": 1
+ },
+ "0fc8e990": {
+  "key": "HR_bandits_s6",
+  "cell": "HR_sec",
+  "doc": "bandits",
+  "words": 364,
+  "batch": 1
+ },
+ "87ad136f": {
+  "key": "Dfull_p1c9cb11d31",
+  "cell": "Dfull",
+  "doc": "p1c9cb11d31",
+  "words": 1344,
+  "batch": 1
+ },
+ "facdbd56": {
+  "key": "HR_aieng_s2",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 643,
+  "batch": 1
+ },
+ "b03a35f9": {
+  "key": "D300_pd64b3e3aae",
+  "cell": "D300",
+  "doc": "pd64b3e3aae",
+  "words": 299,
+  "batch": 1
+ },
+ "97d0d833": {
+  "key": "H300_p950ad47859",
+  "cell": "H300",
+  "doc": "p950ad47859",
+  "words": 288,
+  "batch": 1
+ },
+ "db863429": {
+  "key": "Cfull_pce9bcaba2a",
+  "cell": "Cfull",
+  "doc": "pce9bcaba2a",
+  "words": 1232,
+  "batch": 1
+ },
+ "2c0c6e5a": {
+  "key": "C300_p0f92b38ac3",
+  "cell": "C300",
+  "doc": "p0f92b38ac3",
+  "words": 278,
+  "batch": 1
+ },
+ "c5a6cbdc": {
+  "key": "D300_pe9ea594c27",
+  "cell": "D300",
+  "doc": "pe9ea594c27",
+  "words": 297,
+  "batch": 1
+ },
+ "ae538039": {
+  "key": "H300_p12b626023a",
+  "cell": "H300",
+  "doc": "p12b626023a",
+  "words": 294,
+  "batch": 1
+ },
+ "606c13c6": {
+  "key": "D300_p9ae3b6a467",
+  "cell": "D300",
+  "doc": "p9ae3b6a467",
+  "words": 281,
+  "batch": 1
+ },
+ "5d4ab352": {
+  "key": "Dfull_p3bfd623027",
+  "cell": "Dfull",
+  "doc": "p3bfd623027",
+  "words": 1472,
+  "batch": 1
+ },
+ "a6a75351": {
+  "key": "Cfull_pd64b3e3aae",
+  "cell": "Cfull",
+  "doc": "pd64b3e3aae",
+  "words": 1257,
+  "batch": 1
+ },
+ "a6550357": {
+  "key": "D300_p40c33738de",
+  "cell": "D300",
+  "doc": "p40c33738de",
+  "words": 294,
+  "batch": 1
+ },
+ "72bec276": {
+  "key": "H300_p57ff7fc44f",
+  "cell": "H300",
+  "doc": "p57ff7fc44f",
+  "words": 287,
+  "batch": 1
+ },
+ "9b3de9b7": {
+  "key": "D300_p1c9cb11d31",
+  "cell": "D300",
+  "doc": "p1c9cb11d31",
+  "words": 294,
+  "batch": 1
+ },
+ "579599aa": {
+  "key": "C300_p25d4111207",
+  "cell": "C300",
+  "doc": "p25d4111207",
+  "words": 294,
+  "batch": 1
+ },
+ "07d19484": {
+  "key": "Dfull_p4c5be6086d",
+  "cell": "Dfull",
+  "doc": "p4c5be6086d",
+  "words": 1785,
+  "batch": 1
+ },
+ "3815c7ef": {
+  "key": "Dfull_pc181d8f08b",
+  "cell": "Dfull",
+  "doc": "pc181d8f08b",
+  "words": 1460,
+  "batch": 1
+ },
+ "773b13ad": {
+  "key": "Cfull_p89e48932f5",
+  "cell": "Cfull",
+  "doc": "p89e48932f5",
+  "words": 1576,
+  "batch": 1
+ },
+ "e5301eb0": {
+  "key": "HO_bandits_s5",
+  "cell": "HO_sec",
+  "doc": "bandits",
+  "words": 893,
+  "batch": 1
+ },
+ "5fd3b462": {
+  "key": "C300_pae98db1f7a",
+  "cell": "C300",
+  "doc": "pae98db1f7a",
+  "words": 297,
+  "batch": 1
+ },
+ "31936e7c": {
+  "key": "HR_aieng",
+  "cell": "HR_post",
+  "doc": "aieng",
+  "words": 3241,
+  "batch": 1
+ },
+ "a6c3383f": {
+  "key": "Cfull_p4ad56d5750",
+  "cell": "Cfull",
+  "doc": "p4ad56d5750",
+  "words": 1442,
+  "batch": 1
+ },
+ "f01ddf7f": {
+  "key": "D300_pfe6789384f",
+  "cell": "D300",
+  "doc": "pfe6789384f",
+  "words": 295,
+  "batch": 1
+ },
+ "4207229c": {
+  "key": "C300_pbfd12ded77",
+  "cell": "C300",
+  "doc": "pbfd12ded77",
+  "words": 294,
+  "batch": 1
+ },
+ "22b11411": {
+  "key": "C300_p61945fb568",
+  "cell": "C300",
+  "doc": "p61945fb568",
+  "words": 283,
+  "batch": 1
+ },
+ "cc7aa4d1": {
+  "key": "Dfull_p89e48932f5",
+  "cell": "Dfull",
+  "doc": "p89e48932f5",
+  "words": 2020,
+  "batch": 1
+ },
+ "2e4693cb": {
+  "key": "C300_p827b1c285d",
+  "cell": "C300",
+  "doc": "p827b1c285d",
+  "words": 285,
+  "batch": 1
+ },
+ "4d9d6af4": {
+  "key": "Dfull_p4b8e886641",
+  "cell": "Dfull",
+  "doc": "p4b8e886641",
+  "words": 1339,
+  "batch": 1
+ },
+ "6dfff332": {
+  "key": "C300_p89e48932f5",
+  "cell": "C300",
+  "doc": "p89e48932f5",
+  "words": 272,
+  "batch": 1
+ },
+ "ddf819a5": {
+  "key": "D300_p760e0a2d40",
+  "cell": "D300",
+  "doc": "p760e0a2d40",
+  "words": 293,
+  "batch": 1
+ },
+ "e9e78b87": {
+  "key": "D300_pd3f07c3e66",
+  "cell": "D300",
+  "doc": "pd3f07c3e66",
+  "words": 299,
+  "batch": 1
+ },
+ "dd79d97a": {
+  "key": "D300_pd870408b22",
+  "cell": "D300",
+  "doc": "pd870408b22",
+  "words": 285,
+  "batch": 1
+ },
+ "d97dda6a": {
+  "key": "Dfull_pbfd12ded77",
+  "cell": "Dfull",
+  "doc": "pbfd12ded77",
+  "words": 2052,
+  "batch": 1
+ },
+ "d4a2d663": {
+  "key": "Hfull_p7b3c4c0370",
+  "cell": "Hfull",
+  "doc": "p7b3c4c0370",
+  "words": 2115,
+  "batch": 1
+ },
+ "95686c66": {
+  "key": "Cfull_pbfd12ded77",
+  "cell": "Cfull",
+  "doc": "pbfd12ded77",
+  "words": 1867,
+  "batch": 1
+ },
+ "71e37ee5": {
+  "key": "HR_aieng_s4",
+  "cell": "HR_sec",
+  "doc": "aieng",
+  "words": 575,
+  "batch": 1
+ },
+ "1be10426": {
+  "key": "Cfull_p4c5be6086d",
+  "cell": "Cfull",
+  "doc": "p4c5be6086d",
+  "words": 1487,
+  "batch": 1
+ },
+ "20f3d015": {
+  "key": "Dfull_p8e28b03c67",
+  "cell": "Dfull",
+  "doc": "p8e28b03c67",
+  "words": 1532,
+  "batch": 1
+ },
+ "67ac8a04": {
+  "key": "D300_p25d4111207",
+  "cell": "D300",
+  "doc": "p25d4111207",
+  "words": 297,
+  "batch": 1
+ },
+ "c1e77b06": {
+  "key": "Dfull_p760e0a2d40",
+  "cell": "Dfull",
+  "doc": "p760e0a2d40",
+  "words": 1425,
+  "batch": 1
+ },
+ "75143c92": {
+  "key": "C300_p10267ee0c0",
+  "cell": "C300",
+  "doc": "p10267ee0c0",
+  "words": 295,
+  "batch": 1
+ },
+ "33bf6ccd": {
+  "key": "HO_bandits_s6",
+  "cell": "HO_sec",
+  "doc": "bandits",
+  "words": 1180,
+  "batch": 1
+ }
+}
