@@ -1,0 +1,47 @@
+{
+ "checks": {
+  "M": {
+   "texts": 13,
+   "words": 494.7692307692308,
+   "length_ratio": 0.6246784155950597,
+   "claim_support": 0.924792772601257,
+   "quality_vs_essay": 0.0,
+   "copied_from_essay": 0.07563116215265292,
+   "essay_beyond_prompt": 0.025141490099401764,
+   "first_person": 1.877413755122198,
+   "sentence_sd": 7.097058360164188
+  },
+  "H": {
+   "texts": 13,
+   "words": 814.1538461538462,
+   "first_person": 1.7486854962452898,
+   "sentence_sd": 22.156635281597357
+  },
+  "D": {
+   "texts": 13,
+   "words": 803.1538461538462,
+   "first_person": 1.8575029037839113,
+   "sentence_sd": 10.402814926676053
+  }
+ },
+ "pangram_summary": {
+  "AI": 0,
+  "Mixed": 7,
+  "Human": 6
+ },
+ "pangram": {
+  "M_e0024944a": "Human",
+  "M_e00279af1": "Human",
+  "M_e015297cc": "Human",
+  "M_e01b9acdb": "Human",
+  "M_e075ab572": "Human",
+  "M_e1574e17c": "Human",
+  "M_e012341fb": "Mixed",
+  "M_e00a47ad2": "Mixed",
+  "M_e00afe510": "Mixed",
+  "M_e00c5dbe3": "Mixed",
+  "M_e1aac9b0d": "Mixed",
+  "M_e021dc050": "Mixed",
+  "M_e2ee0c4c0": "Mixed"
+ }
+}

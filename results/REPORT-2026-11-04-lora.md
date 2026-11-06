@@ -728,6 +728,7 @@ The choice among these is a product decision, not an experiment.
 | Cell (same reworded notes) | Human | Mixed | AI | Length, share of the essay | Claims supported |
 |---|---|---|---|---|---|
 | W, Sonnet (B27) | 1 | 11 | 1 | 97% | (not checked) |
+| M, pool writer (FineWeb pages) | 6 | 7 | 0 | 62% | 92% |
 | V, voice writer | 11 | 2 | 0 | 82% | 92% |
 
 - **Significance:** Fisher's exact test on Human gives p = 0.0002.
@@ -738,6 +739,13 @@ The choice among these is a product decision, not an experiment.
 **Reading.** This is the first full-length, faithful, Human-reading result on blogs. Given the blogger's own notes, the local writer trained on essayists produces a post of about four-fifths the essay's length that Pangram reads as human, where Sonnet from the same notes reads Mixed. The pool writer's notes route kept only 54% of the length (B25 N, original notes, not scanned). Keeping all notes in training, so the writer does not invent past them, is what restored the length.
 
 **Voice.** First person is close to the essays' (1.8 per 100 words against 1.7). Sentence length varies less than in the essays: the median spread is 8 to 10 words against the essays' 10 to 20.
+
+**Cell M: what the training corpus adds** (scanned 22:07, after the amendment of 18:26). M is the earlier pool writer, trained on FineWeb pages with a random 20 to 60% of the notes kept, on the same prompts with the same Guard, prune and pick.
+- **Nested on every essay:** V is at least as Human as M, and M at least as Human as W, on all 13. V reads Human where M does not on 5 essays, M where W does not on 5, and never the reverse (sign test p = 0.0625 each).
+- **Length:** M keeps 62% of the essay against V's 82%, so V is both longer and more often Human. Shortness does not explain V's readings.
+- **Copying:** M copies 8% of its words from the essay in 8-word runs, 3% from outside the notes, as V does.
+
+So both changes count. A local writer on human notes beats Sonnet on the same notes (M against W), and training it on essayists with every note kept adds both readings and length (V against M).
 
 ## 33. B29: imitating one writer with Sonnet (Pangram, 13 texts)
 
