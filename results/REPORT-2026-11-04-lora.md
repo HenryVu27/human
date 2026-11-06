@@ -1057,3 +1057,85 @@ rewriter generation $3.20), inside the free credit.
 `experiments/modal/lf_continue.py`, `results/b36_transfer.json`, `results/b34_length.json`, `results/b36_blind.json`,
 `results/b36_pangram_transcript.txt`, `results/b36_pangram_shares_b*.json`, `results/LONGFORM-GATE1.md`. Texts stay
 local (`results/b3[2-9]_*.jsonl`, gitignored).
+
+## 38. B37, gate 2a: cheap levers, Henry's posts on one day, and how Pangram adds up AI text (Pangram, 48 texts)
+
+**Question.** B36's rewrites of 32 posts by unseen writers read Human on 1 of 32 in full. Can cheap changes raise how
+human each part reads before Henry pays for training at scale (gate 2b)? Rules committed before any generation (c6928c0
+11:16; decision and blinding key 4b74f50 12:14:59; scan 12:16).
+
+**Step 0, form checks** (`src/humanizer/checks/form.py`, 7 tests): non-English runs, new code, new framing, extra
+headers, and restarts at the start of later sections. On B36's picked sections they catch the French text, the invented
+code and 7 of the 13 posts the red team found restarting (10 of 84 sections; 150 of 168 raw samples pass). The six
+missed restarts are content-level ("I spent Christmas with my family this year") and need a model check.
+
+**Development arms on test-A** (development only now; MELD per-window rate against a threshold set on 720 windows of
+100 human train-split posts):
+
+| Arm | Per-window rate (MELD) | Copying from D | Length (of the human post) | Claims supported | Form checks pass |
+|---|---|---|---|---|---|
+| C0, B36's pick | 0.067 | 32% | 71% | 96% | 93% of sections |
+| C1, least copying over 4 seeds | 0.066 (p 0.81) | 20% | 70% | 95% | 100% |
+| L, notes-first writer at full length | 0.25 (p 4e-5) | not applicable | 28% | 89% | 91% of texts |
+
+No arm met the pre-registered bar for a Pangram test on fresh test-B posts (C1: no change; L: too short, under the
+claim and form floors), so none was run.
+
+**MELD is not a usable development judge for rewrites** (both validators): on B36's 300-word rewrites it calls 1 of 32
+human-like where Pangram calls 11, and it separates Pangram's Human from not-Human at AUROC 0.55. C1's null on MELD
+therefore says little; B36's regression predicts C1 would lower Pangram's share by only about 0.03 to 0.06.
+
+**Splice probe** (20 texts: 2 human posts that read Human, each with one Sonnet block of 88, 126 or 248 words at the
+start, middle or end):
+
+| Block, share of words | AI share (both bases, all positions) | Label |
+|---|---|---|
+| none | 0.00 | Human |
+| 6.8% | 0.06 to 0.07 | Human |
+| 9.5% | 0.08 to 0.09 | Human |
+| 17% | 0.15 to 0.17 | Mixed |
+
+Pangram's AI share is the share of words it flags, wherever they sit, and the Human line is 10%. Henry's whole posts
+confirm the additive reading (whole-post share is the word-weighted mean of its sections', within 0.06), and his bandits
+rewrite reads Human with two Mixed sections. So the target for a whole post is under 10% of words flagged, not a high
+Human rate per window. B36's rewrites carry 38%.
+
+**Henry's posts, same day, LaTeX stripped from both versions** (rewrites by C1's rule):
+
+| Unit | Original | Rewrite |
+|---|---|---|
+| Sections (12 pairs) | 1 Human | 6 Human; 8 better, 1 worse (sign p 0.039); shares fall in 11 of 12 |
+| Bandits post (about 2,600 words) | Mixed, 0.24 | **Human, 0.08** |
+| Context-engineering post (about 4,500 words) | Mixed, 0.53 | Mixed, 0.24 |
+
+Cautions: the bandits Human sits near the line (about 200 flagged words against 250 allowed) and B36's draw of the same
+post read Mixed at 0.13; stripped math leaves holes in both versions; 4 of the 12 rewritten sections are B36's texts;
+one pair moving to a tie would put p at 0.07. The context-engineering post had no math, and on it C1 changed 4 of 7
+sections and all 4 fell (whole post 0.40 to 0.24 against B36's pick): seeds differ a lot, so selection has headroom
+that no local judge can see yet. Nothing medical or client-related was added (audited).
+
+**Reading.**
+1. No cheap lever moved the development measure, and the development measure cannot see what matters.
+2. Pangram adds up flagged words; a whole post needs under 10% flagged. The per-window model of B36's red team was too
+   strict.
+3. Long context alone would remove about 0.09 of the 0.28 gap between B36's rewrites and the line (red team); the rest is
+   how human each part reads for unseen writers.
+4. On Henry's own posts the rewriter works by section and once for a whole post.
+
+**Gate 2b is not worth paid money yet.** Training would be developed blind (no local judge that tracks Pangram within
+rewrites) against a gap that long context only partly addresses. Two cheaper steps come first: (a) free: score the open
+detectors and simple features on every Pangram-scored rewrite already on hand and keep any judge that separates
+Pangram's Human from not-Human within rewrites at AUROC 0.7 or more; (b) about 400 credits and $1: scan all 4 seeds'
+sections of about 4 fresh calibration posts, to measure how far best-of-n selection can push whole posts toward 0.10.
+
+**Outside checks.** Statistics, pick rule (all 84 sections rebuilt from the cached checks), order and confidentiality
+(`research/longform-judge-b37-stats.md`); red team (`research/longform-redteam-b37.md`). Process flags: the
+out-of-memory fallback in the generation script was committed after use (it only splits a batch), batch sizes were 12
+and 8 rather than the docstring's 16, and per-file charges sum to 569 against the dashboard's 555.
+
+**Spend.** Pangram 555 credits (dashboard 9,634 to 9,079). Modal about $6 (generation of 264 samples, two failed
+containers, MELD scoring), $19.6 to $20.2 of the month's $30 free credit used, $0.00 billed.
+
+**Files:** `experiments/b37_gate2a.py`, `src/humanizer/checks/form.py`, `tests/test_form.py`,
+`experiments/modal/lf_rewrite_hf.py`, `results/b37_gate2a.json`, `results/b37_blind.json`,
+`results/b37_pangram_transcript.txt`, `results/b37_pangram_shares.json`, `results/LONGFORM-GATE2A.md`. Texts stay local.

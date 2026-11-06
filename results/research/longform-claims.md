@@ -226,3 +226,29 @@ Opened 2026-11-06 02:09 CST; last updated: see git log.
   later sections.
 - **Status:** **refuted** for long, section-by-section rewrites. Language, code and format checks must be added to the
   pick step before gate 2.
+
+## Gate 2a results (2026-11-06, B37)
+
+### 17. Pangram labels a long document by the share of words it flags, so whole posts need under 10% flagged
+
+- **Checked (B37 splice probe, 20 texts; Henry's four whole-post scans):** a Sonnet block of 6.8%, 9.5% or 17% of a
+  human post's words gives an AI share of 0.06 to 0.07, 0.08 to 0.09 and 0.15 to 0.17 at the start, middle or end, and
+  the labels Human, Human, Mixed. Whole-post shares equal the word-weighted mean of the section shares within 0.06.
+- **Status:** **verified for contiguous blocks** (2 bases, one Sonnet block). Scattered or partly edited AI sentences
+  are untested. This replaces the per-window model of the B36 red team: a post with Mixed sections can still read
+  Human if under 10% of its words are flagged.
+
+### 18. MELD can serve as the development judge for the rewriter
+
+- **Checked (B37 validators):** on B36's 300-word rewrites, MELD separates Pangram's Human from not-Human at AUROC 0.55
+  and calls 1 of 32 human-like where Pangram calls 11.
+- **Status:** **refuted for rewriter output.** MELD agreed with Pangram across strata in B33 but cannot rank rewrites.
+  Gate 2b needs a judge that works within rewrites before it can be developed without Pangram.
+
+### 19. A copy-penalized pick or the notes-first writer at full length closes the gap cheaply
+
+- **Checked (B37):** C1 cut copying from 32% to 20% with no change on MELD (0.066 against 0.067); on Henry's
+  context-engineering post it changed 4 of 7 sections and all 4 fell on Pangram (whole post 0.40 to 0.24). L read far
+  more human to MELD but kept 28% of the post and 89% claim support.
+- **Status:** **not shown** on the development judge; **suggestive** on one Pangram-scanned post (selection has
+  headroom). Henry's bandits rewrite reads Human at full length (0.08), near the line.
