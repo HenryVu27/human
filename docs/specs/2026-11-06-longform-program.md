@@ -423,3 +423,23 @@ final test. Rules are in `experiments/b37_gate2a.py`, committed with this amendm
 - **Pangram:** the Henry arm first (same-day originals and rewrites, LaTeX stripped in both); a test-B confirmation
   only for an arm that beats C0 by at least 0.10 in MELD's per-window rate with the other conditions in the docstring;
   a splice probe only if 150 credits remain.
+
+### Amendment 2026-11-06 13:10 CST: B38, a local judge trained on Pangram labels, before any of its training or scans
+
+Henry's decision (2026-11-06 13:08, relayed by the main session, recorded in CLAUDE.md commit f578571): "Yes, train it."
+A local judge may be trained on the project's Pangram labels and used to pick and develop outputs. This replaces the
+rule of section 8 that development choices use MELD and local checks only, for the judge's uses. Gate 2a showed MELD
+cannot rank rewrites (AUROC 0.55 against Pangram), and that the tries of one section differ a lot on Pangram, so a judge
+that tracks Pangram within rewrites is the program's missing loop.
+
+- **Final test reserve, fixed now:** every B32 pilot post in site buckets 95 to 99, or in an owner group touching them
+  (798 posts), is listed by ID with a hash of its text in `results/b39_reserved_testB.json`. No judge, calibration,
+  pick or model choice reads them; only Pangram scores B39's selection from them. The reserve is committed before any
+  B38 step.
+- **B38:** training data are every Pangram-labelled text from B1 to B37; new labels come only from calibration posts
+  (buckets 75 to 79, not used in B34), never from test-A or test-B; metrics, splits, the bar (AUROC at least 0.7 for
+  Human against not Human on rewrites) and the rule for choosing among judges are fixed in
+  `experiments/b38_judge.py` before any training run.
+- **B39** stays the final test, scored only by Pangram.
+- Budget for B38: Modal about $6 inside the free credit (stop if the month's credits used would pass $27), Pangram at
+  most 600 credits.
