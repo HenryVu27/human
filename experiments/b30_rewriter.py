@@ -28,6 +28,12 @@ Amended 23:10, before any training pair is used and before any B30 text exists: 
 jobs stay off the Mac, so both seeds are generated on the PC (experiments/gpu/gen13b_guard.py: the adapter
 in its trained PEFT form, the same Guard file and sampling, as B28's amendment of 19:46). Nothing else
 changes.
+Amended 2026-11-06 01:08, before any B30 text is read: Henry asked to use Modal for scale, and the PC ran
+at about 7.5 tokens a second (about 5 hours for both seeds). The PC wrote 3 seed-0 rows and was stopped;
+those rows are kept. Every other row of both seeds is generated on Modal by experiments/modal/b30_gen.py,
+which runs gen13b_guard.py unchanged (same 4-bit NF4 base, same adapter, Guard file, common-word list,
+sampling and seeds), one shard of prompts per container. Only the GPU differs, so a seed gives a different
+draw from the same distribution. The pick step and everything after it are unchanged.
 Predictions, both stated so the result decides between them: T100 reads Human on 12 or more of 19 (the
 content is the blogger's, the prose local). If Pangram reads who chose the content, T25 stays mostly
 not Human (5 or fewer Human of 19). If a learned rewriter re-plans an AI post enough, T25 reads Human on
