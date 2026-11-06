@@ -29,3 +29,11 @@ def test_trim_drops_header_lines_and_thanks():
     from humanizer.data.essays import trim
     text = "The Bitter Lesson\n\nRich Sutton\n\nMarch 13, 2019\n\nThe biggest lesson from seventy years of research.\n\nThanks to A and B for reading drafts of this."
     assert trim(text) == "The biggest lesson from seventy years of research."
+
+
+def test_bench2_is_fresh():
+    posts = [{"url": f"u{i}", "title": "t", "words": 600, "quoted": 0.0, "date": "2020-01-01"} for i in range(70)]
+    got = split(posts)
+    b2 = [p["url"] for p in got if p["split"] == "bench2"]
+    rest = {p["url"] for p in got if p["split"] != "bench2"}
+    assert len(b2) == 2 and not rest & set(b2)

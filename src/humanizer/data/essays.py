@@ -12,7 +12,8 @@ sends nothing. The texts stay in data/ (gitignored); only ids, urls and counts a
 Selection is fixed here, before any text is read: per writer, eligible posts (400 to 3,000 words,
 at most 30% quoted, not a links, open-thread or comments post) are ordered by a hash of their url;
 the first 2 of 500 to 1,500 words are the benchmark split, and the next CAP of any length the
-training split.
+training split. Added 18:26 for B28, before any of them was read: "bench2", the next 2 of 500 to 1,500
+words after both (none for writers with no posts left), never seen in training.
 
 Usage:
   uv run python -m humanizer.data.essays            # writes data/essays.jsonl
@@ -225,7 +226,9 @@ def split(posts: list[dict]) -> list[dict]:
     ranked = sorted((p for p in posts if eligible(p)), key=lambda p: _rank(p["url"]))
     bench = [p for p in ranked if 500 <= p["words"] <= 1500][:BENCH]
     train = [p for p in ranked if p not in bench][:CAP]
-    return [p | {"split": "bench"} for p in bench] + [p | {"split": "train"} for p in train]
+    bench2 = [p for p in ranked if p not in bench and p not in train and 500 <= p["words"] <= 1500][:BENCH]
+    return ([p | {"split": "bench"} for p in bench] + [p | {"split": "train"} for p in train]
+            + [p | {"split": "bench2"} for p in bench2])
 
 
 def build(only: list[str] | None = None) -> None:
@@ -238,8 +241,8 @@ def build(only: list[str] | None = None) -> None:
         kept = split(posts)
         rows += kept
         print(f"{author}: {len(posts)} fetched, {sum(map(eligible, posts))} eligible, "
-              f"{sum(p['split'] == 'bench' for p in kept)} bench, {sum(p['split'] == 'train' for p in kept)} train",
-              flush=True)
+              f"{sum(p['split'] == 'bench' for p in kept)} bench, {sum(p['split'] == 'train' for p in kept)} train, "
+              f"{sum(p['split'] == 'bench2' for p in kept)} bench2", flush=True)
     for r in rows:
         r["id"] = "e" + _rank(r["url"])[:8]
     OUT.write_text("".join(json.dumps(r) + "\n" for r in rows))
