@@ -1,0 +1,122 @@
+{
+ "pangram": {
+  "H_e2408017e": "Human",
+  "H_e26077b9a": "Human",
+  "H_e2b3ccb36": "Human",
+  "H_e272d5d5f": "Human",
+  "H_e279a1d91": "Human",
+  "H_e2582cfba": "Human",
+  "H_e261c079d": "Human",
+  "H_e2ad38e17": "Human",
+  "H_e2cddaea8": "Human",
+  "H_e2cfe2cb2": "Human",
+  "H_e7b687627": "Human",
+  "H_e47d68fab": "Human",
+  "H_e5e675663": "Human",
+  "H_e5c7a9dcc": "Human",
+  "H_e468649a7": "Human",
+  "H_e7ce7f8ef": "Human",
+  "H_e7db32c31": "Human",
+  "S100_e2582cfba": "Mixed",
+  "H_eb5803246": "Human",
+  "S100_e26077b9a": "Mixed",
+  "S100_e261c079d": "Mixed",
+  "H_eb5e9c791": "Human",
+  "S100_e272d5d5f": "Mixed",
+  "S100_e2408017e": "Mixed",
+  "S100_e279a1d91": "Mixed",
+  "S100_e2cfe2cb2": "Mixed",
+  "S100_e47d68fab": "Mixed",
+  "S100_e2cddaea8": "Mixed",
+  "S100_e468649a7": "Mixed",
+  "S100_e2b3ccb36": "Mixed",
+  "S100_e2ad38e17": "Mixed",
+  "S100_e5c7a9dcc": "Mixed",
+  "S100_eb5803246": "Mixed",
+  "S25_e2582cfba": "AI",
+  "S100_eb5e9c791": "Mixed",
+  "S100_e7ce7f8ef": "Mixed",
+  "S100_e5e675663": "Mixed",
+  "S100_e7b687627": "Human",
+  "S100_e7db32c31": "Mixed",
+  "S25_e2408017e": "AI",
+  "S25_e272d5d5f": "AI",
+  "S25_e261c079d": "AI",
+  "S25_e2b3ccb36": "AI",
+  "S25_e2cfe2cb2": "AI",
+  "S25_e279a1d91": "AI",
+  "S25_e26077b9a": "AI",
+  "S25_e2ad38e17": "AI",
+  "S25_e2cddaea8": "AI",
+  "S25_e5e675663": "AI",
+  "S25_e7b687627": "AI",
+  "S25_e7ce7f8ef": "AI",
+  "S25_e47d68fab": "Mixed",
+  "S25_e7db32c31": "AI",
+  "S25_eb5803246": "AI",
+  "S25_e5c7a9dcc": "AI",
+  "S25_e468649a7": "AI",
+  "S50_e2ad38e17": "AI",
+  "S50_e2582cfba": "AI",
+  "S50_e272d5d5f": "Mixed",
+  "S50_e261c079d": "Mixed",
+  "S50_e26077b9a": "AI",
+  "S25_eb5e9c791": "AI",
+  "S50_e2408017e": "AI",
+  "S50_e279a1d91": "Mixed",
+  "S50_e468649a7": "AI",
+  "S50_e2cfe2cb2": "Mixed",
+  "S50_e7b687627": "Mixed",
+  "S50_e2cddaea8": "AI",
+  "S50_e47d68fab": "AI",
+  "S50_e2b3ccb36": "AI",
+  "S50_e5e675663": "AI",
+  "S50_e5c7a9dcc": "AI",
+  "S50_e7ce7f8ef": "AI",
+  "S50_e7db32c31": "AI",
+  "S50_eb5803246": "AI",
+  "S50_eb5e9c791": "Mixed"
+ },
+ "pangram_summary": {
+  "H": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 19
+  },
+  "S100": {
+   "AI": 0,
+   "Mixed": 18,
+   "Human": 1
+  },
+  "S50": {
+   "AI": 13,
+   "Mixed": 6,
+   "Human": 0
+  },
+  "S25": {
+   "AI": 18,
+   "Mixed": 1,
+   "Human": 0
+  },
+  "L100": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 0
+  },
+  "L50": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 0
+  },
+  "L25": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 0
+  },
+  "R": {
+   "AI": 0,
+   "Mixed": 0,
+   "Human": 0
+  }
+ }
+}
