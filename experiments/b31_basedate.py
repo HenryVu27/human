@@ -13,6 +13,12 @@ Amended 23:58 (technical, no design change): Olmo 3's three 2T ablation checkpoi
 "olmo2-retrofit", a name vLLM does not know; their 355 tensors, names and parameter count match
 Olmo3ForCausalLM, so the copy on the Modal Volume is relabelled (model_type olmo3, sliding window 4096 for
 4097, which no B31 sequence reaches) and the original kept as config.orig.json.
+Amended 2026-11-06 00:05, before any upload: Henry granted gated access, so two priority-2 arms are added,
+generated and filtered by the same rules and shuffled into the same batches: gemma3-12b
+(google/gemma-3-12b-pt, cutoff August 2024, pretrained by distillation from a teacher model) and
+llama3.1-8b (meta-llama/Llama-3.1-8B, data to the end of 2023, no synthetic text stated in pretraining),
+the latter only if Meta approves access before the first upload. Weights fetched by
+experiments/modal/b31_gated.py with Henry's read token (a Modal secret B31 never reads).
 
 Stimuli (30 openings, the same for every arm).
 - FineWeb: data/human.jsonl rows 600 to 619 (h0600 to h0619, the first 20 dev documents; Common Crawl
@@ -196,6 +202,12 @@ MODELS = {
                      release="2025-04", crawl=None, llm="pre", instr="pre", priority=2),
     "qwen3.5-9b": dict(repo="Qwen/Qwen3.5-9B-Base", revision="main", family="qwen", params_b=9.7,
                        release="2026-02", crawl=None, llm=None, instr=None, priority=1, multimodal=True),
+    # Gated, added 00:05. Llama 3: data "until the end of 2023", no synthetic text in the pretraining section.
+    # Gemma 3: cutoff August 2024, pretrained with knowledge distillation from a teacher's logits.
+    "llama3.1-8b": dict(repo="meta-llama/Llama-3.1-8B", revision="main", family="llama", params_b=8.0,
+                        release="2024-07", crawl="2023", llm="none", instr=None, priority=2),
+    "gemma3-12b": dict(repo="google/gemma-3-12b-pt", revision="main", family="gemma", params_b=12.2,
+                       release="2025-03", crawl="2024", llm="distill", instr=None, priority=2, multimodal=True),
     # Instruct positive controls (chat template, B1's prompt, 15 openings).
     "olmo2-13b-instruct": dict(repo="allenai/OLMo-2-1124-13B-Instruct", revision="main", family="olmo",
                                params_b=13.7, release="2024-12", chat=True, priority=1,
