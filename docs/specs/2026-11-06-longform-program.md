@@ -443,3 +443,13 @@ that tracks Pangram within rewrites is the program's missing loop.
 - **B39** stays the final test, scored only by Pangram.
 - Budget for B38: Modal about $6 inside the free credit (stop if the month's credits used would pass $27), Pangram at
   most 600 credits.
+
+### Amendment 2026-11-06 16:45 CST: program paused after B38
+
+Henry's decision (2026-11-06, about 16:45, relayed by the main session): "Pause long-form".
+- **What stops:** the program stops after B38 and spends nothing more. Gate 2b is not funded.
+- **What stays locked:** the B39 reserve (`results/b39_reserved_testB.json`). No judge, pick, calibration or scan reads
+  it while the program is paused, so B39 can still serve as the final test if the program resumes.
+- **Resuming** needs Henry's yes.
+- **Where to look:** the report's "Where this stands (2026-11-06, about 16:50)" section records what the program found
+  and what is kept.

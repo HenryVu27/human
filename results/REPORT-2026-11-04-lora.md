@@ -1240,3 +1240,52 @@ billed.
 `results/b38_pangram_shares.json`, `results/b38_scan_times.txt`, `results/b39_reserved_testB.json`,
 `results/LONGFORM-JUDGE.md`; validators `research/longform-judge-b38-stats-order.md`,
 `research/longform-judge-b38-leakage.md`, `research/longform-redteam-b38.md`. Texts stay local.
+
+## Where this stands (2026-11-06, about 16:50): long-form program paused
+
+Henry paused the long-form program at about 16:45, after B38 ("Pause long-form"). Nothing more is spent on it.
+Sections 37 to 39 answer the questions it asked.
+
+**What the program found.**
+1. **Pangram counts flagged words.** A whole post's AI share equals the share of its words Pangram flags, wherever they
+   sit, and the post reads Human under 10%. In B37's splice probe, a Sonnet block of 7% or 9.5% of the words read
+   Human and one of 17% read Mixed. Human posts read Human at full length, 10 of 10 (B34).
+2. **B30's rewriter does not transfer.** On whole posts by writers it never saw, it reads Human 1 of 32 (AI share 0.38),
+   against 11 of 32 for the first 300 words of the same rewrites, though it lowers the share on all 32 (B36).
+3. **No cheap lever moved it.**
+   - A least-copying pick and the notes-first writer at full length did not qualify for a scan (B37).
+   - A judge trained on 1,534 Pangram labels cleared its pooled bar: area under the receiver operating characteristic
+     curve (AUROC) 0.735 on rewrites (B38).
+   - Under the content rules, that judge picks no better than the free least-copying rule. Even the best possible
+     pick of 4 tries leaves sections at 0.213.
+4. **The trade-off behind all of it.**
+   - Every route that reads Human keeps less of the content. Condensing (B14) keeps about 40% of the length, the
+     notes-first writer at full length 28%, the judge's unconstrained picks about 60%.
+   - The rewriter keeps 71% of the length with 95% of claims supported, and reads 29 to 38% flagged.
+   - How much a text copies from the AI draft is the best single predictor of Pangram's share (Spearman 0.70 across
+     B38's tries).
+   - This is B28's and B30's finding at length: the more of the content and wording the AI chose, the more Pangram
+     flags.
+5. **Henry's posts.**
+   - Rewritten section by section with the math stripped, the bandits post read Human at 0.08 (original 0.24). The
+     context-engineering post read Mixed at 0.24 (original 0.53). Sections went from 1 to 6 Human of 12 (B37).
+   - But math raises the share: in one batch, the bandits original reads 0.41 with the math and 0.24 without (B38).
+   - The bandits rewrite that reads Human has broken sentences and a garbled proof, so it is not publishable.
+
+**Kept for a restart.**
+- **The B39 final test reserve:** 798 test-B posts, locked by ID and text hash (`results/b39_reserved_testB.json`).
+  No judge, pick or scan has touched them.
+- **The pipeline:**
+  - `experiments/modal/`, with its README;
+  - the form checks, `src/humanizer/checks/form.py`;
+  - the judge J1 and its data, `experiments/b38_judge.py`.
+- **Weights on Modal:** the volumes `b31-weights` (641 GiB) and `longform` (0.4 GiB). They sit inside Modal's 1 TiB of
+  free volume storage, so they cost nothing while kept.
+- **The next bet, not funded:** gate 2b, a long-context rewriter trained on many writers with a copying penalty (about
+  $40 to $55). Its case rests on the transfer gap in point 2, not on length. Long context alone would close about 0.09
+  of the gap (B36 red team).
+
+**Spend.**
+- **Pangram:** 2,632 credits for the program (1,715, 555 and 362) of its 6,000 budget. The dashboard is at 8,717.
+- **Modal:** $20.99 of the month's $30 free credit, used by everything this month including B30 and B31. $0.00 billed,
+  and nothing runs.
