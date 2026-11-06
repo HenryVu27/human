@@ -6,7 +6,9 @@ on all data that scores the calibration candidates. Each training: 3 epochs, lea
 batches of 8 texts of similar length, mean squared error on a sigmoid output, bf16 autocast, seed 0. Texts are cut
 to 2,048 tokens for training; predictions on longer texts average 2,048-token chunks weighted by their tokens.
 
-  modal run experiments/modal/lf_judge.py --data results/b38_data.jsonl --calib results/b38_calib_cands.jsonl --out results/b38_j2_preds.json
+  modal run experiments/modal/lf_judge.py --data results/b38_data.jsonl --calib none --out results/b38_j2_preds.json
+  modal run experiments/modal/lf_judge.py --data results/b38_data.jsonl --calib results/b38_calib_cands.jsonl --out results/b38_j2_preds.json --full-only
+  (the evaluation runs first; the model on all data that scores the calibration candidates runs when they exist)
 """
 
 from __future__ import annotations
@@ -41,7 +43,7 @@ def folds(rows: list[dict], k: int = 5) -> dict[str, int]:
 
 
 @app.function(image=IMAGE, gpu="L40S", cpu=4, memory=32768, timeout=3 * 3600)
-def run(rows: list[dict], calib: list[dict]) -> dict:
+def run(rows: list[dict], calib: list[dict], full_only: bool = False) -> dict:
     import random
 
     import torch
@@ -127,8 +129,8 @@ def run(rows: list[dict], calib: list[dict]) -> dict:
         return [a / max(1, n) for a, n in out]
 
     fold = folds(rows)
-    oof = {}
-    for f in range(5):
+    oof, loeo = {}, {}
+    for f in ([] if full_only else range(5)):
         tr = [r for r in rows if fold[r["group"]] != f]
         te = [r for r in rows if fold[r["group"]] == f]
         m = train(tr)
@@ -137,23 +139,28 @@ def run(rows: list[dict], calib: list[dict]) -> dict:
         del m
         torch.cuda.empty_cache()
         print(f"fold {f}: trained on {len(tr)}, predicted {len(te)}", flush=True)
-    m = train([r for r in rows if not r["loeo_test"]])
-    te = [r for r in rows if r["loeo_test"]]
-    loeo = dict(zip([r["uid"] for r in te], predict(m, [r["text"] for r in te])))
-    del m
-    torch.cuda.empty_cache()
-    m = train(rows)
-    cal = dict(zip([c["cid"] for c in calib], predict(m, [c["text"] for c in calib])))
+    if not full_only:
+        m = train([r for r in rows if not r["loeo_test"]])
+        te = [r for r in rows if r["loeo_test"]]
+        loeo = dict(zip([r["uid"] for r in te], predict(m, [r["text"] for r in te])))
+        del m
+        torch.cuda.empty_cache()
+    cal = {}
+    if calib:
+        m = train(rows)
+        cal = dict(zip([c["cid"] for c in calib], predict(m, [c["text"] for c in calib])))
     print("done", flush=True)
     return {"oof": oof, "loeo": loeo, "calib": cal, "folds": {r["uid"]: fold[r["group"]] for r in rows}}
 
 
 @app.local_entrypoint()
-def main(data: str, calib: str, out: str):
+def main(data: str, calib: str, out: str, full_only: bool = False):
     rows = [json.loads(line) for line in pathlib.Path(data).read_text().splitlines()]
     rows = [{k: r[k] for k in ("uid", "text", "target", "group", "loeo_test")} for r in rows]
     cal = [json.loads(line) for line in pathlib.Path(calib).read_text().splitlines()] if pathlib.Path(calib).exists() else []
     cal = [{"cid": c["cid"], "text": c["text"]} for c in cal]
-    res = run.remote(rows, cal)
-    pathlib.Path(out).write_text(json.dumps(res))
+    res = run.remote(rows, cal, full_only)
+    prev = json.loads(pathlib.Path(out).read_text()) if pathlib.Path(out).exists() else {}
+    merged = {k: (res[k] or prev.get(k, {})) for k in ("oof", "loeo", "calib", "folds")}
+    pathlib.Path(out).write_text(json.dumps(merged))
     print(len(res["oof"]), "out-of-fold,", len(res["loeo"]), "leave-one-experiment-out,", len(res["calib"]), "calibration")

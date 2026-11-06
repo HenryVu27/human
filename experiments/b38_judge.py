@@ -311,11 +311,27 @@ def record(path: str):
 DETS = ["meld", "binoculars", "fdg_falcon", "fdg_llama", "desklib"]
 
 
+def _b33_scores_by_text() -> dict[str, dict]:
+    """B33 already scored every B1 to B31 text with the same detectors (lf_detect.py, unchanged); reuse by text."""
+    calib = {r["id"]: r["text"] for r in _load(RES / "b33_calib.jsonl")}
+    return {calib[r["id"]]: r for r in _load(RES / "b33_scores_calib.jsonl") if r["id"] in calib}
+
+
 def features():
-    rows = [{"id": r["uid"], "text": r["text"]} for r in _load(DATA)] + \
+    have = _b33_scores_by_text()
+    rows = [{"id": r["uid"], "text": r["text"]} for r in _load(DATA) if r["text"] not in have] + \
            [{"id": "CAND:" + c["cid"], "text": c["text"]} for c in _load(CANDS)]
     DET_IN.write_text("".join(json.dumps(r) + "\n" for r in rows))
-    print(len(rows), "texts to score")
+    print(len(rows), "texts to score;", len(have), "reused from B33")
+
+
+def _scores() -> dict[str, dict]:
+    by_text = _b33_scores_by_text()
+    sc = {r["id"]: r for r in _load(DET_OUT)}
+    for r in _load(DATA):
+        if r["uid"] not in sc and r["text"] in by_text:
+            sc[r["uid"]] = by_text[r["text"]]
+    return sc
 
 
 def _feat(score_row: dict, words: int):
@@ -342,7 +358,7 @@ def linear():
     from sklearn.pipeline import make_pipeline
     from sklearn.preprocessing import StandardScaler
 
-    sc = {r["id"]: r for r in _load(DET_OUT)}
+    sc = _scores()
     rows = [r for r in _load(DATA) if r["uid"] in sc and _feat(sc[r["uid"]], r["words"])]
     X = np.array([_feat(sc[r["uid"]], r["words"]) for r in rows])
     y = np.array([r["label"] != "Human" for r in rows], dtype=int)
