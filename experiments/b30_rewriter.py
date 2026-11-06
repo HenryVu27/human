@@ -24,6 +24,10 @@ Fixed before any B30 text or training pair exists (2026-11-05 20:45):
 - Pangram on all 57, paired with the input posts (B28 S) and with the voice writer from notes (B28 L).
 - Checks: length against the input post and the essay; claim support against the post; copying from
   the input post (a rewriter that copies its input has done nothing) and from the essay.
+Amended 23:10, before any training pair is used and before any B30 text exists: Henry asked that heavy
+jobs stay off the Mac, so both seeds are generated on the PC (experiments/gpu/gen13b_guard.py: the adapter
+in its trained PEFT form, the same Guard file and sampling, as B28's amendment of 19:46). Nothing else
+changes.
 Predictions, both stated so the result decides between them: T100 reads Human on 12 or more of 19 (the
 content is the blogger's, the prose local). If Pangram reads who chose the content, T25 stays mostly
 not Human (5 or fewer Human of 19). If a learned rewriter re-plans an AI post enough, T25 reads Human on
@@ -32,9 +36,8 @@ not Human (5 or fewer Human of 19). If a learned rewriter re-plans an AI post en
 Usage:
   uv run python experiments/b30_rewriter.py data      (Sonnet; writes data/rewritepool)
   copy data/rewritepool to C:/hgpu/data_rewritepool; train13b.py --data data_rewritepool --out out_rewritepool --max-len 3584
-  uv run python experiments/peft_to_mlx.py <adapter> models/lora-13b-rewrite-mlx
   uv run python experiments/b30_rewriter.py prompts
-  for s in 0 1: uv run python experiments/gen_mlx.py results/b30_prompts.jsonl results/b30_gen_s$s.jsonl --guard --adapter models/lora-13b-rewrite-mlx --seed $s
+  on the PC: experiments/gpu/b30gen.cmd (gen13b_guard, seeds 0 and 1), then fetch b30_gen_s0/s1.jsonl
   uv run python experiments/b30_rewriter.py pick
   uv run python experiments/b30_rewriter.py record T100_e1234abcd=Human ...
 """
