@@ -1,0 +1,3896 @@
+{
+ "846d59a3": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0608",
+  "batch": 0,
+  "words": 236
+ },
+ "2a0ebf92": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "e08ce4339",
+  "batch": 0,
+  "words": 250
+ },
+ "1c1cb663": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e47398558",
+  "batch": 0,
+  "words": 232
+ },
+ "00628475": {
+  "arm": "human",
+  "doc": "h0602",
+  "batch": 0,
+  "words": 229
+ },
+ "4f02b4eb": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0604",
+  "batch": 0,
+  "words": 245
+ },
+ "f4f01e50": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e33785f66",
+  "batch": 0,
+  "words": 237
+ },
+ "a518d136": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e41f9661f",
+  "batch": 0,
+  "words": 244
+ },
+ "7838d433": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 250
+ },
+ "1c51f57e": {
+  "arm": "olmo2-7b",
+  "doc": "h0616",
+  "batch": 0,
+  "words": 250
+ },
+ "4d20b89f": {
+  "arm": "pythia-2.8b",
+  "doc": "e08ce4339",
+  "batch": 0,
+  "words": 233
+ },
+ "b29b3ad8": {
+  "arm": "human",
+  "doc": "h0610",
+  "batch": 0,
+  "words": 228
+ },
+ "4a1f7ad2": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0615",
+  "batch": 0,
+  "words": 247
+ },
+ "4ced0ec6": {
+  "arm": "phi-2",
+  "doc": "e0b708fa8",
+  "batch": 0,
+  "words": 250
+ },
+ "b7a13bc7": {
+  "arm": "pythia-6.9b",
+  "doc": "h0617",
+  "batch": 0,
+  "words": 241
+ },
+ "71cabb12": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0607",
+  "batch": 0,
+  "words": 161
+ },
+ "3606f763": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e08ce4339",
+  "batch": 0,
+  "words": 243
+ },
+ "c4f6acc7": {
+  "arm": "mistral-small-24b",
+  "doc": "e963b018f",
+  "batch": 0,
+  "words": 238
+ },
+ "a6d5d220": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0602",
+  "batch": 0,
+  "words": 246
+ },
+ "e2d6a24d": {
+  "arm": "qwen3.5-9b",
+  "doc": "e41f9661f",
+  "batch": 0,
+  "words": 247
+ },
+ "1efce6f2": {
+  "arm": "olmo2-13b",
+  "doc": "e4da6802a",
+  "batch": 0,
+  "words": 206
+ },
+ "b3132f4c": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e41f9661f",
+  "batch": 0,
+  "words": 240
+ },
+ "b2017682": {
+  "arm": "mistral-small-24b",
+  "doc": "e208d6650",
+  "batch": 0,
+  "words": 240
+ },
+ "d52400fc": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0614",
+  "batch": 0,
+  "words": 250
+ },
+ "57ef7cb0": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0611",
+  "batch": 0,
+  "words": 247
+ },
+ "8059911d": {
+  "arm": "olmo2-13b",
+  "doc": "h0603",
+  "batch": 0,
+  "words": 244
+ },
+ "6d52eaf3": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0607",
+  "batch": 0,
+  "words": 150
+ },
+ "fe1ace74": {
+  "arm": "olmo2-7b-s1",
+  "doc": "ea426a891",
+  "batch": 0,
+  "words": 244
+ },
+ "1433b476": {
+  "arm": "qwen2.5-7b",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 194
+ },
+ "f370471b": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0618",
+  "batch": 0,
+  "words": 244
+ },
+ "478ff45c": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0608",
+  "batch": 0,
+  "words": 246
+ },
+ "9a105acc": {
+  "arm": "qwen3.5-9b",
+  "doc": "e47398558",
+  "batch": 0,
+  "words": 249
+ },
+ "727c6fe8": {
+  "arm": "phi-2",
+  "doc": "h0612",
+  "batch": 0,
+  "words": 246
+ },
+ "5f3e4b2b": {
+  "arm": "olmo3-7b",
+  "doc": "h0616",
+  "batch": 0,
+  "words": 240
+ },
+ "f571db81": {
+  "arm": "phi-2",
+  "doc": "e33785f66",
+  "batch": 0,
+  "words": 219
+ },
+ "74bccbb5": {
+  "arm": "olmo2-7b",
+  "doc": "h0600",
+  "batch": 0,
+  "words": 238
+ },
+ "ed858dca": {
+  "arm": "mistral-small-24b",
+  "doc": "h0612",
+  "batch": 0,
+  "words": 244
+ },
+ "98f558e8": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0603",
+  "batch": 0,
+  "words": 227
+ },
+ "edeaebbe": {
+  "arm": "qwen3-8b",
+  "doc": "ea426a891",
+  "batch": 0,
+  "words": 249
+ },
+ "5e8ab658": {
+  "arm": "pythia-2.8b",
+  "doc": "h0602",
+  "batch": 0,
+  "words": 247
+ },
+ "d4929e63": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0611",
+  "batch": 0,
+  "words": 250
+ },
+ "d17b3c76": {
+  "arm": "mistral-small-24b",
+  "doc": "h0615",
+  "batch": 0,
+  "words": 240
+ },
+ "e0681193": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0615",
+  "batch": 0,
+  "words": 248
+ },
+ "d50db054": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0606",
+  "batch": 0,
+  "words": 246
+ },
+ "e238e25a": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e208d6650",
+  "batch": 0,
+  "words": 239
+ },
+ "a8f4beb4": {
+  "arm": "pythia-2.8b",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 238
+ },
+ "006b84b2": {
+  "arm": "pythia-6.9b",
+  "doc": "e47398558",
+  "batch": 0,
+  "words": 243
+ },
+ "9a5616f3": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0614",
+  "batch": 0,
+  "words": 241
+ },
+ "84a0bfbe": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0601",
+  "batch": 0,
+  "words": 240
+ },
+ "a8d7ea50": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 243
+ },
+ "0423e099": {
+  "arm": "human",
+  "doc": "h0601",
+  "batch": 0,
+  "words": 234
+ },
+ "6e5e9308": {
+  "arm": "olmo3-7b",
+  "doc": "h0615",
+  "batch": 0,
+  "words": 238
+ },
+ "9758491e": {
+  "arm": "olmo3-7b",
+  "doc": "h0601",
+  "batch": 0,
+  "words": 227
+ },
+ "3449f412": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e41f9661f",
+  "batch": 0,
+  "words": 230
+ },
+ "51303e21": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e4da6802a",
+  "batch": 0,
+  "words": 250
+ },
+ "2ea1f404": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0610",
+  "batch": 0,
+  "words": 247
+ },
+ "bb951680": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0605",
+  "batch": 0,
+  "words": 237
+ },
+ "472ed6df": {
+  "arm": "pythia-2.8b",
+  "doc": "h0614",
+  "batch": 0,
+  "words": 239
+ },
+ "579491b7": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e33785f66",
+  "batch": 0,
+  "words": 229
+ },
+ "0466da88": {
+  "arm": "pythia-2.8b",
+  "doc": "h0611",
+  "batch": 0,
+  "words": 216
+ },
+ "73633f33": {
+  "arm": "pythia-2.8b",
+  "doc": "h0618",
+  "batch": 0,
+  "words": 244
+ },
+ "e904299c": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0606",
+  "batch": 0,
+  "words": 234
+ },
+ "0a3cc47b": {
+  "arm": "olmo2-7b",
+  "doc": "h0610",
+  "batch": 0,
+  "words": 248
+ },
+ "fbea93c4": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0606",
+  "batch": 0,
+  "words": 248
+ },
+ "23d191c4": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0613",
+  "batch": 0,
+  "words": 240
+ },
+ "9145dc6d": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0618",
+  "batch": 0,
+  "words": 248
+ },
+ "25c61d9d": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0601",
+  "batch": 0,
+  "words": 241
+ },
+ "8f2dbdd7": {
+  "arm": "mistral-small-24b",
+  "doc": "e41f9661f",
+  "batch": 0,
+  "words": 230
+ },
+ "ee75b5be": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0610",
+  "batch": 0,
+  "words": 245
+ },
+ "0cd44695": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e208d6650",
+  "batch": 0,
+  "words": 240
+ },
+ "f5ce0e5b": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 247
+ },
+ "d25f734a": {
+  "arm": "gemma3-12b",
+  "doc": "e33785f66",
+  "batch": 0,
+  "words": 238
+ },
+ "5d9f2ff4": {
+  "arm": "pythia-2.8b",
+  "doc": "h0609",
+  "batch": 0,
+  "words": 229
+ },
+ "146b947e": {
+  "arm": "phi-2",
+  "doc": "h0610",
+  "batch": 0,
+  "words": 239
+ },
+ "6972d226": {
+  "arm": "qwen3-8b",
+  "doc": "h0613",
+  "batch": 0,
+  "words": 231
+ },
+ "0202ecc3": {
+  "arm": "qwen3-8b",
+  "doc": "h0616",
+  "batch": 0,
+  "words": 242
+ },
+ "fc102051": {
+  "arm": "olmo2-13b",
+  "doc": "h0615",
+  "batch": 0,
+  "words": 248
+ },
+ "0084bc9f": {
+  "arm": "pythia-2.8b",
+  "doc": "e208d6650",
+  "batch": 0,
+  "words": 249
+ },
+ "ad54ada4": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 216
+ },
+ "de19ca49": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0608",
+  "batch": 0,
+  "words": 217
+ },
+ "ed7bc95d": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0609",
+  "batch": 0,
+  "words": 233
+ },
+ "8fa238db": {
+  "arm": "pythia-2.8b",
+  "doc": "e41f9661f",
+  "batch": 0,
+  "words": 248
+ },
+ "d161a1c1": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0603",
+  "batch": 0,
+  "words": 237
+ },
+ "e01f40f0": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0611",
+  "batch": 0,
+  "words": 247
+ },
+ "d682766e": {
+  "arm": "nemotron-9b",
+  "doc": "h0606",
+  "batch": 0,
+  "words": 245
+ },
+ "b1182fa0": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e319f15a4",
+  "batch": 0,
+  "words": 236
+ },
+ "57c67cbb": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0615",
+  "batch": 0,
+  "words": 207
+ },
+ "1d72c14d": {
+  "arm": "pythia-2.8b",
+  "doc": "e47398558",
+  "batch": 0,
+  "words": 229
+ },
+ "970e7990": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0618",
+  "batch": 0,
+  "words": 250
+ },
+ "9ffbd984": {
+  "arm": "olmo3-7b",
+  "doc": "e208d6650",
+  "batch": 0,
+  "words": 246
+ },
+ "446cdeac": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0612",
+  "batch": 0,
+  "words": 238
+ },
+ "e15d395b": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0619",
+  "batch": 0,
+  "words": 228
+ },
+ "ad97aaf0": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0611",
+  "batch": 0,
+  "words": 243
+ },
+ "84789506": {
+  "arm": "nemotron-9b",
+  "doc": "h0602",
+  "batch": 0,
+  "words": 235
+ },
+ "e776f389": {
+  "arm": "nemotron-9b",
+  "doc": "h0616",
+  "batch": 0,
+  "words": 250
+ },
+ "df920ea8": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e08ce4339",
+  "batch": 0,
+  "words": 248
+ },
+ "9625a58e": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0609",
+  "batch": 0,
+  "words": 243
+ },
+ "88270b05": {
+  "arm": "olmo2-13b",
+  "doc": "h0604",
+  "batch": 0,
+  "words": 238
+ },
+ "0c89cd41": {
+  "arm": "olmo2-13b",
+  "doc": "h0610",
+  "batch": 0,
+  "words": 232
+ },
+ "023895da": {
+  "arm": "olmo2-13b",
+  "doc": "e08ce4339",
+  "batch": 0,
+  "words": 246
+ },
+ "e205c5bd": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "ea426a891",
+  "batch": 0,
+  "words": 245
+ },
+ "3434d72e": {
+  "arm": "olmo2-7b",
+  "doc": "h0612",
+  "batch": 1,
+  "words": 163
+ },
+ "cd25bc1a": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0603",
+  "batch": 1,
+  "words": 230
+ },
+ "e74911ce": {
+  "arm": "qwen3-8b",
+  "doc": "e41f9661f",
+  "batch": 1,
+  "words": 244
+ },
+ "e97dd652": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0610",
+  "batch": 1,
+  "words": 240
+ },
+ "f2f56053": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0603",
+  "batch": 1,
+  "words": 246
+ },
+ "1c4911b1": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0617",
+  "batch": 1,
+  "words": 249
+ },
+ "c8c35952": {
+  "arm": "olmo3-7b",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 245
+ },
+ "c44b557d": {
+  "arm": "qwen3-8b",
+  "doc": "h0604",
+  "batch": 1,
+  "words": 234
+ },
+ "b82c5de7": {
+  "arm": "pythia-6.9b",
+  "doc": "ea426a891",
+  "batch": 1,
+  "words": 191
+ },
+ "4f43e8c5": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 235
+ },
+ "d05b689d": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0607",
+  "batch": 1,
+  "words": 240
+ },
+ "74a8fc60": {
+  "arm": "olmo2-7b",
+  "doc": "h0613",
+  "batch": 1,
+  "words": 239
+ },
+ "28619f2a": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0618",
+  "batch": 1,
+  "words": 242
+ },
+ "8ee0dd0a": {
+  "arm": "phi-2",
+  "doc": "e208d6650",
+  "batch": 1,
+  "words": 238
+ },
+ "33287702": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e47398558",
+  "batch": 1,
+  "words": 246
+ },
+ "45624ca1": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 238
+ },
+ "b5bd942b": {
+  "arm": "gemma3-12b",
+  "doc": "h0605",
+  "batch": 1,
+  "words": 235
+ },
+ "08a0c3d1": {
+  "arm": "mistral-small-24b",
+  "doc": "e319f15a4",
+  "batch": 1,
+  "words": 250
+ },
+ "fb521ed7": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0610",
+  "batch": 1,
+  "words": 229
+ },
+ "46125194": {
+  "arm": "olmo2-13b",
+  "doc": "h0608",
+  "batch": 1,
+  "words": 245
+ },
+ "fa73ba23": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 236
+ },
+ "72d2ac92": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0608",
+  "batch": 1,
+  "words": 250
+ },
+ "4f201cbc": {
+  "arm": "human",
+  "doc": "e319f15a4",
+  "batch": 1,
+  "words": 243
+ },
+ "4f6d4fdf": {
+  "arm": "olmo3-7b",
+  "doc": "e41f9661f",
+  "batch": 1,
+  "words": 225
+ },
+ "0d4bbd48": {
+  "arm": "gemma3-12b",
+  "doc": "e4da6802a",
+  "batch": 1,
+  "words": 236
+ },
+ "c3c39e9d": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0601",
+  "batch": 1,
+  "words": 157
+ },
+ "82d71dc9": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "ea426a891",
+  "batch": 1,
+  "words": 239
+ },
+ "b4502218": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 248
+ },
+ "655dd3c4": {
+  "arm": "pythia-6.9b",
+  "doc": "h0618",
+  "batch": 1,
+  "words": 246
+ },
+ "0a910184": {
+  "arm": "gemma3-12b",
+  "doc": "e41f9661f",
+  "batch": 1,
+  "words": 238
+ },
+ "bab971a2": {
+  "arm": "qwen3.5-9b",
+  "doc": "ea426a891",
+  "batch": 1,
+  "words": 249
+ },
+ "87e89d2d": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0608",
+  "batch": 1,
+  "words": 243
+ },
+ "83f7da25": {
+  "arm": "phi-2",
+  "doc": "h0608",
+  "batch": 1,
+  "words": 237
+ },
+ "048eb67d": {
+  "arm": "gemma3-12b",
+  "doc": "h0612",
+  "batch": 1,
+  "words": 174
+ },
+ "83ee9d52": {
+  "arm": "qwen3-8b",
+  "doc": "h0601",
+  "batch": 1,
+  "words": 243
+ },
+ "0bd18237": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e08ce4339",
+  "batch": 1,
+  "words": 230
+ },
+ "c31f4124": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 243
+ },
+ "e87f3956": {
+  "arm": "pythia-6.9b",
+  "doc": "e41f9661f",
+  "batch": 1,
+  "words": 235
+ },
+ "632ec953": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0617",
+  "batch": 1,
+  "words": 250
+ },
+ "a4b91f4f": {
+  "arm": "human",
+  "doc": "h0618",
+  "batch": 1,
+  "words": 246
+ },
+ "f270e60f": {
+  "arm": "mistral-small-24b",
+  "doc": "h0618",
+  "batch": 1,
+  "words": 250
+ },
+ "0b0aa620": {
+  "arm": "qwen2.5-7b",
+  "doc": "e33785f66",
+  "batch": 1,
+  "words": 243
+ },
+ "12edcfa0": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0610",
+  "batch": 1,
+  "words": 247
+ },
+ "d9ccef54": {
+  "arm": "olmo2-13b",
+  "doc": "e0b708fa8",
+  "batch": 1,
+  "words": 241
+ },
+ "6098d4c4": {
+  "arm": "pythia-6.9b",
+  "doc": "h0615",
+  "batch": 1,
+  "words": 246
+ },
+ "b1846b5d": {
+  "arm": "nemotron-9b",
+  "doc": "e319f15a4",
+  "batch": 1,
+  "words": 245
+ },
+ "5242d859": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 244
+ },
+ "668d6ad6": {
+  "arm": "mistral-small-24b",
+  "doc": "h0610",
+  "batch": 1,
+  "words": 233
+ },
+ "e3a28416": {
+  "arm": "qwen3-8b",
+  "doc": "h0600",
+  "batch": 1,
+  "words": 233
+ },
+ "9e860630": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0611",
+  "batch": 1,
+  "words": 232
+ },
+ "fcd31991": {
+  "arm": "human",
+  "doc": "e08ce4339",
+  "batch": 1,
+  "words": 248
+ },
+ "f650af5f": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0604",
+  "batch": 1,
+  "words": 223
+ },
+ "86932a72": {
+  "arm": "qwen3-8b",
+  "doc": "h0603",
+  "batch": 1,
+  "words": 244
+ },
+ "8484d4b8": {
+  "arm": "phi-2",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 238
+ },
+ "8454e463": {
+  "arm": "qwen3.5-9b",
+  "doc": "e963b018f",
+  "batch": 1,
+  "words": 249
+ },
+ "b65d1025": {
+  "arm": "nemotron-9b",
+  "doc": "e33785f66",
+  "batch": 1,
+  "words": 155
+ },
+ "b8da4f60": {
+  "arm": "qwen2.5-7b",
+  "doc": "e963b018f",
+  "batch": 1,
+  "words": 233
+ },
+ "82e13716": {
+  "arm": "phi-2",
+  "doc": "h0613",
+  "batch": 1,
+  "words": 250
+ },
+ "b267db01": {
+  "arm": "human",
+  "doc": "e963b018f",
+  "batch": 1,
+  "words": 235
+ },
+ "fdd7811d": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e0b708fa8",
+  "batch": 1,
+  "words": 247
+ },
+ "1f62f097": {
+  "arm": "olmo3-7b",
+  "doc": "h0614",
+  "batch": 1,
+  "words": 250
+ },
+ "0022cd6e": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e33785f66",
+  "batch": 1,
+  "words": 225
+ },
+ "a1dab0c5": {
+  "arm": "mistral-small-24b",
+  "doc": "e47398558",
+  "batch": 1,
+  "words": 247
+ },
+ "eb976884": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0612",
+  "batch": 1,
+  "words": 243
+ },
+ "37584cfd": {
+  "arm": "nemotron-9b",
+  "doc": "e4da6802a",
+  "batch": 1,
+  "words": 248
+ },
+ "0d1858d1": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0607",
+  "batch": 1,
+  "words": 240
+ },
+ "6479ed9d": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0601",
+  "batch": 1,
+  "words": 240
+ },
+ "07ec763d": {
+  "arm": "phi-2",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 236
+ },
+ "755e0de6": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 235
+ },
+ "660d7bba": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0610",
+  "batch": 1,
+  "words": 245
+ },
+ "d11f1758": {
+  "arm": "pythia-6.9b",
+  "doc": "e08ce4339",
+  "batch": 1,
+  "words": 243
+ },
+ "cf04f4d5": {
+  "arm": "olmo2-13b",
+  "doc": "e33785f66",
+  "batch": 1,
+  "words": 245
+ },
+ "5d9d3047": {
+  "arm": "olmo3-7b",
+  "doc": "h0600",
+  "batch": 1,
+  "words": 245
+ },
+ "56fbd1ff": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0618",
+  "batch": 1,
+  "words": 247
+ },
+ "40370326": {
+  "arm": "olmo3-7b",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 154
+ },
+ "e9bc04e2": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e4da6802a",
+  "batch": 1,
+  "words": 248
+ },
+ "adf8a845": {
+  "arm": "mistral-small-24b",
+  "doc": "h0619",
+  "batch": 1,
+  "words": 226
+ },
+ "298f5173": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0616",
+  "batch": 1,
+  "words": 250
+ },
+ "9fb145b3": {
+  "arm": "olmo2-13b",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 245
+ },
+ "0424c4fc": {
+  "arm": "nemotron-9b",
+  "doc": "e41f9661f",
+  "batch": 1,
+  "words": 240
+ },
+ "7a8b0cc1": {
+  "arm": "olmo2-7b",
+  "doc": "e4da6802a",
+  "batch": 1,
+  "words": 244
+ },
+ "563de995": {
+  "arm": "olmo2-13b",
+  "doc": "h0613",
+  "batch": 1,
+  "words": 246
+ },
+ "beee911c": {
+  "arm": "olmo2-13b",
+  "doc": "h0611",
+  "batch": 1,
+  "words": 241
+ },
+ "3c691d38": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0602",
+  "batch": 1,
+  "words": 248
+ },
+ "331fc96e": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0600",
+  "batch": 1,
+  "words": 150
+ },
+ "9cc1050e": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0601",
+  "batch": 1,
+  "words": 248
+ },
+ "eebbe352": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0608",
+  "batch": 1,
+  "words": 240
+ },
+ "a77dcde6": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 249
+ },
+ "4450d5fd": {
+  "arm": "nemotron-9b",
+  "doc": "h0604",
+  "batch": 1,
+  "words": 178
+ },
+ "a9bd9c44": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0603",
+  "batch": 1,
+  "words": 245
+ },
+ "24bcf2c3": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0605",
+  "batch": 1,
+  "words": 240
+ },
+ "9b4c839a": {
+  "arm": "pythia-2.8b",
+  "doc": "h0616",
+  "batch": 1,
+  "words": 235
+ },
+ "83fdcadc": {
+  "arm": "human",
+  "doc": "e208d6650",
+  "batch": 1,
+  "words": 242
+ },
+ "46ee746f": {
+  "arm": "qwen3.5-9b",
+  "doc": "e4da6802a",
+  "batch": 1,
+  "words": 250
+ },
+ "5b8eefba": {
+  "arm": "pythia-6.9b",
+  "doc": "h0609",
+  "batch": 1,
+  "words": 245
+ },
+ "f06e8af2": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0611",
+  "batch": 1,
+  "words": 236
+ },
+ "49b835ad": {
+  "arm": "olmo2-13b",
+  "doc": "h0619",
+  "batch": 1,
+  "words": 206
+ },
+ "2d285cd0": {
+  "arm": "gemma3-12b",
+  "doc": "e0b708fa8",
+  "batch": 1,
+  "words": 244
+ },
+ "7c8483fe": {
+  "arm": "pythia-6.9b",
+  "doc": "h0612",
+  "batch": 1,
+  "words": 234
+ },
+ "fc1ce9db": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0606",
+  "batch": 1,
+  "words": 232
+ },
+ "298a9f2c": {
+  "arm": "qwen3.5-9b",
+  "doc": "e319f15a4",
+  "batch": 2,
+  "words": 229
+ },
+ "d506412d": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0612",
+  "batch": 2,
+  "words": 245
+ },
+ "2850195c": {
+  "arm": "gemma3-12b",
+  "doc": "h0613",
+  "batch": 2,
+  "words": 235
+ },
+ "22e07f8e": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e33785f66",
+  "batch": 2,
+  "words": 235
+ },
+ "4b6ac9cf": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0619",
+  "batch": 2,
+  "words": 232
+ },
+ "b22940f0": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0618",
+  "batch": 2,
+  "words": 234
+ },
+ "86193094": {
+  "arm": "pythia-2.8b",
+  "doc": "h0600",
+  "batch": 2,
+  "words": 239
+ },
+ "acd42b5d": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e4da6802a",
+  "batch": 2,
+  "words": 245
+ },
+ "e55b5aec": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e963b018f",
+  "batch": 2,
+  "words": 230
+ },
+ "2101872b": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0617",
+  "batch": 2,
+  "words": 224
+ },
+ "30321613": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0604",
+  "batch": 2,
+  "words": 245
+ },
+ "7e06b00d": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0616",
+  "batch": 2,
+  "words": 234
+ },
+ "7e3cca03": {
+  "arm": "mistral-small-24b",
+  "doc": "h0617",
+  "batch": 2,
+  "words": 233
+ },
+ "158351a3": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e4da6802a",
+  "batch": 2,
+  "words": 239
+ },
+ "d8fbe74a": {
+  "arm": "olmo2-7b",
+  "doc": "e41f9661f",
+  "batch": 2,
+  "words": 233
+ },
+ "b3b3eae0": {
+  "arm": "olmo2-13b",
+  "doc": "h0616",
+  "batch": 2,
+  "words": 241
+ },
+ "3ebf549f": {
+  "arm": "pythia-6.9b",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 243
+ },
+ "d3f302b9": {
+  "arm": "nemotron-9b",
+  "doc": "h0605",
+  "batch": 2,
+  "words": 249
+ },
+ "188058cc": {
+  "arm": "human",
+  "doc": "h0608",
+  "batch": 2,
+  "words": 229
+ },
+ "57ba8ef0": {
+  "arm": "qwen3-8b",
+  "doc": "h0611",
+  "batch": 2,
+  "words": 243
+ },
+ "e247ead9": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0602",
+  "batch": 2,
+  "words": 238
+ },
+ "4bf61900": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e208d6650",
+  "batch": 2,
+  "words": 238
+ },
+ "5802b1be": {
+  "arm": "olmo2-13b",
+  "doc": "h0617",
+  "batch": 2,
+  "words": 235
+ },
+ "8dc16d45": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0615",
+  "batch": 2,
+  "words": 241
+ },
+ "f4bc9841": {
+  "arm": "qwen3.5-9b",
+  "doc": "e0b708fa8",
+  "batch": 2,
+  "words": 245
+ },
+ "d440054d": {
+  "arm": "mistral-small-24b",
+  "doc": "h0616",
+  "batch": 2,
+  "words": 243
+ },
+ "cb87830e": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0606",
+  "batch": 2,
+  "words": 250
+ },
+ "f960bef0": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e963b018f",
+  "batch": 2,
+  "words": 235
+ },
+ "b0cc7e6f": {
+  "arm": "qwen3-8b",
+  "doc": "h0617",
+  "batch": 2,
+  "words": 222
+ },
+ "9e7bdcf4": {
+  "arm": "pythia-2.8b",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 242
+ },
+ "040f5813": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0615",
+  "batch": 2,
+  "words": 247
+ },
+ "843af64d": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e319f15a4",
+  "batch": 2,
+  "words": 226
+ },
+ "f7311d37": {
+  "arm": "qwen2.5-7b",
+  "doc": "e4da6802a",
+  "batch": 2,
+  "words": 246
+ },
+ "83921835": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 238
+ },
+ "990a08e0": {
+  "arm": "pythia-2.8b",
+  "doc": "h0603",
+  "batch": 2,
+  "words": 244
+ },
+ "c75dbcb6": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0613",
+  "batch": 2,
+  "words": 242
+ },
+ "dfc05118": {
+  "arm": "olmo3-7b-r5",
+  "doc": "ea426a891",
+  "batch": 2,
+  "words": 249
+ },
+ "87b29800": {
+  "arm": "nemotron-9b",
+  "doc": "h0612",
+  "batch": 2,
+  "words": 229
+ },
+ "25761787": {
+  "arm": "pythia-6.9b",
+  "doc": "h0611",
+  "batch": 2,
+  "words": 242
+ },
+ "edc7e305": {
+  "arm": "nemotron-9b",
+  "doc": "h0600",
+  "batch": 2,
+  "words": 249
+ },
+ "d0eb14df": {
+  "arm": "pythia-6.9b",
+  "doc": "h0619",
+  "batch": 2,
+  "words": 215
+ },
+ "da4ac1cf": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0602",
+  "batch": 2,
+  "words": 246
+ },
+ "3af11d1c": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e963b018f",
+  "batch": 2,
+  "words": 243
+ },
+ "9a1662c6": {
+  "arm": "mistral-small-24b",
+  "doc": "h0601",
+  "batch": 2,
+  "words": 241
+ },
+ "e7f11637": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0618",
+  "batch": 2,
+  "words": 244
+ },
+ "a4c16011": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 247
+ },
+ "7c632855": {
+  "arm": "human",
+  "doc": "h0616",
+  "batch": 2,
+  "words": 250
+ },
+ "31c9922f": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0610",
+  "batch": 2,
+  "words": 234
+ },
+ "d1b40767": {
+  "arm": "nemotron-9b",
+  "doc": "h0618",
+  "batch": 2,
+  "words": 243
+ },
+ "09112fae": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0610",
+  "batch": 2,
+  "words": 245
+ },
+ "d4ddfe04": {
+  "arm": "pythia-6.9b",
+  "doc": "e963b018f",
+  "batch": 2,
+  "words": 222
+ },
+ "e9462ed2": {
+  "arm": "pythia-6.9b",
+  "doc": "h0601",
+  "batch": 2,
+  "words": 247
+ },
+ "3e22f064": {
+  "arm": "olmo3-7b",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 229
+ },
+ "b77533bf": {
+  "arm": "olmo2-7b",
+  "doc": "h0614",
+  "batch": 2,
+  "words": 243
+ },
+ "7f626edf": {
+  "arm": "olmo2-7b",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 157
+ },
+ "3de61bda": {
+  "arm": "olmo3-7b",
+  "doc": "e319f15a4",
+  "batch": 2,
+  "words": 232
+ },
+ "6093a694": {
+  "arm": "pythia-2.8b",
+  "doc": "h0619",
+  "batch": 2,
+  "words": 249
+ },
+ "7c6c0b40": {
+  "arm": "human",
+  "doc": "e4da6802a",
+  "batch": 2,
+  "words": 230
+ },
+ "95c892f1": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e47398558",
+  "batch": 2,
+  "words": 240
+ },
+ "56ba3830": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e0b708fa8",
+  "batch": 2,
+  "words": 245
+ },
+ "da9ae0ff": {
+  "arm": "phi-2",
+  "doc": "h0617",
+  "batch": 2,
+  "words": 241
+ },
+ "b4e05ce4": {
+  "arm": "human",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 250
+ },
+ "d639e722": {
+  "arm": "pythia-2.8b",
+  "doc": "h0605",
+  "batch": 2,
+  "words": 247
+ },
+ "8aca20c8": {
+  "arm": "phi-2",
+  "doc": "h0601",
+  "batch": 2,
+  "words": 244
+ },
+ "7d724d8c": {
+  "arm": "qwen2.5-7b",
+  "doc": "e0b708fa8",
+  "batch": 2,
+  "words": 246
+ },
+ "ef29bfaa": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0602",
+  "batch": 2,
+  "words": 232
+ },
+ "64b92301": {
+  "arm": "nemotron-9b",
+  "doc": "h0601",
+  "batch": 2,
+  "words": 250
+ },
+ "431cd0ef": {
+  "arm": "pythia-6.9b",
+  "doc": "h0608",
+  "batch": 2,
+  "words": 232
+ },
+ "2945c038": {
+  "arm": "nemotron-9b",
+  "doc": "e963b018f",
+  "batch": 2,
+  "words": 230
+ },
+ "d49d6644": {
+  "arm": "nemotron-9b",
+  "doc": "e08ce4339",
+  "batch": 2,
+  "words": 181
+ },
+ "69a31d0a": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0619",
+  "batch": 2,
+  "words": 246
+ },
+ "a301aed2": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0605",
+  "batch": 2,
+  "words": 250
+ },
+ "114208a0": {
+  "arm": "olmo2-13b",
+  "doc": "h0605",
+  "batch": 2,
+  "words": 244
+ },
+ "ec9473c9": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0616",
+  "batch": 2,
+  "words": 240
+ },
+ "e719d9eb": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0615",
+  "batch": 2,
+  "words": 231
+ },
+ "92674d82": {
+  "arm": "olmo2-13b",
+  "doc": "h0618",
+  "batch": 2,
+  "words": 238
+ },
+ "66656cb9": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0603",
+  "batch": 2,
+  "words": 238
+ },
+ "b4f45983": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0609",
+  "batch": 2,
+  "words": 220
+ },
+ "d1d538c9": {
+  "arm": "nemotron-9b",
+  "doc": "h0619",
+  "batch": 2,
+  "words": 245
+ },
+ "4dffe0a5": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0613",
+  "batch": 2,
+  "words": 246
+ },
+ "4bb7bd63": {
+  "arm": "qwen3.5-9b",
+  "doc": "e33785f66",
+  "batch": 2,
+  "words": 238
+ },
+ "ba42573d": {
+  "arm": "phi-2",
+  "doc": "h0600",
+  "batch": 2,
+  "words": 248
+ },
+ "edb03bc7": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0614",
+  "batch": 2,
+  "words": 250
+ },
+ "abc6a264": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0607",
+  "batch": 2,
+  "words": 237
+ },
+ "29f82be0": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0604",
+  "batch": 2,
+  "words": 236
+ },
+ "e6653467": {
+  "arm": "olmo2-13b",
+  "doc": "h0600",
+  "batch": 2,
+  "words": 231
+ },
+ "02542201": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0604",
+  "batch": 2,
+  "words": 244
+ },
+ "029dfd7a": {
+  "arm": "human",
+  "doc": "e33785f66",
+  "batch": 2,
+  "words": 216
+ },
+ "fdd27cd3": {
+  "arm": "pythia-6.9b",
+  "doc": "h0614",
+  "batch": 2,
+  "words": 235
+ },
+ "1d4a7959": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e08ce4339",
+  "batch": 2,
+  "words": 243
+ },
+ "4ca7849f": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0604",
+  "batch": 2,
+  "words": 193
+ },
+ "a9241ed1": {
+  "arm": "pythia-6.9b",
+  "doc": "h0616",
+  "batch": 2,
+  "words": 244
+ },
+ "b326fee0": {
+  "arm": "olmo3-7b",
+  "doc": "e0b708fa8",
+  "batch": 2,
+  "words": 243
+ },
+ "1738d24f": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0617",
+  "batch": 2,
+  "words": 195
+ },
+ "96263bac": {
+  "arm": "gemma3-12b",
+  "doc": "h0610",
+  "batch": 2,
+  "words": 231
+ },
+ "1fba3331": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0605",
+  "batch": 2,
+  "words": 247
+ },
+ "6f454f06": {
+  "arm": "olmo2-7b",
+  "doc": "e33785f66",
+  "batch": 2,
+  "words": 227
+ },
+ "eed2392e": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "ea426a891",
+  "batch": 2,
+  "words": 250
+ },
+ "03ea12f0": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0602",
+  "batch": 2,
+  "words": 246
+ },
+ "180623e7": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0612",
+  "batch": 2,
+  "words": 230
+ },
+ "1d3038c0": {
+  "arm": "gemma3-12b",
+  "doc": "h0618",
+  "batch": 3,
+  "words": 223
+ },
+ "816a258f": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0619",
+  "batch": 3,
+  "words": 243
+ },
+ "3be28ded": {
+  "arm": "olmo3-7b",
+  "doc": "h0606",
+  "batch": 3,
+  "words": 216
+ },
+ "1efbc697": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0615",
+  "batch": 3,
+  "words": 245
+ },
+ "35092a59": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0613",
+  "batch": 3,
+  "words": 238
+ },
+ "8b129440": {
+  "arm": "human",
+  "doc": "h0613",
+  "batch": 3,
+  "words": 202
+ },
+ "02e62227": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0616",
+  "batch": 3,
+  "words": 246
+ },
+ "0463df9f": {
+  "arm": "qwen3-8b",
+  "doc": "h0615",
+  "batch": 3,
+  "words": 238
+ },
+ "27668aa1": {
+  "arm": "gemma3-12b",
+  "doc": "e208d6650",
+  "batch": 3,
+  "words": 245
+ },
+ "a6939186": {
+  "arm": "olmo2-7b",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 248
+ },
+ "a74b96a5": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0619",
+  "batch": 3,
+  "words": 229
+ },
+ "5db3118a": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e0b708fa8",
+  "batch": 3,
+  "words": 234
+ },
+ "14a0bf52": {
+  "arm": "olmo2-7b",
+  "doc": "h0618",
+  "batch": 3,
+  "words": 247
+ },
+ "ace00ac4": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0606",
+  "batch": 3,
+  "words": 245
+ },
+ "2195aa77": {
+  "arm": "human",
+  "doc": "h0600",
+  "batch": 3,
+  "words": 240
+ },
+ "875a5997": {
+  "arm": "olmo2-7b",
+  "doc": "h0604",
+  "batch": 3,
+  "words": 249
+ },
+ "a88d0f02": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0604",
+  "batch": 3,
+  "words": 239
+ },
+ "2834523c": {
+  "arm": "olmo2-13b",
+  "doc": "h0614",
+  "batch": 3,
+  "words": 232
+ },
+ "cba9ea8a": {
+  "arm": "human",
+  "doc": "h0604",
+  "batch": 3,
+  "words": 242
+ },
+ "93167dd3": {
+  "arm": "olmo3-7b",
+  "doc": "h0604",
+  "batch": 3,
+  "words": 242
+ },
+ "85442915": {
+  "arm": "olmo2-13b",
+  "doc": "e208d6650",
+  "batch": 3,
+  "words": 242
+ },
+ "67edefbb": {
+  "arm": "olmo2-7b",
+  "doc": "h0601",
+  "batch": 3,
+  "words": 227
+ },
+ "3e02a9b0": {
+  "arm": "gemma3-12b",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 224
+ },
+ "dba317a1": {
+  "arm": "pythia-2.8b",
+  "doc": "h0601",
+  "batch": 3,
+  "words": 249
+ },
+ "e932ee06": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0614",
+  "batch": 3,
+  "words": 212
+ },
+ "f0e030b0": {
+  "arm": "phi-2",
+  "doc": "h0611",
+  "batch": 3,
+  "words": 200
+ },
+ "74eaf582": {
+  "arm": "olmo2-7b",
+  "doc": "h0608",
+  "batch": 3,
+  "words": 250
+ },
+ "2b9904ad": {
+  "arm": "phi-2",
+  "doc": "e4da6802a",
+  "batch": 3,
+  "words": 250
+ },
+ "6ed2f7d2": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0602",
+  "batch": 3,
+  "words": 246
+ },
+ "476ad4a6": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0611",
+  "batch": 3,
+  "words": 244
+ },
+ "fe6edd86": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0607",
+  "batch": 3,
+  "words": 237
+ },
+ "a351499e": {
+  "arm": "mistral-small-24b",
+  "doc": "h0611",
+  "batch": 3,
+  "words": 205
+ },
+ "13d6ca5e": {
+  "arm": "mistral-small-24b",
+  "doc": "h0609",
+  "batch": 3,
+  "words": 168
+ },
+ "6e03899a": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e47398558",
+  "batch": 3,
+  "words": 229
+ },
+ "f8d2de4b": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0604",
+  "batch": 3,
+  "words": 246
+ },
+ "55d7be5f": {
+  "arm": "qwen3-8b",
+  "doc": "e319f15a4",
+  "batch": 3,
+  "words": 250
+ },
+ "f9ac29dd": {
+  "arm": "olmo3-7b",
+  "doc": "e4da6802a",
+  "batch": 3,
+  "words": 240
+ },
+ "b2f95370": {
+  "arm": "olmo3-7b",
+  "doc": "e33785f66",
+  "batch": 3,
+  "words": 243
+ },
+ "beb572b7": {
+  "arm": "nemotron-9b",
+  "doc": "h0603",
+  "batch": 3,
+  "words": 235
+ },
+ "b101e008": {
+  "arm": "nemotron-9b",
+  "doc": "h0608",
+  "batch": 3,
+  "words": 230
+ },
+ "1e6d1f4d": {
+  "arm": "mistral-small-24b",
+  "doc": "e4da6802a",
+  "batch": 3,
+  "words": 240
+ },
+ "7936dbfe": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0615",
+  "batch": 3,
+  "words": 230
+ },
+ "a887dc54": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 242
+ },
+ "f1e243c0": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0603",
+  "batch": 3,
+  "words": 235
+ },
+ "6d4f240b": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0611",
+  "batch": 3,
+  "words": 243
+ },
+ "1271cdb7": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0610",
+  "batch": 3,
+  "words": 233
+ },
+ "18e0ec56": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0612",
+  "batch": 3,
+  "words": 245
+ },
+ "0fb8851b": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0613",
+  "batch": 3,
+  "words": 248
+ },
+ "618a98a3": {
+  "arm": "phi-2",
+  "doc": "h0614",
+  "batch": 3,
+  "words": 250
+ },
+ "afbce7ec": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0612",
+  "batch": 3,
+  "words": 249
+ },
+ "dfab8656": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 238
+ },
+ "76788197": {
+  "arm": "qwen2.5-7b",
+  "doc": "e41f9661f",
+  "batch": 3,
+  "words": 176
+ },
+ "135b210a": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e33785f66",
+  "batch": 3,
+  "words": 237
+ },
+ "e732fac3": {
+  "arm": "phi-2",
+  "doc": "e319f15a4",
+  "batch": 3,
+  "words": 243
+ },
+ "11df3d29": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0615",
+  "batch": 3,
+  "words": 245
+ },
+ "b39cf6ba": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0607",
+  "batch": 3,
+  "words": 154
+ },
+ "aeb5e21b": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0608",
+  "batch": 3,
+  "words": 238
+ },
+ "e2fc8f2e": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e33785f66",
+  "batch": 3,
+  "words": 243
+ },
+ "a22bc20b": {
+  "arm": "pythia-2.8b",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 230
+ },
+ "919d63c8": {
+  "arm": "nemotron-9b",
+  "doc": "ea426a891",
+  "batch": 3,
+  "words": 250
+ },
+ "419a4219": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0613",
+  "batch": 3,
+  "words": 248
+ },
+ "0c4f531e": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0618",
+  "batch": 3,
+  "words": 236
+ },
+ "e29baa49": {
+  "arm": "nemotron-9b",
+  "doc": "e208d6650",
+  "batch": 3,
+  "words": 245
+ },
+ "682be4c4": {
+  "arm": "pythia-6.9b",
+  "doc": "e4da6802a",
+  "batch": 3,
+  "words": 241
+ },
+ "82ec4133": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0608",
+  "batch": 3,
+  "words": 231
+ },
+ "40639f3c": {
+  "arm": "human",
+  "doc": "h0603",
+  "batch": 3,
+  "words": 221
+ },
+ "5ec530be": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e41f9661f",
+  "batch": 3,
+  "words": 232
+ },
+ "8d17e46e": {
+  "arm": "olmo2-7b",
+  "doc": "h0602",
+  "batch": 3,
+  "words": 236
+ },
+ "b21a8370": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 216
+ },
+ "073d3833": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0616",
+  "batch": 3,
+  "words": 247
+ },
+ "6d247c77": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0604",
+  "batch": 3,
+  "words": 241
+ },
+ "4e5c9799": {
+  "arm": "human",
+  "doc": "h0611",
+  "batch": 3,
+  "words": 244
+ },
+ "167f20c1": {
+  "arm": "gemma3-12b",
+  "doc": "h0608",
+  "batch": 3,
+  "words": 246
+ },
+ "4594af75": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e208d6650",
+  "batch": 3,
+  "words": 235
+ },
+ "57e47231": {
+  "arm": "qwen3-8b",
+  "doc": "h0612",
+  "batch": 3,
+  "words": 214
+ },
+ "7ae09a65": {
+  "arm": "qwen3-8b",
+  "doc": "e963b018f",
+  "batch": 3,
+  "words": 246
+ },
+ "b4f5a572": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0601",
+  "batch": 3,
+  "words": 246
+ },
+ "4d60709c": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0614",
+  "batch": 3,
+  "words": 250
+ },
+ "c1a06099": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0607",
+  "batch": 3,
+  "words": 246
+ },
+ "a9968a63": {
+  "arm": "gemma3-12b",
+  "doc": "e963b018f",
+  "batch": 3,
+  "words": 232
+ },
+ "ddf4c2ba": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 229
+ },
+ "332d7e2c": {
+  "arm": "gemma3-12b",
+  "doc": "ea426a891",
+  "batch": 3,
+  "words": 247
+ },
+ "a2ef50e5": {
+  "arm": "pythia-2.8b",
+  "doc": "e963b018f",
+  "batch": 3,
+  "words": 236
+ },
+ "c7cddf16": {
+  "arm": "mistral-small-24b",
+  "doc": "e33785f66",
+  "batch": 3,
+  "words": 248
+ },
+ "ff8d0a0c": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0617",
+  "batch": 3,
+  "words": 246
+ },
+ "d1f43498": {
+  "arm": "olmo2-7b",
+  "doc": "h0611",
+  "batch": 3,
+  "words": 236
+ },
+ "1db46796": {
+  "arm": "olmo3-7b",
+  "doc": "e47398558",
+  "batch": 3,
+  "words": 234
+ },
+ "eec727f8": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0607",
+  "batch": 3,
+  "words": 224
+ },
+ "601a5f4a": {
+  "arm": "qwen3-8b",
+  "doc": "e33785f66",
+  "batch": 3,
+  "words": 227
+ },
+ "c8a85b01": {
+  "arm": "phi-2",
+  "doc": "h0605",
+  "batch": 3,
+  "words": 248
+ },
+ "44b4c01b": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0602",
+  "batch": 3,
+  "words": 248
+ },
+ "54aa9c53": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0616",
+  "batch": 3,
+  "words": 235
+ },
+ "c2350074": {
+  "arm": "pythia-2.8b",
+  "doc": "e0b708fa8",
+  "batch": 3,
+  "words": 236
+ },
+ "f92dbcff": {
+  "arm": "human",
+  "doc": "e47398558",
+  "batch": 3,
+  "words": 241
+ },
+ "92666c9f": {
+  "arm": "gemma3-12b",
+  "doc": "h0609",
+  "batch": 3,
+  "words": 250
+ },
+ "effa2e90": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0613",
+  "batch": 3,
+  "words": 250
+ },
+ "663ecb5d": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e47398558",
+  "batch": 3,
+  "words": 248
+ },
+ "bb0bded1": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e0b708fa8",
+  "batch": 3,
+  "words": 240
+ },
+ "f8e7e3cb": {
+  "arm": "qwen3-8b",
+  "doc": "h0605",
+  "batch": 3,
+  "words": 246
+ },
+ "8c66d5c0": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0618",
+  "batch": 3,
+  "words": 240
+ },
+ "0334a7da": {
+  "arm": "pythia-6.9b",
+  "doc": "e208d6650",
+  "batch": 4,
+  "words": 245
+ },
+ "e9ada9e8": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0600",
+  "batch": 4,
+  "words": 184
+ },
+ "05bb97db": {
+  "arm": "phi-2",
+  "doc": "h0603",
+  "batch": 4,
+  "words": 237
+ },
+ "b498426a": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0603",
+  "batch": 4,
+  "words": 158
+ },
+ "d9c533f9": {
+  "arm": "qwen3.5-9b",
+  "doc": "e208d6650",
+  "batch": 4,
+  "words": 234
+ },
+ "4508bd95": {
+  "arm": "gemma3-12b",
+  "doc": "h0619",
+  "batch": 4,
+  "words": 246
+ },
+ "b13ade1d": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0604",
+  "batch": 4,
+  "words": 241
+ },
+ "fe2207fa": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0603",
+  "batch": 4,
+  "words": 239
+ },
+ "5eaa6d33": {
+  "arm": "qwen3-8b",
+  "doc": "e4da6802a",
+  "batch": 4,
+  "words": 239
+ },
+ "d8618c7b": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e208d6650",
+  "batch": 4,
+  "words": 245
+ },
+ "9d87dba2": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0608",
+  "batch": 4,
+  "words": 215
+ },
+ "6f805e6e": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0602",
+  "batch": 4,
+  "words": 233
+ },
+ "b06c3c41": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e08ce4339",
+  "batch": 4,
+  "words": 240
+ },
+ "22b3c22b": {
+  "arm": "human",
+  "doc": "h0617",
+  "batch": 4,
+  "words": 234
+ },
+ "ce086969": {
+  "arm": "olmo3-7b-r5",
+  "doc": "e0b708fa8",
+  "batch": 4,
+  "words": 232
+ },
+ "2841edde": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0606",
+  "batch": 4,
+  "words": 242
+ },
+ "d6e3997a": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0600",
+  "batch": 4,
+  "words": 230
+ },
+ "a07a13a0": {
+  "arm": "olmo2-13b",
+  "doc": "e963b018f",
+  "batch": 4,
+  "words": 205
+ },
+ "d89d569b": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0618",
+  "batch": 4,
+  "words": 244
+ },
+ "14d9e53e": {
+  "arm": "pythia-2.8b",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 231
+ },
+ "e38a3b06": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e08ce4339",
+  "batch": 4,
+  "words": 241
+ },
+ "1b31f5d0": {
+  "arm": "qwen3-8b",
+  "doc": "h0619",
+  "batch": 4,
+  "words": 245
+ },
+ "dd64ea66": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0601",
+  "batch": 4,
+  "words": 243
+ },
+ "8ee79038": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 236
+ },
+ "e02344ba": {
+  "arm": "olmo3-7b",
+  "doc": "h0605",
+  "batch": 4,
+  "words": 248
+ },
+ "1eb79452": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0606",
+  "batch": 4,
+  "words": 248
+ },
+ "c725ab49": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0606",
+  "batch": 4,
+  "words": 236
+ },
+ "32ea2eb6": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 238
+ },
+ "1f9fa75d": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 243
+ },
+ "d7480896": {
+  "arm": "olmo2-7b",
+  "doc": "e47398558",
+  "batch": 4,
+  "words": 250
+ },
+ "2d830c22": {
+  "arm": "mistral-small-24b",
+  "doc": "h0603",
+  "batch": 4,
+  "words": 238
+ },
+ "b0433347": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e963b018f",
+  "batch": 4,
+  "words": 215
+ },
+ "629036e8": {
+  "arm": "olmo2-7b",
+  "doc": "e08ce4339",
+  "batch": 4,
+  "words": 240
+ },
+ "cb923445": {
+  "arm": "human",
+  "doc": "h0614",
+  "batch": 4,
+  "words": 246
+ },
+ "62504316": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "e4da6802a",
+  "batch": 4,
+  "words": 226
+ },
+ "1540eca1": {
+  "arm": "olmo2-7b",
+  "doc": "e0b708fa8",
+  "batch": 4,
+  "words": 234
+ },
+ "d15c77e1": {
+  "arm": "nemotron-9b",
+  "doc": "h0613",
+  "batch": 4,
+  "words": 204
+ },
+ "a3bca5be": {
+  "arm": "olmo2-13b",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 232
+ },
+ "6e15a373": {
+  "arm": "mistral-small-24b",
+  "doc": "h0607",
+  "batch": 4,
+  "words": 153
+ },
+ "5fcbd8ef": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0613",
+  "batch": 4,
+  "words": 240
+ },
+ "71906b9a": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0616",
+  "batch": 4,
+  "words": 250
+ },
+ "c407368e": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0615",
+  "batch": 4,
+  "words": 228
+ },
+ "55a95751": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0603",
+  "batch": 4,
+  "words": 249
+ },
+ "2c56ab56": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0614",
+  "batch": 4,
+  "words": 250
+ },
+ "b87064aa": {
+  "arm": "phi-2",
+  "doc": "h0619",
+  "batch": 4,
+  "words": 180
+ },
+ "4a9fb60c": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0614",
+  "batch": 4,
+  "words": 202
+ },
+ "95a1b549": {
+  "arm": "qwen3-8b",
+  "doc": "h0614",
+  "batch": 4,
+  "words": 158
+ },
+ "ba688a76": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0605",
+  "batch": 4,
+  "words": 236
+ },
+ "0d5f3e7f": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0600",
+  "batch": 4,
+  "words": 180
+ },
+ "db4b4e5e": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0619",
+  "batch": 4,
+  "words": 187
+ },
+ "66fc17f0": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 249
+ },
+ "6e2dd546": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0614",
+  "batch": 4,
+  "words": 226
+ },
+ "8db8facf": {
+  "arm": "nemotron-9b",
+  "doc": "h0617",
+  "batch": 4,
+  "words": 227
+ },
+ "b296e7ca": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0611",
+  "batch": 4,
+  "words": 248
+ },
+ "f7ea0b1b": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0614",
+  "batch": 4,
+  "words": 249
+ },
+ "b5dc158e": {
+  "arm": "phi-2",
+  "doc": "ea426a891",
+  "batch": 4,
+  "words": 249
+ },
+ "5180a9d3": {
+  "arm": "human",
+  "doc": "h0612",
+  "batch": 4,
+  "words": 238
+ },
+ "a7a0917f": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0601",
+  "batch": 4,
+  "words": 248
+ },
+ "ee3e41ba": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0604",
+  "batch": 4,
+  "words": 166
+ },
+ "603c57ef": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0605",
+  "batch": 4,
+  "words": 247
+ },
+ "1366792d": {
+  "arm": "pythia-2.8b",
+  "doc": "h0615",
+  "batch": 4,
+  "words": 240
+ },
+ "1bdfdf8e": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e963b018f",
+  "batch": 4,
+  "words": 240
+ },
+ "d13e4288": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0607",
+  "batch": 4,
+  "words": 234
+ },
+ "36f7eb04": {
+  "arm": "qwen3-8b",
+  "doc": "h0609",
+  "batch": 4,
+  "words": 248
+ },
+ "175a114b": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e4da6802a",
+  "batch": 4,
+  "words": 236
+ },
+ "262cdb62": {
+  "arm": "olmo3-7b-2t",
+  "doc": "ea426a891",
+  "batch": 4,
+  "words": 247
+ },
+ "b3e773df": {
+  "arm": "pythia-6.9b",
+  "doc": "e0b708fa8",
+  "batch": 4,
+  "words": 237
+ },
+ "16462324": {
+  "arm": "qwen3-8b",
+  "doc": "h0610",
+  "batch": 4,
+  "words": 250
+ },
+ "3867038a": {
+  "arm": "gemma3-12b",
+  "doc": "h0616",
+  "batch": 4,
+  "words": 247
+ },
+ "b0d4069f": {
+  "arm": "olmo3-7b",
+  "doc": "h0617",
+  "batch": 4,
+  "words": 246
+ },
+ "8b74847e": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0605",
+  "batch": 4,
+  "words": 223
+ },
+ "a24236b9": {
+  "arm": "nemotron-9b",
+  "doc": "h0609",
+  "batch": 4,
+  "words": 229
+ },
+ "1f8fb5fa": {
+  "arm": "olmo3-7b",
+  "doc": "h0611",
+  "batch": 4,
+  "words": 231
+ },
+ "2219de56": {
+  "arm": "olmo2-13b",
+  "doc": "e47398558",
+  "batch": 4,
+  "words": 246
+ },
+ "b599ccd5": {
+  "arm": "pythia-2.8b",
+  "doc": "ea426a891",
+  "batch": 4,
+  "words": 245
+ },
+ "3aacabc0": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0608",
+  "batch": 4,
+  "words": 242
+ },
+ "a76e4a9f": {
+  "arm": "pythia-6.9b",
+  "doc": "e319f15a4",
+  "batch": 4,
+  "words": 229
+ },
+ "729c94ad": {
+  "arm": "phi-2",
+  "doc": "e47398558",
+  "batch": 4,
+  "words": 240
+ },
+ "e9121f4b": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e41f9661f",
+  "batch": 4,
+  "words": 240
+ },
+ "4bf8f678": {
+  "arm": "pythia-6.9b",
+  "doc": "h0605",
+  "batch": 4,
+  "words": 237
+ },
+ "2b24bcae": {
+  "arm": "nemotron-9b",
+  "doc": "h0615",
+  "batch": 4,
+  "words": 235
+ },
+ "a36529a3": {
+  "arm": "human",
+  "doc": "h0615",
+  "batch": 4,
+  "words": 245
+ },
+ "9f5eb486": {
+  "arm": "phi-2",
+  "doc": "e08ce4339",
+  "batch": 4,
+  "words": 250
+ },
+ "8c42f994": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0616",
+  "batch": 4,
+  "words": 242
+ },
+ "28bbc5ab": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "e08ce4339",
+  "batch": 4,
+  "words": 232
+ },
+ "ddeba2c8": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e41f9661f",
+  "batch": 4,
+  "words": 248
+ },
+ "328af38b": {
+  "arm": "pythia-6.9b",
+  "doc": "h0610",
+  "batch": 4,
+  "words": 238
+ },
+ "3d9a6deb": {
+  "arm": "olmo2-13b",
+  "doc": "h0607",
+  "batch": 4,
+  "words": 161
+ },
+ "2092c759": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0618",
+  "batch": 4,
+  "words": 246
+ },
+ "1e39318f": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0600",
+  "batch": 4,
+  "words": 234
+ },
+ "e6c1f4f1": {
+  "arm": "mistral-small-24b",
+  "doc": "h0605",
+  "batch": 4,
+  "words": 248
+ },
+ "3beb8e2f": {
+  "arm": "olmo2-7b",
+  "doc": "e319f15a4",
+  "batch": 4,
+  "words": 227
+ },
+ "bfdd0960": {
+  "arm": "nemotron-9b",
+  "doc": "e0b708fa8",
+  "batch": 4,
+  "words": 246
+ },
+ "6cc50b7b": {
+  "arm": "mistral-small-24b",
+  "doc": "h0602",
+  "batch": 4,
+  "words": 218
+ },
+ "bafa1ce0": {
+  "arm": "phi-2",
+  "doc": "h0606",
+  "batch": 4,
+  "words": 197
+ },
+ "f4350e06": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0609",
+  "batch": 4,
+  "words": 178
+ },
+ "07717fe6": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0600",
+  "batch": 4,
+  "words": 235
+ },
+ "7bc0495b": {
+  "arm": "gemma3-12b",
+  "doc": "e47398558",
+  "batch": 4,
+  "words": 239
+ },
+ "e9b73515": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e0b708fa8",
+  "batch": 4,
+  "words": 249
+ },
+ "abb91544": {
+  "arm": "gemma3-12b",
+  "doc": "h0606",
+  "batch": 4,
+  "words": 232
+ },
+ "8d7f48f0": {
+  "arm": "qwen3.5-9b",
+  "doc": "e08ce4339",
+  "batch": 5,
+  "words": 247
+ },
+ "1b0f740e": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0617",
+  "batch": 5,
+  "words": 213
+ },
+ "a82119cd": {
+  "arm": "nemotron-9b",
+  "doc": "h0614",
+  "batch": 5,
+  "words": 235
+ },
+ "8fb0fa3c": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0605",
+  "batch": 5,
+  "words": 232
+ },
+ "d05a460a": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0602",
+  "batch": 5,
+  "words": 237
+ },
+ "ea6f5696": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0619",
+  "batch": 5,
+  "words": 217
+ },
+ "e8a15fc9": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e08ce4339",
+  "batch": 5,
+  "words": 247
+ },
+ "91c02d48": {
+  "arm": "olmo3-7b",
+  "doc": "h0610",
+  "batch": 5,
+  "words": 232
+ },
+ "4ec947b5": {
+  "arm": "human",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 244
+ },
+ "be268990": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0601",
+  "batch": 5,
+  "words": 248
+ },
+ "940b82d2": {
+  "arm": "olmo3-7b-s2",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 241
+ },
+ "dd0683f4": {
+  "arm": "olmo3-7b",
+  "doc": "h0608",
+  "batch": 5,
+  "words": 235
+ },
+ "626c5aee": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0600",
+  "batch": 5,
+  "words": 249
+ },
+ "c1e4c7ad": {
+  "arm": "qwen3-8b",
+  "doc": "h0608",
+  "batch": 5,
+  "words": 245
+ },
+ "b1117acb": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0603",
+  "batch": 5,
+  "words": 161
+ },
+ "d9a9401e": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 248
+ },
+ "bd1eb026": {
+  "arm": "olmo2-7b",
+  "doc": "h0609",
+  "batch": 5,
+  "words": 189
+ },
+ "3a9531ac": {
+  "arm": "olmo3-7b",
+  "doc": "h0603",
+  "batch": 5,
+  "words": 235
+ },
+ "aa42de4e": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0616",
+  "batch": 5,
+  "words": 237
+ },
+ "3f91af42": {
+  "arm": "human",
+  "doc": "h0609",
+  "batch": 5,
+  "words": 240
+ },
+ "452d4844": {
+  "arm": "olmo2-7b",
+  "doc": "h0615",
+  "batch": 5,
+  "words": 247
+ },
+ "a652df90": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0613",
+  "batch": 5,
+  "words": 245
+ },
+ "f8a793d5": {
+  "arm": "mistral-small-24b",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 245
+ },
+ "3fff8701": {
+  "arm": "olmo2-13b",
+  "doc": "e41f9661f",
+  "batch": 5,
+  "words": 239
+ },
+ "da91a2d6": {
+  "arm": "olmo2-7b",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 246
+ },
+ "d65b7f2e": {
+  "arm": "qwen3-8b",
+  "doc": "e0b708fa8",
+  "batch": 5,
+  "words": 247
+ },
+ "95a842bb": {
+  "arm": "olmo2-13b",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 250
+ },
+ "a7cecfa8": {
+  "arm": "olmo2-7b",
+  "doc": "e208d6650",
+  "batch": 5,
+  "words": 243
+ },
+ "e9851b8a": {
+  "arm": "olmo2-13b",
+  "doc": "h0601",
+  "batch": 5,
+  "words": 219
+ },
+ "84ece47e": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0613",
+  "batch": 5,
+  "words": 238
+ },
+ "ce00b8a0": {
+  "arm": "olmo3-7b-mct",
+  "doc": "e319f15a4",
+  "batch": 5,
+  "words": 250
+ },
+ "7db5d275": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 250
+ },
+ "783631d5": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0603",
+  "batch": 5,
+  "words": 247
+ },
+ "6cf7946d": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0609",
+  "batch": 5,
+  "words": 198
+ },
+ "aac062af": {
+  "arm": "mistral-small-24b",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 242
+ },
+ "e4497219": {
+  "arm": "olmo3-7b-s2",
+  "doc": "e963b018f",
+  "batch": 5,
+  "words": 228
+ },
+ "14a1ce87": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "e4da6802a",
+  "batch": 5,
+  "words": 244
+ },
+ "a821c212": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0619",
+  "batch": 5,
+  "words": 226
+ },
+ "38306187": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0608",
+  "batch": 5,
+  "words": 245
+ },
+ "074f5aab": {
+  "arm": "human",
+  "doc": "e41f9661f",
+  "batch": 5,
+  "words": 225
+ },
+ "9d7f041d": {
+  "arm": "phi-2",
+  "doc": "e41f9661f",
+  "batch": 5,
+  "words": 221
+ },
+ "6ef50977": {
+  "arm": "olmo3-7b",
+  "doc": "h0619",
+  "batch": 5,
+  "words": 243
+ },
+ "f788090b": {
+  "arm": "olmo3-7b-s1",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 224
+ },
+ "7a96be7c": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "h0605",
+  "batch": 5,
+  "words": 248
+ },
+ "ad70eb5c": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0616",
+  "batch": 5,
+  "words": 238
+ },
+ "10be715a": {
+  "arm": "pythia-2.8b",
+  "doc": "h0604",
+  "batch": 5,
+  "words": 245
+ },
+ "ff42657c": {
+  "arm": "olmo2-13b",
+  "doc": "h0609",
+  "batch": 5,
+  "words": 245
+ },
+ "4e183d33": {
+  "arm": "pythia-6.9b",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 249
+ },
+ "1008707a": {
+  "arm": "qwen2.5-7b",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 236
+ },
+ "d1567bc9": {
+  "arm": "nemotron-9b",
+  "doc": "h0607",
+  "batch": 5,
+  "words": 238
+ },
+ "3c3c868f": {
+  "arm": "pythia-6.9b",
+  "doc": "e33785f66",
+  "batch": 5,
+  "words": 238
+ },
+ "f1540630": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e41f9661f",
+  "batch": 5,
+  "words": 237
+ },
+ "493922cc": {
+  "arm": "olmo2-7b",
+  "doc": "h0603",
+  "batch": 5,
+  "words": 191
+ },
+ "0a239bb0": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e47398558",
+  "batch": 5,
+  "words": 241
+ },
+ "65579edf": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "e47398558",
+  "batch": 5,
+  "words": 238
+ },
+ "c28a98d1": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0612",
+  "batch": 5,
+  "words": 241
+ },
+ "61a90658": {
+  "arm": "qwen2.5-7b",
+  "doc": "e208d6650",
+  "batch": 5,
+  "words": 245
+ },
+ "41d84664": {
+  "arm": "gemma3-12b",
+  "doc": "h0615",
+  "batch": 5,
+  "words": 233
+ },
+ "be0ed811": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e4da6802a",
+  "batch": 5,
+  "words": 241
+ },
+ "c74cf510": {
+  "arm": "olmo2-7b-s1",
+  "doc": "h0601",
+  "batch": 5,
+  "words": 223
+ },
+ "bacc59ad": {
+  "arm": "gemma3-12b",
+  "doc": "e08ce4339",
+  "batch": 5,
+  "words": 247
+ },
+ "031e6812": {
+  "arm": "qwen3-8b",
+  "doc": "e47398558",
+  "batch": 5,
+  "words": 240
+ },
+ "8df66813": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0608",
+  "batch": 5,
+  "words": 246
+ },
+ "16041b39": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0605",
+  "batch": 5,
+  "words": 247
+ },
+ "02a98876": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "e0b708fa8",
+  "batch": 5,
+  "words": 240
+ },
+ "aa46799e": {
+  "arm": "olmo2-13b-instruct",
+  "doc": "e33785f66",
+  "batch": 5,
+  "words": 232
+ },
+ "a0acce04": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 196
+ },
+ "98cca31e": {
+  "arm": "human",
+  "doc": "h0619",
+  "batch": 5,
+  "words": 245
+ },
+ "06997b2c": {
+  "arm": "olmo2-7b",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 243
+ },
+ "ccf48444": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0600",
+  "batch": 5,
+  "words": 242
+ },
+ "9664892c": {
+  "arm": "olmo2-13b",
+  "doc": "e319f15a4",
+  "batch": 5,
+  "words": 244
+ },
+ "547f3b03": {
+  "arm": "mistral-small-24b",
+  "doc": "h0600",
+  "batch": 5,
+  "words": 181
+ },
+ "3263562b": {
+  "arm": "olmo3-7b-2t",
+  "doc": "e4da6802a",
+  "batch": 5,
+  "words": 206
+ },
+ "379ec436": {
+  "arm": "olmo2-7b",
+  "doc": "h0605",
+  "batch": 5,
+  "words": 247
+ },
+ "39a9dd3b": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0611",
+  "batch": 5,
+  "words": 247
+ },
+ "838cbbe3": {
+  "arm": "pythia-2.8b",
+  "doc": "h0610",
+  "batch": 5,
+  "words": 230
+ },
+ "0c2a055d": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0600",
+  "batch": 5,
+  "words": 239
+ },
+ "6f4024f9": {
+  "arm": "pythia-6.9b",
+  "doc": "h0600",
+  "batch": 5,
+  "words": 236
+ },
+ "496beb5c": {
+  "arm": "gemma3-12b",
+  "doc": "e319f15a4",
+  "batch": 5,
+  "words": 244
+ },
+ "53fd74bf": {
+  "arm": "olmo3-7b",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 240
+ },
+ "e90cbe43": {
+  "arm": "nemotron-9b",
+  "doc": "h0611",
+  "batch": 5,
+  "words": 231
+ },
+ "326c5f4a": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0617",
+  "batch": 5,
+  "words": 247
+ },
+ "41c5b1a1": {
+  "arm": "qwen3-8b",
+  "doc": "e208d6650",
+  "batch": 5,
+  "words": 246
+ },
+ "f43fbffe": {
+  "arm": "olmo2-7b-s1",
+  "doc": "e208d6650",
+  "batch": 5,
+  "words": 245
+ },
+ "04f2fa0a": {
+  "arm": "qwen3-8b",
+  "doc": "e08ce4339",
+  "batch": 5,
+  "words": 247
+ },
+ "22cc75b6": {
+  "arm": "qwen2.5-7b",
+  "doc": "h0619",
+  "batch": 5,
+  "words": 237
+ },
+ "16027035": {
+  "arm": "nemotron-9b",
+  "doc": "h0610",
+  "batch": 5,
+  "words": 250
+ },
+ "aab37aa6": {
+  "arm": "olmo3-7b",
+  "doc": "e08ce4339",
+  "batch": 5,
+  "words": 248
+ },
+ "b0341fb7": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0615",
+  "batch": 5,
+  "words": 247
+ },
+ "6c682384": {
+  "arm": "gemma3-12b",
+  "doc": "h0602",
+  "batch": 5,
+  "words": 233
+ },
+ "64d81857": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0606",
+  "batch": 5,
+  "words": 235
+ },
+ "1881b4d3": {
+  "arm": "human",
+  "doc": "ea426a891",
+  "batch": 5,
+  "words": 242
+ },
+ "8a99bb82": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0601",
+  "batch": 5,
+  "words": 250
+ },
+ "03d1b76b": {
+  "arm": "human",
+  "doc": "h0605",
+  "batch": 5,
+  "words": 245
+ },
+ "9267f66e": {
+  "arm": "gemma3-12b",
+  "doc": "h0611",
+  "batch": 5,
+  "words": 230
+ },
+ "9d909f3a": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0605",
+  "batch": 5,
+  "words": 242
+ },
+ "2bfbab73": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0601",
+  "batch": 5,
+  "words": 242
+ },
+ "7339783f": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0613",
+  "batch": 5,
+  "words": 250
+ },
+ "0429ca34": {
+  "arm": "pythia-2.8b",
+  "doc": "e4da6802a",
+  "batch": 5,
+  "words": 217
+ },
+ "3c999daf": {
+  "arm": "pythia-2.8b",
+  "doc": "e33785f66",
+  "batch": 5,
+  "words": 236
+ },
+ "9c67e8e7": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e963b018f",
+  "batch": 6,
+  "words": 224
+ },
+ "a36c73c2": {
+  "arm": "mistral-small-24b",
+  "doc": "h0613",
+  "batch": 6,
+  "words": 245
+ },
+ "a28b7198": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0605",
+  "batch": 6,
+  "words": 243
+ },
+ "676740ff": {
+  "arm": "nemotron-9b",
+  "doc": "e47398558",
+  "batch": 6,
+  "words": 247
+ },
+ "b7d9d62c": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e47398558",
+  "batch": 6,
+  "words": 239
+ },
+ "875c75ec": {
+  "arm": "olmo3-7b",
+  "doc": "e963b018f",
+  "batch": 6,
+  "words": 231
+ },
+ "287fd21e": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0604",
+  "batch": 6,
+  "words": 244
+ },
+ "c66367bc": {
+  "arm": "qwen3.5-9b",
+  "doc": "h0605",
+  "batch": 6,
+  "words": 247
+ },
+ "95e918b4": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0603",
+  "batch": 6,
+  "words": 245
+ },
+ "0b45d96e": {
+  "arm": "phi-2",
+  "doc": "h0615",
+  "batch": 6,
+  "words": 246
+ },
+ "205585d2": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0608",
+  "batch": 6,
+  "words": 246
+ },
+ "ae7cd491": {
+  "arm": "olmo3-7b-mct",
+  "doc": "ea426a891",
+  "batch": 6,
+  "words": 237
+ },
+ "91e33bd4": {
+  "arm": "mistral-small-24b",
+  "doc": "e0b708fa8",
+  "batch": 6,
+  "words": 250
+ },
+ "8932be91": {
+  "arm": "gemma3-12b",
+  "doc": "h0600",
+  "batch": 6,
+  "words": 243
+ },
+ "79035bd8": {
+  "arm": "mistral-small-24b",
+  "doc": "h0608",
+  "batch": 6,
+  "words": 241
+ },
+ "4ecf9628": {
+  "arm": "qwen3-8b",
+  "doc": "h0618",
+  "batch": 6,
+  "words": 250
+ },
+ "2b492e39": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0610",
+  "batch": 6,
+  "words": 226
+ },
+ "adc0de6a": {
+  "arm": "olmo3-7b-mct",
+  "doc": "h0600",
+  "batch": 6,
+  "words": 243
+ },
+ "2a78587b": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0619",
+  "batch": 6,
+  "words": 240
+ },
+ "224fa741": {
+  "arm": "olmo3-7b-s1",
+  "doc": "e208d6650",
+  "batch": 6,
+  "words": 221
+ },
+ "c7be633a": {
+  "arm": "pythia-2.8b",
+  "doc": "h0613",
+  "batch": 6,
+  "words": 222
+ },
+ "0cb3a30d": {
+  "arm": "olmo3-7b-genqa",
+  "doc": "h0611",
+  "batch": 6,
+  "words": 249
+ },
+ "a5e7c047": {
+  "arm": "pythia-6.9b",
+  "doc": "h0604",
+  "batch": 6,
+  "words": 230
+ },
+ "df3dacde": {
+  "arm": "olmo2-13b-q4",
+  "doc": "h0610",
+  "batch": 6,
+  "words": 246
+ },
+ "a851bdbc": {
+  "arm": "olmo3-7b-s1",
+  "doc": "h0601",
+  "batch": 6,
+  "words": 181
+ },
+ "ddc39423": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "h0600",
+  "batch": 6,
+  "words": 244
+ },
+ "ce021d4e": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "e47398558",
+  "batch": 6,
+  "words": 248
+ },
+ "ba2a0773": {
+  "arm": "qwen3-8b",
+  "doc": "h0606",
+  "batch": 6,
+  "words": 250
+ },
+ "a6c972c3": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0609",
+  "batch": 6,
+  "words": 243
+ },
+ "125febf0": {
+  "arm": "olmo2-7b",
+  "doc": "e963b018f",
+  "batch": 6,
+  "words": 245
+ },
+ "ac5c1e43": {
+  "arm": "olmo3-7b",
+  "doc": "h0618",
+  "batch": 6,
+  "words": 249
+ },
+ "9b707b90": {
+  "arm": "phi-2",
+  "doc": "h0616",
+  "batch": 6,
+  "words": 246
+ },
+ "b94c09aa": {
+  "arm": "olmo3-7b-s2",
+  "doc": "h0616",
+  "batch": 6,
+  "words": 245
+ },
+ "cf355ccf": {
+  "arm": "olmo2-13b",
+  "doc": "h0606",
+  "batch": 6,
+  "words": 236
+ },
+ "da9b1ac8": {
+  "arm": "olmo3-7b-r5",
+  "doc": "h0600",
+  "batch": 6,
+  "words": 228
+ },
+ "a23426e3": {
+  "arm": "human",
+  "doc": "e0b708fa8",
+  "batch": 6,
+  "words": 243
+ },
+ "c0753aaf": {
+  "arm": "qwen2.5-7b",
+  "doc": "e47398558",
+  "batch": 6,
+  "words": 237
+ },
+ "bc8fc61d": {
+  "arm": "olmo3-7b",
+  "doc": "h0612",
+  "batch": 6,
+  "words": 238
+ },
+ "4c214794": {
+  "arm": "pythia-2.8b",
+  "doc": "h0606",
+  "batch": 6,
+  "words": 241
+ },
+ "e6a91c28": {
+  "arm": "pythia-2.8b",
+  "doc": "h0608",
+  "batch": 6,
+  "words": 233
+ },
+ "ee5af2f0": {
+  "arm": "qwen3-8b",
+  "doc": "h0602",
+  "batch": 6,
+  "words": 226
+ },
+ "a1f0e7d4": {
+  "arm": "phi-2",
+  "doc": "e963b018f",
+  "batch": 6,
+  "words": 226
+ },
+ "fde8d08a": {
+  "arm": "mistral-small-24b",
+  "doc": "e08ce4339",
+  "batch": 6,
+  "words": 250
+ },
+ "4c88a530": {
+  "arm": "qwen3.5-9b-q4",
+  "doc": "h0614",
+  "batch": 6,
+  "words": 249
+ },
+ "0d2df91b": {
+  "arm": "olmo3-7b-2t",
+  "doc": "h0619",
+  "batch": 6,
+  "words": 244
+ },
+ "571ee6a2": {
+  "arm": "qwen3.5-9b-instruct",
+  "doc": "e33785f66",
+  "batch": 6,
+  "words": 217
+ },
+ "dd1f74b6": {
+  "arm": "pythia-6.9b",
+  "doc": "h0613",
+  "batch": 6,
+  "words": 243
+ },
+ "6b0cd045": {
+  "arm": "pythia-6.9b",
+  "doc": "h0602",
+  "batch": 6,
+  "words": 237
+ },
+ "900af7f4": {
+  "arm": "olmo3-7b",
+  "doc": "h0613",
+  "batch": 6,
+  "words": 247
+ }
+}

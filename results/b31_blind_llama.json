@@ -1,0 +1,158 @@
+{
+ "5cb696c1": {
+  "arm": "llama3.1-8b",
+  "doc": "e41f9661f",
+  "batch": 7,
+  "words": 235
+ },
+ "ff7a547c": {
+  "arm": "llama3.1-8b",
+  "doc": "e33785f66",
+  "batch": 7,
+  "words": 248
+ },
+ "f1528e8a": {
+  "arm": "llama3.1-8b",
+  "doc": "h0608",
+  "batch": 7,
+  "words": 235
+ },
+ "09b34662": {
+  "arm": "llama3.1-8b",
+  "doc": "e4da6802a",
+  "batch": 7,
+  "words": 210
+ },
+ "7ef69ef4": {
+  "arm": "llama3.1-8b",
+  "doc": "h0615",
+  "batch": 7,
+  "words": 237
+ },
+ "2cf271f2": {
+  "arm": "llama3.1-8b",
+  "doc": "h0612",
+  "batch": 7,
+  "words": 247
+ },
+ "b32f7f21": {
+  "arm": "llama3.1-8b",
+  "doc": "ea426a891",
+  "batch": 7,
+  "words": 244
+ },
+ "9abbd2f6": {
+  "arm": "llama3.1-8b",
+  "doc": "h0613",
+  "batch": 7,
+  "words": 241
+ },
+ "47931e41": {
+  "arm": "llama3.1-8b",
+  "doc": "e319f15a4",
+  "batch": 7,
+  "words": 248
+ },
+ "b48a4400": {
+  "arm": "llama3.1-8b",
+  "doc": "e0b708fa8",
+  "batch": 7,
+  "words": 232
+ },
+ "2991a262": {
+  "arm": "llama3.1-8b",
+  "doc": "h0617",
+  "batch": 7,
+  "words": 228
+ },
+ "542768fc": {
+  "arm": "llama3.1-8b",
+  "doc": "e47398558",
+  "batch": 7,
+  "words": 248
+ },
+ "05db1e59": {
+  "arm": "llama3.1-8b",
+  "doc": "h0605",
+  "batch": 7,
+  "words": 250
+ },
+ "3f9a5d93": {
+  "arm": "llama3.1-8b",
+  "doc": "e08ce4339",
+  "batch": 7,
+  "words": 237
+ },
+ "d55fe11c": {
+  "arm": "llama3.1-8b",
+  "doc": "h0610",
+  "batch": 7,
+  "words": 243
+ },
+ "8883c2c2": {
+  "arm": "llama3.1-8b",
+  "doc": "h0600",
+  "batch": 7,
+  "words": 189
+ },
+ "18f3c273": {
+  "arm": "llama3.1-8b",
+  "doc": "h0606",
+  "batch": 7,
+  "words": 242
+ },
+ "36ca7236": {
+  "arm": "llama3.1-8b",
+  "doc": "e963b018f",
+  "batch": 7,
+  "words": 245
+ },
+ "28ab226d": {
+  "arm": "llama3.1-8b",
+  "doc": "h0602",
+  "batch": 7,
+  "words": 240
+ },
+ "4b299d95": {
+  "arm": "llama3.1-8b",
+  "doc": "h0611",
+  "batch": 7,
+  "words": 249
+ },
+ "21f23eaf": {
+  "arm": "llama3.1-8b",
+  "doc": "h0616",
+  "batch": 7,
+  "words": 248
+ },
+ "59288c93": {
+  "arm": "llama3.1-8b",
+  "doc": "h0603",
+  "batch": 7,
+  "words": 237
+ },
+ "81a4b116": {
+  "arm": "llama3.1-8b",
+  "doc": "e208d6650",
+  "batch": 7,
+  "words": 231
+ },
+ "4133df43": {
+  "arm": "llama3.1-8b",
+  "doc": "h0614",
+  "batch": 7,
+  "words": 244
+ },
+ "e116db33": {
+  "arm": "llama3.1-8b",
+  "doc": "h0619",
+  "batch": 7,
+  "words": 235
+ },
+ "adba0b54": {
+  "arm": "llama3.1-8b",
+  "doc": "h0618",
+  "batch": 7,
+  "words": 243
+ }
+}

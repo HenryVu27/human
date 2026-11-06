@@ -786,3 +786,70 @@ B26 is running. It also measures whether the voice sounds like a person (first p
 - **Note density:** how dense a blogger's notes must be. The essay notes here run 4 to 8 per 100 words, far denser than a typical prompt to an AI. A dose test is next.
 - **Credits:** about 75 Pangram credits remain, enough for B26's scan and nothing after it.
 
+## 34. B31: are newer base models detectable because of what they were trained on? (Pangram, 675 texts)
+
+**Question.** B1 found three OLMo-2-13B base continuations read Human and one Qwen3.5-9B-Base continuation read AI, and the overnight report read that as "modern base models have absorbed AI text from the web". B31 asks whether a base model's Pangram signal tracks the date of its web crawl (H1), synthetic or instruction data added on purpose in pretraining or mid-training (H2), or neither (H0). Design, predictions and decision rules were committed before any text was scanned (`experiments/b31_basedate.py`, first as 7fad7fe; `docs/specs/2026-11-05-b31-base-model-dating.md`); every prior claim is checked in `results/research/b31-claims.md`.
+
+**Design.**
+- **Stimuli:** 30 human openings written before ChatGPT (20 FineWeb pages from 2020, B1's documents; 10 essays by 10 bloggers), first 120 words each. Only the continuation is scored, cut at a sentence end to 150 to 250 words.
+- **Generation:** plain text prompt, 16-bit weights, vLLM on Modal, temperature 0.8, top-p 0.95, three seeded samples per opening, the first that passes fixed filters (length, non-prose, non-English, repetition, copying the source) is scanned. No model reproduced its document's true continuation.
+- **Arms:** 19 base checkpoints in the main scan, including Olmo 3's end-of-pretraining, end-of-mid-training and final checkpoints and its three published mid-training ablations; the true human continuations; two instruct models; B1's own 4-bit texts; Llama 3.1 8B as an extension scanned in a separate batch (access came after the first upload). Five lower-priority arms (Qwen1.5, Qwen2, OLMo 1, Mistral 7B, Mistral Nemo) were generated but not scanned, by the pre-registered credit cap.
+- **Scan:** blinded file names, one shuffled order, 7 batches of up to 100; Pangram 4.1 label and AI share per text.
+
+| Arm | Crawl to | LLM text | Instruction data | n | Human / Mixed / AI | Not Human (95% CI) | Mean AI share |
+|---|---|---|---|---|---|---|---|
+| human (true continuation) | | | | 30 | 30 / 0 / 0 | 0% (0 to 12) | 0.00 |
+| pythia-2.8b | 2020 | none | none | 30 | 23 / 2 / 5 | 23% (10 to 42) | 0.21 |
+| pythia-6.9b | 2020 | none | none | 29 | 21 / 2 / 6 | 28% (13 to 47) | 0.23 |
+| phi-2 | 2023 | pretraining | undocumented | 27 | 17 / 3 / 7 | 37% (19 to 58) | 0.31 |
+| olmo2-7b-s1 (end of pretraining) | 2022 | none | none | 30 | 24 / 0 / 6 | 20% (8 to 39) | 0.20 |
+| olmo2-7b (final) | 2022 | mid-training | mid-training | 29 | 21 / 2 / 6 | 28% (13 to 47) | 0.23 |
+| olmo2-13b (B1's model) | 2022 | mid-training | mid-training | 30 | 25 / 1 / 4 | 17% (6 to 35) | 0.15 |
+| olmo3-7b-2t (2T tokens) | 2024-51 | none | none | 29 | 20 / 2 / 7 | 31% (15 to 51) | 0.28 |
+| olmo3-7b-genqa (2T + QA and instruction mix) | 2025-06 | mid-training | mid-training | 30 | 24 / 2 / 4 | 20% (8 to 39) | 0.16 |
+| olmo3-7b-mct (2T + math, code, thinking mix) | 2025-06 | mid-training | none | 30 | 21 / 2 / 7 | 30% (15 to 49) | 0.25 |
+| olmo3-7b-r5 (2T + final mix) | 2025-06 | mid-training | mid-training | 30 | 19 / 3 / 8 | 37% (20 to 56) | 0.31 |
+| olmo3-7b-s1 (end of pretraining) | 2024-51 | none | none | 30 | 19 / 4 / 7 | 37% (20 to 56) | 0.32 |
+| olmo3-7b-s2 (end of mid-training) | 2025-06 | mid-training | mid-training | 30 | 20 / 0 / 10 | 33% (17 to 53) | 0.32 |
+| olmo3-7b (final) | 2025-06 | mid-training | mid-training | 30 | 17 / 3 / 10 | 43% (26 to 63) | 0.39 |
+| nemotron-9b | 2025-13 | pretraining (33%) | pretraining | 30 | 21 / 4 / 5 | 30% (15 to 49) | 0.25 |
+| mistral-small-24b | undocumented | none stated | undocumented | 28 | 20 / 3 / 5 | 29% (13 to 49) | 0.23 |
+| gemma3-12b | 2024 | distillation | undocumented | 25 | 22 / 1 / 2 | 12% (2 to 31) | 0.10 |
+| llama3.1-8b (extension, own batch) | 2023 | none stated | undocumented | 26 | 20 / 0 / 6 | 23% (9 to 44) | 0.23 |
+| qwen2.5-7b | undocumented | pretraining | undocumented | 27 | 21 / 1 / 5 | 22% (9 to 42) | 0.21 |
+| qwen3-8b | undocumented | pretraining | pretraining | 29 | 19 / 3 / 7 | 34% (18 to 54) | 0.30 |
+| qwen3.5-9b (B1's model) | undocumented | undocumented | undocumented | 29 | 19 / 3 / 7 | 34% (18 to 54) | 0.29 |
+| olmo2-13b, B1's 4-bit texts | | | | 17 | 16 / 0 / 1 | 6% (0 to 29) | 0.06 |
+| qwen3.5-9b, B1's 4-bit texts | | | | 20 | 16 / 1 / 3 | 20% (6 to 44) | 0.18 |
+| olmo2-13b-instruct | | | | 15 | 0 / 0 / 15 | 100% (78 to 100) | 1.00 |
+| qwen3.5-9b-instruct | | | | 15 | 0 / 0 / 15 | 100% (78 to 100) | 1.00 |
+
+Both validity gates pass: the human texts read Human 30 of 30, and each instruct model reads AI 15 of 15.
+
+**Primary contrasts** (paired by opening; sign-flip test on AI share, Holm-corrected):
+
+| Contrast | Not Human | Mean AI share change (95% CI) | p (Holm) | Verdict by the fixed rule |
+|---|---|---|---|---|
+| P1, H2: Olmo 3 end of pretraining to end of mid-training (about half synthetic, plus QA and instruction data) | 37% to 33% | -0.001 (-0.17 to +0.17) | 1.00 | Not supported. A rise above 0.17 is excluded; the strict refutation bound (0.15) is not quite reached |
+| P2, H1: OLMo 2 to Olmo 3, both at end of pretraining (crawl through 2022 against through December 2024) | 20% to 37% | +0.12 (-0.08 to +0.31) | 0.50 | Inconclusive: right direction, not significant, below the extension band |
+
+**What else the data say** (uncorrected, 21 secondary contrasts):
+- **A pre-ChatGPT model already reads AI.** Pythia 6.9B, trained on 2020 data with no synthetic or instruction text, reads not Human on 28% of texts; its AI share is 0.24 (0.10 to 0.39) above the human continuations of the same openings. A fifth to a third of any base model's continuations read AI, whatever its training date.
+- **Mid-training content does not matter here.** From the same 2T checkpoint, the QA-and-instruction mix reads lowest (20%), the math-code-thinking mix 30%, the final mix 37%, the checkpoint itself 31%; no pair differs (smallest p 0.26). Across all base arms, models that saw LLM-generated text and models that did not have the same opening-adjusted AI share (-0.004 against -0.004, Mann-Whitney p 1.00); likewise for instruction data (p 0.85).
+- **A weak date trend, confounded.** Opening-adjusted AI share rises with crawl year (Spearman 0.42, p 0.12, 15 arms) and release date (0.45, p 0.05, 19 arms), but seven of those arms are Olmo 3 checkpoints, so the points are not independent, and Pythia (2020) sits above OLMo 2 (2022).
+- **The opening matters more than the model.** Per-opening not-Human rates across base arms run from 0% to 74%; their spread is four times what independent outcomes would give (permutation p < 0.001). Essay openings draw AI readings more often than FineWeb pages (36% against 25%, pooled over the main base arms).
+- **Post-training dwarfs everything:** instruct against base on the same openings, +0.76 (OLMo 2 13B) and +0.64 (Qwen3.5) in AI share.
+- **B1, re-read.** Qwen3.5 reads not Human more often than OLMo-2-13B on the same openings (34% against 14%, McNemar p 0.03, uncorrected, one of 21), but no more than Pythia or Olmo 3. B1's 4-bit Qwen text on h0600 reads AI again when cut to 250 words, while the 16-bit Qwen sample on h0600 reads Human, and 16-bit OLMo-2-13B reads AI on two of the three openings where B1's OLMo texts read Human. B1's one-against-three result is within what sampling alone produces.
+- **Quantization is not the cause:** 4-bit texts read Human more often than 16-bit ones in both families (OLMo 6% against 24% not Human on the same 17 openings, p 0.38; Qwen 21% against 32% on 19, p 0.56). They also differ in repetition penalty and random seed.
+
+**Verdict.** The data support H0 over H1 and H2 at the strength B31 can measure. H2 is not supported: the cleanest causal test (Olmo 3 mid-training, about half synthetic data plus QA and instruction data) moved nothing, and synthetic exposure does not track the signal across models. H1 is not established: the one clean crawl-date contrast points the right way (+0.12) but is within noise, and a 2020 model reads AI about as often as 2025 ones. What B31 does establish: base-model text reads AI a fifth to a third of the time regardless of vintage, the opening being continued matters more than the model, and post-training is the large effect. An outside-judge agent recomputed every number above from the raw verdict file alone and matched them (`results/research/b31-outside-judge.md`); it adds three cautions. The 4-bit arms cover FineWeb openings only, which read Human more often than essays. The filters drop some hard openings for some models (h0604, not Human for 60% of the arms that kept it, is missing from four), which can bias a model's rate. And because the opening dominates, per-arm intervals understate uncertainty about new openings: the unit of generalization is 30 openings, not 30 texts. What B31 cannot separate: a real crawl-date effect of 0.10 or less, effects of crawls after 2024 (every such model also has synthetic data or no documentation), decoding (one setting), and detector versions after 4.1.
+
+**For the project.**
+- No sign that newer base models are closing the route: Qwen3.5 (2026) reads like Pythia (2020).
+- Raw continuations of human text read Human only two thirds to four fifths of the time, so the project's Human rates come from more than the choice of a base model.
+- OLMo-2-13B and Gemma-3-12B read lowest, but most base-model differences are within noise, and choosing a writer by these Pangram numbers would break the held-out rule; a writer comparison would need its own pre-registered test on new openings.
+- The opening effect is the biggest lever found: what about an opening (genre, voice, topic) makes every model's continuation read AI is the natural next question.
+
+**Spend.** Pangram 1,986 credits (1,909 main scan, 77 Llama extension; dashboard 14,076 at 23:55 to 12,090 at 00:31, matching the per-file charges exactly). Modal $3.01 of compute against the free credit (billed $0.00), weights on a Volume inside the free 1 TiB. Phase 2 (scanning the crawl itself) was conditional on H1 and was not run.
+
+**Files:** `experiments/b31_basedate.py`, `experiments/modal/b31_modal.py`, `experiments/modal/b31_gated.py`, `results/b31_summary.json`, `results/b31_model_level.json`, `results/b31_verdicts.json`, `results/b31_exclusions.json`, `results/b31_blind.json`, `results/research/b31-*.md`. Texts and openings stay local (`results/b31_*.jsonl`, gitignored).

@@ -166,6 +166,31 @@ Opened 2026-11-05 23:35 CST; last updated: see git log.
 - No paper found compares a detector's scores across base-model release dates or training stages. B31 would be the
   first such measurement we know of.
 
-## Results from B31's own data
+## Results from B31's own data (scanned 2026-11-06 00:10 to 00:31, Pangram 4.1)
 
-To be filled after the scan.
+Full numbers in `REPORT-2026-11-04-lora.md` section 34 and `results/b31_summary.json`.
+
+- **Claim 1 (B1), status: verified as recorded, but the inference is refuted.** At 29 openings Qwen3.5-9B-Base reads
+  not Human 34% of the time and OLMo-2-13B 17%; Pythia (2020) reads 28%. One Qwen AI verdict against three OLMo Human
+  verdicts is what sampling alone produces. B1's own 4-bit Qwen text on h0600, cut to 250 words, reads AI again; a
+  16-bit Qwen sample on the same opening reads Human; 16-bit OLMo-2-13B reads AI on two of B1's three OLMo openings.
+  4-bit texts read Human more often than 16-bit ones, so quantization did not cause the AI reading.
+- **Claim 2 (H1, web pollution), status: not established.** The clean contrast (OLMo 2 to Olmo 3 at end of
+  pretraining, crawl through 2022 against through December 2024) rises 0.12 in AI share (95% interval -0.08 to
+  +0.31, Holm p 0.50). A model trained on 2020 data reads AI about as often as 2025 ones. A small effect (0.10 or
+  less), or one from crawls after 2024, is not excluded.
+- **Claim 3 (H2, deliberate synthetic or instruction data), status: not supported for Olmo 3 and across models.**
+  Olmo 3 mid-training (about half LLM-generated, with QA and instruction data) changes AI share by -0.001 (-0.17 to
+  +0.17); the QA-and-instruction ablation reads lowest of the four 2T arms; models that saw LLM text and models that
+  did not have equal opening-adjusted AI share. Qwen's documented instruction data does not make Qwen bases stand out
+  from Pythia or Olmo 3.
+- **Claim 4 (HALO), status: consistent.** Our 7 to 9B base arms have mean AI share 0.16 to 0.39, close to HALO's 0.27
+  to 0.42 for 7 to 8B raw continuations (of AI-written prompts, where ours continue human text); OLMo-2-13B and
+  Gemma-3-12B read lowest here, in line with HALO's size effect, but the differences among base models are mostly
+  within noise.
+- **Claim 5 (Xu, PASTA), status: verified in direction.** Base models read far more human than instruct models
+  (+0.64 and +0.76 AI share from base to instruct on the same openings), but no base model is near 98.8% human here:
+  the lowest is Gemma-3-12B at 88% Human.
+- **New finding:** the opening matters more than the model. Per-opening not-Human rates across base arms run from 0%
+  to 74%, four times the spread of independent outcomes (permutation p < 0.001); essay openings draw AI readings more
+  often than FineWeb pages (36% against 25%).

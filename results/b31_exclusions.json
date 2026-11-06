@@ -1,0 +1,242 @@
+{
+ "gemma3-12b": {
+  "openings": 30,
+  "kept": 25,
+  "excluded": 5,
+  "failed_tries": {
+   "short": 19,
+   "copy": 2
+  }
+ },
+ "mistral-7b": {
+  "openings": 30,
+  "kept": 28,
+  "excluded": 2,
+  "failed_tries": {
+   "short": 12
+  }
+ },
+ "mistral-nemo-12b": {
+  "openings": 30,
+  "kept": 25,
+  "excluded": 5,
+  "failed_tries": {
+   "short": 19,
+   "repetitive": 2
+  }
+ },
+ "mistral-small-24b": {
+  "openings": 30,
+  "kept": 28,
+  "excluded": 2,
+  "failed_tries": {
+   "short": 13,
+   "copy": 2,
+   "repetitive": 1
+  }
+ },
+ "nemotron-9b": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 7,
+   "repetitive": 2
+  }
+ },
+ "olmo1-7b": {
+  "openings": 30,
+  "kept": 27,
+  "excluded": 3,
+  "failed_tries": {
+   "short": 9,
+   "repetitive": 2
+  }
+ },
+ "olmo2-13b-instruct": {
+  "openings": 15,
+  "kept": 15,
+  "excluded": 0,
+  "failed_tries": {}
+ },
+ "olmo2-13b": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "repetitive": 1
+  }
+ },
+ "olmo2-7b-s1": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 2,
+   "nonprose": 1
+  }
+ },
+ "olmo2-7b": {
+  "openings": 30,
+  "kept": 29,
+  "excluded": 1,
+  "failed_tries": {
+   "short": 6,
+   "repetitive": 2
+  }
+ },
+ "olmo3-7b-2t": {
+  "openings": 30,
+  "kept": 29,
+  "excluded": 1,
+  "failed_tries": {
+   "copy": 1,
+   "nonprose": 1,
+   "short": 1,
+   "repetitive": 4
+  }
+ },
+ "olmo3-7b-genqa": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 2,
+   "repetitive": 2
+  }
+ },
+ "olmo3-7b-mct": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 4,
+   "repetitive": 2
+  }
+ },
+ "olmo3-7b-r5": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 3,
+   "repetitive": 2
+  }
+ },
+ "olmo3-7b-s1": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "repetitive": 2,
+   "short": 4
+  }
+ },
+ "olmo3-7b-s2": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 1,
+   "repetitive": 3
+  }
+ },
+ "olmo3-7b": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 1,
+   "repetitive": 2
+  }
+ },
+ "phi-2": {
+  "openings": 30,
+  "kept": 27,
+  "excluded": 3,
+  "failed_tries": {
+   "repetitive": 5,
+   "short": 4,
+   "nonprose": 1
+  }
+ },
+ "pythia-2.8b": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "short": 5,
+   "copy": 2
+  }
+ },
+ "pythia-6.9b": {
+  "openings": 30,
+  "kept": 29,
+  "excluded": 1,
+  "failed_tries": {
+   "copy": 1,
+   "short": 4,
+   "repetitive": 3,
+   "nonprose": 1
+  }
+ },
+ "qwen1.5-7b": {
+  "openings": 30,
+  "kept": 30,
+  "excluded": 0,
+  "failed_tries": {
+   "copy": 1,
+   "repetitive": 2,
+   "nonprose": 1
+  }
+ },
+ "qwen2-7b": {
+  "openings": 30,
+  "kept": 25,
+  "excluded": 5,
+  "failed_tries": {
+   "short": 19,
+   "repetitive": 2
+  }
+ },
+ "qwen2.5-7b": {
+  "openings": 30,
+  "kept": 27,
+  "excluded": 3,
+  "failed_tries": {
+   "short": 11,
+   "repetitive": 3
+  }
+ },
+ "qwen3-8b": {
+  "openings": 30,
+  "kept": 29,
+  "excluded": 1,
+  "failed_tries": {
+   "short": 5,
+   "repetitive": 5
+  }
+ },
+ "qwen3.5-9b-instruct": {
+  "openings": 15,
+  "kept": 15,
+  "excluded": 0,
+  "failed_tries": {}
+ },
+ "qwen3.5-9b": {
+  "openings": 30,
+  "kept": 29,
+  "excluded": 1,
+  "failed_tries": {
+   "repetitive": 2,
+   "short": 1,
+   "nonprose": 1,
+   "copy": 1
+  }
+ },
+ "olmo2-13b-q4": {
+  "failed": {
+   "short": 3
+  }
+ }
+}

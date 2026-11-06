@@ -19,7 +19,7 @@ generated and filtered by the same rules and shuffled into the same batches: gem
 llama3.1-8b (meta-llama/Llama-3.1-8B, data to the end of 2023, no synthetic text stated in pretraining),
 the latter only if Meta approves access before the first upload. Weights fetched by
 experiments/modal/b31_gated.py with Henry's read token (a Modal secret B31 never reads).
-Amended 2026-11-06 00:22, after batches 0 to 2 were scanned and before any result was matched to an arm:
+Amended 2026-11-06 00:20 (date read at commit), after batches 0 to 2 were scanned and before any result was matched to an arm:
 Meta approved Llama access after the first upload, so llama3.1-8b missed the shuffled batches. It is
 generated and filtered by the same rules and scanned afterwards in its own batch, reported as an extension
 (labelled so, with the caveat that it was scanned in a separate batch); it enters no primary contrast.
