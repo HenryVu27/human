@@ -83,7 +83,7 @@
      "pred_minus_pangram_on_picks": 0.2149316213300304,
      "pred_minus_pangram_all": 0.2917967708016479
     },
-    "calib_posts": {
+    "calib_posts_post_hoc": {
      "p3f93342833": {
       "sections": 4,
       "judge_pick": 0.237,
@@ -165,7 +165,7 @@
      "pred_minus_pangram_on_picks": -0.11169921875,
      "pred_minus_pangram_all": -0.040922585227272726
     },
-    "calib_posts": {
+    "calib_posts_post_hoc": {
      "p3f93342833": {
       "sections": 4,
       "judge_pick": 0.203,
@@ -234,35 +234,42 @@
    "J1": {
     "share": 0.215,
     "words_over_input": 0.6,
-    "claims_entailed": 0.86,
+    "claim_support": 0.86,
     "picks_under_70pct_words": 9,
     "pair_accuracy": 0.746
    },
    "J2": {
     "share": 0.299,
     "words_over_input": 0.73,
-    "claims_entailed": 0.89,
+    "claim_support": 0.89,
     "picks_under_70pct_words": 6,
     "pair_accuracy": 0.587
+   },
+   "meld_raw": {
+    "share": 0.213,
+    "words_over_input": 0.75,
+    "claim_support": 0.91,
+    "picks_under_70pct_words": 4,
+    "pair_accuracy": 0.667
    },
    "shortest": {
     "share": 0.276,
     "words_over_input": 0.54,
-    "claims_entailed": 0.88,
+    "claim_support": 0.88,
     "picks_under_70pct_words": 10,
     "pair_accuracy": 0.619
    },
    "least_copied": {
     "share": 0.243,
     "words_over_input": 0.63,
-    "claims_entailed": 0.89,
+    "claim_support": 0.89,
     "picks_under_70pct_words": 8,
     "pair_accuracy": 0.778
    },
    "oracle": {
     "share": 0.163,
     "words_over_input": 0.69,
-    "claims_entailed": 0.88,
+    "claim_support": 0.88,
     "picks_under_70pct_words": 6,
     "pair_accuracy": 1.0
    }
@@ -271,36 +278,92 @@
    "J1": {
     "share": 0.283,
     "words_over_input": 0.87,
-    "claims_entailed": 0.95,
+    "claim_support": 0.95,
     "picks_under_70pct_words": 1
    },
    "J2": {
     "share": 0.299,
     "words_over_input": 0.9,
-    "claims_entailed": 0.94,
+    "claim_support": 0.94,
     "picks_under_70pct_words": 0
+   },
+   "meld_raw": {
+    "share": 0.276,
+    "words_over_input": 0.86,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 1
    },
    "shortest": {
     "share": 0.331,
     "words_over_input": 0.84,
-    "claims_entailed": 0.95,
+    "claim_support": 0.95,
     "picks_under_70pct_words": 1
    },
    "least_copied": {
     "share": 0.288,
     "words_over_input": 0.89,
-    "claims_entailed": 0.94,
+    "claim_support": 0.94,
     "picks_under_70pct_words": 1
    },
    "oracle": {
     "share": 0.234,
     "words_over_input": 0.88,
-    "claims_entailed": 0.93,
+    "claim_support": 0.93,
     "picks_under_70pct_words": 1
    },
    "random": {
     "share": 0.348
    }
+  },
+  "best_of_4_c1_gates": {
+   "J1": {
+    "share": 0.288,
+    "words_over_input": 0.81,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 3
+   },
+   "J2": {
+    "share": 0.275,
+    "words_over_input": 0.8,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 2
+   },
+   "meld_raw": {
+    "share": 0.261,
+    "words_over_input": 0.82,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 2
+   },
+   "shortest": {
+    "share": 0.33,
+    "words_over_input": 0.75,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 4
+   },
+   "least_copied": {
+    "share": 0.291,
+    "words_over_input": 0.79,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 3
+   },
+   "oracle": {
+    "share": 0.213,
+    "words_over_input": 0.84,
+    "claim_support": 0.95,
+    "picks_under_70pct_words": 2
+   },
+   "random": {
+    "share": 0.34
+   },
+   "sections_with_an_eligible_candidate": 14
+  },
+  "picks_failing_c1_gates": {
+   "J1": 8,
+   "J2": 6,
+   "meld_raw": 4,
+   "shortest": 6,
+   "least_copied": 7,
+   "oracle": 7
   },
   "spearman_on_candidates": {
    "J1_vs_share": 0.61,

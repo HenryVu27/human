@@ -435,7 +435,7 @@ def _pick_metrics(pred: dict) -> dict:
 
 
 def _post_metrics(pred: dict) -> dict:
-    """Added 13:42, after the scan, to summarise the same picks per post; no rule changes. A whole post's share is the
+    """Added 13:41, after the scan, to summarise the same picks per post; no rule changes. A whole post's share is the
     word-weighted mean of its sections' shares (B37: Pangram adds up flagged words). Random is the exact expectation over
     every combination of one scanned candidate per section; the oracle takes each section's lowest share, as in
     _pick_metrics; the label reading is Human under 0.10, AI from 0.80."""
@@ -474,7 +474,7 @@ def evaluate():
         res["judges"][name] = {"oof": _metrics(p["oof"], rows),
                                "loeo": _metrics(p["loeo"], [r for r in rows if r["loeo_test"]]),
                                "calib_pick": _pick_metrics(p["calib"]),
-                               "calib_posts": _post_metrics(p["calib"])}
+                               "calib_posts_post_hoc": _post_metrics(p["calib"])}
     res["math_probe"] = {r["key"]: {"label": r["label"], "ai_share": r["ai_share"], "words": r["words"],
                                     "pangram_words": r.get("pangram_words")}
                          for r in _load(PANGRAM) if r["cell"] != "K"}
@@ -492,14 +492,17 @@ def evaluate():
 
 
 def explore():
-    """Post hoc, added 13:50 after the evaluation; none of this was pre-registered and none of it changes the choice.
+    """Post hoc, added 13:43 after the evaluation; none of this was pre-registered and none of it changes the choice.
 
     Looking at the J1 picks showed many short candidates. Two questions: does the gain come from picking short texts
     (which drop content), and does a free heuristic do as well? Heuristics: the shortest candidate; the candidate that
     copies the least from its input section (copied_from_input, 8-word runs, computed by calib_assess before the scan).
     The length floor keeps candidates with at least 80% of the input's words (falling back to all when none does).
-    The copied-share heuristic is then checked on texts it was not found on: B36's C300 and Cfull rewrites of Sonnet's
-    post D, against J1's out-of-fold and leave-one-experiment-out predictions on the same rows."""
+    The copied-share heuristic is then compared with J1 on B36's C300 and Cfull rewrites of Sonnet's post D, against
+    J1's out-of-fold and leave-one-experiment-out predictions on the same rows. This is not a held-out test: B37's
+    docstring (11:16) already noted that B36's leftover AI share tracks how much of D a rewrite copies, and B37's pick
+    rule C1 already picked the least-copying candidate. "claim_support" is entailed over total claims of the output
+    (precision), not how much of the input's content was kept. Wording corrected 13:57 after the validators."""
     import numpy as np
     from scipy.stats import spearmanr
     from sklearn.metrics import roc_auc_score
@@ -514,21 +517,25 @@ def explore():
     by = {}
     for c in cands:
         by.setdefault(c["section"], []).append(c)
+    meld = {r["id"][5:]: r["meld"]["ai"] for r in _load(DET_OUT) if r["id"].startswith("CAND:")}
     rules = {"J1": lambda c: preds["J1"]["calib"][c["cid"]], "J2": lambda c: preds["J2"]["calib"][c["cid"]],
-             "shortest": lambda c: c["words"], "least_copied": lambda c: c["copied_from_input"],
-             "oracle": lambda c: c["share"]}
+             "meld_raw": lambda c: meld[c["cid"]], "shortest": lambda c: c["words"],
+             "least_copied": lambda c: c["copied_from_input"], "oracle": lambda c: c["share"]}
 
-    def picks(rule, floor=0.0):
+    def gate_c1(c):  # B37's C1 eligibility: form checks, claim support at least 0.90, at least 50% of the words
+        return c["form_ok"] and c["claims"] >= 0.90 and c["ratio"] >= 0.5
+
+    def picks(rule, floor=0.0, gate=None):
         out = []
         for cs in by.values():
-            pool = [c for c in cs if c["ratio"] >= floor] or cs
+            pool = [c for c in cs if c["ratio"] >= floor and (gate is None or gate(c))] or cs
             out.append(min(pool, key=rule))
         return out
 
     def summ(ps):
         return {"share": round(statistics.mean(c["share"] for c in ps), 3),
                 "words_over_input": round(statistics.mean(c["ratio"] for c in ps), 2),
-                "claims_entailed": round(statistics.mean(c["claims"] for c in ps), 2),
+                "claim_support": round(statistics.mean(c["claims"] for c in ps), 2),
                 "picks_under_70pct_words": sum(c["ratio"] < 0.7 for c in ps)}
 
     def pair_acc(rule):
@@ -548,6 +555,13 @@ def explore():
     res["best_of_4_floor80"] = {k: summ(picks(f, 0.8)) for k, f in rules.items()}
     res["best_of_4_floor80"]["random"] = {"share": round(statistics.mean(
         statistics.mean(c["share"] for c in ([c for c in cs if c["ratio"] >= 0.8] or cs)) for cs in by.values()), 3)}
+    # Added 13:59 after the validators: the same rules restricted to B37's C1-eligible candidates (least_copied is then
+    # C1 itself), so the comparison is the one that decides use: J1 against the existing rule and raw MELD.
+    res["best_of_4_c1_gates"] = {k: summ(picks(f, gate=gate_c1)) for k, f in rules.items()}
+    res["best_of_4_c1_gates"]["random"] = {"share": round(statistics.mean(
+        statistics.mean(c["share"] for c in ([c for c in cs if gate_c1(c)] or cs)) for cs in by.values()), 3)}
+    res["best_of_4_c1_gates"]["sections_with_an_eligible_candidate"] = sum(any(gate_c1(c) for c in cs) for cs in by.values())
+    res["picks_failing_c1_gates"] = {k: sum(not gate_c1(c) for c in picks(f)) for k, f in rules.items()}
     res["spearman_on_candidates"] = {
         "J1_vs_share": round(float(spearmanr([rules["J1"](c) for c in cands], [c["share"] for c in cands]).statistic), 2),
         "J1_vs_words_ratio": round(float(spearmanr([rules["J1"](c) for c in cands], [c["ratio"] for c in cands]).statistic), 2),
@@ -586,10 +600,27 @@ def explore():
     print(json.dumps(res, indent=1))
 
 
+def reserve_check():
+    """Recompute the B39 reserve's combined hash from its per-text hashes (reads no reserved text). Construction, as
+    built at a99a393: for each ID in sorted order, the ID's UTF-8 bytes, a zero byte, then the 32-byte sha256 digest of
+    the post text. Added 13:59 after the leakage audit could not rebuild it."""
+    d = json.loads((RES / "b39_reserved_testB.json").read_text())
+    h = hashlib.sha256()
+    for i in sorted(d["ids"]):
+        h.update(i.encode())
+        h.update(b"\0")
+        h.update(bytes.fromhex(d["per_text_sha256"][i]))
+    ok = h.hexdigest() == d["sha256_of_ids_and_text_hashes"] and len(d["ids"]) == d["n"] == len(d["per_text_sha256"])
+    print("reserve", d["n"], "posts; combined hash", "matches" if ok else "DOES NOT MATCH")
+    if not ok:
+        sys.exit(1)
+
+
 if __name__ == "__main__":
     cmd = sys.argv[1]
     if cmd in ("scanfiles", "record"):
         {"scanfiles": scanfiles, "record": record}[cmd](sys.argv[2])
     else:
         {"data": data, "calib_inputs": calib_inputs, "calib_prompts": calib_prompts, "calib_assess": calib_assess,
-         "features": features, "linear": linear, "evaluate": evaluate, "explore": explore}[cmd]()
+         "features": features, "linear": linear, "evaluate": evaluate, "explore": explore,
+         "reserve_check": reserve_check}[cmd]()
