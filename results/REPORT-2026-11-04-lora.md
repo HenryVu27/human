@@ -976,3 +976,84 @@ Section 35's rewriter (T) works on Sonnet's posts for the same 19 essays, so all
 **Outside check.** An outside-judge agent recomputed every count, test and length from the raw files and the commit and file times, and confirmed them (one rounding slip, 68% for 67%). The length and caution paragraphs above are its findings.
 
 **Files:** `experiments/b28_dose.py`, `results/b28_dose.json`, `results/research/b28-outside-judge.md`. Texts stay local (`results/b28_*.jsonl`, gitignored).
+
+## 37. B34 and B36: whole posts by writers the rewriter never saw (Pangram, 169 texts)
+
+**Question.** B30's rewriter turned Sonnet's posts from half a blogger's notes into Human-reading posts 13 times in 19,
+at about 640 words, on held-out essays by the 13 bloggers it trained on. Does it transfer to writers it never saw, and
+to whole posts of 1,500 to 3,000 words? And does length by itself move Pangram's verdict (B34)? Long-form program
+gate 1, approved by Henry; rules committed before any selection, text or scan (eca4a0d 09:07, b254d2e 09:42, blinding
+key 576b465 10:24; first upload 10:26).
+
+**Design** (`experiments/b36_transfer.py`, `experiments/b34_length.py`; design doc amendments of 09:07, 09:41, 10:54).
+- **Posts:** 32 long blog posts from B32's test-A split (sites never in any training corpus of the project, owner
+  groups merged, listing pages and near-duplicates dropped, single-author personal or technical posts by a Haiku
+  label), captured by Common Crawl before 2022-11-30. An independent audit removed 3 posts that were not single-author
+  blog posts before any rewrite; 3 more were replaced by the pre-registered rule (Sonnet's post under 1,000 words).
+  7 are technical.
+- **D:** B28's pipeline unchanged: Sonnet notes, reworded, half kept, Sonnet's post (the human post's length).
+- **C:** B30's rewriter, unchanged, on D section by section (600 to 1,000 words; the model has 4,096 tokens), the
+  Guard, two seeds, prune, cleanup and claim check, most supported claims kept; sections joined.
+- **Cells:** each text scanned whole (full) and as its first 300 words (300), blinded, one shuffled scan.
+- **B34:** 10 human posts from the calib split at 300 words and in full. Its second arm (raw OLMo-2-13B continuations
+  to 2,000 words) produced no usable text: in 6 tries per post across two settings, every continuation either looped
+  (35 to 90% of its 4-grams repeated) or stopped short, so it was excluded by its rules.
+- **Henry arm:** the same rewriter on the prose sections of Henry's two published posts (ai-engineering part 1,
+  bandits part 1), scanned whole and by section, claim-checked against the originals; nothing medical or client-related
+  was introduced (audited).
+
+| Cell (32 posts) | Human | Mixed | AI | Mean AI share | Words |
+|---|---|---|---|---|---|
+| Dfull, Sonnet's post | 0 | 13 | 19 | 0.81 | 1,681 |
+| D300 | 0 | 10 | 22 | 0.85 | about 290 |
+| **Cfull, the rewrite** | **1** | **31** | **0** | **0.38** | 1,398 |
+| C300 | 11 | 19 | 2 | 0.29 | about 290 |
+| B34: 10 human posts, full / 300 words | 10 / 10 | 0 | 0 | 0.00 / 0.00 | 2,333 / 283 |
+
+- **Primary tests** (Holm over two, both rejected): Cfull against Dfull, the AI share falls on all 32 posts (mean 0.44;
+  Wilcoxon p about 1e-6); C300 against Cfull, 11 posts read Human only as the prefix, 1 only in full (McNemar p
+  0.006). Sensitivity without the two texts the audit found faithless (one part French, one with invented code):
+  1 of 30 in full, 9 against 1 (p 0.02).
+- **Pre-registered band:** "does not transfer" (Cfull Human on 7 or fewer of 32; observed 1, 95% interval 0.6 to 16%).
+- **Checks:** C keeps 83% of D's length and 71% of the human post's, claims supported 96%, copies 1.6% from the human
+  post (none over 15%) and 32% from D (B30's T50: 13%).
+
+**Henry's posts.** Whole posts stay Mixed (ai-engineering AI share 0.55 to 0.40; bandits 0.41 to 0.13). By section,
+5 of 12 rewritten sections read Human against 0 of 12 originals; 8 improve and none get worse (sign test p 0.008).
+Cautions: 7 of the 12 baselines are B15's scans from a day earlier; the rewrites are shorter; much of the ai-engineering
+rewrite is Henry's own wording (66% copied from the original).
+
+**Reading.**
+1. **The rewriter does not transfer to whole posts by unseen writers.** It moves every post toward Human and removes
+   every AI verdict, but at full length almost nothing clears Pangram's bar (Human needs 90% of characters labelled
+   Human; the rewrites keep 38% AI on average).
+2. **The bottleneck is per-window quality, and length multiplies it** (red team, `research/longform-redteam-b36.md`).
+   If each 300-word stretch reads Human with probability p, a 1,400-word post reads Human with roughly p to the power
+   4.6: at the observed p of 0.34 that predicts 1.7 of 32 (observed 1); at B30's implied 0.83 it would predict about
+   18 of 32. So whole posts are within reach only if the per-window rate rises to about 0.8. A longer context does not
+   change that arithmetic by itself.
+3. **What the leftover AI share tracks:** the input post's own AI share (Spearman 0.59) and how much of it the rewrite
+   copies (0.35); prefixes that read Human copy 19% of their words from D, the others 36%. The pick rule (most supported
+   claims) prefers the seed that copies more in 57 of 84 sections.
+4. **Length does not create false positives:** 10 human posts read Human at 300 words and in full, with AI share 0.00.
+5. **What B36 cannot separate:** unseen authors from genre and fame (B30's writers are well-known essayists; B36's are
+   obscure bloggers), and length from section joins (12 of 52 later sections restart as a new post, an artifact of
+   section-by-section rewriting). The length effect's significance is fragile (7 against 1 once the French text and
+   three texts with a spacing quirk are set aside).
+
+**Faithfulness findings** (copying audit, `research/longform-judge-b36-copying.md`): the claim check passed one text
+with about 40 lines of invented code and one with three paragraphs of garbled French; section restarts ("This is the
+second of three articles") are framing the input lacks. Language, code and format checks must join the pick step.
+
+**Outside checks.** Selection audit (`research/longform-judge-b36-selection.md`), copying audit, statistics recompute
+and scan-time order (`research/longform-judge-b36-stats.md`: every number reproduced from the raw transcripts and the
+browser log; the dashboard dropped 1,715 credits while per-file charges sum to 1,824), and a red team. The sensitivity
+amendment came after the scan but before any verdict was unblinded (checked against the session log).
+
+**Spend.** Pangram 1,715 credits (dashboard 11,349 to 9,634). Modal about $3.7 (two B34 continuation runs $0.52,
+rewriter generation $3.20), inside the free credit.
+
+**Files:** `experiments/b36_transfer.py`, `experiments/b34_length.py`, `experiments/modal/lf_rewrite_hf.py`,
+`experiments/modal/lf_continue.py`, `results/b36_transfer.json`, `results/b34_length.json`, `results/b36_blind.json`,
+`results/b36_pangram_transcript.txt`, `results/b36_pangram_shares_b*.json`, `results/LONGFORM-GATE1.md`. Texts stay
+local (`results/b3[2-9]_*.jsonl`, gitignored).

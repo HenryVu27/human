@@ -664,8 +664,8 @@ def analyze():
     for r in rows:
         r["human"] = r["label"] == "Human" and r["words"] >= 150
     by = {}
-    for r in rows:
-        by.setdefault(r["cell"], {})[r["doc"]] = r
+    for r in rows:  # Henry-arm section cells are keyed by their key (several sections share a post)
+        by.setdefault(r["cell"], {})[r["key"] if r["cell"] in ("HR_sec", "HO_sec") else r["doc"]] = r
     cells = {}
     for c, d in sorted(by.items()):
         k = sum(v["human"] for v in d.values())

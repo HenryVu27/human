@@ -176,18 +176,18 @@
     "mean_ai_share": 0.48
    },
    "HO_sec": {
-    "n": 1,
+    "n": 5,
     "human": 0,
     "human_ci": [
-     0.0,
-     0.793
+     -0.0,
+     0.434
     ],
     "labels": {
      "Human": 0,
-     "Mixed": 1,
-     "AI": 0
+     "Mixed": 4,
+     "AI": 1
     },
-    "mean_ai_share": 0.5
+    "mean_ai_share": 0.536
    },
    "HR_post": {
     "n": 2,
@@ -204,18 +204,18 @@
     "mean_ai_share": 0.265
    },
    "HR_sec": {
-    "n": 2,
-    "human": 1,
+    "n": 12,
+    "human": 5,
     "human_ci": [
-     0.095,
-     0.905
+     0.193,
+     0.68
     ],
     "labels": {
-     "Human": 1,
-     "Mixed": 1,
-     "AI": 0
+     "Human": 5,
+     "Mixed": 6,
+     "AI": 1
     },
-    "mean_ai_share": 0.14
+    "mean_ai_share": 0.325
    },
    "Hfull": {
     "n": 10,

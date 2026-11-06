@@ -198,3 +198,31 @@ Opened 2026-11-06 02:09 CST; last updated: see git log.
   0.05 to 0.09. A rewriter against the AI post has power 1.00 on the share and 0.74 to 1.00 on the label at n = 40.
 - **Status:** **a modelling result, not data**; its spread and correlation are assumptions until B34 and B36 measure
   AI shares at length.
+
+## Gate 1 results (2026-11-06, B34 and B36)
+
+### 15. B30's rewriter transfers to writers it never saw and to whole posts (the open question of claim 3)
+
+- **Checked (B36, 32 test-A posts; statistics recomputed by an outside judge; red team):** Cfull reads Human on 1 of
+  32 (Mixed 31), against Sonnet's posts 0 of 32 (AI 19); the AI share falls on all 32 (0.81 to 0.38). The first 300
+  words of the same rewrites read Human on 11 of 32.
+- **Status:** **refuted at full length** (pre-registered band "does not transfer"). The direction is verified (every
+  post moves toward Human). Unseen authors and length cannot be separated from genre (obscure bloggers against famous
+  essayists) and from section-by-section rewriting.
+
+### 6c, updated. Length by itself moves the verdict
+
+- **Checked (B34, B36):** human posts read Human at 300 words and at 1,800 to 3,000 words, 10 of 10 each (AI share
+  0.00); rewrites read Human 11 of 32 as 300-word prefixes and 1 of 32 in full (McNemar p 0.006; 9 against 1 without
+  the two faithless texts).
+- **Status:** **verified in direction for partly AI text, refuted for human text**: length does not make human posts
+  read AI, but it turns partly AI text from Human to Mixed, consistent with the 90% character rule (a per-window Human
+  rate of 0.34 predicts 1.7 of 32 whole posts; observed 1). The significance is fragile.
+
+### 16. The claim check catches invented content in long rewrites
+
+- **Checked (copying and faithfulness audit):** it passed a section with about 40 lines of invented code and one with
+  three paragraphs of garbled French, and missed framing such as "This is the second of three articles" in 12 of 52
+  later sections.
+- **Status:** **refuted** for long, section-by-section rewrites. Language, code and format checks must be added to the
+  pick step before gate 2.
