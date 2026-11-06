@@ -399,7 +399,7 @@ def scanfiles(dest: str):
     import subprocess
     from pathlib import Path
 
-    texts = henry_texts() + _load(RES / "b37_testb_scan.jsonl")
+    texts = henry_texts() + _load(RES / "b37_testb_scan.jsonl") + _load(RES / "b37_splice_scan.jsonl")
     for t in texts:
         t["words"] = len(t["text"].split())
     credits = sum(math.ceil(1.15 * t["words"] / 100) for t in texts)  # Pangram counts about 15% more words than we do
@@ -448,9 +448,53 @@ def analyze():
                                        for d, (o, r) in zip(secs, pairs)}},
            "henry_posts": {k: [v["label"], v["ai_share"], v["words"]] for k, v in rows.items()
                            if v["cell"] in ("HO2_post", "HR2_post")}}
+    sp = {r["key"]: r for r in _load(RES / "b37_splice_scan.jsonl")}
+    if sp:
+        res["splice"] = {k: {"label": rows[k]["label"], "ai_share": rows[k]["ai_share"], "ai_words": v["ai_words"],
+                             "share_of_words": round(v["ai_words"] / max(1, len(v["text"].split())), 3),
+                             "position": v["position"]} for k, v in sp.items() if k in rows}
     prev = json.loads(OUT.read_text()) if OUT.exists() else {}
     OUT.write_text(json.dumps(prev | {"pangram": res}, indent=1))
     print(json.dumps(res, indent=1))
+
+
+
+def splice():
+    """Build the splice-probe texts (rules in the docstring) into results/b37_splice_scan.jsonl."""
+    h = sorted((r for r in _load(RES / "b34_docs.jsonl") if r["role"] == "H"),
+               key=lambda r: hashlib.sha256(f"b37-splice:{r['id']}".encode()).hexdigest())[:2]
+    d = sorted(_load(RES / "b36_inputs.jsonl"), key=lambda r: hashlib.sha256(f"b37-splice:{r['id']}".encode()).hexdigest())[0]
+    ai_sents = [x for x in re.split(r"(?<=[.!?])\s+", " ".join(d["D"].split())) if x]
+
+    def block(n):
+        out, k = [], 0
+        for x in ai_sents:
+            out.append(x)
+            k += len(x.split())
+            if k >= n:
+                break
+        return " ".join(out)
+
+    rows = []
+    for base in h:
+        paras, words = [], 0
+        for para in [x.strip() for x in base["text"].split("\n") if x.strip()]:
+            paras.append(para)
+            words += len(para.split())
+            if words >= 1200:
+                break
+        rows.append({"key": f"SP_{base['id']}_0_none", "cell": "SP", "doc": base["id"], "text": "\n".join(paras),
+                     "ai_words": 0, "position": "none"})
+        mid = min(range(1, len(paras)), key=lambda i: abs(sum(len(x.split()) for x in paras[:i]) - words / 2))
+        for n in (60, 120, 240):
+            b = block(n)
+            for pos, i in (("start", 1), ("middle", mid), ("end", len(paras) - 1)):
+                t = "\n".join(paras[:i] + [b] + paras[i:])
+                rows.append({"key": f"SP_{base['id']}_{n}_{pos}", "cell": "SP", "doc": base["id"], "text": t,
+                             "ai_words": len(b.split()), "position": pos})
+    (RES / "b37_splice_scan.jsonl").write_text("".join(json.dumps(r) + "\n" for r in rows))
+    print(len(rows), "splice texts; AI block from", d["id"], "; bases", [b["id"] for b in h],
+          "; words", [len(r["text"].split()) for r in rows][:4])
 
 
 if __name__ == "__main__":
@@ -458,4 +502,5 @@ if __name__ == "__main__":
     if cmd in ("scanfiles", "record"):
         {"scanfiles": scanfiles, "record": record}[cmd](sys.argv[2])
     else:
-        {"prompts": prompts, "pick": pick, "meld_inputs": meld_inputs, "dev": dev, "analyze": analyze}[cmd]()
+        {"prompts": prompts, "pick": pick, "meld_inputs": meld_inputs, "dev": dev, "analyze": analyze,
+         "splice": splice}[cmd]()
