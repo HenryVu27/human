@@ -1,0 +1,2 @@
+B37 batch00 (48 files) Check for AI clicked 12:16:14; dashboard estimate 555 credits; 9,634 before
+B37 labels read 12:17; dashboard 9,079 after (555 used)

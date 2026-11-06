@@ -77,8 +77,8 @@ def gen(rows: list[dict], seed: int, adapter: str, batch: int = 8) -> list[dict]
 
     rows = sorted(rows, key=lambda r: -r["max_new_tokens"])
     out = []
-    for b0 in range(0, len(rows), batch):
-        chunk = rows[b0:b0 + batch]
+
+    def run(chunk, b0):
         guards = [Guard(tok, allowed_specifics(r["allowed_text"], r["prompt"]), common,
                         allow_quotes=any(q in r["allowed_text"] for q in QUOTES)) for r in chunk]
         enc = tok([r["prompt"] for r in chunk], return_tensors="pt", padding=True).to("cuda")
@@ -88,12 +88,27 @@ def gen(rows: list[dict], seed: int, adapter: str, batch: int = 8) -> list[dict]
                                      max_new_tokens=max(r["max_new_tokens"] for r in chunk),
                                      logits_processor=LogitsProcessorList([RowGuards(guards)]),
                                      eos_token_id=tok.eos_token_id, pad_token_id=pad)
+        res = []
         for r, seq in zip(chunk, gen_ids[:, enc["input_ids"].shape[1]:].tolist()):
             seq = seq[: r["max_new_tokens"]]
             cut = seq.index(tok.eos_token_id) if tok.eos_token_id in seq else len(seq)
             text = tok.decode(seq[:cut], skip_special_tokens=True).split("\nFacts:")[0].split("\nNotes:")[0].strip()
-            out.append({"id": r["id"], "seed": seed, "text": text, "words": len(text.split()), "new_tokens": cut,
+            res.append({"id": r["id"], "seed": seed, "text": text, "words": len(text.split()), "new_tokens": cut,
                         "hit_eos": cut < len(seq), "machine": f"modal-{gpu}"})
+        return res
+
+    def run_safe(chunk, b0):  # on out-of-memory, halve the batch (added 2026-11-06 for B37; draws are unchanged in kind)
+        try:
+            return run(chunk, b0)
+        except torch.OutOfMemoryError:
+            torch.cuda.empty_cache()
+            if len(chunk) == 1:
+                raise
+            h = len(chunk) // 2
+            return run_safe(chunk[:h], b0) + run_safe(chunk[h:], b0 + h)
+
+    for b0 in range(0, len(rows), batch):
+        out += run_safe(rows[b0:b0 + batch], b0)
         print(f"seed {seed}: {len(out)}/{len(rows)}", flush=True)
     return out
 

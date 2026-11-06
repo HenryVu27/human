@@ -116,5 +116,253 @@
   "C1": "per-window rate 0.066 against C0 0.067 (needs +0.10); mean window score -0.12, Wilcoxon p 0.81",
   "L": "per-window rate 0.25 (+0.18) and lower scores (p 4e-5), but length 28% of the human post (needs 60%), claim support 0.89 (needs 0.90), 91% of texts pass the form checks (needs 95%)",
   "pangram_plan": "Henry arm, then the splice probe (credits allow)"
+ },
+ "pangram": {
+  "henry_sections": {
+   "pairs": 12,
+   "better": 8,
+   "worse": 1,
+   "p_sign": 0.0391,
+   "original_human": 1,
+   "rewrite_human": 6,
+   "rows": {
+    "aieng_s1": [
+     "AI",
+     1.0,
+     "Human",
+     0.0
+    ],
+    "aieng_s2": [
+     "Mixed",
+     0.39,
+     "Human",
+     0.1
+    ],
+    "aieng_s3": [
+     "Mixed",
+     0.18,
+     "Human",
+     0.0
+    ],
+    "aieng_s4": [
+     "Mixed",
+     0.72,
+     "Mixed",
+     0.49
+    ],
+    "aieng_s5": [
+     "Mixed",
+     0.78,
+     "Mixed",
+     0.65
+    ],
+    "aieng_s6": [
+     "AI",
+     1.0,
+     "Mixed",
+     0.41
+    ],
+    "aieng_s7": [
+     "AI",
+     0.97,
+     "Mixed",
+     0.7
+    ],
+    "bandits_s1": [
+     "Mixed",
+     0.67,
+     "Human",
+     0.0
+    ],
+    "bandits_s3": [
+     "Mixed",
+     0.32,
+     "Mixed",
+     0.28
+    ],
+    "bandits_s4": [
+     "Mixed",
+     0.32,
+     "Human",
+     0.0
+    ],
+    "bandits_s5": [
+     "Mixed",
+     0.18,
+     "Human",
+     0.0
+    ],
+    "bandits_s6": [
+     "Human",
+     0.0,
+     "Mixed",
+     0.3
+    ]
+   }
+  },
+  "henry_posts": {
+   "HR2_bandits": [
+    "Human",
+    0.08,
+    2511
+   ],
+   "HR2_aieng": [
+    "Mixed",
+    0.24,
+    3639
+   ],
+   "HO2_aieng": [
+    "Mixed",
+    0.53,
+    4478
+   ],
+   "HO2_bandits": [
+    "Mixed",
+    0.24,
+    2663
+   ]
+  },
+  "splice": {
+   "SP_p9aebd0fe2d_0_none": {
+    "label": "Human",
+    "ai_share": 0.0,
+    "ai_words": 0,
+    "share_of_words": 0.0,
+    "position": "none"
+   },
+   "SP_p9aebd0fe2d_60_start": {
+    "label": "Human",
+    "ai_share": 0.07,
+    "ai_words": 88,
+    "share_of_words": 0.068,
+    "position": "start"
+   },
+   "SP_p9aebd0fe2d_60_middle": {
+    "label": "Human",
+    "ai_share": 0.06,
+    "ai_words": 88,
+    "share_of_words": 0.068,
+    "position": "middle"
+   },
+   "SP_p9aebd0fe2d_60_end": {
+    "label": "Human",
+    "ai_share": 0.06,
+    "ai_words": 88,
+    "share_of_words": 0.068,
+    "position": "end"
+   },
+   "SP_p9aebd0fe2d_120_start": {
+    "label": "Human",
+    "ai_share": 0.09,
+    "ai_words": 126,
+    "share_of_words": 0.095,
+    "position": "start"
+   },
+   "SP_p9aebd0fe2d_120_middle": {
+    "label": "Human",
+    "ai_share": 0.08,
+    "ai_words": 126,
+    "share_of_words": 0.095,
+    "position": "middle"
+   },
+   "SP_p9aebd0fe2d_120_end": {
+    "label": "Human",
+    "ai_share": 0.08,
+    "ai_words": 126,
+    "share_of_words": 0.095,
+    "position": "end"
+   },
+   "SP_p9aebd0fe2d_240_start": {
+    "label": "Mixed",
+    "ai_share": 0.16,
+    "ai_words": 248,
+    "share_of_words": 0.17,
+    "position": "start"
+   },
+   "SP_p9aebd0fe2d_240_middle": {
+    "label": "Mixed",
+    "ai_share": 0.15,
+    "ai_words": 248,
+    "share_of_words": 0.17,
+    "position": "middle"
+   },
+   "SP_p9aebd0fe2d_240_end": {
+    "label": "Mixed",
+    "ai_share": 0.15,
+    "ai_words": 248,
+    "share_of_words": 0.17,
+    "position": "end"
+   },
+   "SP_pc71cc789ec_0_none": {
+    "label": "Human",
+    "ai_share": 0.0,
+    "ai_words": 0,
+    "share_of_words": 0.0,
+    "position": "none"
+   },
+   "SP_pc71cc789ec_60_start": {
+    "label": "Human",
+    "ai_share": 0.06,
+    "ai_words": 88,
+    "share_of_words": 0.068,
+    "position": "start"
+   },
+   "SP_pc71cc789ec_60_middle": {
+    "label": "Human",
+    "ai_share": 0.06,
+    "ai_words": 88,
+    "share_of_words": 0.068,
+    "position": "middle"
+   },
+   "SP_pc71cc789ec_60_end": {
+    "label": "Human",
+    "ai_share": 0.06,
+    "ai_words": 88,
+    "share_of_words": 0.068,
+    "position": "end"
+   },
+   "SP_pc71cc789ec_120_start": {
+    "label": "Human",
+    "ai_share": 0.09,
+    "ai_words": 126,
+    "share_of_words": 0.095,
+    "position": "start"
+   },
+   "SP_pc71cc789ec_120_middle": {
+    "label": "Human",
+    "ai_share": 0.09,
+    "ai_words": 126,
+    "share_of_words": 0.095,
+    "position": "middle"
+   },
+   "SP_pc71cc789ec_120_end": {
+    "label": "Human",
+    "ai_share": 0.09,
+    "ai_words": 126,
+    "share_of_words": 0.095,
+    "position": "end"
+   },
+   "SP_pc71cc789ec_240_start": {
+    "label": "Mixed",
+    "ai_share": 0.17,
+    "ai_words": 248,
+    "share_of_words": 0.171,
+    "position": "start"
+   },
+   "SP_pc71cc789ec_240_middle": {
+    "label": "Mixed",
+    "ai_share": 0.17,
+    "ai_words": 248,
+    "share_of_words": 0.171,
+    "position": "middle"
+   },
+   "SP_pc71cc789ec_240_end": {
+    "label": "Mixed",
+    "ai_share": 0.17,
+    "ai_words": 248,
+    "share_of_words": 0.171,
+    "position": "end"
+   }
+  }
  }
 }
