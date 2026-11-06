@@ -23,3 +23,9 @@ models/
 /results/b3[2-9]_*.jsonl
 /results/b3[2-9]_raw*/
 /results/b3[2-9]_*.log
+
+# Machine and account details for the next session (2026-11-06)
+/docs/private/
+# Generated texts from B16 and B17 (B17 holds rewrites of Henry's post); kept local (2026-11-06)
+/results/b16_*.jsonl
+/results/b17_*.jsonl

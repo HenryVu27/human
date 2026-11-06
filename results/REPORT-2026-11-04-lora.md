@@ -1261,7 +1261,8 @@ Sections 37 to 39 answer the questions it asked.
 4. **The trade-off behind all of it.**
    - Every route that reads Human keeps less of the content. Condensing (B14) keeps about 40% of the length, the
      notes-first writer at full length 28%, the judge's unconstrained picks about 60%.
-   - The rewriter keeps 71% of the length with 95% of claims supported, and reads 29 to 38% flagged.
+   - B36's rewriter keeps 71% of the length with 96% of claims supported, and its whole posts read 0.38 flagged.
+     Even the best of 4 tries per section, under the content rules, leaves sections at 0.21 (B38).
    - How much a text copies from the AI draft is the best single predictor of Pangram's share (Spearman 0.70 across
      B38's tries).
    - This is B28's and B30's finding at length: the more of the content and wording the AI chose, the more Pangram
@@ -1283,7 +1284,7 @@ Sections 37 to 39 answer the questions it asked.
   free volume storage, so they cost nothing while kept.
 - **The next bet, not funded:** gate 2b, a long-context rewriter trained on many writers with a copying penalty (about
   $40 to $55). Its case rests on the transfer gap in point 2, not on length. Long context alone would close about 0.09
-  of the gap (B36 red team).
+  of the gap (B37 red team).
 
 **Spend.**
 - **Pangram:** 2,632 credits for the program (1,715, 555 and 362) of its 6,000 budget. The dashboard is at 8,717.

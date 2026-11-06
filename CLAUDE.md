@@ -1,5 +1,7 @@
 # Humanizer
 
+**Attempt 1 is closed (2026-11-06). Start from `docs/attempt-1-closeout.md`: findings, dead ends, open questions and how to set up the Mac, the PC, Modal and Pangram.**
+
 Research project: turn any AI draft into prose that Pangram 4.x and blind expert readers judge human-written, editing like a human editor and inventing nothing. Spec: `docs/specs/2026-11-04-humanizer-design.md`. Plan: `docs/plans/2026-11-04-humanizer-phase1.md`. Index of every experiment and search: `results/LABNOTEBOOK.md`. Latest status: `results/REPORT-2026-11-04-lora.md` (the overnight report `REPORT-2026-11-05.md` is misdated; it came first).
 
 ## Rules
@@ -17,7 +19,7 @@ Research project: turn any AI draft into prose that Pangram 4.x and blind expert
 
 ## Commands
 
-- `uv run pytest -q` runs the tests.
+- `.venv/bin/python -m pytest -q` runs the tests (`uv run pytest` fails: the console script is missing from `.venv/bin`).
 - `uv run python -m humanizer.data.corpus --n 900` builds `data/human.jsonl`.
 - `uv run python -m humanizer.data.mirror [--only claude|mlx]` builds mirrors and draft splits.
 - `uv run python -m humanizer.detect.train --name detector-v1` trains the local detector.

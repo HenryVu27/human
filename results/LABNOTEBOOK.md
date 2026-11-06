@@ -135,7 +135,18 @@ One index of every experiment and every literature search: what was asked, how i
 | B37 (Henry arm and splice probe, one blinded batch, 12:16) | 48 | 555 (dashboard 9,634 to 9,079; per-file charges sum to 569) |
 | B38 (calibration candidates and Henry's bandits post with and without math, one blinded batch, 13:33) | 57 | 362 (dashboard 9,079 to 8,717; per-file charges sum to 386) |
 
-## Current hypothesis
+## Reading at the close of attempt 1 (2026-11-06)
+
+Attempt 1 is closed; `docs/attempt-1-closeout.md` is the summary.
+- **What Pangram reads.** It flags who chose the content and how the prose is written, and a document's AI share is
+  the share of its words flagged (Human under about 10%; B37).
+- **What reads Human.** Short outputs whose content is human-sourced, written by a local base-model writer or
+  rewriter: B14, B26, B28 L, B30 T100.
+- **What does not.** No route yet keeps a full AI draft's content and reads Human at full length on unseen writers
+  (B36 to B38).
+- The early hypothesis below is kept as it was written.
+
+## Early hypothesis (2026-11-05)
 
 Pangram 4 labels an instruct model's content plan for a topic as AI, because that is how it builds its training labels (synthetic mirrors). Its training data contains no base-model text and no LLM output shorter than its input. A full humanizer must therefore replace the AI draft's plan, using one of three sources:
 
