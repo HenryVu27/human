@@ -1,0 +1,47 @@
+{
+ "checks": {
+  "V": {
+   "texts": 13,
+   "words": 670.9230769230769,
+   "length_ratio": 0.8243014735671508,
+   "claim_support": 0.9179554035648329,
+   "quality_vs_essay": 0.0,
+   "copied_from_essay": 0.0723047504116381,
+   "essay_beyond_prompt": 0.0222936279145703,
+   "first_person": 1.8200339324669403,
+   "sentence_sd": 15.208915226740041
+  },
+  "H": {
+   "texts": 13,
+   "words": 814.1538461538462,
+   "first_person": 1.7486854962452898,
+   "sentence_sd": 22.156635281597357
+  },
+  "D": {
+   "texts": 13,
+   "words": 803.1538461538462,
+   "first_person": 1.8575029037839113,
+   "sentence_sd": 10.402814926676053
+  }
+ },
+ "pangram_summary": {
+  "AI": 0,
+  "Mixed": 2,
+  "Human": 11
+ },
+ "pangram": {
+  "V_e00279af1": "Human",
+  "V_e015297cc": "Human",
+  "V_e00c5dbe3": "Human",
+  "V_e00afe510": "Human",
+  "V_e0024944a": "Human",
+  "V_e012341fb": "Mixed",
+  "V_e01b9acdb": "Human",
+  "V_e00a47ad2": "Human",
+  "V_e1574e17c": "Human",
+  "V_e021dc050": "Human",
+  "V_e075ab572": "Human",
+  "V_e1aac9b0d": "Human",
+  "V_e2ee0c4c0": "Mixed"
+ }
+}
