@@ -6,7 +6,7 @@ this one), built as gen_mlx builds it: names and numbers from the allowed text a
 quotes if the allowed text has any. Writes gen_mlx's row format and skips ids already written, so a
 run can stop at --hours (one GPU-lock acquisition) and the next run resumes.
 
-Usage: python gen13b_guard.py --adapter out_essaypool/lora-13b-v1 --prompts p.jsonl --out g.jsonl --seed 0 [--hours 1.8]
+Usage: python gen13b_guard.py --adapter out_essaypool/lora-13b-v1 --prompts p.jsonl --out g.jsonl --seed 0 [--hours 1.8] [--stop-file f]
 """
 
 import argparse
@@ -29,6 +29,7 @@ def main():
     ap.add_argument("--seed", type=int, default=0)
     ap.add_argument("--common", default="common.json")
     ap.add_argument("--hours", type=float, default=1.8)
+    ap.add_argument("--stop-file", help="stop before the next prompt once this file exists")
     a = ap.parse_args()
     from peft import PeftModel
     from transformers import AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, LogitsProcessorList
@@ -46,6 +47,9 @@ def main():
     for r in rows:
         if time.time() - start > a.hours * 3600:
             print("HOURS_UP", flush=True)
+            return
+        if a.stop_file and os.path.exists(a.stop_file):
+            print("STOPPED", flush=True)
             return
         t0 = time.time()
         guard = Guard(tok, allowed_specifics(r["allowed_text"], r["prompt"]), common,

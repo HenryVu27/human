@@ -31,6 +31,10 @@ Fixed before any B28 text exists (2026-11-05 18:28):
   each machine, so no cell leans on one machine. Rows carry "machine": "pc" for the PC samples.
 - Amended 20:46, still before any L or R text is picked or read: Henry needed the PC back after 27 of the
   76 seed-0 samples. The other 49 seed-0 samples and all seed-1 samples are generated on the Mac.
+- Amended 22:41, before any seed-1 sample exists: Henry freed the PC. Seed 1 runs on both machines, the
+  Mac in prompt order (gen_mlx into b28_gen_s1.jsonl) and the PC in reverse order (gen13b_guard into
+  b28_gen_s1_pc.jsonl), and both stop once every prompt has a seed-1 sample. Where both wrote one, the
+  Mac's is kept. Nothing reads the samples before the merge.
 - Pangram on all 140 texts. Checks: length against T, claim support, copying from the essay (8-word
   runs), first person and sentence-length spread against the essay.
 The writer was fixed before B26's scan; no Pangram result chooses it.
