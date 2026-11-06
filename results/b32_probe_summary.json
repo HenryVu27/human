@@ -1,0 +1,50 @@
+{
+ "shards": [
+  {
+   "dump": "CC-MAIN-2021-31",
+   "file": 0,
+   "counts": {
+    "rows": 1034912,
+    "date": 1034912,
+    "lang": 817258,
+    "tokens": 49110
+   },
+   "rejects": {
+    "url": 36411,
+    "genre": 5177,
+    "dialogue": 591,
+    "words": 1613,
+    "spam": 324,
+    "listlike": 38
+   },
+   "kept": 4956
+  }
+ ],
+ "select": {
+  "in": 4956,
+  "after_url_dedup": 4956,
+  "after_minhash": 4956,
+  "after_site_cap": 4791,
+  "sites": 4458,
+  "prior_sites_forced_train": 22,
+  "prior_sites_known": 1498
+ },
+ "split_docs": {
+  "train": 3847,
+  "dev": 501,
+  "test": 443
+ },
+ "split_sites": {
+  "train": 3578,
+  "dev": 463,
+  "test": 417
+ },
+ "genre": {
+  "tech": 225,
+  "personal": 4566
+ },
+ "dump": {
+  "CC-MAIN-2021-31": 4791
+ },
+ "words_median": 1963
+}

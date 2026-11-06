@@ -1,0 +1,10 @@
+{"experiment": "B33",
+ "note": "Open-detector panel against the 1,193 unique Pangram-labelled texts and the B32 pilot sample. Run `uv run python experiments/b33_calibrate.py prep` first and `... analyze` after.",
+ "stages": [
+  {"name": "score calibration texts", "script": "experiments/modal/lf_detect.py::score",
+   "args": {"inp": "results/b33_calib_inputs.jsonl", "out": "results/b33_scores_calib.jsonl"},
+   "estimate": {"gpu": "L40S", "hours": 0.15, "cores": 4, "gib": 32}},
+  {"name": "score pilot corpus", "script": "experiments/modal/lf_detect.py::score",
+   "args": {"inp": "results/b33_corpus_inputs.jsonl", "out": "results/b33_scores_corpus.jsonl"},
+   "estimate": {"gpu": "L40S", "hours": 0.25, "cores": 4, "gib": 32}}
+ ]}

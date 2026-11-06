@@ -1,0 +1,1529 @@
+{
+ "description": "B33 calibration set: each Pangram verdict B1 to B31 joined to the exact scanned text. Numbers only; texts are in results/b33_calib.jsonl (local only).",
+ "built": "2026-11-06",
+ "rows": 1201,
+ "verdicts_found": 1201,
+ "skipped": 0,
+ "labels": {
+  "AI": 308,
+  "Human": 704,
+  "Mixed": 189
+ },
+ "origins": {
+  "base": 619,
+  "local_writer": 347,
+  "instruct": 165,
+  "edited_human": 7,
+  "human": 62,
+  "recited_human": 1
+ },
+ "confidence": {
+  "probable": 1,
+  "exact": 1200
+ },
+ "verification": {
+  "uploaded_file_identical": 1196,
+  "pangram_reported_word_count_and_cut_rule": 5
+ },
+ "words_rule": "words = len(text.split()); Pangram's own count follows [\\w']+ tokens",
+ "duplicate_texts": {
+  "groups": 8,
+  "rows_in_groups": 16,
+  "pairs": [
+   [
+    "B12:R:a0614",
+    "B13:C:a0614"
+   ],
+   [
+    "B13:C:a0612",
+    "B14:B:a0612"
+   ],
+   [
+    "B13:C:a0617",
+    "B14:B:a0617"
+   ],
+   [
+    "B13:C:a0621",
+    "B14:B:a0621"
+   ],
+   [
+    "B13:C:a0623",
+    "B14:B:a0623"
+   ],
+   [
+    "B13:C:a0624",
+    "B14:B:a0624"
+   ],
+   [
+    "B13:C:a0627",
+    "B14:B:a0627"
+   ],
+   [
+    "B13:C:a0629",
+    "B14:B:a0629"
+   ]
+  ]
+ },
+ "experiments": {
+  "B1": {
+   "rows_written": 4,
+   "verdicts_found": 4,
+   "labels": {
+    "Human": 3,
+    "Mixed": 0,
+    "AI": 1
+   },
+   "text_digest_sha256": "a5eebbde58cff61a94748a41f554deaf43893d64b2a68bd8da58d41f4c085aab",
+   "cells": {
+    "qwen": {
+     "verdicts_found": 1,
+     "rows_written": 1,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 1
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 385,
+     "ai_share_recorded": 1
+    },
+    "olmo": {
+     "verdicts_found": 3,
+     "rows_written": 3,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 3,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 363,
+     "ai_share_recorded": 3
+    }
+   }
+  },
+  "Probe13B": {
+   "rows_written": 1,
+   "verdicts_found": 1,
+   "labels": {
+    "Human": 0,
+    "Mixed": 0,
+    "AI": 1
+   },
+   "text_digest_sha256": "721a7919e05a3d9d4fb73e4fd372f45bce21010bad3315920ed7cdf85489e29f",
+   "cells": {
+    "lora13best2": {
+     "verdicts_found": 1,
+     "rows_written": 1,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 1
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 438,
+     "ai_share_recorded": 1
+    }
+   }
+  },
+  "B3": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 10,
+    "Mixed": 0,
+    "AI": 10
+   },
+   "text_digest_sha256": "ea8abcd9087a731d8ce3279ee3c36e8735df367a9cd917e0c47f164a9220303d",
+   "cells": {
+    "A": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 10
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 533.5,
+     "ai_share_recorded": 0
+    },
+    "B": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 10,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 631.2,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B4": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 10,
+    "Mixed": 1,
+    "AI": 9
+   },
+   "text_digest_sha256": "0325406682b1337f58d379d0aa3b2095a350f1ff37a52c734ee4adbaa7a52565",
+   "cells": {
+    "A": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 1,
+      "AI": 9
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 1125.5,
+     "ai_share_recorded": 0
+    },
+    "B": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 10,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 912.9,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B5": {
+   "rows_written": 40,
+   "verdicts_found": 40,
+   "labels": {
+    "Human": 18,
+    "Mixed": 9,
+    "AI": 13
+   },
+   "text_digest_sha256": "a06ab1aad3ec85ff73c45ad6f761520963f6b101ee75173fa1b7120dfba41c52",
+   "cells": {
+    "A": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 1,
+      "Mixed": 3,
+      "AI": 6
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 1315.7,
+     "ai_share_recorded": 0
+    },
+    "C": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 3,
+      "AI": 7
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 1229.2,
+     "ai_share_recorded": 0
+    },
+    "D": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 10,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 758.3,
+     "ai_share_recorded": 0
+    },
+    "E": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 7,
+      "Mixed": 3,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 821.5,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B6": {
+   "rows_written": 16,
+   "verdicts_found": 16,
+   "labels": {
+    "Human": 5,
+    "Mixed": 6,
+    "AI": 5
+   },
+   "text_digest_sha256": "ac2beea0904bb8c8c285a3ed7122b297a2f9831a2047ad3e96a2f142f54b7be8",
+   "cells": {
+    "F": {
+     "verdicts_found": 8,
+     "rows_written": 8,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 3,
+      "Mixed": 3,
+      "AI": 2
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 279.4,
+     "ai_share_recorded": 0
+    },
+    "G": {
+     "verdicts_found": 8,
+     "rows_written": 8,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 2,
+      "Mixed": 3,
+      "AI": 3
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 387.6,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B7": {
+   "rows_written": 30,
+   "verdicts_found": 30,
+   "labels": {
+    "Human": 14,
+    "Mixed": 13,
+    "AI": 3
+   },
+   "text_digest_sha256": "75c3b94775b5a4e6913db5e962ef1a824de2d544f047256cb980a2eb13da2dc3",
+   "cells": {
+    "H": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 5,
+      "Mixed": 4,
+      "AI": 1
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 1192.7,
+     "ai_share_recorded": 0
+    },
+    "P": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 6,
+      "Mixed": 3,
+      "AI": 1
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 1307.6,
+     "ai_share_recorded": 0
+    },
+    "Q": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 3,
+      "Mixed": 6,
+      "AI": 1
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 1381.5,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B8": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 5,
+    "Mixed": 10,
+    "AI": 5
+   },
+   "text_digest_sha256": "c7bf90234ada3a0fbc43ea2063c77942a7d7615306d61645f5adba2d3895c9c3",
+   "cells": {
+    "M": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 5,
+      "Mixed": 10,
+      "AI": 5
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 452.2,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B9": {
+   "rows_written": 40,
+   "verdicts_found": 40,
+   "labels": {
+    "Human": 18,
+    "Mixed": 14,
+    "AI": 8
+   },
+   "text_digest_sha256": "1cdaf221059c189f038eebb3648349a37cac80eac014153a9fe7b1a83cda38f9",
+   "cells": {
+    "S0": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 3,
+      "AI": 7
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 752,
+     "ai_share_recorded": 0
+    },
+    "S1": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 1,
+      "Mixed": 8,
+      "AI": 1
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 821.1,
+     "ai_share_recorded": 0
+    },
+    "S2": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 7,
+      "Mixed": 3,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 687.1,
+     "ai_share_recorded": 0
+    },
+    "S3": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 10,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 824.3,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B10": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 0,
+    "Mixed": 0,
+    "AI": 20
+   },
+   "text_digest_sha256": "56ee8bc9be705c39e3968770fc7bd5e70730b89dc830f3fc98860466f25be8e5",
+   "cells": {
+    "K1": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 10
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 467.7,
+     "ai_share_recorded": 0
+    },
+    "K2": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 10
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 877.8,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B11": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 11,
+    "Mixed": 5,
+    "AI": 4
+   },
+   "text_digest_sha256": "8c0cb152372525081929e2c8a399ac2af6da5646d5145f4c825c295e409386e4",
+   "cells": {
+    "P": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 7,
+      "Mixed": 1,
+      "AI": 2
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 418.8,
+     "ai_share_recorded": 0
+    },
+    "Q": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 4,
+      "Mixed": 4,
+      "AI": 2
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 565,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B12": {
+   "rows_written": 40,
+   "verdicts_found": 40,
+   "labels": {
+    "Human": 12,
+    "Mixed": 4,
+    "AI": 24
+   },
+   "text_digest_sha256": "848363956014d63c5f3197c07c5d7085418534307937f5718144c1e58ba7c0ff",
+   "cells": {
+    "R": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 12,
+      "Mixed": 4,
+      "AI": 4
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 393.4,
+     "ai_share_recorded": 0
+    },
+    "K": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 20
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 641.5,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B13": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 12,
+    "Mixed": 5,
+    "AI": 3
+   },
+   "text_digest_sha256": "62324ffc6eb089d2ebd1c582c5415699d2592336f767874177d483d6efd357d0",
+   "cells": {
+    "C": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 12,
+      "Mixed": 5,
+      "AI": 3
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 308.8,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B14": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 13,
+    "Mixed": 7,
+    "AI": 0
+   },
+   "text_digest_sha256": "2c869ce0ba991ca6010a035ad9e958b7bfbaf09242244575af4e60a588fb830b",
+   "cells": {
+    "B": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 13,
+      "Mixed": 7,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 408.4,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B15": {
+   "rows_written": 14,
+   "verdicts_found": 14,
+   "labels": {
+    "Human": 4,
+    "Mixed": 4,
+    "AI": 6
+   },
+   "text_digest_sha256": "da7fe654059c10ccfc7c2f0b72d6798f494a494eca7c581879e84bb58d3cdea3",
+   "cells": {
+    "O": {
+     "verdicts_found": 7,
+     "rows_written": 7,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 3,
+      "AI": 4
+     },
+     "origin": [
+      "edited_human"
+     ],
+     "mean_words": 640.1,
+     "ai_share_recorded": 0
+    },
+    "B": {
+     "verdicts_found": 7,
+     "rows_written": 7,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 4,
+      "Mixed": 1,
+      "AI": 2
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 214,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B16": {
+   "rows_written": 20,
+   "verdicts_found": 20,
+   "labels": {
+    "Human": 14,
+    "Mixed": 4,
+    "AI": 2
+   },
+   "text_digest_sha256": "3d73b3d6ab52833ea718a0b1cb35d5224f30e47da46663a8cd8766791a7f51fe",
+   "cells": {
+    "X": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 14,
+      "Mixed": 4,
+      "AI": 2
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 394.4,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B17": {
+   "rows_written": 7,
+   "verdicts_found": 7,
+   "labels": {
+    "Human": 3,
+    "Mixed": 1,
+    "AI": 3
+   },
+   "text_digest_sha256": "bc9702e537c029294ef885c1e20ef9d09299b50bf2dd0e6bdff5f781aba8b365",
+   "cells": {
+    "T": {
+     "verdicts_found": 7,
+     "rows_written": 7,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 3,
+      "Mixed": 1,
+      "AI": 3
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 265.9,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B18": {
+   "rows_written": 6,
+   "verdicts_found": 6,
+   "labels": {
+    "Human": 4,
+    "Mixed": 2,
+    "AI": 0
+   },
+   "text_digest_sha256": "b062ab12a9642de11895bda4d5d0ccc1d5c16b4d38765652979700c8d7c0576b",
+   "cells": {
+    "W": {
+     "verdicts_found": 6,
+     "rows_written": 6,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 4,
+      "Mixed": 2,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 346.7,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B20": {
+   "rows_written": 4,
+   "verdicts_found": 4,
+   "labels": {
+    "Human": 0,
+    "Mixed": 4,
+    "AI": 0
+   },
+   "text_digest_sha256": "044e93682aa069d2462c342a7561113d933e37d7a37b855e74d2447bfd6ecda0",
+   "cells": {
+    "S": {
+     "verdicts_found": 4,
+     "rows_written": 4,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 4,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 486.2,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B24": {
+   "rows_written": 10,
+   "verdicts_found": 10,
+   "labels": {
+    "Human": 10,
+    "Mixed": 0,
+    "AI": 0
+   },
+   "text_digest_sha256": "ecf89e6ca50429acc6c39903f397b1f33a5d90c76efeb3da5e50daa00f0b8338",
+   "cells": {
+    "R": {
+     "verdicts_found": 10,
+     "rows_written": 10,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 10,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 706.8,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B26": {
+   "rows_written": 26,
+   "verdicts_found": 26,
+   "labels": {
+    "Human": 17,
+    "Mixed": 9,
+    "AI": 0
+   },
+   "text_digest_sha256": "80526bd7d34fa3eda346b01cadeecd7b99c43528b05d22a9eb19b4391ef3e9b5",
+   "cells": {
+    "V": {
+     "verdicts_found": 13,
+     "rows_written": 13,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 11,
+      "Mixed": 2,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 670.9,
+     "ai_share_recorded": 0
+    },
+    "M": {
+     "verdicts_found": 13,
+     "rows_written": 13,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 6,
+      "Mixed": 7,
+      "AI": 0
+     },
+     "origin": [
+      "local_writer"
+     ],
+     "mean_words": 494.8,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B25": {
+   "rows_written": 26,
+   "verdicts_found": 26,
+   "labels": {
+    "Human": 21,
+    "Mixed": 5,
+    "AI": 0
+   },
+   "text_digest_sha256": "e7343a5377fd6067579af60baadc1333d08e658db97a83ffce620bdb23939fbf",
+   "cells": {
+    "H": {
+     "verdicts_found": 13,
+     "rows_written": 13,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 13,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "human"
+     ],
+     "mean_words": 814.2,
+     "ai_share_recorded": 0
+    },
+    "D": {
+     "verdicts_found": 13,
+     "rows_written": 13,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 8,
+      "Mixed": 5,
+      "AI": 0
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 796.6,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B27": {
+   "rows_written": 13,
+   "verdicts_found": 13,
+   "labels": {
+    "Human": 1,
+    "Mixed": 11,
+    "AI": 1
+   },
+   "text_digest_sha256": "ebb8fc49e9dc1a8f256c0398f2007a62e8ffec8defe8d79aba6f6a1851b70226",
+   "cells": {
+    "W": {
+     "verdicts_found": 13,
+     "rows_written": 13,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 1,
+      "Mixed": 11,
+      "AI": 1
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 777.1,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B28": {
+   "rows_written": 76,
+   "verdicts_found": 76,
+   "labels": {
+    "Human": 20,
+    "Mixed": 25,
+    "AI": 31
+   },
+   "text_digest_sha256": "19bed5c294ed753fe6dae16f1a3680afbeb624e4928ab24494d6578312ffb989",
+   "cells": {
+    "H": {
+     "verdicts_found": 19,
+     "rows_written": 19,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 19,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "human"
+     ],
+     "mean_words": 812.3,
+     "ai_share_recorded": 0
+    },
+    "S100": {
+     "verdicts_found": 19,
+     "rows_written": 19,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 1,
+      "Mixed": 18,
+      "AI": 0
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 787.3,
+     "ai_share_recorded": 0
+    },
+    "S25": {
+     "verdicts_found": 19,
+     "rows_written": 19,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 1,
+      "AI": 18
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 857.1,
+     "ai_share_recorded": 0
+    },
+    "S50": {
+     "verdicts_found": 19,
+     "rows_written": 19,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 6,
+      "AI": 13
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 798.3,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B29": {
+   "rows_written": 13,
+   "verdicts_found": 13,
+   "labels": {
+    "Human": 4,
+    "Mixed": 8,
+    "AI": 1
+   },
+   "text_digest_sha256": "3cc4783a2fd5703e3b1ce27d87738feb7a2e05842a027f3d6c659a75ab746c31",
+   "cells": {
+    "Y": {
+     "verdicts_found": 13,
+     "rows_written": 13,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 4,
+      "Mixed": 8,
+      "AI": 1
+     },
+     "origin": [
+      "instruct",
+      "recited_human"
+     ],
+     "mean_words": 765.4,
+     "ai_share_recorded": 0
+    }
+   }
+  },
+  "B31": {
+   "rows_written": 675,
+   "verdicts_found": 675,
+   "labels": {
+    "Human": 475,
+    "Mixed": 42,
+    "AI": 158
+   },
+   "text_digest_sha256": "ec286ddb806611aeb1be284d9f4101c2e3875ead748bf31289874568f9ef9e1f",
+   "cells": {
+    "olmo2-7b-s1": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 24,
+      "Mixed": 0,
+      "AI": 6
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 235.5,
+     "ai_share_recorded": 30
+    },
+    "olmo2-13b": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 25,
+      "Mixed": 1,
+      "AI": 4
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 234.1,
+     "ai_share_recorded": 30
+    },
+    "phi-2": {
+     "verdicts_found": 27,
+     "rows_written": 27,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 17,
+      "Mixed": 3,
+      "AI": 7
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 235.9,
+     "ai_share_recorded": 27
+    },
+    "mistral-small-24b": {
+     "verdicts_found": 28,
+     "rows_written": 28,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 20,
+      "Mixed": 3,
+      "AI": 5
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 231.7,
+     "ai_share_recorded": 28
+    },
+    "olmo3-7b-r5": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 19,
+      "Mixed": 3,
+      "AI": 8
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 237.8,
+     "ai_share_recorded": 30
+    },
+    "olmo3-7b-mct": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 21,
+      "Mixed": 2,
+      "AI": 7
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 240.6,
+     "ai_share_recorded": 30
+    },
+    "qwen3.5-9b-q4": {
+     "verdicts_found": 20,
+     "rows_written": 20,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 16,
+      "Mixed": 1,
+      "AI": 3
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 239.9,
+     "ai_share_recorded": 20
+    },
+    "qwen2.5-7b": {
+     "verdicts_found": 27,
+     "rows_written": 27,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 21,
+      "Mixed": 1,
+      "AI": 5
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 229.0,
+     "ai_share_recorded": 27
+    },
+    "qwen3-8b": {
+     "verdicts_found": 29,
+     "rows_written": 29,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 19,
+      "Mixed": 3,
+      "AI": 7
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 237.8,
+     "ai_share_recorded": 29
+    },
+    "qwen3.5-9b-instruct": {
+     "verdicts_found": 15,
+     "rows_written": 15,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 15
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 237.9,
+     "ai_share_recorded": 15
+    },
+    "olmo3-7b-s2": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 20,
+      "Mixed": 0,
+      "AI": 10
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 238.5,
+     "ai_share_recorded": 30
+    },
+    "olmo3-7b-s1": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 19,
+      "Mixed": 4,
+      "AI": 7
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 228.2,
+     "ai_share_recorded": 30
+    },
+    "nemotron-9b": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 21,
+      "Mixed": 4,
+      "AI": 5
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 232.5,
+     "ai_share_recorded": 30
+    },
+    "qwen3.5-9b": {
+     "verdicts_found": 29,
+     "rows_written": 29,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 19,
+      "Mixed": 3,
+      "AI": 7
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 241.8,
+     "ai_share_recorded": 29
+    },
+    "olmo3-7b-2t": {
+     "verdicts_found": 29,
+     "rows_written": 29,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 20,
+      "Mixed": 2,
+      "AI": 7
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 232.7,
+     "ai_share_recorded": 29
+    },
+    "olmo2-13b-q4": {
+     "verdicts_found": 17,
+     "rows_written": 17,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 16,
+      "Mixed": 0,
+      "AI": 1
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 232,
+     "ai_share_recorded": 17
+    },
+    "gemma3-12b": {
+     "verdicts_found": 25,
+     "rows_written": 25,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 22,
+      "Mixed": 1,
+      "AI": 2
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 235.7,
+     "ai_share_recorded": 25
+    },
+    "human": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 30,
+      "Mixed": 0,
+      "AI": 0
+     },
+     "origin": [
+      "human"
+     ],
+     "mean_words": 237.2,
+     "ai_share_recorded": 30
+    },
+    "pythia-6.9b": {
+     "verdicts_found": 29,
+     "rows_written": 29,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 21,
+      "Mixed": 2,
+      "AI": 6
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 236.7,
+     "ai_share_recorded": 29
+    },
+    "pythia-2.8b": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 23,
+      "Mixed": 2,
+      "AI": 5
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 237.3,
+     "ai_share_recorded": 30
+    },
+    "olmo3-7b-genqa": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 24,
+      "Mixed": 2,
+      "AI": 4
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 236.5,
+     "ai_share_recorded": 30
+    },
+    "olmo3-7b": {
+     "verdicts_found": 30,
+     "rows_written": 30,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 17,
+      "Mixed": 3,
+      "AI": 10
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 235.7,
+     "ai_share_recorded": 30
+    },
+    "olmo2-13b-instruct": {
+     "verdicts_found": 15,
+     "rows_written": 15,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 0,
+      "Mixed": 0,
+      "AI": 15
+     },
+     "origin": [
+      "instruct"
+     ],
+     "mean_words": 240.5,
+     "ai_share_recorded": 15
+    },
+    "olmo2-7b": {
+     "verdicts_found": 29,
+     "rows_written": 29,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 21,
+      "Mixed": 2,
+      "AI": 6
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 232.3,
+     "ai_share_recorded": 29
+    },
+    "llama3.1-8b": {
+     "verdicts_found": 26,
+     "rows_written": 26,
+     "rows_skipped": 0,
+     "skip_reasons": {},
+     "labels": {
+      "Human": 20,
+      "Mixed": 0,
+      "AI": 6
+     },
+     "origin": [
+      "base"
+     ],
+     "mean_words": 237.9,
+     "ai_share_recorded": 26
+    }
+   }
+  }
+ },
+ "skipped_list": [],
+ "checks": {
+  "report_cells_compared": 70,
+  "report_cell_mismatches": 0,
+  "own_summary_cells_compared": 67,
+  "own_summary_mismatches": 0,
+  "spot_check_random15_seed0_ok": 15,
+  "spot_check_random15_seed0_n": 15,
+  "spot_check_one_per_experiment_ok": 26,
+  "spot_check_one_per_experiment_n": 26
+ }
+}

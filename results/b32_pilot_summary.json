@@ -1,0 +1,142 @@
+{
+ "fineweb_revision": "9bb295ddab0e05d785b879661af7260fed5140fc",
+ "shards": [
+  {
+   "dump": "CC-MAIN-2022-33",
+   "file": 0,
+   "counts": {
+    "rows": 997869,
+    "date": 997869,
+    "lang": 780567,
+    "tokens": 51939
+   },
+   "rejects": {
+    "url": 41580,
+    "words": 1391,
+    "genre": 4568,
+    "spam": 413,
+    "dialogue": 412,
+    "listlike": 35
+   },
+   "kept": 3540
+  },
+  {
+   "dump": "CC-MAIN-2020-40",
+   "file": 0,
+   "counts": {
+    "rows": 1063922,
+    "date": 1063922,
+    "lang": 830818,
+    "tokens": 48210
+   },
+   "rejects": {
+    "genre": 4848,
+    "url": 35748,
+    "spam": 159,
+    "dialogue": 580,
+    "words": 1582,
+    "listlike": 39
+   },
+   "kept": 5254
+  },
+  {
+   "dump": "CC-MAIN-2019-35",
+   "file": 0,
+   "counts": {
+    "rows": 1057848,
+    "date": 1057848,
+    "lang": 836209,
+    "tokens": 46203
+   },
+   "rejects": {
+    "words": 1584,
+    "url": 34085,
+    "genre": 4611,
+    "spam": 121,
+    "dialogue": 538,
+    "listlike": 39
+   },
+   "kept": 5225
+  },
+  {
+   "dump": "CC-MAIN-2021-31",
+   "file": 0,
+   "counts": {
+    "rows": 1034912,
+    "date": 1034912,
+    "lang": 817258,
+    "tokens": 49110
+   },
+   "rejects": {
+    "url": 36411,
+    "genre": 5177,
+    "dialogue": 591,
+    "words": 1613,
+    "spam": 324,
+    "listlike": 38
+   },
+   "kept": 4956
+  }
+ ],
+ "select": {
+  "in": 18975,
+  "after_url_dedup": 18591,
+  "after_minhash": 18575,
+  "after_site_cap": 15132,
+  "sites": 15132,
+  "prior_sites_forced_train": 46,
+  "prior_sites_known": 1498
+ },
+ "corpus_on_volume": {
+  "docs": 15132,
+  "sites": 15132,
+  "split_docs": {
+   "test": 1505,
+   "train": 12135,
+   "dev": 1492
+  },
+  "split_sites": {
+   "train": 12135,
+   "dev": 1492,
+   "test": 1505
+  },
+  "genre": {
+   "personal": 14449,
+   "tech": 683
+  },
+  "dump": {
+   "CC-MAIN-2019-35": 4327,
+   "CC-MAIN-2021-31": 3951,
+   "CC-MAIN-2020-40": 4162,
+   "CC-MAIN-2022-33": 2692
+  },
+  "words_median": 1953,
+  "url_dated": 11355
+ },
+ "pilot_sample": {
+  "docs": 400,
+  "sites": 400,
+  "split_docs": {
+   "train": 333,
+   "test": 39,
+   "dev": 28
+  },
+  "split_sites": {
+   "train": 333,
+   "dev": 28,
+   "test": 39
+  },
+  "genre": {
+   "tech": 200,
+   "personal": 200
+  },
+  "dump": {
+   "CC-MAIN-2022-33": 97,
+   "CC-MAIN-2021-31": 111,
+   "CC-MAIN-2019-35": 107,
+   "CC-MAIN-2020-40": 85
+  },
+  "words_median": 1876,
+  "url_dated": 294
+ }
+}

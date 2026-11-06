@@ -1,0 +1,433 @@
+{
+ "model": "Power and credit analysis for the long-form program's final test (B39), on documents, paired designs.\n\nLong-form program design doc (docs/specs/2026-11-06-longform-program.md), section 7. The unit of analysis is the\ntest document: every condition is generated from the same document, so contrasts are paired.\n\nModel. Each document d and condition c gets a Pangram AI share a = expit(b_c + u_d + e_dc), with u_d ~ N(0, s_u^2)\nshared by all conditions of a document (B31: the document matters more than the model) and e_dc ~ N(0, s_e^2),\ns_u^2 + s_e^2 = S^2 (S = 2 logit units; rho = s_u^2 / S^2 is the within-document correlation). The label follows\nPangram's rule with AI-Assisted characters ignored: Human if a <= 0.10, AI if a >= 0.80, Mixed otherwise. b_c is set\nso that P(Human) equals the scenario's rate for condition c.",
+ "sims": 2000,
+ "alpha": 0.05,
+ "S_logit": 2.0,
+ "credits_per_full_scan": 20.4,
+ "words_basis": {
+  "n": 13439,
+  "median": 1882
+ },
+ "power": {
+  "A|pessimistic|rho=0.2|n=32": {
+   "label:CAI>D": 0.545,
+   "label:CAIN>CAI": 0.028,
+   "label:CN>CAIN": 0.044,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.141,
+   "share:CN>CAIN": 0.112
+  },
+  "A|pessimistic|rho=0.2|n=40": {
+   "label:CAI>D": 0.739,
+   "label:CAIN>CAI": 0.06,
+   "label:CN>CAIN": 0.054,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.193,
+   "share:CN>CAIN": 0.146
+  },
+  "A|pessimistic|rho=0.2|n=48": {
+   "label:CAI>D": 0.844,
+   "label:CAIN>CAI": 0.08,
+   "label:CN>CAIN": 0.077,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.233,
+   "share:CN>CAIN": 0.165
+  },
+  "A|pessimistic|rho=0.2|n=64": {
+   "label:CAI>D": 0.961,
+   "label:CAIN>CAI": 0.131,
+   "label:CN>CAIN": 0.119,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.29,
+   "share:CN>CAIN": 0.239
+  },
+  "A|pessimistic|rho=0.5|n=32": {
+   "label:CAI>D": 0.572,
+   "label:CAIN>CAI": 0.05,
+   "label:CN>CAIN": 0.045,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.225,
+   "share:CN>CAIN": 0.164
+  },
+  "A|pessimistic|rho=0.5|n=40": {
+   "label:CAI>D": 0.789,
+   "label:CAIN>CAI": 0.077,
+   "label:CN>CAIN": 0.079,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.29,
+   "share:CN>CAIN": 0.225
+  },
+  "A|pessimistic|rho=0.5|n=48": {
+   "label:CAI>D": 0.885,
+   "label:CAIN>CAI": 0.104,
+   "label:CN>CAIN": 0.095,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.337,
+   "share:CN>CAIN": 0.29
+  },
+  "A|pessimistic|rho=0.5|n=64": {
+   "label:CAI>D": 0.98,
+   "label:CAIN>CAI": 0.142,
+   "label:CN>CAIN": 0.139,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.459,
+   "share:CN>CAIN": 0.379
+  },
+  "A|central|rho=0.2|n=32": {
+   "label:CAI>D": 0.985,
+   "label:CAIN>CAI": 0.057,
+   "label:CN>CAIN": 0.026,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.119,
+   "share:CN>CAIN": 0.048
+  },
+  "A|central|rho=0.2|n=40": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.051,
+   "label:CN>CAIN": 0.028,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.131,
+   "share:CN>CAIN": 0.051
+  },
+  "A|central|rho=0.2|n=48": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.078,
+   "label:CN>CAIN": 0.028,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.159,
+   "share:CN>CAIN": 0.06
+  },
+  "A|central|rho=0.2|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.108,
+   "label:CN>CAIN": 0.043,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.194,
+   "share:CN>CAIN": 0.072
+  },
+  "A|central|rho=0.5|n=32": {
+   "label:CAI>D": 0.997,
+   "label:CAIN>CAI": 0.051,
+   "label:CN>CAIN": 0.023,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.164,
+   "share:CN>CAIN": 0.05
+  },
+  "A|central|rho=0.5|n=40": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.077,
+   "label:CN>CAIN": 0.029,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.204,
+   "share:CN>CAIN": 0.073
+  },
+  "A|central|rho=0.5|n=48": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.109,
+   "label:CN>CAIN": 0.032,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.231,
+   "share:CN>CAIN": 0.072
+  },
+  "A|central|rho=0.5|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.137,
+   "label:CN>CAIN": 0.051,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.31,
+   "share:CN>CAIN": 0.101
+  },
+  "A|optimistic|rho=0.2|n=32": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.055,
+   "label:CN>CAIN": 0.009,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.146,
+   "share:CN>CAIN": 0.03
+  },
+  "A|optimistic|rho=0.2|n=40": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.083,
+   "label:CN>CAIN": 0.017,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.184,
+   "share:CN>CAIN": 0.034
+  },
+  "A|optimistic|rho=0.2|n=48": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.108,
+   "label:CN>CAIN": 0.015,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.236,
+   "share:CN>CAIN": 0.027
+  },
+  "A|optimistic|rho=0.2|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.15,
+   "label:CN>CAIN": 0.018,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.299,
+   "share:CN>CAIN": 0.028
+  },
+  "A|optimistic|rho=0.5|n=32": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.067,
+   "label:CN>CAIN": 0.006,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.231,
+   "share:CN>CAIN": 0.036
+  },
+  "A|optimistic|rho=0.5|n=40": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.092,
+   "label:CN>CAIN": 0.018,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.28,
+   "share:CN>CAIN": 0.035
+  },
+  "A|optimistic|rho=0.5|n=48": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.116,
+   "label:CN>CAIN": 0.015,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.338,
+   "share:CN>CAIN": 0.04
+  },
+  "A|optimistic|rho=0.5|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.162,
+   "label:CN>CAIN": 0.015,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.452,
+   "share:CN>CAIN": 0.035
+  },
+  "A|set1_pessimistic|rho=0.2|n=32": {
+   "label:CAI>D": 0.114,
+   "label:CAIN>CAI": 0.103,
+   "label:CN>CAIN": 0.162,
+   "share:CAI>D": 0.969,
+   "share:CAIN>CAI": 0.486,
+   "share:CN>CAIN": 0.461
+  },
+  "A|set1_pessimistic|rho=0.2|n=40": {
+   "label:CAI>D": 0.221,
+   "label:CAIN>CAI": 0.155,
+   "label:CN>CAIN": 0.235,
+   "share:CAI>D": 0.993,
+   "share:CAIN>CAI": 0.584,
+   "share:CN>CAIN": 0.591
+  },
+  "A|set1_pessimistic|rho=0.2|n=48": {
+   "label:CAI>D": 0.346,
+   "label:CAIN>CAI": 0.233,
+   "label:CN>CAIN": 0.309,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.697,
+   "share:CN>CAIN": 0.68
+  },
+  "A|set1_pessimistic|rho=0.2|n=64": {
+   "label:CAI>D": 0.582,
+   "label:CAIN>CAI": 0.374,
+   "label:CN>CAIN": 0.507,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.84,
+   "share:CN>CAIN": 0.852
+  },
+  "A|set1_pessimistic|rho=0.5|n=32": {
+   "label:CAI>D": 0.122,
+   "label:CAIN>CAI": 0.133,
+   "label:CN>CAIN": 0.221,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.697,
+   "share:CN>CAIN": 0.69
+  },
+  "A|set1_pessimistic|rho=0.5|n=40": {
+   "label:CAI>D": 0.244,
+   "label:CAIN>CAI": 0.218,
+   "label:CN>CAIN": 0.341,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.82,
+   "share:CN>CAIN": 0.81
+  },
+  "A|set1_pessimistic|rho=0.5|n=48": {
+   "label:CAI>D": 0.405,
+   "label:CAIN>CAI": 0.308,
+   "label:CN>CAIN": 0.422,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.876,
+   "share:CN>CAIN": 0.881
+  },
+  "A|set1_pessimistic|rho=0.5|n=64": {
+   "label:CAI>D": 0.675,
+   "label:CAIN>CAI": 0.516,
+   "label:CN>CAIN": 0.645,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.965,
+   "share:CN>CAIN": 0.96
+  },
+  "A|set1_central|rho=0.2|n=32": {
+   "label:CAI>D": 0.653,
+   "label:CAIN>CAI": 0.2,
+   "label:CN>CAIN": 0.103,
+   "share:CAI>D": 0.998,
+   "share:CAIN>CAI": 0.468,
+   "share:CN>CAIN": 0.244
+  },
+  "A|set1_central|rho=0.2|n=40": {
+   "label:CAI>D": 0.85,
+   "label:CAIN>CAI": 0.284,
+   "label:CN>CAIN": 0.146,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.566,
+   "share:CN>CAIN": 0.336
+  },
+  "A|set1_central|rho=0.2|n=48": {
+   "label:CAI>D": 0.921,
+   "label:CAIN>CAI": 0.372,
+   "label:CN>CAIN": 0.181,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.691,
+   "share:CN>CAIN": 0.389
+  },
+  "A|set1_central|rho=0.2|n=64": {
+   "label:CAI>D": 0.988,
+   "label:CAIN>CAI": 0.548,
+   "label:CN>CAIN": 0.322,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.823,
+   "share:CN>CAIN": 0.543
+  },
+  "A|set1_central|rho=0.5|n=32": {
+   "label:CAI>D": 0.72,
+   "label:CAIN>CAI": 0.258,
+   "label:CN>CAIN": 0.126,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.66,
+   "share:CN>CAIN": 0.4
+  },
+  "A|set1_central|rho=0.5|n=40": {
+   "label:CAI>D": 0.889,
+   "label:CAIN>CAI": 0.379,
+   "label:CN>CAIN": 0.204,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.786,
+   "share:CN>CAIN": 0.537
+  },
+  "A|set1_central|rho=0.5|n=48": {
+   "label:CAI>D": 0.966,
+   "label:CAIN>CAI": 0.482,
+   "label:CN>CAIN": 0.27,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.874,
+   "share:CN>CAIN": 0.612
+  },
+  "A|set1_central|rho=0.5|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.683,
+   "label:CN>CAIN": 0.411,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.96,
+   "share:CN>CAIN": 0.75
+  },
+  "A|set1_optimistic|rho=0.2|n=32": {
+   "label:CAI>D": 0.934,
+   "label:CAIN>CAI": 0.206,
+   "label:CN>CAIN": 0.135,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.409,
+   "share:CN>CAIN": 0.333
+  },
+  "A|set1_optimistic|rho=0.2|n=40": {
+   "label:CAI>D": 0.988,
+   "label:CAIN>CAI": 0.278,
+   "label:CN>CAIN": 0.178,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.528,
+   "share:CN>CAIN": 0.431
+  },
+  "A|set1_optimistic|rho=0.2|n=48": {
+   "label:CAI>D": 0.998,
+   "label:CAIN>CAI": 0.367,
+   "label:CN>CAIN": 0.253,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.631,
+   "share:CN>CAIN": 0.545
+  },
+  "A|set1_optimistic|rho=0.2|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.533,
+   "label:CN>CAIN": 0.379,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.78,
+   "share:CN>CAIN": 0.681
+  },
+  "A|set1_optimistic|rho=0.5|n=32": {
+   "label:CAI>D": 0.971,
+   "label:CAIN>CAI": 0.267,
+   "label:CN>CAIN": 0.17,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.627,
+   "share:CN>CAIN": 0.501
+  },
+  "A|set1_optimistic|rho=0.5|n=40": {
+   "label:CAI>D": 0.997,
+   "label:CAIN>CAI": 0.385,
+   "label:CN>CAIN": 0.248,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.753,
+   "share:CN>CAIN": 0.636
+  },
+  "A|set1_optimistic|rho=0.5|n=48": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.477,
+   "label:CN>CAIN": 0.333,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.839,
+   "share:CN>CAIN": 0.752
+  },
+  "A|set1_optimistic|rho=0.5|n=64": {
+   "label:CAI>D": 1.0,
+   "label:CAIN>CAI": 0.658,
+   "label:CN>CAIN": 0.475,
+   "share:CAI>D": 1.0,
+   "share:CAIN>CAI": 0.946,
+   "share:CN>CAIN": 0.878
+  }
+ },
+ "precision": {
+  "32": {
+   "wilson_95_halfwidth_p0.5": 0.164,
+   "p0.3": 0.152
+  },
+  "40": {
+   "wilson_95_halfwidth_p0.5": 0.148,
+   "p0.3": 0.137
+  },
+  "48": {
+   "wilson_95_halfwidth_p0.5": 0.136,
+   "p0.3": 0.126
+  },
+  "64": {
+   "wilson_95_halfwidth_p0.5": 0.119,
+   "p0.3": 0.11
+  }
+ },
+ "credits": {
+  "32": {
+   "A_full_and_prefix": 2993,
+   "B_full_and_prefix": 2619
+  },
+  "40": {
+   "A_full_and_prefix": 3741,
+   "B_full_and_prefix": 3180
+  },
+  "48": {
+   "A_full_and_prefix": 4489,
+   "B_full_and_prefix": 3741
+  },
+  "64": {
+   "A_full_and_prefix": 5985,
+   "B_full_and_prefix": 4863
+  }
+ }
+}

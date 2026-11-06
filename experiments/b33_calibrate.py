@@ -95,11 +95,13 @@ def auroc(pos: np.ndarray, neg: np.ndarray) -> float | None:
 
 
 def spearman(x: np.ndarray, y: np.ndarray) -> float | None:
+    """Tie-aware (average ranks). Fixed 2026-11-06 03:14 CST after the outside judge found the first version broke
+    ties by file order (474 of the 680 AI shares are 0.0)."""
+    from scipy.stats import spearmanr
+
     if len(x) < 5:
         return None
-    rx = np.argsort(np.argsort(x)).astype(float)
-    ry = np.argsort(np.argsort(y)).astype(float)
-    return float(np.corrcoef(rx, ry)[0, 1])
+    return float(spearmanr(x, y).statistic)
 
 
 def kappa(a: np.ndarray, b: np.ndarray) -> float | None:
