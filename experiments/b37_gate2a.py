@@ -54,8 +54,14 @@ Pangram decision rule (at most 800 credits for gate 2a; dashboard 9,634 before)
   backslash commands) is stripped from originals and rewrites alike before scanning. Scanned the same day: every
   original section of 150 words or more, every rewritten section of 150 words or more, and both whole posts, original
   and rewritten. Analysis: sign test on sections (label order AI < Mixed < Human), whole-post labels and AI shares.
-- Splice probe, only if at least 150 credits remain: human posts with a Sonnet block of known size and position, to
-  measure how Pangram aggregates windows; its rules are added by amendment before it is built.
+- Splice probe, only if at least 280 credits remain after the Henry arm and any test-B scan (rules fixed by amendment
+  11:19 CST, before any splice text is built): bases are the first 2 of B34's 10 human posts in sha256("b37-splice:" + id)
+  order (both read Human with AI share 0.00 in full), cut to their first paragraphs reaching 1,200 words. An AI block is
+  taken from one of B36's Sonnet posts (the first in the same order), cut at sentence ends to 60, 120 and 240 words,
+  and inserted after the first paragraph (start), at the paragraph boundary nearest the middle (middle) or before the
+  last paragraph (end): 9 texts per base, plus each base alone, 20 texts in all, blinded with the Henry arm. Readout:
+  label and AI share against the inserted share of words; the smallest block that turns a Human base Mixed, by
+  position.
 - Prediction: C1 raises the per-window rate modestly (copying is one of two drivers) but not to Pangram's 0.8; L's rate
   is higher than C0's at the cost of length.
 
@@ -149,6 +155,9 @@ def _pick_c1(cands: list[dict], words_in: int) -> tuple[dict, str]:
 def pick():
     prm = {p["id"]: p for p in _load(RES / "b36_prompts.jsonl")} | {p["id"]: p for p in _load(PROMPTS_L)}
     gens = [g for f in GEN_C for g in _load(f)] + _load(GEN_L)
+    only = os.environ.get("B37_ONLY")  # e.g. "HR": assess one arm first (the Claude calls are cached for later runs)
+    if only:
+        gens = [g for g in gens if prm[g["id"]].get("arm") in only.split(",")]
     workers = int(os.environ.get("B37_WORKERS", "4"))
     with ThreadPoolExecutor(workers) as ex:
         assessed = list(ex.map(lambda g: _assess(g, prm[g["id"]]), gens))
@@ -161,6 +170,8 @@ def pick():
     texts, stats = [], {"C1_rule": {}, "L_rule": {}}
     for doc in inputs:
         parts = sorted((p for p in prm.values() if p.get("arm") == "C" and p["doc"] == doc), key=lambda p: p["part"])
+        if any(p["id"] not in by for p in parts):
+            continue
         chosen = []
         for p in parts:
             c, how = _pick_c1(by.get(p["id"], []), p["words"])
@@ -201,6 +212,8 @@ def pick():
     for post, path in HENRY_POSTS.items():
         secs = henry_sections(path)
         parts = sorted((p for p in prm.values() if p.get("arm") == "HR" and p["doc"] == post), key=lambda p: p["part"])
+        if any(p["id"] not in by for p in parts):
+            continue
         by_sec: dict[int, list] = {}
         for p in parts:
             c, how = _pick_c1(by.get(p["id"], []), p["words"])
@@ -231,7 +244,7 @@ def pick():
                       "copied_from_human": statistics.mean(r["copied_from_human"] for r in cr),
                       "max_copied_from_human": max(r["copied_from_human"] for r in cr)}
     hr = [r for r in texts if r["cell"] == "HR1_sec"]
-    summ["HR1"] = {"sections": len(hr), "form_ok": sum(r["form_ok"] for r in hr),
+    summ["HR1"] = {} if not hr else {"sections": len(hr), "form_ok": sum(r["form_ok"] for r in hr),
                    "claim_support": sum(r["claims_entailed"] for r in hr) / max(1, sum(r["claims_total"] for r in hr)),
                    "confidential_dropped": sum(r["confidential_dropped"] for r in hr),
                    "copied_from_original": statistics.mean(r["copied_from_original"] for r in hr) if hr else None}
