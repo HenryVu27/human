@@ -36,10 +36,12 @@ B24: texts written from extracted facts copy the source's wording through the fa
 base model (OLMo-2) was pretrained on web text that likely includes these essays, so it may recall
 them. N's verdicts are read next to both numbers.
 Credits: about 125 (H) + 125 (D) + 50 (P) + 65 (N), of about 415 left after B24.
-Recorded 18:10: D was scanned as plain text (markdown heading, emphasis and list marks removed, `plain`),
+Recorded 17:58: D was scanned as plain text (markdown heading, emphasis and list marks removed, `plain`),
 like the essays. H read 13 Human; D read 8 Human, 5 Mixed, 0 AI, so the stop rule above applies: P and N
 are not scanned. Their texts are still made, for the local checks and for B26. D copies 11 to 64% of
 its words from the essay in 8-word runs, mostly through the notes (`d_checks`).
+Amended 18:08: generation stopped after seed 0 to free the Mac for B26 on reworded notes (B27 showed
+the notes' wording carried D's verdicts). P and N are picked from seed 0 alone; they are not scanned.
 Amended 16:48, before any bench text exists: a P or N text under 150 words is not scanned (Pangram is
 unreliable below that) and counts as not Human; essays have few numbers and names, so P's
 specific-facts prompt may leave the writer little to keep.
@@ -153,11 +155,11 @@ def voice(text: str) -> dict:
             "sentence_sd": statistics.pstdev(lens) if len(lens) > 1 else 0.0}
 
 
-def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tuple = ("P", "N")):
+def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tuple = ("P", "N"), seeds: tuple = SEEDS):
     """Prune, drop repeats, clean and claim-check every sample; keep the one with the most supported claims."""
     bench_rows = {r["id"]: r for r in _bench()}
     prm = {p["id"]: p for p in map(json.loads, prompts.open())}
-    gens = [json.loads(line) for s in SEEDS for line in (ROOT / "results" / f"{prefix}_gen_s{s}.jsonl").open()]
+    gens = [json.loads(line) for s in seeds for line in (ROOT / "results" / f"{prefix}_gen_s{s}.jsonl").open()]
 
     def one(g):
         material = prm[g["id"]]["allowed_text"]
@@ -256,7 +258,7 @@ def record(pairs: list[str]):
 
 if __name__ == "__main__":
     cmd = sys.argv[1]
-    {"bench": bench, "prompts": prompts, "pick": pick, "d_checks": d_checks}.get(cmd, lambda: None)()
+    {"bench": bench, "prompts": prompts, "pick": lambda: pick(seeds=(0,)), "d_checks": d_checks}.get(cmd, lambda: None)()
     if cmd == "scan_files":
         scan_files(sys.argv[2])
     elif cmd == "record":

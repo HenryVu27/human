@@ -6,7 +6,7 @@ the posts copy 11 to 64%. The Human posts copy more (mean 37%) than the Mixed on
 the same two on FineWeb with the local writer: reworded human facts still read 7 of 10 Human. This
 repeats that test with Sonnet as the writer, on blog essays, which is how a blogger would use AI.
 
-Fixed before any B27 text exists (2026-11-05 18:15):
+Fixed before any B27 text exists (2026-11-05 17:58):
 - The 13 B25 test essays and their B25 notes.
 - Notes reworded with B5's REWORD prompt (humanizer.data.facts.REWORD: no run of three or more words
   from the original apart from names, numbers and quotes; same meaning; one for one), in chunks of 20.
