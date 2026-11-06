@@ -93,6 +93,13 @@ Amendment 2026-11-06 09:41 CST, after `select` and `inputs` and before any test-
   reserve posts that pass the same audit (step `replace`, inputs made exactly as above). Haiku's labels stay the
   selection rule for everything else; pa5fd792f87 (1,498 words of post plus a sidebar) is kept.
 
+Amendment 2026-11-06 10:54 CST, after the scan and before any verdict was unblinded or analysed (verdicts so far are
+transcribed by blinded file name only): the independent copying and faithfulness audit
+(results/research/longform-judge-b36-copying.md) found two C texts carrying content the claim check passed:
+C_p0f92b38ac3 (three paragraphs of garbled French) and C_p40c33738de (about 40 lines of invented code). The primary
+analysis stays as registered (all 32 posts). A sensitivity analysis drops these two posts (all four of their cells).
+In the Henry arm, HR_bandits_s4 has invented headings; it is reported, not excluded.
+
 Usage:
   uv run python experiments/b36_transfer.py select
   uv run python experiments/b36_transfer.py inputs
@@ -666,6 +673,7 @@ def analyze():
                     "labels": {x: sum(v["label"] == x for v in d.values()) for x in ("Human", "Mixed", "AI")},
                     "mean_ai_share": round(statistics.mean(v["ai_share"] for v in d.values()), 3)}
     excl = {doc for doc, t in texts.items() if t["copied_from_human"] > 0.15}
+    sens_drop = {"p0f92b38ac3", "p40c33738de"}  # amendment: audit found French and invented code
 
     def paired(a, b, docs=None):
         docs = sorted((set(by.get(a, {})) & set(by.get(b, {}))) - excl if docs is None else docs)
@@ -690,9 +698,14 @@ def analyze():
             break
     prim["Cfull_vs_Dfull"]["holm_reject"], prim["C300_vs_Cfull"]["holm_reject"] = holm
     prim["D300_vs_Dfull"] = paired("D300", "Dfull")
+    keep_docs = sorted((set(by.get("Cfull", {})) & set(by.get("Dfull", {}))) - excl - sens_drop)
+    sens = {"dropped": sorted(sens_drop), "Cfull_vs_Dfull": paired("Cfull", "Dfull", keep_docs),
+            "C300_vs_Cfull": paired("C300", "Cfull", keep_docs),
+            "Cfull_human": sum(by["Cfull"][d]["human"] for d in keep_docs), "n": len(keep_docs)}
     cf = cells.get("Cfull", {}).get("human", 0)
     band = "transfers" if cf >= 16 else "partly" if cf >= 8 else "does not transfer"
-    out = {"cells": cells, "primary": prim, "excluded_copying": sorted(excl), "band_by_human_count": band,
+    out = {"cells": cells, "primary": prim, "sensitivity": sens, "excluded_copying": sorted(excl),
+           "band_by_human_count": band,
            "henry": {r["key"]: {k: r[k] for k in ("label", "ai_share", "words")} for r in rows if r["cell"].startswith("H")
                      and r["cell"] not in ("H300", "Hfull")}}
     prev = json.loads(OUT.read_text()) if OUT.exists() else {}
