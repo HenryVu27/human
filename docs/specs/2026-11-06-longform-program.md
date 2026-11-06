@@ -367,3 +367,31 @@ independent Wayback capture (two Wayback copies came from Common Crawl itself).
   MELD alone after B33, the test split halved into test-A and test-B, and the corpus fixes from the B32 judge added.
 
 ## Amendments
+
+### Amendment 2026-11-06 09:07 CST: gate 1 (B34, B36 and a Henry arm), before any document is selected or scanned
+
+Henry approved gate 1 (relayed by the main session; his words: "Up to $80 but you won't use all right? You said $22.
+If you truly think this is a direction worth considering ... then go ahead"). The gate is re-sequenced: B36 does not
+need the 7,000-post training data, so gate 1 runs only B34, the B32 judge's corpus fixes on the test-A and calib
+splits, B35's inputs for the test-A posts, and B36. The full 40-shard build (2a) and the training data (2b) wait for
+gate 2, after Henry sees B36. Rules are in the docstrings of `experiments/b34_length.py` and
+`experiments/b36_transfer.py`, committed with this amendment. Changes to the design above:
+
+- **B35 for test-A follows B28 exactly** (Sonnet NOTES, B27 rewording, the 50% dose, Sonnet's DRAFT post), not one open
+  extractor: B36 then differs from B30's T50 only in the authors (never seen) and the length (whole posts of 1,500 to
+  3,000 words, rewritten section by section). The open extractor of section 5.3 stays the plan for gate 2's training
+  data.
+- **B36 cells:** D300, Dfull, C300 and Cfull on 32 test-A posts (C is CAI-old). Primary tests, Holm over two: Cfull
+  against Dfull on the AI share (Wilcoxon) and C300 against Cfull on the label (McNemar). Decision bands: transfers if
+  Cfull reads Human on 16 or more of 32 with claims supported 0.90 or more and length 70% or more of D; partly 8 to
+  15; not 7 or fewer.
+- **Henry arm (Q4), new:** B30's rewriter on the prose sections of Henry's two published posts
+  (ai-engineering/part1 and bandits/part1), section by section, scanned before and after as whole posts and as
+  sections of 150 words or more, claim-checked against the original. Code, tables and figures are left out as in B15.
+  Confidentiality: one post calls client work a "diabetes coaching agent" on purpose; a filter deletes any output
+  sentence that introduces a health or medical term absent from its input section, and the Guard blocks new names.
+- **Generation:** batched transformers generation with B30's settings on an L40S (`experiments/modal/lf_rewrite_hf.py`;
+  per-row Guards, per-batch seeds). vLLM and the Guard port wait for gate 2.
+- **Credits:** B34 about 420, B36 about 1,500, Henry arm about 270; the scan script stops above 2,500.
+- **Modal:** about $5 estimated (B34 continuations about $0.7, B36 and Henry generation about $3 to $4), inside the
+  remaining free credit; a running total is kept, and a run that would cross the free credit stops for a message.
