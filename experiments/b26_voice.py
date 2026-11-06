@@ -25,6 +25,8 @@ reworded notes (Guard and prune over them, same length, seeds 0 to 3, same pick)
 again: its 13 texts, paired essay by essay with B27's W (Sonnet from the same reworded notes). This is
 the test of the local-writer route on blogs (B5 found it reads Human from reworded facts on FineWeb).
 Cell M, the pool writer on the same prompts, is made for the local checks only (no credits left to scan it).
+Amended 18:26, before any M text is picked: Henry upgraded Pangram (Professional, 15,000 credits), so M's
+13 texts are scanned too, which compares the two writers on the same notes (V against M, paired).
 Prediction: V reads Human on 7 or more of 13 with at most 1 AI (W: 1 Human).
 
 Usage:
