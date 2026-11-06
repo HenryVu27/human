@@ -1139,3 +1139,104 @@ containers, MELD scoring), $19.6 to $20.2 of the month's $30 free credit used, $
 **Files:** `experiments/b37_gate2a.py`, `src/humanizer/checks/form.py`, `tests/test_form.py`,
 `experiments/modal/lf_rewrite_hf.py`, `results/b37_gate2a.json`, `results/b37_blind.json`,
 `results/b37_pangram_transcript.txt`, `results/b37_pangram_shares.json`, `results/LONGFORM-GATE2A.md`. Texts stay local.
+
+## 39. B38: a local judge trained on Pangram's labels, and what best-of-4 with it buys (Pangram, 57 texts)
+
+**Question.** Can a judge trained on the project's own Pangram verdicts track Pangram on rewrites well enough to pick the
+best of several tries and to develop the rewriter, so that Pangram is spent only on the final test? Henry's decision
+(13:08, CLAUDE.md f578571); final-test reserve of 798 test-B posts by ID and text hash first (a99a393, 13:10); rules,
+splits, metrics, the bar and the choice rule committed before any training, scoring or generation (58bf80d, 13:13);
+blinding key before the scan (4fdc84e, 13:31; scan 13:33).
+
+**Data.** 1,534 Pangram-labelled texts from B1 to B37 (561 rewrites, 273 of them not Human), grouped by author, site or
+"henry" into 5 folds; a leave-one-experiment-out split trains without B36 and B37. Document level, not windows: B37
+showed Pangram adds up flagged words, so a window cannot inherit its document's label. New labels: B30's rewriter, 4
+seeds for each of 14 sections of 4 fresh calibration posts (sites in buckets 75 to 79), scanned blind with Henry's
+bandits post with the math kept and stripped.
+
+**Judges.** J1: logistic regression on five open detectors (MELD, Binoculars, Fast-DetectGPT on two model pairs,
+desklib) and log words. J2: ModernBERT-base fine-tuned to regress Pangram's share (Modal, one L40S).
+
+**Registered result.**
+
+| | J1 | J2 |
+|---|---|---|
+| Rewrites, out-of-fold AUROC (Human against not Human) | **0.735** (group bootstrap 0.686 to 0.782) | 0.722 |
+| Rewrites, Spearman with AI share (n 90) | 0.40 | 0.29 |
+| Rewrites, leave-one-experiment-out AUROC (n 89) | 0.62 | 0.62 |
+| Calibration sections: pair accuracy (63 pairs) | 0.746 | 0.587 |
+| Best-of-4 AI share (random 0.337, oracle 0.163) | **0.215** | 0.299 |
+
+J1 clears the 0.70 bar and is chosen (J2 is within 0.02 and not simpler). Best-of-4 with J1 cut the mean section share
+by 0.122 against a random pick (section bootstrap 0.05 to 0.20), about 70% of the oracle's gain.
+
+**What the validators and the post hoc checks found** (none of this changes the registered choice; all of it changes the
+reading):
+
+1. **The picks drop content.** J1's picks keep 60% of the input's words against 77% for all candidates; 8 of its 14
+   picks fail B37's C1 gates (form checks, claim support at least 0.90, at least half the words); 7 of 14 fall below the
+   claim floor. Pangram itself rewards this: candidates under the claim floor average 0.195, those above 0.376. Even the
+   oracle picks 7 of 14 that fail the gates. J1's true first choice in one section was a 32-word candidate that was
+   never scanned (the scan's 50-word floor; a deviation from "every candidate is scanned"), so 0.215 scores its second
+   choice there; with that pick at its section's mean the figure is 0.242.
+2. **Under the project's own content gates, J1 is no better than the existing rule or an untrained detector.**
+
+   | Best-of-4 among C1-eligible candidates (all 14 sections have one) | AI share |
+   |---|---|
+   | Random | 0.340 |
+   | J1 | 0.288 |
+   | C1, least copying from the input (B37's rule) | 0.291 |
+   | J2 | 0.275 |
+   | Raw MELD score, no training | 0.261 |
+   | Oracle | 0.213 |
+
+   J1 against C1: +0.003 (95% interval -0.07 to +0.08, clustered by post).
+3. **The bar measured the wrong thing.** The training data hold no within-section contrasts (no rewrite cell has two
+   tries of the same document), and the pooled AUROC mostly separates experiments: a score that sees no text, only each
+   row's experiment and cell, reaches 0.78. Within experiment and cell J1 drops to 0.669. Raw MELD alone reaches 0.6995
+   on the same 561 rewrites (the 0.55 of section 38 was B36's 300-word rewrites only). The leave-one-experiment-out 0.62
+   is the better forecast for a new rewriter; the newest experiments score 0.66 (B36) and 0.57 (B37) when held out.
+4. **Copying from the AI input is the strongest cheap signal.** Across the 55 scanned candidates, the share copied from
+   the input section in 8-word runs correlates 0.70 with Pangram's share (J1: 0.61) and has the best pair accuracy
+   (0.778). On B36's 64 rewrites of Sonnet's posts it separates Human at AUROC 0.74 against J1's 0.67. This is not a
+   held-out discovery: B37 had already noted it and built C1 on it.
+5. **Whole posts (derived from section shares, which B37 showed add up within 0.06):** J1's picks give one Human post of
+   four (p7dd69444fe, 0.0), the same post a random pick makes Human 87.5% of the time. The oracle leaves the other three
+   at 0.157, 0.202 and 0.249. On these posts, best-of-4 cannot reach the 10% line even with a perfect judge.
+6. **Math, same day (step 6):** Henry's bandits post with the math kept reads Mixed 0.41 (Pangram counted 5,030 words
+   for 3,851 of ours); stripped, Mixed 0.24, the same as B37's scan of the stripped text. So the gap between B36's 0.41 (math
+   kept) and B37's 0.24 (math stripped) was the math, not scan-to-scan noise.
+
+**Leakage and order** (outside judges): test-B and the calibration candidates are clean (IDs, text hashes, 8-word
+overlap; the reserve's combined hash recomputes, `b38_judge.py reserve_check`). One cross-fold text leak: the splice
+texts carry sentences from one test-A post's Sonnet draft in another group; refitting without them moves J1 by at most
+0.002. The leave-one-experiment-out test set shares text with its training data (splice bases, Henry's originals), which
+lowers that figure rather than raising it (without the overlap: 0.66). Every number reproduces from raw files; J1
+refits to a difference of 0.0. Order verified from git, Modal's server times and the Claude call cache. Judge
+predictions on the candidates were computed after the labels were read; J1 is deterministic from inputs fixed before
+the scan, and J2 was not chosen.
+
+**Reading.**
+1. A judge cleared the registered bar, but in use it adds nothing over B37's free C1 rule or the raw MELD score, and
+   left unconstrained it buys share by picking texts that break the claim rule.
+2. Selection is not the lever at k = 4: the gated oracle is 0.213, far above 0.10. The rewriter has to write sections
+   that read more human; copying less from the AI draft is the clearest direction the data show.
+3. A judge for developing the rewriter needs within-section training contrasts and copied share as a feature, and its
+   bar should be pair accuracy within sections under the content gates, against C1, not pooled AUROC.
+
+**Next, if Henry wants the judge pursued** (red team's cheapest test): 4 seeds for sections of about 16 more
+calibration posts (about $1 to $2 of Modal), scanning only candidates where J1, C1 and MELD disagree under the gates
+(about 350 to 500 credits) to settle whether any judge beats C1. The B39 reserve stays untouched.
+
+**Backlog (not B38):** the form checks should catch stray placeholder math and template leaks such as "$Rewrite{n}$"
+and "$Gaussian(0, 1)$" (HR2_bandits read Human at 0.08 but is not publishable: broken sentences and a garbled proof).
+
+**Spend.** Pangram 362 credits (dashboard 9,079 to 8,717; per-file charges sum to 386). Modal about $1.6 (candidate
+generation, detector scoring, J2's six trainings and the full model), the month's free credit at $20.99 of $30, $0.00
+billed.
+
+**Files:** `experiments/b38_judge.py`, `experiments/modal/lf_judge.py`, `results/b38_judge.json`,
+`results/b38_j1_preds.json`, `results/b38_j2_preds.json`, `results/b38_blind.json`, `results/b38_pangram_transcript.txt`,
+`results/b38_pangram_shares.json`, `results/b38_scan_times.txt`, `results/b39_reserved_testB.json`,
+`results/LONGFORM-JUDGE.md`; validators `research/longform-judge-b38-stats-order.md`,
+`research/longform-judge-b38-leakage.md`, `research/longform-redteam-b38.md`. Texts stay local.

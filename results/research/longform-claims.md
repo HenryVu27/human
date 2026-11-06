@@ -252,3 +252,45 @@ Opened 2026-11-06 02:09 CST; last updated: see git log.
   more human to MELD but kept 28% of the post and 89% claim support.
 - **Status:** **not shown** on the development judge; **suggestive** on one Pangram-scanned post (selection has
   headroom). Henry's bandits rewrite reads Human at full length (0.08), near the line.
+
+## B38 results (2026-11-06)
+
+### 18, updated. MELD can serve as the development judge for the rewriter
+
+- **Checked (B38 statistics audit):** the 0.55 of B37 was B36's 300-word rewrites only. On all 561 Pangram-labelled
+  rewrites the raw MELD score reaches AUROC 0.6995 (0.646 within experiment and cell; 0.578 on B36 and B37's rewrites),
+  and as a best-of-4 picker on B38's 14 calibration sections it matches the trained J1 (0.213 against 0.215; among
+  gate-passing tries 0.261 against 0.288).
+- **Status:** **partly true.** Weak across new rewriters, but no trained judge does better yet.
+
+### 20. A judge trained on Pangram's labels tracks Pangram on rewrites (AUROC at least 0.70)
+
+- **Checked (B38, registered; recomputed by an outside judge):** J1 out-of-fold rewrite AUROC 0.735 (group bootstrap
+  0.686 to 0.782, 7.8% of resamples under 0.70); leave-one-experiment-out 0.62. A score that sees only each row's
+  experiment and cell reaches 0.78, and within experiment and cell J1 is 0.669.
+- **Status:** **partly true.** True as registered, but the pooled number mostly separates experiments; the newer the
+  rewriter, the weaker the judge (B36 0.66, B37 0.57 held out).
+
+### 21. Best-of-n with a local judge moves rewrites toward Human on Pangram
+
+- **Checked (B38, 14 held-out sections, 55 scanned tries):** ungated, J1's pick averages 0.215 against random 0.337
+  (gain 0.122, 95% interval 0.05 to 0.20). But 8 of 14 picks fail the content gates and keep 60% of the words. Among
+  gate-passing tries J1 0.288, C1 (least copying) 0.291, raw MELD 0.261, random 0.340, oracle 0.213. Whole posts
+  (derived): the oracle leaves 3 of 4 above 0.10.
+- **Status:** **refuted as a lever at k = 4 with the content rules kept.** Selection has some headroom (oracle 0.213
+  against random 0.340) that no judge yet captures better than C1, and none reaches the line.
+
+### 22. Copying from the AI draft is what Pangram still flags in rewrites
+
+- **Checked (B38 post hoc, and B37's earlier note):** share copied from the input in 8-word runs correlates 0.70 with
+  Pangram's share across 55 tries and separates Human at AUROC 0.74 on B36's 64 rewrites (J1 0.67). Not held out: B37
+  had already proposed it.
+- **Status:** **suggestive, consistent across B36, B37 and B38.** A test would fix a copy limit before generation and
+  scan fresh posts.
+
+### 23. Math in a post raises Pangram's AI share
+
+- **Checked (B38 step 6, same batch):** Henry's bandits post with LaTeX kept reads Mixed 0.41 (Pangram counts 5,030
+  words for our 3,851); stripped, Mixed 0.24, equal to B37's scan of the stripped text earlier the same day.
+- **Status:** **verified on one post.** The gap between B36's 0.41 (math kept) and B37's 0.24 (stripped) was the math,
+  not scan noise. Compare like with like (math handled the same way) in every Henry-arm test.
