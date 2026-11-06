@@ -271,7 +271,8 @@ def windows(text: str, size: int = 280, tail: int = 150) -> list[str]:
     for a, b in zip(bounds, bounds[1:]):
         out.append(" ".join(words[a:b]))
     if len(out) > 1 and len(out[-1].split()) < tail:
-        out[-2] = out[-2] + " " + out.pop()
+        last = out.pop()
+        out[-1] = out[-1] + " " + last
     return [w for w in out if w.strip()]
 
 
