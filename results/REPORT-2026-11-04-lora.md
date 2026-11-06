@@ -615,26 +615,65 @@ Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step l
 
 **What the pieces are.** Only 22% of the draft's facts survive, and 55% of the words come from Wikipedia. The result is a cited article on the draft's topic, not the draft made human. That fits explainers, which is what the FineWeb drafts are. It does not fit a personal blog post, where the content is the author's own; see section 29.
 
-## 29. The blog track begins: B25 and B26 (running)
+## 29. The blog track: B25 (Pangram, 26 texts)
 
 **Henry's point (17:00),** checked against the raw data: every draft through B24 came from FineWeb pages, the 900 human texts in `data/human.jsonl` (essay mills, SEO sites, health sites). Their median first-person rate is 0 per 100 words, and 7% exceed 1 per 100. The humanizer's real use is a personal blog post that should sound like a person.
 
-**Corpus** (`humanizer.data.essays`): 13 named writers, posts published before ChatGPT's release (2022-11-30).
+**Corpus** (`humanizer.data.essays`): 686 posts by 13 named writers, all published before ChatGPT's release (2022-11-30).
 - **Henry's picks:** Paul Graham, Richard Sutton, Fernando Borretti, and economists Noah Smith, John Cochrane, Scott Sumner, Branko Milanovic and Robin Hanson.
 - **Added for range:** Dan Luu, Julia Evans, Joel Spolsky, Scott Alexander and Patrick McKenzie.
-- **Split:** fixed by URL hash before any text was read. Each writer gives 2 benchmark essays of 500 to 1,500 words and up to 60 training essays. Texts stay out of git.
+- **Split:** fixed by URL hash before any text was read: 2 benchmark essays per writer (500 to 1,500 words) and 660 training essays (827,000 words). Texts stay out of git.
+- **X:** Borretti's profile confirmed borretti.me. X search was not useful for finding further writers.
 
-**B25** (`experiments/b25_blog.py`) copies how a blogger uses AI: the blogger has the ideas, the AI writes the post.
-- **Input:** for each benchmark essay, Sonnet writes the notes, then the post from the notes. That post is the humanizer's input.
+**Design** (`experiments/b25_blog.py`). B25 copies how a blogger uses AI: the blogger has the ideas, the AI writes the post.
+- **Input:** for each benchmark essay, Sonnet writes the notes (the FACTS prompt, first person kept), then writes the post from them ("Write my blog post from these notes", same title, same length). That post is cell D.
 - **Cells,** on each writer's test essay:
   - H: the essay itself (calibration);
   - D: the AI post;
   - P: the current pipeline on the AI post;
-  - N: the pool writer from the notes alone.
-- **Prediction:** N reads Human on 9 or more of 13 at half the length or more.
-- **Copying:** recorded per text, including beyond the prompt, since OLMo-2 has likely seen these essays.
+  - N: the pool writer from the notes.
+- **Stop rule:** if 6 or more D posts read Human, P and N are not scanned.
 
-**B26** (`experiments/b26_voice.py`) retrains the writer on the essay training split (notes to essay, all notes kept) and reruns N's prompts as cell V. This is the step aimed at "sounds personal": first-person rate and sentence-length spread are measured against each real essay.
+| Cell | Human | Mixed | AI | Credits |
+|---|---|---|---|---|
+| H, the 13 essays | 13 | 0 | 0 | 115 |
+| D, Sonnet's post from the essayist's notes | 8 | 5 | 0 | 114 |
+
+**Reading.** The essays calibrate cleanly. The AI posts read mostly Human, which tripped the stop rule, so P and N were not scanned. At first sight this said Sonnet's own prose reads Human when a human chose the content.
+
+**But the posts copy the essays.** 11 to 64% of each post's words sit in 8-word runs copied from the essay (mean 33%).
+- **Source:** almost all of it comes through the notes, which keep 20 to 65% of their words in the essay's own wording.
+- **Pattern:** the Human posts copy more (mean 37%) than the Mixed ones (21%).
+- **Memorization:** Sutton's "The Bitter Lesson" post copies 48% from outside its notes, so Sonnet has memorized that essay.
+- **Next test:** this is the confound B5 handled on FineWeb, so B27 removes the wording.
+
+## 30. B27: the same notes, reworded (Pangram, 13 texts)
+
+**Design** (`experiments/b27_reworded.py`):
+- **Notes:** B25's notes were reworded with B5's prompt (no run of 3 or more words from the original apart from names, numbers and quotes).
+- **Posts:** Sonnet wrote each post again from the reworded notes with the same prompt (cell W).
+- **Manipulation check:** passed. Notes copying from the essay fell from 40% to 8%, and the posts' copying from 37% to 7%; Sonnet's recall of Sutton fell from 48% to 2%. The exception is Scott Alexander's post (51%): it is a list of quoted puns, and quotes are kept exactly by design.
+
+| Cell | Human | Mixed | AI | Words copied from the essay |
+|---|---|---|---|---|
+| D (B25), notes in the essay's wording | 8 | 5 | 0 | 33% |
+| W, the same notes reworded | 1 | 11 | 1 | 7% |
+
+Fisher's exact test on Human, D against W: p = 0.011. The one W post that reads Human is the quote-heavy Scott Alexander post.
+
+**Finding.** The essay's wording, carried through the notes, made Sonnet's posts read Human. With the wording removed, a post whose content is entirely the blogger's reads Mixed, not Human. Content and prose each carry part of the signal:
+- **Topic-only AI drafts read AI** (B12 and the calibration drafts), and B9 S0 shows AI-chosen content reads AI even through the local writer.
+- **Human content in Sonnet's prose reads Mixed** (this experiment).
+- **Human content in the local writer's prose read Human** on FineWeb (B5 reworded, 7 of 10).
+
+So the blog route is the local writer working from the blogger's own notes. B26 is now that test.
+
+**B26, amended before any of its texts existed** (`experiments/b26_voice.py`):
+- **Writer:** the pool writer retrained on the 630 training essays (notes to essay, all notes kept; the PC run is in progress).
+- **Input:** B27's reworded notes, then the Guard, prune and pick pipeline.
+- **Scan:** 13 texts, paired with W.
+- **Prediction:** 7 or more Human, at most 1 AI.
+- **Cell M:** the pool writer on the same prompts, made for local checks only, since about 75 credits remain.
 
 ## Where this stands (2026-11-05, about 13:05)
 
@@ -656,3 +695,21 @@ Source: `results/b20_sectional.json`, texts in `results/b20_texts.jsonl`, step l
 3. **Cited human sources.** Pull specifics from real pre-2022 human writing on the topic, with citations, so about two-thirds of the content is human-sourced (the B5 and B9 mechanism, 10 of 10 Human). Nothing is invented, but the piece then says things the draft did not.
 
 The choice among these is a product decision, not an experiment.
+
+## Where this stands (2026-11-05, about 18:20)
+
+**Two routes work on the FineWeb explainer drafts.**
+1. **Condensing:** B14 keeps about 40% of the length and reads Human 13 of 20.
+2. **Cited human sources:** B24 keeps 66% of the length and reads Human 10 of 10. But the result is a Wikipedia-backed article on the draft's topic, and a fifth of its words are copied from Wikipedia through the facts. A product must reword or quote that.
+
+**The blog track changes the question.** Henry's use is a personal blog post, where the content is the author's.
+- **B25 and B27:** human content written up by Sonnet reads Mixed (11 of 13), not Human. Earlier Human readings came from the essay's own wording leaking through the notes.
+- **B5, on FineWeb:** the local writer reads Human from reworded human facts (7 of 10).
+- **So the candidate blog humanizer is:** the blogger's own notes, reworded, then written by a local writer trained on real essayists (B26), with nothing added beyond the notes.
+
+B26 is running. It also measures whether the voice sounds like a person (first person and sentence-length spread against the real essay), and a blind read follows.
+
+**Open problems:**
+- **Note density:** how dense a blogger's notes must be. The essay notes here run 4 to 8 per 100 words, far denser than a typical prompt to an AI. A dose test is next.
+- **Credits:** about 75 Pangram credits remain, enough for B26's scan and nothing after it.
+
