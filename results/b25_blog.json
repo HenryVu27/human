@@ -154,5 +154,41 @@
    "essay_beyond_notes": 0.4774305555555556,
    "notes_copied_from_essay": 0.5151515151515151
   }
+ },
+ "checks": {
+  "P": {
+   "texts": 13,
+   "words": 230.15384615384616,
+   "length_ratio": 0.30346362544098576,
+   "claim_support": 0.8235256835579751,
+   "quality_vs_essay": 0.0,
+   "copied_from_essay": 0.17318696006325676,
+   "essay_beyond_prompt": 0.03839567896454251,
+   "first_person": 1.9782015621516835,
+   "sentence_sd": 14.55925921444015
+  },
+  "N": {
+   "texts": 13,
+   "words": 422.6923076923077,
+   "length_ratio": 0.5355538202049863,
+   "claim_support": 0.7589034898439007,
+   "quality_vs_essay": 0.038461538461538464,
+   "copied_from_essay": 0.17301912378263665,
+   "essay_beyond_prompt": 0.02909159397341297,
+   "first_person": 1.0311161364936954,
+   "sentence_sd": 13.372769028082454
+  },
+  "H": {
+   "texts": 13,
+   "words": 814.1538461538462,
+   "first_person": 1.7486854962452898,
+   "sentence_sd": 22.156635281597357
+  },
+  "D": {
+   "texts": 13,
+   "words": 803.1538461538462,
+   "first_person": 1.8575029037839113,
+   "sentence_sd": 10.402814926676053
+  }
  }
 }

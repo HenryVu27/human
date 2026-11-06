@@ -696,7 +696,7 @@ So the blog route is the local writer working from the blogger's own notes. B26 
 
 The choice among these is a product decision, not an experiment.
 
-## Where this stands (2026-11-05, about 18:20)
+## Where this stands (2026-11-05, about 18:10)
 
 **Two routes work on the FineWeb explainer drafts.**
 1. **Condensing:** B14 keeps about 40% of the length and reads Human 13 of 20.
