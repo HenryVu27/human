@@ -253,5 +253,25 @@
    "right_writer": 0.46153846153846156,
    "p_right_writer": 0.3220617132455617
   }
+ },
+ "pangram_summary": {
+  "AI": 1,
+  "Mixed": 8,
+  "Human": 3
+ },
+ "pangram": {
+  "Y_e015297cc": "Human",
+  "Y_e0024944a": "Mixed",
+  "Y_e00afe510": "AI",
+  "Y_e00279af1": "Mixed",
+  "Y_e012341fb": "Mixed",
+  "Y_e00c5dbe3": "Mixed",
+  "Y_e00a47ad2": "Mixed",
+  "Y_e01b9acdb": "Human",
+  "Y_e021dc050": "Mixed",
+  "Y_e1aac9b0d": "Mixed",
+  "Y_e1574e17c": "Mixed",
+  "Y_e075ab572": "Human",
+  "Y_e2ee0c4c0": "Human"
  }
 }
