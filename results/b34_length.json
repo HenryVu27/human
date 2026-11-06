@@ -308,5 +308,53 @@
    "H300": 283.1,
    "Hfull": 2333.4
   }
+ },
+ "pangram": {
+  "cells": {
+   "H300": {
+    "n": 10,
+    "human": 10,
+    "human_ci": [
+     0.722,
+     1.0
+    ],
+    "labels": {
+     "Human": 10,
+     "Mixed": 0,
+     "AI": 0
+    },
+    "mean_ai_share": 0.0
+   },
+   "Hfull": {
+    "n": 10,
+    "human": 10,
+    "human_ci": [
+     0.722,
+     1.0
+    ],
+    "labels": {
+     "Human": 10,
+     "Mixed": 0,
+     "AI": 0
+    },
+    "mean_ai_share": 0.0
+   }
+  },
+  "pairs": {
+   "H300_vs_Hfull": {
+    "pairs": 10,
+    "prefix_only_human": 0,
+    "full_only_human": 0,
+    "p_mcnemar": 1.0,
+    "mean_ai_share_full_minus_prefix": 0.0
+   },
+   "B300_vs_Bfull": {
+    "pairs": 0,
+    "prefix_only_human": 0,
+    "full_only_human": 0,
+    "p_mcnemar": 1.0,
+    "mean_ai_share_full_minus_prefix": null
+   }
+  }
  }
 }

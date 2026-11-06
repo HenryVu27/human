@@ -88,5 +88,310 @@
     "confidential_dropped": 0
    }
   }
+ },
+ "pangram": {
+  "cells": {
+   "C300": {
+    "n": 32,
+    "human": 11,
+    "human_ci": [
+     0.204,
+     0.517
+    ],
+    "labels": {
+     "Human": 11,
+     "Mixed": 19,
+     "AI": 2
+    },
+    "mean_ai_share": 0.292
+   },
+   "Cfull": {
+    "n": 32,
+    "human": 1,
+    "human_ci": [
+     0.006,
+     0.157
+    ],
+    "labels": {
+     "Human": 1,
+     "Mixed": 31,
+     "AI": 0
+    },
+    "mean_ai_share": 0.376
+   },
+   "D300": {
+    "n": 32,
+    "human": 0,
+    "human_ci": [
+     0.0,
+     0.107
+    ],
+    "labels": {
+     "Human": 0,
+     "Mixed": 10,
+     "AI": 22
+    },
+    "mean_ai_share": 0.851
+   },
+   "Dfull": {
+    "n": 32,
+    "human": 0,
+    "human_ci": [
+     0.0,
+     0.107
+    ],
+    "labels": {
+     "Human": 0,
+     "Mixed": 13,
+     "AI": 19
+    },
+    "mean_ai_share": 0.813
+   },
+   "H300": {
+    "n": 10,
+    "human": 10,
+    "human_ci": [
+     0.722,
+     1.0
+    ],
+    "labels": {
+     "Human": 10,
+     "Mixed": 0,
+     "AI": 0
+    },
+    "mean_ai_share": 0.0
+   },
+   "HO_post": {
+    "n": 2,
+    "human": 0,
+    "human_ci": [
+     0.0,
+     0.658
+    ],
+    "labels": {
+     "Human": 0,
+     "Mixed": 2,
+     "AI": 0
+    },
+    "mean_ai_share": 0.48
+   },
+   "HO_sec": {
+    "n": 1,
+    "human": 0,
+    "human_ci": [
+     0.0,
+     0.793
+    ],
+    "labels": {
+     "Human": 0,
+     "Mixed": 1,
+     "AI": 0
+    },
+    "mean_ai_share": 0.5
+   },
+   "HR_post": {
+    "n": 2,
+    "human": 0,
+    "human_ci": [
+     0.0,
+     0.658
+    ],
+    "labels": {
+     "Human": 0,
+     "Mixed": 2,
+     "AI": 0
+    },
+    "mean_ai_share": 0.265
+   },
+   "HR_sec": {
+    "n": 2,
+    "human": 1,
+    "human_ci": [
+     0.095,
+     0.905
+    ],
+    "labels": {
+     "Human": 1,
+     "Mixed": 1,
+     "AI": 0
+    },
+    "mean_ai_share": 0.14
+   },
+   "Hfull": {
+    "n": 10,
+    "human": 10,
+    "human_ci": [
+     0.722,
+     1.0
+    ],
+    "labels": {
+     "Human": 10,
+     "Mixed": 0,
+     "AI": 0
+    },
+    "mean_ai_share": 0.0
+   }
+  },
+  "primary": {
+   "Cfull_vs_Dfull": {
+    "pairs": 32,
+    "a_only_human": 1,
+    "b_only_human": 0,
+    "p_mcnemar": 1.0,
+    "mean_ai_share_b_minus_a": 0.437,
+    "p_wilcoxon": 1e-06,
+    "holm_reject": true
+   },
+   "C300_vs_Cfull": {
+    "pairs": 32,
+    "a_only_human": 11,
+    "b_only_human": 1,
+    "p_mcnemar": 0.00635,
+    "mean_ai_share_b_minus_a": 0.084,
+    "p_wilcoxon": 0.060155,
+    "holm_reject": true
+   },
+   "D300_vs_Dfull": {
+    "pairs": 32,
+    "a_only_human": 0,
+    "b_only_human": 0,
+    "p_mcnemar": 1.0,
+    "mean_ai_share_b_minus_a": -0.038,
+    "p_wilcoxon": 0.034531
+   }
+  },
+  "sensitivity": {
+   "dropped": [
+    "p0f92b38ac3",
+    "p40c33738de"
+   ],
+   "Cfull_vs_Dfull": {
+    "pairs": 30,
+    "a_only_human": 1,
+    "b_only_human": 0,
+    "p_mcnemar": 1.0,
+    "mean_ai_share_b_minus_a": 0.442,
+    "p_wilcoxon": 2e-06
+   },
+   "C300_vs_Cfull": {
+    "pairs": 30,
+    "a_only_human": 9,
+    "b_only_human": 1,
+    "p_mcnemar": 0.02148,
+    "mean_ai_share_b_minus_a": 0.063,
+    "p_wilcoxon": 0.133127
+   },
+   "Cfull_human": 1,
+   "n": 30
+  },
+  "excluded_copying": [],
+  "band_by_human_count": "does not transfer",
+  "henry": {
+   "HR_aieng_s7": {
+    "label": "Mixed",
+    "ai_share": 0.7,
+    "words": 436
+   },
+   "HO_bandits": {
+    "label": "Mixed",
+    "ai_share": 0.41,
+    "words": 3851
+   },
+   "HR_aieng_s5": {
+    "label": "Mixed",
+    "ai_share": 0.65,
+    "words": 282
+   },
+   "HR_aieng_s1": {
+    "label": "Human",
+    "ai_share": 0.0,
+    "words": 337
+   },
+   "HO_bandits_s1": {
+    "label": "Mixed",
+    "ai_share": 0.66,
+    "words": 304
+   },
+   "HR_bandits": {
+    "label": "Mixed",
+    "ai_share": 0.13,
+    "words": 2689
+   },
+   "HO_bandits_s3": {
+    "label": "AI",
+    "ai_share": 0.88,
+    "words": 455
+   },
+   "HR_aieng_s3": {
+    "label": "Human",
+    "ai_share": 0.1,
+    "words": 711
+   },
+   "HR_bandits_s4": {
+    "label": "Human",
+    "ai_share": 0.03,
+    "words": 721
+   },
+   "HR_aieng_s6": {
+    "label": "AI",
+    "ai_share": 1.0,
+    "words": 257
+   },
+   "HO_aieng": {
+    "label": "Mixed",
+    "ai_share": 0.55,
+    "words": 4481
+   },
+   "HR_bandits_s6": {
+    "label": "Mixed",
+    "ai_share": 0.14,
+    "words": 364
+   },
+   "HR_aieng": {
+    "label": "Mixed",
+    "ai_share": 0.4,
+    "words": 3241
+   },
+   "HO_bandits_s6": {
+    "label": "Mixed",
+    "ai_share": 0.25,
+    "words": 1180
+   },
+   "HR_bandits_s3": {
+    "label": "Mixed",
+    "ai_share": 0.38,
+    "words": 389
+   },
+   "HO_bandits_s4": {
+    "label": "Mixed",
+    "ai_share": 0.39,
+    "words": 915
+   },
+   "HR_bandits_s1": {
+    "label": "Human",
+    "ai_share": 0.0,
+    "words": 331
+   },
+   "HR_aieng_s4": {
+    "label": "Mixed",
+    "ai_share": 0.62,
+    "words": 575
+   },
+   "HR_bandits_s5": {
+    "label": "Human",
+    "ai_share": 0.0,
+    "words": 806
+   },
+   "HO_bandits_s5": {
+    "label": "Mixed",
+    "ai_share": 0.5,
+    "words": 893
+   },
+   "HR_aieng_s2": {
+    "label": "Mixed",
+    "ai_share": 0.28,
+    "words": 643
+   }
+  }
  }
 }
