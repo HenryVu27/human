@@ -37,7 +37,7 @@ Usage:
   for s in 0 1 2 3: uv run python experiments/gen_mlx.py results/b26_prompts.jsonl results/b26_gen_s$s.jsonl --guard --adapter models/lora-13b-essaypool-mlx --seed $s
   for s in 0 1 2 3: uv run python experiments/gen_mlx.py results/b26m_prompts.jsonl results/b26m_gen_s$s.jsonl --guard --adapter models/lora-13b-pool-mlx --seed $s
   uv run python experiments/b26_voice.py pick        (and pick_pool for M)
-  uv run python experiments/b26_voice.py record V_e1234abcd=Human ...
+  uv run python experiments/b26_voice.py record V_e1234abcd=Human ...   (record_pool M_e1234abcd=Human ... for M)
 """
 
 import json
@@ -66,13 +66,13 @@ def prompts():
         print(len(rows), cell, "prompts")
 
 
-def record(pairs: list[str]):
+def record(pairs: list[str], texts=TEXTS, out_path=OUT):
     verdicts = dict(p.split("=") for p in pairs)
-    ids = [json.loads(line)["id"] for line in TEXTS.open()]
+    ids = [json.loads(line)["id"] for line in texts.open()]
     assert set(verdicts) == set(ids), "need a verdict for every text"
     summary = {v: sum(verdicts[i] == v for i in ids) for v in ("AI", "Mixed", "Human")}
-    out = json.loads(OUT.read_text())
-    OUT.write_text(json.dumps(out | {"pangram_summary": summary, "pangram": verdicts}, indent=1))
+    out = json.loads(out_path.read_text())
+    out_path.write_text(json.dumps(out | {"pangram_summary": summary, "pangram": verdicts}, indent=1))
     print(json.dumps(summary, indent=1))
 
 
@@ -84,5 +84,7 @@ if __name__ == "__main__":
         b25_blog.pick("b26", PROMPTS, TEXTS, OUT, cells=("V",))
     elif cmd == "pick_pool":
         b25_blog.pick("b26m", POOL_PROMPTS, POOL_TEXTS, POOL_OUT, cells=("M",))
+    elif cmd == "record_pool":
+        record(sys.argv[2:], POOL_TEXTS, POOL_OUT)
     else:
         record(sys.argv[2:])
