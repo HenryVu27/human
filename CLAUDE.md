@@ -6,6 +6,7 @@ Research project: turn any AI draft into prose that Pangram 4.x and blind expert
 
 - Total spend is capped at $100. Nothing that costs money, and no account or API key creation, without Henry's explicit yes.
 - Pangram is a held-out judge. Its scores never select a prompt, weight or writer, except the B1 gate and detector calibration (spec section 8).
+  - Exception (Henry, 2026-11-06 13:08): a local judge may be trained on the project's Pangram labels and used to pick and develop outputs. A final test set it never sees (not in training, calibration or any pick) stays reserved, and only Pangram scores that set. Stay inside the Modal free credit for this.
 - Output must add no facts, numbers, names, dates or quotes. The claim check enforces this.
 - No heavy jobs on the Mac (Henry, 2026-11-05: it makes the Mac unusable). Training and local-model generation run on the PC (`experiments/gpu/`, under the `C:\gpu-lock` folder lock via `gpu_job.cmd`, logged in `C:\gpu-schedule.txt`); the Mac only copies files, builds prompts and runs the Claude-based checks.
 - 16 GB Mac: keep one large model in memory at a time (`humanizer.llm.load_mlx` does this within a process). Never run two GPU jobs (MLX or PyTorch MPS) in parallel processes; on 2026-11-04 that crashed both with a Metal out-of-memory error. Chain them in one background command.
