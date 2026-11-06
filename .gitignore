@@ -19,3 +19,7 @@ models/
 /results/b31_raw*/
 /results/b31_jobs*.json
 /results/b31_*.log
+# Long-form program (B32 to B39): corpus texts, calibration texts, drafts and outputs stay local (2026-11-06).
+/results/b3[2-9]_*.jsonl
+/results/b3[2-9]_raw*/
+/results/b3[2-9]_*.log
