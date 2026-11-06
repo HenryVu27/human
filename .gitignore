@@ -6,3 +6,12 @@ __pycache__/
 models/
 *.safetensors
 .pytest_cache/
+# Blog-track texts (B25 on): essays, notes from them and posts written from those notes.
+# They hold or paraphrase the essayists' writing, so they stay local (2026-11-05).
+/results/b25_*.jsonl
+/results/b26_*.jsonl
+/results/b26m_*.jsonl
+/results/b28_*.jsonl
+/results/b29_*.jsonl
+/results/b30_*.jsonl
+!/results/b25_manifest.jsonl
