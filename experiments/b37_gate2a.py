@@ -333,5 +333,116 @@ def dev():
     print(json.dumps(res, indent=1))
 
 
+# ------------------------------------------------------------------------------------------- Pangram: Henry arm
+
+MATH_DISPLAY = re.compile(r"\$\$.+?\$\$|\\\[.+?\\\]", re.S)
+MATH_INLINE = re.compile(r"\\\((.+?)\\\)|\$([^$\n]{1,120}?)\$")
+BLIND = RES / "b37_blind.json"
+PANGRAM = RES / "b37_pangram.jsonl"
+
+
+def strip_latex(text: str) -> str:
+    """Delete math, never currency: display math always; an inline $...$ span only if it holds a LaTeX marker
+    (backslash, ^, _, braces) or is a lone symbol ($K$, $t$, $O(n)$); bare backslash commands too."""
+    t = MATH_DISPLAY.sub(" ", text)
+
+    def inline(m):
+        body = m.group(1) if m.group(1) is not None else m.group(2)
+        if m.group(1) is not None or re.search(r"[\\^_{}]", body) or re.fullmatch(r"\s*[A-Za-z](\([^)]*\))?\s*", body):
+            return " "
+        return m.group(0)
+
+    t = MATH_INLINE.sub(inline, t)
+    t = re.sub(r"\\[A-Za-z]+(\{[^}]*\})?", " ", t)
+    t = re.sub(r"[ \t]{2,}", " ", t)
+    return re.sub(r" +([.,;:])", r"\1", t).strip()
+
+
+def henry_texts() -> list[dict]:
+    """Same-day Henry arm: originals and C1-rule rewrites, LaTeX stripped from both."""
+    out = []
+    hr = {(r["doc"], r["section"]): r for r in _load(TEXTS) if r["cell"] == "HR1_sec"}
+    for post, path in HENRY_POSTS.items():
+        secs = henry_sections(path)
+        o_all, r_all = [], []
+        for si, sec in enumerate(secs, 1):
+            o = strip_latex(sec["text"])
+            o_all.append(o)
+            if len(o.split()) >= 150:
+                out.append({"key": f"HO2_{post}_s{si}", "cell": "HO2_sec", "doc": f"{post}_s{si}", "text": o})
+            if (post, si) in hr:
+                r = strip_latex(hr[(post, si)]["text"])
+                r_all.append(r)
+                if len(r.split()) >= 150:
+                    out.append({"key": f"HR2_{post}_s{si}", "cell": "HR2_sec", "doc": f"{post}_s{si}", "text": r})
+        out.append({"key": f"HO2_{post}", "cell": "HO2_post", "doc": post, "text": "\n\n".join(o_all)})
+        out.append({"key": f"HR2_{post}", "cell": "HR2_post", "doc": post, "text": "\n\n".join(r_all)})
+    return out
+
+
+def scanfiles(dest: str):
+    import math
+    import random
+    import subprocess
+    from pathlib import Path
+
+    texts = henry_texts() + _load(RES / "b37_testb_scan.jsonl")
+    for t in texts:
+        t["words"] = len(t["text"].split())
+    credits = sum(math.ceil(1.15 * t["words"] / 100) for t in texts)  # Pangram counts about 15% more words than we do
+    print(len(texts), "texts, about", credits, "credits")
+    if credits > 800:
+        sys.exit("over gate 2a's 800 credits; stop")
+    rng = random.Random("b37")
+    rng.shuffle(texts)
+    keymap, used = {}, set()
+    for i, t in enumerate(texts):
+        name = rng.randbytes(4).hex()
+        while name in used:
+            name = rng.randbytes(4).hex()
+        used.add(name)
+        sub = Path(dest) / f"batch{i // 100:02d}"
+        sub.mkdir(parents=True, exist_ok=True)
+        (sub / f"{name}.txt").write_text(t["text"] + "\n")
+        subprocess.run(["textutil", "-convert", "docx", str(sub / f"{name}.txt")], check=True)
+        (sub / f"{name}.txt").unlink()
+        keymap[name] = {"key": t["key"], "cell": t["cell"], "doc": t["doc"], "words": t["words"], "batch": i // 100}
+    BLIND.write_text(json.dumps(keymap, indent=1))
+
+
+def record(path: str):
+    keymap = json.loads(BLIND.read_text())
+    rows = [json.loads(line) for line in open(path) if line.strip()]
+    PANGRAM.write_text("".join(json.dumps(keymap[r["name"]] | r) + "\n" for r in rows))
+    print(len(rows), "verdicts of", len(keymap))
+
+
+def analyze():
+    from scipy.stats import binomtest
+
+    rows = {r["key"]: r for r in _load(PANGRAM)}
+    order = {"AI": 0, "Mixed": 1, "Human": 2}
+    secs = sorted({r["doc"] for r in rows.values() if r["cell"] in ("HO2_sec", "HR2_sec")})
+    pairs = [(rows.get(f"HO2_{d}"), rows.get(f"HR2_{d}")) for d in secs]
+    pairs = [(o, r) for o, r in pairs if o and r]
+    up = sum(order[r["label"]] > order[o["label"]] for o, r in pairs)
+    down = sum(order[r["label"]] < order[o["label"]] for o, r in pairs)
+    res = {"henry_sections": {"pairs": len(pairs), "better": up, "worse": down,
+                              "p_sign": round(float(binomtest(up, up + down, 0.5).pvalue), 4) if up + down else 1.0,
+                              "original_human": sum(o["label"] == "Human" for o, _ in pairs),
+                              "rewrite_human": sum(r["label"] == "Human" for _, r in pairs),
+                              "rows": {d: [o["label"], o["ai_share"], r["label"], r["ai_share"]]
+                                       for d, (o, r) in zip(secs, pairs)}},
+           "henry_posts": {k: [v["label"], v["ai_share"], v["words"]] for k, v in rows.items()
+                           if v["cell"] in ("HO2_post", "HR2_post")}}
+    prev = json.loads(OUT.read_text()) if OUT.exists() else {}
+    OUT.write_text(json.dumps(prev | {"pangram": res}, indent=1))
+    print(json.dumps(res, indent=1))
+
+
 if __name__ == "__main__":
-    {"prompts": prompts, "pick": pick, "meld_inputs": meld_inputs, "dev": dev}[sys.argv[1]]()
+    cmd = sys.argv[1]
+    if cmd in ("scanfiles", "record"):
+        {"scanfiles": scanfiles, "record": record}[cmd](sys.argv[2])
+    else:
+        {"prompts": prompts, "pick": pick, "meld_inputs": meld_inputs, "dev": dev, "analyze": analyze}[cmd]()
