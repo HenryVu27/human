@@ -21,6 +21,9 @@ Fixed before any B28 text exists (2026-11-05 18:28):
   reworded as above, and the voice writer writes from them at T, Guard and prune against the S100 post,
   then as L.
 - H: the 20 essays (calibration).
+- Amended 18:33, before any B28 text exists: an essay whose notes Sonnet refuses is dropped and reported.
+  Hanson's "Variolation Test Design" (about deliberate COVID infection) was refused by a safety
+  classifier, so B28 has 19 essays.
 - Pangram on all 140 texts. Checks: length against T, claim support, copying from the essay (8-word
   runs), first person and sentence-length spread against the essay.
 The writer was fixed before B26's scan; no Pangram result chooses it.
@@ -78,8 +81,13 @@ def dose(notes: list[str], key: str, d: float) -> list[str]:
 
 
 def notes():
-    essays = _essays()
-    parsed = [parse_facts(x) for x in claude_many([NOTES.format(text=e["text"]) for e in essays], model="sonnet")]
+    essays, parsed = [], []
+    for e, x in zip(_essays(), claude_many([NOTES.format(text=e["text"]) for e in _essays()], model="sonnet")):
+        if x and "{" in x:
+            essays.append(e)
+            parsed.append(parse_facts(x))
+        else:
+            print("dropped, notes refused:", e["id"], e["author"], e["title"])
     raw, topics = [p.facts for p in parsed], [p.topic for p in parsed]
     reworded, kept = reword_all(raw)
     rows = [e | {"topic": t, "notes": n, "reworded": w, **{f"dose{k}": dose(w, e["id"], d) for k, d in DOSES.items()}}
