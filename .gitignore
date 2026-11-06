@@ -15,3 +15,7 @@ models/
 /results/b29_*.jsonl
 /results/b30_*.jsonl
 !/results/b25_manifest.jsonl
+/results/b31_*.jsonl
+/results/b31_raw*/
+/results/b31_jobs*.json
+/results/b31_*.log
