@@ -20,7 +20,7 @@ import subprocess
 
 import modal
 
-ROOT = pathlib.Path(__file__).resolve().parents[2]
+ROOT = pathlib.Path(__file__).resolve().parents[2] if modal.is_local() else pathlib.Path("/")  # the container sees /root/b30_gen.py
 SP = pathlib.Path("/private/tmp/claude-501/-Users-henryvu-personal/4e64b86d-db0b-493c-bcf7-4834f916f083/scratchpad/push/b30m")
 app = modal.App("b30-gen")
 VOL = modal.Volume.from_name("b31-weights")
