@@ -83,6 +83,16 @@ Analysis (step `analyze`)
   not base-model scale; does not, then gate 2's long-context training is the next step; partly, then both, with the
   300-word against full comparison deciding whether length or authors is the bottleneck.
 
+Amendment 2026-11-06 09:41 CST, after `select` and `inputs` and before any test-A rewrite or any scan:
+- `inputs` replaced 3 posts by the rule above (D under 1,000 words: p2358c4bdee, pd25d8ef947, p25679086d9) with the next
+  reserve posts (pc181d8f08b, pce9bcaba2a, p10267ee0c0). The reserve held no further technical post, so B36 has 7
+  technical posts, not 8.
+- The independent selection audit (results/research/longform-judge-b36-selection.md) found 3 of the 32 are not
+  single-author blog posts: p6d59a3ce68 (a magazine staff review), p899ba31bed (a student-newspaper review) and
+  p67cdcd8668 (a guest essay whose author also wrote a train-split post). They are excluded and replaced by the next
+  reserve posts that pass the same audit (step `replace`, inputs made exactly as above). Haiku's labels stay the
+  selection rule for everything else; pa5fd792f87 (1,498 words of post plus a sidebar) is kept.
+
 Usage:
   uv run python experiments/b36_transfer.py select
   uv run python experiments/b36_transfer.py inputs
@@ -377,6 +387,35 @@ def inputs():
     print(json.dumps(summ, indent=1))
 
 
+def replace(drop: list[str], add: list[str]):
+    """Amendment: drop audited failures from the inputs and make inputs for the replacements (same pipeline)."""
+    docs = {json.loads(line)["id"]: json.loads(line) for line in DOCS.open()}
+    rows = [r for r in map(json.loads, INPUTS.open()) if r["id"] not in drop]
+    new = [docs[i] for i in add]
+    raws = claude_many([NOTES.format(text=d["text"]) for d in new], model="sonnet", workers=2)
+    parsed = [parse_facts(x) for x in raws]
+    reworded, kept = reword_all([p.facts for p in parsed])
+    halves = [dose(w, d["id"]) for d, w in zip(new, reworded)]
+    posts = claude_many([DRAFT.format(title=p.topic, words=int(round(d["words"], -1)),
+                                      notes="\n".join(f"- {x}" for x in h)) for d, p, h in zip(new, parsed, halves)],
+                        model="sonnet", workers=2)
+    for d, p, w, h, post in zip(new, parsed, reworded, halves, posts):
+        text = plain(post)
+        if len(text.split()) < 1000:
+            print("D under 1,000 words:", d["id"], len(text.split()))
+            continue
+        rows.append({"id": d["id"], "title": p.topic, "words": d["words"], "page_type": d["page_type"],
+                     "notes": p.facts, "reworded": w, "dose50": h, "D": text,
+                     "notes_copied": copied_share("\n".join(p.facts), d["text"]),
+                     "reworded_copied": copied_share("\n".join(w), d["text"]), "D_copied": copied_share(text, d["text"])})
+    INPUTS.write_text("".join(json.dumps(r) + "\n" for r in rows))
+    prev = json.loads(OUT.read_text())
+    prev["inputs"]["amendment"] = {"dropped_after_audit": drop, "added": [r["id"] for r in rows if r["id"] in add],
+                                   "docs": len(rows), "technical": sum(r["page_type"] == "technical_post" for r in rows)}
+    OUT.write_text(json.dumps(prev, indent=1))
+    print(len(rows), "docs;", prev["inputs"]["amendment"])
+
+
 def sections(text: str, lo: int = 600, hi: int = 1000, tail: int = 300) -> list[str]:
     paras = [p.strip() for p in text.split("\n") if p.strip()]
     out, cur = [], []
@@ -473,7 +512,7 @@ def pick():
                          "claims_total": cc["claims_total"], "unsupported_specifics": cc["unsupported_specifics"]}
 
     samples: dict[str, list] = {}
-    with ThreadPoolExecutor(4) as ex:
+    with ThreadPoolExecutor(int(__import__("os").environ.get("B36_WORKERS", "4"))) as ex:
         for key, s in ex.map(one, gens):
             samples.setdefault(key, []).append(s)
     best = {k: max(v, key=lambda c: (c["claims_entailed"], c["claims_entailed"] / max(1, c["claims_total"])))
@@ -519,8 +558,9 @@ def pick():
                 texts.append({"id": f"HO_{post}_s{si}", "cell": "HO_sec", "doc": post, "section": si,
                               "text": secs[si - 1]["text"], "words": len(secs[si - 1]["text"].split())})
     TEXTS.write_text("".join(json.dumps(r) + "\n" for r in texts))
-    c = [r for r in texts if r["cell"] == "C"]
-    summ = {"C_texts": len(c), "C_words": statistics.mean(r["words"] for r in c),
+    c = [r for r in texts if r["cell"] == "C"] or [{"words": 0, "D_words": 1, "human_words": 1, "claims_entailed": 0,
+                                                     "claims_total": 1, "copied_from_D": 0, "copied_from_human": 0}]
+    summ = {"C_texts": len([r for r in texts if r["cell"] == "C"]), "C_words": statistics.mean(r["words"] for r in c),
             "C_over_D": statistics.mean(r["words"] / r["D_words"] for r in c),
             "C_over_human": statistics.mean(r["words"] / r["human_words"] for r in c),
             "C_claim_support": statistics.mean(r["claims_entailed"] / max(1, r["claims_total"]) for r in c),
@@ -662,7 +702,9 @@ def analyze():
 
 if __name__ == "__main__":
     cmd = sys.argv[1]
-    if cmd in ("scanfiles", "record"):
+    if cmd == "replace":
+        replace(sys.argv[2].split(","), sys.argv[3].split(","))
+    elif cmd in ("scanfiles", "record"):
         {"scanfiles": scanfiles, "record": record}[cmd](sys.argv[2])
     else:
         {"select": select, "inputs": inputs, "prompts": prompts, "pick": pick, "analyze": analyze}[cmd]()

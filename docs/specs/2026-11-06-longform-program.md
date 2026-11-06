@@ -395,3 +395,12 @@ gate 2, after Henry sees B36. Rules are in the docstrings of `experiments/b34_le
 - **Credits:** B34 about 420, B36 about 1,500, Henry arm about 270; the scan script stops above 2,500.
 - **Modal:** about $5 estimated (B34 continuations about $0.7, B36 and Henry generation about $3 to $4), inside the
   remaining free credit; a running total is kept, and a run that would cross the free credit stops for a message.
+
+### Amendment 2026-11-06 09:41 CST: B34's B arm and B36's document list, before any test-A rewrite or scan
+
+- B34: all 8 raw OLMo-2-13B continuations failed the filters (loops at length without a repetition penalty); B is
+  generated again with repetition penalty 1.05 (the writers' setting), seeds 3 to 5, same filters.
+- B36: 3 posts were replaced by the pre-registered D-length rule; 3 more are excluded after the independent selection
+  audit found them not to be single-author blog posts (one also shares a guest author with a train post), and are
+  replaced by the next reserve posts that pass the same audit. The technical stratum is 7 or fewer posts, below the
+  planned 8; Henry's genre rests on the Henry arm. Details in the B36 and B34 docstrings.

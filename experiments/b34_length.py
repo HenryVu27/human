@@ -24,6 +24,12 @@ Rules, fixed 2026-11-06 09:07 CST, before any document is selected or any B34 te
   full for H and for B (descriptive at these sizes); pooled with B36's C300 against Cfull and D300 against Dfull in
   the report.
 
+Amendment 2026-11-06 09:41 CST, after the first B continuations and before any scan: all 8 B posts failed the filters
+(every passing-length try repeated 35 to 82% of its 4-grams; the rest stopped under 1,500 words): without a
+repetition penalty, raw OLMo-2-13B loops at length. B is generated again with the project's writer setting,
+repetition penalty 1.05, seeds 3, 4 and 5, same filters and cuts; the first run's tries stay in
+results/b34_length.json. If a post still has no passing try, it is excluded and reported.
+
 Usage:
   uv run python experiments/b34_length.py prompts
   modal run experiments/modal/lf_continue.py --prompts results/b34_cont_prompts.jsonl --out results/b34_cont_raw.jsonl
@@ -70,8 +76,8 @@ def repeated_4grams(text: str) -> float:
 
 def prompts():
     docs = [json.loads(line) for line in DOCS.open() if json.loads(line)["role"] == "B"]
-    rows = [{"id": d["id"], "try": t, "seed": t, "opening": cut300(d["text"]), "max_tokens": 2800}
-            for d in docs for t in range(3)]
+    rows = [{"id": d["id"], "try": t, "seed": t, "opening": cut300(d["text"]), "max_tokens": 2800,
+             "repetition_penalty": 1.05} for d in docs for t in range(3, 6)]
     PROMPTS.write_text("".join(json.dumps(r) + "\n" for r in rows))
     print(len(rows), "continuation prompts")
 
@@ -79,6 +85,8 @@ def prompts():
 def pick():
     docs = {json.loads(line)["id"]: json.loads(line) for line in DOCS.open()}
     raw = [json.loads(line) for line in RAW.open()]
+    if OUT.exists() and "pick" in json.loads(OUT.read_text()) and "first_run" not in json.loads(OUT.read_text()):
+        OUT.write_text(json.dumps({"first_run": json.loads(OUT.read_text())["pick"]}, indent=1))
     texts, excluded, tries = [], [], {}
     for d in (x for x in docs.values() if x["role"] == "H"):
         texts += [{"key": f"H300_{d['id']}", "cell": "H300", "doc": d["id"], "text": cut300(d["text"])},
@@ -102,7 +110,8 @@ def pick():
     summ = {"texts": len(texts), "excluded_B": excluded, "tries": tries,
             "words": {c: statistics.mean(len(t["text"].split()) for t in texts if t["cell"] == c)
                       for c in ("H300", "Hfull", "B300", "Bfull") if any(t["cell"] == c for t in texts)}}
-    OUT.write_text(json.dumps({"pick": summ}, indent=1))
+    prev = json.loads(OUT.read_text()) if OUT.exists() else {}
+    OUT.write_text(json.dumps(prev | {"pick": summ}, indent=1))
     print(json.dumps(summ, indent=1))
 
 

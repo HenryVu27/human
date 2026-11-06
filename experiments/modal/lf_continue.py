@@ -1,7 +1,7 @@
 """Raw base-model continuations at length with vLLM (B34's B arm), the B31 setup with longer outputs.
 
 bf16 weights from the Volume b31-weights, plain-text prompt (the human opening), temperature 0.8, top-p 0.95, a
-per-request seed, no repetition penalty (as B31). One L40S container.
+per-request seed, a repetition penalty only if the row sets one (B31 used none). One L40S container.
 
   modal run experiments/modal/lf_continue.py --prompts results/b34_cont_prompts.jsonl --out results/b34_cont_raw.jsonl
 
@@ -31,7 +31,8 @@ def sample(model: str, prompts: list[dict]) -> list[dict]:
 
     llm = LLM(model=f"/vol/models/{model}", dtype="bfloat16", seed=0, enforce_eager=True, max_model_len=4096,
               gpu_memory_utilization=0.85)
-    sps = [SamplingParams(temperature=0.8, top_p=0.95, max_tokens=p["max_tokens"], seed=p["seed"]) for p in prompts]
+    sps = [SamplingParams(temperature=0.8, top_p=0.95, max_tokens=p["max_tokens"], seed=p["seed"],
+                          repetition_penalty=p.get("repetition_penalty", 1.0)) for p in prompts]
     outs = llm.generate([p["opening"] for p in prompts], sps)
     return [p | {"text": o.outputs[0].text, "n_tokens": len(o.outputs[0].token_ids), "finish": o.outputs[0].finish_reason}
             for p, o in zip(prompts, outs)]
