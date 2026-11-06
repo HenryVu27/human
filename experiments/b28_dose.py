@@ -39,6 +39,9 @@ Fixed before any B28 text exists (2026-11-05 18:28):
   stopped after its 37th seed-0 sample (64 of 76 with the PC's 27) and wrote no seed-1 sample. Every
   remaining sample of both seeds is generated on the PC (seed 1 in reverse order, as started). The 22:41
   split is void.
+- Amended 2026-11-06 04:07, after the pick and before any L or R text is scanned: a text under 150 words
+  counts as not Human, B25's rule (Pangram is unreliable below 150 words). It is still scanned and its label
+  reported. Two texts fall under it (L25_e2cddaea8, 110 words; L25_e2cfe2cb2, 117).
 - Pangram on all 140 texts. Checks: length against T, claim support, copying from the essay (8-word
   runs), first person and sentence-length spread against the essay.
 The writer was fixed before B26's scan; no Pangram result chooses it.
