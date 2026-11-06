@@ -21,7 +21,7 @@ Fixed before any B28 text exists (2026-11-05 18:28):
   reworded as above, and the voice writer writes from them at T, Guard and prune against the S100 post,
   then as L.
 - H: the 20 essays (calibration).
-- Amended 18:33, before any B28 text exists: an essay whose notes Sonnet refuses is dropped and reported.
+- Amended 18:31, before any B28 text exists: an essay whose notes Sonnet refuses is dropped and reported.
   Hanson's "Variolation Test Design" (about deliberate COVID infection) was refused by a safety
   classifier, so B28 has 19 essays.
 - Pangram on all 140 texts. Checks: length against T, claim support, copying from the essay (8-word
