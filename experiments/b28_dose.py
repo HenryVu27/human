@@ -24,6 +24,11 @@ Fixed before any B28 text exists (2026-11-05 18:28):
 - Amended 18:31, before any B28 text exists: an essay whose notes Sonnet refuses is dropped and reported.
   Hanson's "Variolation Test Design" (about deliberate COVID infection) was refused by a safety
   classifier, so B28 has 19 essays.
+- Amended 19:46, before any L or R text exists (Henry offered the idle PC): seed 0 is generated on the PC
+  (experiments/gpu/gen13b_guard.py: transformers, the same adapter in its trained PEFT form, the same
+  Guard file and capitalized-word list, checked equal, the same sampling; bf16 key-value cache where the
+  Mac quantizes it to 4 bits), seed 1 on the Mac with gen_mlx. Every prompt's pick sees one sample from
+  each machine, so no cell leans on one machine. Rows carry "machine": "pc" for the PC samples.
 - Pangram on all 140 texts. Checks: length against T, claim support, copying from the essay (8-word
   runs), first person and sentence-length spread against the essay.
 The writer was fixed before B26's scan; no Pangram result chooses it.
@@ -36,7 +41,8 @@ Usage:
   uv run python experiments/b28_dose.py notes       notes, rewording, doses (data/b28_bench.jsonl)
   uv run python experiments/b28_dose.py sonnet      S posts, and R's facts from S100
   uv run python experiments/b28_dose.py prompts     L and R prompts
-  for s in 0 1: uv run python experiments/gen_mlx.py results/b28_prompts.jsonl results/b28_gen_s$s.jsonl --guard --adapter models/lora-13b-essaypool-mlx --seed $s
+  seed 0 on the PC: experiments/gpu/b28.cmd (copy b28_prompts.jsonl to C:/hgpu, fetch b28_gen_s0.jsonl back)
+  uv run python experiments/gen_mlx.py results/b28_prompts.jsonl results/b28_gen_s1.jsonl --guard --adapter models/lora-13b-essaypool-mlx --seed 1
   uv run python experiments/b28_dose.py pick
   uv run python experiments/b28_dose.py scan_files DIR
   uv run python experiments/b28_dose.py record H_e1234abcd=Human ...
