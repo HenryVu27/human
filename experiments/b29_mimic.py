@@ -23,6 +23,11 @@ under human content, and examples change style more than the AI's way of expandi
 attributed to the right writer more often than W. If Y reads Human on 7 or more, in-context imitation
 is a cheap humanizer and a local base-model and per-writer fine-tune follow.
 
+Amended 20:41, after writing and before the scan: Y_e2ee0c4c0 copies 100% of its essay in 8-word runs
+(Sonnet, given three Sutton posts and notes on "The Bitter Lesson", recited the essay from memory). It
+is scanned but left out of Y's count and of the pairing with W and V, which use the other 12. Scott
+Alexander's post of quoted puns (53% copied, as in W and V) stays in, as before.
+
 Usage:
   uv run python experiments/b29_mimic.py write
   uv run python experiments/b29_mimic.py attribution
@@ -43,6 +48,7 @@ from b25_blog import DRAFT, _bench, plain, voice  # noqa: E402
 
 TEXTS = ROOT / "data" / "b29_texts.jsonl"
 OUT = ROOT / "results" / "b29_mimic.json"
+RECITED = {"Y_e2ee0c4c0"}  # the essay itself, recited from memory (amendment 20:41)
 MIMIC = "Here are three posts I wrote.\n\n{examples}\n\n" + DRAFT.replace("First person,", "First person, in my voice,")
 
 
@@ -109,7 +115,8 @@ def record(pairs: list[str]):
     verdicts = dict(p.split("=") for p in pairs)
     ids = [json.loads(line)["id"] for line in TEXTS.open()]
     assert set(verdicts) == set(ids), "need a verdict for every text"
-    summary = {v: sum(verdicts[i] == v for i in ids) for v in ("AI", "Mixed", "Human")}
+    counted = [i for i in ids if i not in RECITED]
+    summary = {v: sum(verdicts[i] == v for i in counted) for v in ("AI", "Mixed", "Human")}
     out = json.loads(OUT.read_text())
     OUT.write_text(json.dumps(out | {"pangram_summary": summary, "pangram": verdicts}, indent=1))
     print(json.dumps(summary, indent=1))
