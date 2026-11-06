@@ -155,9 +155,11 @@ def voice(text: str) -> dict:
             "sentence_sd": statistics.pstdev(lens) if len(lens) > 1 else 0.0}
 
 
-def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tuple = ("P", "N"), seeds: tuple = SEEDS):
-    """Prune, drop repeats, clean and claim-check every sample; keep the one with the most supported claims."""
-    bench_rows = {r["id"]: r for r in _bench()}
+def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tuple = ("P", "N"), seeds: tuple = SEEDS,
+         essays: dict | None = None):
+    """Prune, drop repeats, clean and claim-check every sample; keep the one with the most supported claims.
+    `essays` (id to essay row) defaults to B25's test bench, whose H and D summaries are then added."""
+    bench_rows = essays or {r["id"]: r for r in _bench()}
     prm = {p["id"]: p for p in map(json.loads, prompts.open())}
     gens = [json.loads(line) for s in seeds for line in (ROOT / "results" / f"{prefix}_gen_s{s}.jsonl").open()]
 
@@ -201,8 +203,8 @@ def pick(prefix: str = "b25", prompts=PROMPTS, texts=TEXTS, out=OUT, cells: tupl
                          "copied_from_essay": statistics.mean(r["copied_from_essay"] for r in cr),
                          "essay_beyond_prompt": statistics.mean(r["essay_beyond_prompt"] for r in cr),
                          **{k: statistics.mean(r["voice"][k] for r in cr) for k in ("first_person", "sentence_sd")}}
-    b = list(bench_rows.values())
-    for cell, key in (("H", "text"), ("D", "draft")):
+    b = list(bench_rows.values()) if essays is None else []
+    for cell, key in (("H", "text"), ("D", "draft")) if b else ():
         summary[cell] = {"texts": len(b), "words": statistics.mean(len(r[key].split()) for r in b),
                          **{k: statistics.mean(voice(r[key])[k] for r in b) for k in ("first_person", "sentence_sd")}}
     prev = json.loads(out.read_text()) if out.exists() else {}
