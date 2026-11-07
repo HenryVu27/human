@@ -1,0 +1,319 @@
+{
+ "b36": {
+  "cells": {
+   "C300": {
+    "n": 32,
+    "labels": {
+     "Mixed": 19,
+     "Human": 11,
+     "AI": 2
+    },
+    "mean_share": 0.292,
+    "mean_words": 290
+   },
+   "Cfull": {
+    "n": 32,
+    "labels": {
+     "Mixed": 31,
+     "Human": 1
+    },
+    "mean_share": 0.376,
+    "mean_words": 1398
+   },
+   "D300": {
+    "n": 32,
+    "labels": {
+     "AI": 22,
+     "Mixed": 10
+    },
+    "mean_share": 0.851,
+    "mean_words": 292
+   },
+   "Dfull": {
+    "n": 32,
+    "labels": {
+     "AI": 19,
+     "Mixed": 13
+    },
+    "mean_share": 0.813,
+    "mean_words": 1681
+   },
+   "H300": {
+    "n": 10,
+    "labels": {
+     "Human": 10
+    },
+    "mean_share": 0.0,
+    "mean_words": 283
+   },
+   "HO_post": {
+    "n": 2,
+    "labels": {
+     "Mixed": 2
+    },
+    "mean_share": 0.48,
+    "mean_words": 4166
+   },
+   "HO_sec": {
+    "n": 5,
+    "labels": {
+     "Mixed": 4,
+     "AI": 1
+    },
+    "mean_share": 0.536,
+    "mean_words": 749
+   },
+   "HR_post": {
+    "n": 2,
+    "labels": {
+     "Mixed": 2
+    },
+    "mean_share": 0.265,
+    "mean_words": 2965
+   },
+   "HR_sec": {
+    "n": 12,
+    "labels": {
+     "Mixed": 6,
+     "Human": 5,
+     "AI": 1
+    },
+    "mean_share": 0.325,
+    "mean_words": 488
+   },
+   "Hfull": {
+    "n": 10,
+    "labels": {
+     "Human": 10
+    },
+    "mean_share": 0.0,
+    "mean_words": 2333
+   }
+  },
+  "cfull_shares": [
+   0.09,
+   0.16,
+   0.18,
+   0.19,
+   0.19,
+   0.21,
+   0.22,
+   0.24,
+   0.3,
+   0.31,
+   0.32,
+   0.33,
+   0.34,
+   0.34,
+   0.35,
+   0.36,
+   0.37,
+   0.41,
+   0.42,
+   0.44,
+   0.44,
+   0.45,
+   0.45,
+   0.45,
+   0.47,
+   0.47,
+   0.54,
+   0.54,
+   0.55,
+   0.62,
+   0.63,
+   0.65
+  ],
+  "cfull_under_0.20": 5
+ },
+ "b37_splice": {
+  "rows": [
+   {
+    "key": "SP_pc71cc789ec_0_none",
+    "block_share": 0.0,
+    "ai_share": 0.0,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_0_none",
+    "block_share": 0.0,
+    "ai_share": 0.0,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_60_start",
+    "block_share": 0.068,
+    "ai_share": 0.07,
+    "label": "Human"
+   },
+   {
+    "key": "SP_pc71cc789ec_60_middle",
+    "block_share": 0.068,
+    "ai_share": 0.06,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_60_end",
+    "block_share": 0.068,
+    "ai_share": 0.06,
+    "label": "Human"
+   },
+   {
+    "key": "SP_pc71cc789ec_60_end",
+    "block_share": 0.068,
+    "ai_share": 0.06,
+    "label": "Human"
+   },
+   {
+    "key": "SP_pc71cc789ec_60_start",
+    "block_share": 0.068,
+    "ai_share": 0.06,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_60_middle",
+    "block_share": 0.068,
+    "ai_share": 0.06,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_120_start",
+    "block_share": 0.095,
+    "ai_share": 0.09,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_120_end",
+    "block_share": 0.095,
+    "ai_share": 0.08,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_120_middle",
+    "block_share": 0.095,
+    "ai_share": 0.08,
+    "label": "Human"
+   },
+   {
+    "key": "SP_pc71cc789ec_120_end",
+    "block_share": 0.095,
+    "ai_share": 0.09,
+    "label": "Human"
+   },
+   {
+    "key": "SP_pc71cc789ec_120_start",
+    "block_share": 0.095,
+    "ai_share": 0.09,
+    "label": "Human"
+   },
+   {
+    "key": "SP_pc71cc789ec_120_middle",
+    "block_share": 0.095,
+    "ai_share": 0.09,
+    "label": "Human"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_240_start",
+    "block_share": 0.17,
+    "ai_share": 0.16,
+    "label": "Mixed"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_240_middle",
+    "block_share": 0.17,
+    "ai_share": 0.15,
+    "label": "Mixed"
+   },
+   {
+    "key": "SP_p9aebd0fe2d_240_end",
+    "block_share": 0.17,
+    "ai_share": 0.15,
+    "label": "Mixed"
+   },
+   {
+    "key": "SP_pc71cc789ec_240_middle",
+    "block_share": 0.171,
+    "ai_share": 0.17,
+    "label": "Mixed"
+   },
+   {
+    "key": "SP_pc71cc789ec_240_start",
+    "block_share": 0.171,
+    "ai_share": 0.17,
+    "label": "Mixed"
+   },
+   {
+    "key": "SP_pc71cc789ec_240_end",
+    "block_share": 0.171,
+    "ai_share": 0.17,
+    "label": "Mixed"
+   }
+  ],
+  "max_abs_error": 0.02,
+  "note": "single contiguous Sonnet blocks of 88 to 248 words in 2 human posts only"
+ },
+ "b38_copying": {
+  "n": 55,
+  "spearman_copied_share": 0.699,
+  "spearman_claims_share": 0.458,
+  "spearman_lenratio_share": 0.078,
+  "spearman_copied_claims": 0.573,
+  "partial_copied_share_given_len_claims": 0.62,
+  "within_section_pearson_copied_share": 0.625,
+  "sections": 14
+ },
+ "b30": {
+  "pangram": {
+   "T100": {
+    "AI": 0,
+    "Mixed": 0,
+    "Human": 19
+   },
+   "T50": {
+    "AI": 0,
+    "Mixed": 6,
+    "Human": 13
+   },
+   "T25": {
+    "AI": 1,
+    "Mixed": 15,
+    "Human": 3
+   }
+  },
+  "checks": {
+   "T100": {
+    "texts": 19,
+    "words": 640.4736842105264,
+    "length_ratio": 0.8180296927718383,
+    "claim_support": 0.943689200105014,
+    "quality_vs_essay": 0.13157894736842105,
+    "copied_from_essay": 0.03495061672302926,
+    "essay_beyond_prompt": 0.02161180485875958,
+    "first_person": 2.247267908334275,
+    "sentence_sd": 9.721010121518699
+   },
+   "T50": {
+    "texts": 19,
+    "words": 606.4736842105264,
+    "length_ratio": 0.7765803007933835,
+    "claim_support": 0.9719634267354406,
+    "quality_vs_essay": 0.07894736842105263,
+    "copied_from_essay": 0.012859789883106846,
+    "essay_beyond_prompt": 0.005372822845986468,
+    "first_person": 1.9424774389181105,
+    "sentence_sd": 8.52660274157558
+   },
+   "T25": {
+    "texts": 19,
+    "words": 657.9473684210526,
+    "length_ratio": 0.7677380015000784,
+    "claim_support": 0.9598649487036657,
+    "quality_vs_essay": 0.05263157894736842,
+    "copied_from_essay": 0.010062078844644301,
+    "essay_beyond_prompt": 0.004038383567399643,
+    "first_person": 2.1599414566791957,
+    "sentence_sd": 9.047823206153147
+   }
+  }
+ }
+}

@@ -29,3 +29,8 @@ models/
 # Generated texts from B16 and B17 (B17 holds rewrites of Henry's post); kept local (2026-11-06)
 /results/b16_*.jsonl
 /results/b17_*.jsonl
+# Attempt 2 (2026-11-06): texts, drafts and outputs of every A- or Z-series experiment stay local.
+/results/a[0-9]*_*.jsonl
+/results/a[0-9]*_raw*/
+/results/a[0-9]*_*.log
+/results/z[0-9]*_*.jsonl
