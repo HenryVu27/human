@@ -703,3 +703,48 @@ The outside numbers check (`a2-judge-design-numbers.md`) found 11 wrong figures 
   his reading time.
 - **The pause rule changes** from "credits below the A7 reserve plus 300" to "a phase would need more than the current
   cycle's remaining credits".
+
+### Amendment 2026-11-06 21:37 CST: A1, A1b and A1c results, and what they change
+
+**Results** (notebook rows A1, A1b and A1c; validators in `results/research/a2-judge-a1-stats.md`,
+`a2-redteam-a1.md` and `a2-reader-a1.md`):
+- **A1, "large content effect".** On whole posts by unseen writers, B30's rewriter on Sonnet drafts from all the notes
+  reads Human 26 of 30 (mean share 0.03), against 4 of 30 from half the notes (0.31). The paired difference is -0.27,
+  with interval -0.33 to -0.21. It holds under every exclusion, the fallback sensitivity and the covariates. This is
+  the first full-length Human rate above 50% in the project.
+- **A1b: the rewriter is needed.** The all-notes Sonnet drafts read Human 0 of 30, mean 0.51.
+- **A1c: sentence-level garble does not earn the verdicts.** Deleting every flagged defective sentence leaves 26 of 30
+  Human.
+
+**What the validators changed in the reading:**
+1. **The cells differ in AI padding as much as in who chose.** Notes back 75% of the all-notes draft's words against
+   36% of the half-notes draft's. A1 cannot yet separate "the author supplies more" from "the AI pads less". A
+   length-matched cell would, and it waits for December's Modal credit.
+2. **The outputs are not publishable.** In 10 C100 posts read in full:
+   - 7 invent or distort content;
+   - 8 have garbled sentences;
+   - 6 have abrupt section joins, because each section is rewritten blind to the others;
+   - an editor would rather publish the draft in 9.
+
+   The claim check passed these at 0.93 support or higher. The fabrications sit inside the 10% the floor allows, and
+   no one had read the flagged claims.
+3. **C100 follows the human post's sentence order (alignment 0.87) while copying 3.9% of its words.** A1's notes are
+   an upper bound on what an author's notes give: 76 extracted notes per post, 3.9 per 100 words.
+
+**What changes:**
+- **The binding problem is now quality and faithfulness, not Pangram.** A route that reads Human but is unpublishable
+  fails the goal.
+- **G1, read top to bottom:**
+  - row 1 (Henry's veto) has not run, but the reader's evidence predicts it;
+  - rows 2 and 3 wait on P1;
+  - row 4 applies: R1 plus R2.
+- **Phase 2's R2 targets coherence and faithfulness first:**
+  - sections rewritten with the previous output section in context, or whole posts with a long-context base;
+  - training pairs that are real rewrites (Smaug's filter);
+  - faithfulness gates that read flagged claims;
+  - a coverage check for dropped content, such as the code blocks one post lost.
+
+  Its development read is Henry's and the output reader's, before any Pangram scan.
+- **Stays in phase 1:** P1 (Henry's notes; it logs note words per draft word, to place his density on A1's curve), and
+  December's Modal batch: S50, A2-N and the length-matched cell.
+- **Credits:** this cycle used 1,928 (966 and 962), and 6,789 remain.
