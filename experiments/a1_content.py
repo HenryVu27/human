@@ -44,6 +44,13 @@ weights as R2's starting point (chunk size and model are confounded, so the conc
 Quality: 10 C100-against-D100 and 10 S50-against-D50 section pairs, drawn by seed "a1-q" from posts with a passing
 section, go to Henry's G1 blind read.
 
+Amendment 2026-11-06 20:03 CST, before any C100 or S50 text is assessed or scanned: November's Modal free credit (about $7.6 left after
+a failed C100 run at batch 16, all four containers out of memory, $1.08) covers C100 at batch 8 but not S50 as well.
+S50 moves to December's credit (or the PC, Smaug's GGUF), so no paid spend occurs. The first A1 scan is C100, C50 and
+the canaries; the primary contrast (C100 against C50) is unchanged and same-batch. S50 is scanned later in its own
+batch with the canaries; S50 against C50 uses the earlier C50 scan only if every canary returns identical output,
+otherwise C50 is rescanned in S50's batch. Holm stays over the two A1 contrasts.
+
 Usage:
   .venv/bin/python experiments/a1_content.py drafts          # D100 (Sonnet)
   .venv/bin/python experiments/a1_content.py prompts         # C100 and S50 prompt rows

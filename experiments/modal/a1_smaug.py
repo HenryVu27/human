@@ -61,7 +61,8 @@ def generate(rows: list[dict], seeds: list[int]) -> list[dict]:
             with torch.no_grad():
                 gen = model.generate(**enc, do_sample=True, temperature=1.0, top_p=0.95, top_k=64,
                                      max_new_tokens=max(r["max_new_tokens"] for r in batch),
-                                     eos_token_id=[stop, tok.eos_token_id], pad_token_id=tok.pad_token_id)
+                                     eos_token_id=[stop, tok.eos_token_id], pad_token_id=tok.pad_token_id,
+                                     tokenizer=tok)  # the card: needed for the <end_of_turn> stop string
             for r, g in zip(batch, gen[:, enc["input_ids"].shape[1]:]):
                 ids = g.tolist()
                 hit = stop in ids or tok.eos_token_id in ids
