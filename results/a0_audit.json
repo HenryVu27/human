@@ -1,0 +1,129 @@
+{
+ "model": "claude-sonnet-5-5",
+ "hosts": [
+  "C_p25d4111207_0",
+  "C_p4ad56d5750_0",
+  "C_p4b8e886641_1",
+  "C_p3a84b9ccbc_1",
+  "C_p8e28b03c67_2",
+  "C_pd2849dd1e5_2",
+  "C_pd2849dd1e5_0",
+  "C_p3a84b9ccbc_0",
+  "C_p9ae3b6a467_3",
+  "C_p61945fb568_0",
+  "HR_aieng_1_0",
+  "HR_bandits_5_5",
+  "C_p4ad56d5750_1",
+  "C_p35b2004659_2",
+  "C_p89e48932f5_2",
+  "C_pd870408b22_0",
+  "C_pd64b3e3aae_0",
+  "C_p10267ee0c0_3",
+  "C_p9ae3b6a467_0",
+  "C_p827b1c285d_2",
+  "C_pa2b84bf758_0",
+  "C_pd3f07c3e66_1",
+  "C_p25d4111207_2",
+  "C_p827b1c285d_1",
+  "C_p827b1c285d_0",
+  "C_p89e48932f5_1",
+  "C_pc181d8f08b_1",
+  "C_p35b2004659_1",
+  "C_p8e28b03c67_0",
+  "HR_bandits_3_2"
+ ],
+ "summary": {
+  "number": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "name": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "date": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "quote": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "code": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "french": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "placeholder": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "framing": {
+   "caught": 30,
+   "n": 30,
+   "bar": "29 of 30",
+   "pass": true
+  },
+  "wrong": {
+   "caught": 27,
+   "n": 30,
+   "errors": 0,
+   "lower_bound_95": 0.761,
+   "bar": 0.7,
+   "pass": true,
+   "gate_fail": 29
+  },
+  "broken": {
+   "caught": 30,
+   "n": 30,
+   "errors": 0,
+   "lower_bound_95": 0.905,
+   "bar": 0.7,
+   "pass": true
+  },
+  "control_self": {
+   "n": 30,
+   "claim_gate_fail": 0,
+   "texts_with_unsupported_claim": 0,
+   "unsupported_claim_rate": 0.0,
+   "texts_with_defect": 8
+  },
+  "control_base": {
+   "n": 30,
+   "claim_gate_fail": 24,
+   "texts_with_unsupported_claim": 29,
+   "unsupported_claim_rate": 0.1461,
+   "texts_with_defect": 25
+  }
+ },
+ "adjudication": {
+  "wrong": {
+   "method": "session read every case's full unsupported-claim list (recomputed from the call cache, no new calls)",
+   "caught": 30,
+   "n": 30,
+   "note": "the overlap matcher scored 27 of 30: it missed 3 paraphrased findings and counted none falsely; the planted claim is always among the flagged claims, but flagged lists hold a median of about 4 claims (up to 18)"
+  },
+  "readings": [
+   "deterministic types: 30 of 30 each, on templated plants; this measures the regexes' coverage of those forms, not of every error a rewriter makes",
+   "claim check: recall 30 of 30 for planted wrong claims, but unedited rewrites already have 14.6% of their claims flagged and 24 of 30 fail the 0.95 pass rule, so the pass rule cannot be 'every output passes'",
+   "prose-defect check: 30 of 30 planted broken sentences, but 8 of 30 clean Sonnet sections flagged: a reading list, not a gate"
+  ]
+ }
+}

@@ -665,3 +665,27 @@ The outside numbers check (`a2-judge-design-numbers.md`) found 11 wrong figures 
   - B38 scanned 55 of 56 seeds;
   - six adjacent-field hypotheses need no scans, not four;
   - detector-guided RL dates from late May.
+
+## Amendments
+
+### Amendment 2026-11-06 19:53 CST: A0 audit, Z5 and the API test (before any A1 text exists)
+
+- **API test.** Henry's credential guard blocks agents from loading `.env`, so the session cannot make the API call.
+  Henry runs `experiments/a0_api_test.py` himself if he wants it (command in the script). Until then, scans go
+  through the dashboard with `humanizer.eval.scan`.
+- **Planted-error audit** (`experiments/a0_audit.py`, `results/a0_audit.json`). Every bar passed:
+  - Deterministic types: 30 of 30 each. These were templated plants, so this measures regex coverage, not every
+    error a rewriter makes.
+  - Wrong claims: 30 of 30, adjudicated by reading the flagged-claim lists; the overlap matcher said 27.
+  - Broken sentences: 30 of 30.
+- **What the controls show, and what changes:**
+  - The claim check flags 14.6% of the claims in unedited rewrites, and 24 of 30 fail its 0.95 pass rule. So the
+    faithfulness gate is C1's: claim support of at least 0.90 per section, zero deterministic-gate findings, and a
+    person reads every flagged claim of any text a result rests on. This replaces "every output passes the claim
+    check" in A7 criterion 2 and section 8.
+  - The prose-defect check flagged 8 of 30 clean Sonnet sections. It produces a reading list, not a gate.
+- **Z5** (`results/z5_proselens.json`). ProseLens-ModernBERT-L fails its bar: within-section pair accuracy 0.683
+  against least-copying's 0.732 (difference -0.05, interval -0.28 to +0.18). Its AUROC within an experiment and cell
+  is 0.54. The judge route stays closed unless Henry allows Pangram to pick in his own use (decision 6). A2-K does
+  not run otherwise. Modal cost: $0.03.
+- **Canaries:** the five frozen texts plus the perturbed copy cost 72 credits a session, not 120.
