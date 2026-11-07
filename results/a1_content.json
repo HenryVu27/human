@@ -41,5 +41,93 @@
    "max_copied_from_human": 0.048,
    "max_scoring_form_change": 0.011
   }
+ },
+ "analysis": {
+  "cells": {
+   "C100": {
+    "n": 32,
+    "labels": {
+     "Human": 28,
+     "Mixed": 4,
+     "AI": 0
+    },
+    "mean_share": 0.0319
+   },
+   "C50": {
+    "n": 32,
+    "labels": {
+     "Human": 4,
+     "Mixed": 28,
+     "AI": 0
+    },
+    "mean_share": 0.3075
+   },
+   "S50": {
+    "n": 0,
+    "labels": {
+     "Human": 0,
+     "Mixed": 0,
+     "AI": 0
+    },
+    "mean_share": null
+   },
+   "CAN": {
+    "n": 6,
+    "labels": {
+     "Human": 5,
+     "Mixed": 0,
+     "AI": 1
+    },
+    "mean_share": 0.1833
+   }
+  },
+  "primary_C100_vs_C50": {
+   "n": 30,
+   "mean_diff": -0.2707,
+   "ci95": [
+    -0.334,
+    -0.207
+   ],
+   "p": 2.8318322051083935e-06,
+   "human": [
+    26,
+    4
+   ],
+   "mcnemar_p": 4.76837158203125e-07,
+   "median_share": [
+    0.0,
+    0.32
+   ],
+   "p_holm": 5.663664410216787e-06
+  },
+  "band": "large content effect",
+  "secondary_S50_vs_C50": null,
+  "smaug_weights_for_R2": false,
+  "canaries": {
+   "CAN_hfull": {
+    "label": "Human",
+    "ai_share": 0.0
+   },
+   "CAN_sonnet": {
+    "label": "AI",
+    "ai_share": 0.92
+   },
+   "CAN_h300_perturbed_2026-11-06": {
+    "label": "Human",
+    "ai_share": 0.0
+   },
+   "CAN_h300": {
+    "label": "Human",
+    "ai_share": 0.0
+   },
+   "CAN_splice": {
+    "label": "Human",
+    "ai_share": 0.09
+   },
+   "CAN_rewrite": {
+    "label": "Human",
+    "ai_share": 0.09
+   }
+  }
  }
 }
