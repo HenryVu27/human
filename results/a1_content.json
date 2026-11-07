@@ -1,0 +1,45 @@
+{
+ "drafts": {
+  "docs": 32,
+  "excluded_under_1000": 0,
+  "D100_words": 1604.15625,
+  "D50_words": 1681.375,
+  "notes_per_post": 75.78125,
+  "D100_copied_from_human": 0.03179521289540637
+ },
+ "pick": {
+  "rules": {
+   "C100": {
+    "eligible": 80,
+    "form_only": 2
+   },
+   "S50": {}
+  },
+  "C100": {
+   "texts": 32,
+   "excluded": 2,
+   "words": 1324,
+   "over_input": 0.823,
+   "over_human": 0.668,
+   "claim_support": 0.956,
+   "fallback_sections": 2,
+   "sections": 82,
+   "copied_from_input": 0.128,
+   "max_copied_from_human": 0.228,
+   "max_scoring_form_change": 0.018
+  },
+  "C50": {
+   "texts": 32,
+   "excluded": 0,
+   "words": 1376,
+   "over_input": 0.817,
+   "over_human": 0.696,
+   "claim_support": 0.95,
+   "fallback_sections": 7,
+   "sections": 84,
+   "copied_from_input": 0.196,
+   "max_copied_from_human": 0.048,
+   "max_scoring_form_change": 0.011
+  }
+ }
+}
