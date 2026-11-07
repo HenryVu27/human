@@ -10,16 +10,23 @@ import re
 
 WORD = re.compile(r"[a-z0-9']+")
 N = 8
+# Curly apostrophes split a word ("don’t" -> "don", "t") and made a text with curly quotes miss its source's
+# straight-quoted runs. Normalized from 2026-11-06 21:50 (attempt 2, A1 red team); earlier results used the old split.
+APOS = str.maketrans({"\u2019": "'", "\u2018": "'", "\u02bc": "'"})
+
+
+def _words(text: str) -> list[str]:
+    return WORD.findall(text.lower().translate(APOS))
 
 
 def grams(text: str, n: int = N) -> set[tuple[str, ...]]:
-    w = WORD.findall(text.lower())
+    w = _words(text)
     return {tuple(w[i:i + n]) for i in range(len(w) - n + 1)}
 
 
 def copied_share(text: str, source: str, beyond: str = "", n: int = N) -> float:
     keep = grams(source, n) - (grams(beyond, n) if beyond else set())
-    w = WORD.findall(text.lower())
+    w = _words(text)
     cov = [False] * len(w)
     for i in range(len(w) - n + 1):
         if tuple(w[i:i + n]) in keep:
