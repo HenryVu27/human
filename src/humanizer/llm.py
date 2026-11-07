@@ -29,10 +29,10 @@ def _cache_get(key: str) -> str | None:
     return json.loads(p.read_text())["text"] if p.exists() else None
 
 
-def _cache_put(key: str, text: str) -> None:
+def _cache_put(key: str, text: str, **meta) -> None:
     p = CACHE / key[:2] / f"{key}.json"
     p.parent.mkdir(parents=True, exist_ok=True)
-    p.write_text(json.dumps({"text": text}))
+    p.write_text(json.dumps({"text": text, **meta}))
 
 
 def claude(prompt: str, *, model: str = "haiku", system: str | None = None, retries: int = 3) -> str:
@@ -54,7 +54,8 @@ def claude(prompt: str, *, model: str = "haiku", system: str | None = None, retr
         if proc.returncode == 0:
             out = json.loads(proc.stdout)
             if not out.get("is_error"):
-                _cache_put(key, out["result"])
+                # attempt 2 pins full model IDs; record the model that actually answered
+                _cache_put(key, out["result"], models=sorted(out.get("modelUsage") or {}), t=time.time())
                 return out["result"]
             err = out.get("result", "")
         else:

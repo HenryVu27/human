@@ -48,6 +48,9 @@ RESTART = re.compile(
     r"let me tell you about|i want to (?:share|talk about|tell you)|i started this (?:post|article)|"
     r"welcome(?: back)?(?: to)?|(?:hi|hello|hey|greetings),? (?:everyone|all|friends|readers|folks|there)|"
     r"highest of highs|last time,? (?:i|we)\b|previously,? (?:i|we) (?:wrote|talked|posted))", re.I)
+PLACEHOLDER = re.compile(
+    r"\$\s*[A-Z][a-z]+[A-Za-z]*\s*[{(][^$\n]{0,40}[})]\s*\$|\{\{[^}\n]{0,40}\}\}|\{[a-z_]{1,12}\}|\[(?:INSERT|TODO|TBD|PLACEHOLDER|CITATION)[^\]\n]*\]|"
+    r"<(?:placeholder|insert|todo)[^>\n]*>|\bTODO\b|\bXXX\b|\bLorem ipsum\b", re.I)
 HEADER = re.compile(r"^\s{0,3}(#{1,6}\s+\S.*|[A-Z][\w'&,:\- ]{2,60})$")
 
 
@@ -139,6 +142,13 @@ def restart_opening(text: str, source: str, n_sentences: int = 2) -> list[str]:
     return sorted({f for f in found if f.lower() not in have})
 
 
+def placeholders(text: str, source: str) -> list[str]:
+    """Template leaks and placeholder math the source does not contain ("$Rewrite{n}$", "$Gaussian(0, 1)$", "{n}",
+    "[INSERT ...]"): B38's backlog, from the bandits rewrite that read Human but was not publishable."""
+    have = {m.group(0) for m in PLACEHOLDER.finditer(source)}
+    return sorted({m.group(0) for m in PLACEHOLDER.finditer(text) if m.group(0) not in have})
+
+
 def check_form(text: str, source: str, *, later_section: bool = False, max_new_code: int = 2, max_foreign: int = 1,
                max_headers: int = 0) -> dict:
     """All form findings for an output written from source; ok is False if any limit is exceeded.
@@ -150,7 +160,8 @@ def check_form(text: str, source: str, *, later_section: bool = False, max_new_c
     framing = new_framing(text, source)
     headers = new_headers(text, source)
     restart = restart_opening(text, source) if later_section else []
+    holes = placeholders(text, source)
     ok = (len(foreign) <= max_foreign and len(code) <= max_new_code and not framing and len(headers) <= max_headers
-          and not restart)
+          and not restart and not holes)
     return {"ok": ok, "non_english": foreign, "new_code": code, "new_framing": framing, "new_headers": headers,
-            "restart": restart}
+            "restart": restart, "placeholders": holes}
