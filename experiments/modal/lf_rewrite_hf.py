@@ -23,7 +23,7 @@ import pathlib
 import modal
 
 ROOT = pathlib.Path(__file__).resolve().parents[2] if modal.is_local() else pathlib.Path("/")
-SP = pathlib.Path("/private/tmp/claude-501/-Users-henryvu-personal/4e64b86d-db0b-493c-bcf7-4834f916f083/scratchpad/push/b30m")
+SP = ROOT / "experiments" / "modal" / "assets"  # common.json moved here from a session scratchpad (2026-11-06, attempt 2; same file)
 app = modal.App("lf-rewrite-hf")
 VOL = modal.Volume.from_name("b31-weights")
 BASE = "/vol/models/allenai/OLMo-2-1124-13B/main"

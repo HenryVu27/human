@@ -1,0 +1,24 @@
+{
+ "sections": 14,
+ "pairs": 41,
+ "pair_accuracy": {
+  "proselens": 0.683,
+  "least_copied": 0.732
+ },
+ "difference": -0.049,
+ "difference_ci95": [
+  -0.281,
+  0.175
+ ],
+ "bar": "difference at least 0.10 and CI excludes 0",
+ "pass": false,
+ "gated_best_of_k_share": {
+  "proselens": 0.286,
+  "least_copied": 0.291,
+  "random": 0.34,
+  "oracle": 0.213
+ },
+ "auroc_all_1534": 0.669,
+ "auroc_rewrites_561": 0.683,
+ "auroc_rewrites_within_cell_weighted": 0.54
+}
