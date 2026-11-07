@@ -141,7 +141,7 @@ One index of every experiment and every literature search: what was asked, how i
 | B34 and B36 (one blinded scan, 2 batches, 10:26 and 10:42) | 169 | 1,715 (dashboard 11,349 to 9,634; per-file charges sum to 1,824) |
 | B37 (Henry arm and splice probe, one blinded batch, 12:16) | 48 | 555 (dashboard 9,634 to 9,079; per-file charges sum to 569) |
 | B38 (calibration candidates and Henry's bandits post with and without math, one blinded batch, 13:33) | 57 | 362 (dashboard 9,079 to 8,717; per-file charges sum to 386) |
-| A1 (C100, C50 and 6 canaries, one blinded batch, about 20:50) | 70 | 966 (dashboard 8,717 to 7,751; per-file charges sum to 966) |
+| A1 (C100, C50 and 6 canaries, one blinded batch; key committed 21:13, upload about 21:15, verdicts saved 21:17) | 70 | 966 (dashboard 8,717 to 7,751; per-file charges sum to 966) |
 
 ## Reading at the close of attempt 1 (2026-11-06)
 
