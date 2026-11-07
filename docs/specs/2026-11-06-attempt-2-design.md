@@ -689,3 +689,17 @@ The outside numbers check (`a2-judge-design-numbers.md`) found 11 wrong figures 
   is 0.54. The judge route stays closed unless Henry allows Pangram to pick in his own use (decision 6). A2-K does
   not run otherwise. Modal cost: $0.03.
 - **Canaries:** the five frozen texts plus the perturbed copy cost 72 credits a session, not 120.
+
+### Amendment 2026-11-06 20:37 CST: Pangram credits renew monthly (Henry, decision 1)
+
+- Henry's Professional credits renew monthly. The plan began about 2026-11-05, so the 8,717 left now are this cycle's
+  and likely reset around 2026-12-05.
+- **Spend this cycle on phase 1** (A1, P1 and the S50 batch if December's Modal credit arrives first) before the
+  renewal. Do not hold credits back across the renewal.
+- **A7 no longer needs a reserve carved from this cycle.** It draws on whichever cycle it runs in, and each cycle
+  holds about 15,000.
+- **The binding limits change.** Credits stop being the scarce resource. What binds now: Henry's monthly plan cost (his
+  spend, outside the $100 cap), Modal free credit ($30 a month), the Claude-call wall time on his shared account, and
+  his reading time.
+- **The pause rule changes** from "credits below the A7 reserve plus 300" to "a phase would need more than the current
+  cycle's remaining credits".
