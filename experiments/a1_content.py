@@ -178,7 +178,7 @@ def _cell(name, prompts_path, gen_path, workers=4):
 
 def pick():
     c100, r100 = _cell("C100", P_C100, G_C100)
-    s50, r50 = _cell("S50", P_S50, G_S50)
+    s50, r50 = _cell("S50", P_S50, G_S50) if G_S50.exists() else ([], {})  # S50 deferred (amendment)
     docs = {d["id"]: d for d in _load(DOCS)}
     inputs = {r["id"]: r for r in _load(INPUTS)}
     c50 = []
@@ -199,6 +199,8 @@ def pick():
     summ = {"rules": {"C100": r100, "S50": r50}}
     for cell in ("C100", "C50", "S50"):
         cr = [t for t in texts if t["cell"] == cell]
+        if not cr:
+            continue
         summ[cell] = {"texts": len(cr), "excluded": sum(t["excluded"] for t in cr),
                       "words": round(statistics.mean(t["words"] for t in cr)),
                       "over_input": round(statistics.mean(t["words"] / t["input_words"] for t in cr), 3),
@@ -252,10 +254,14 @@ def analyze():
                 "p": _wilcoxon(diff), "human": [hx, hy], "mcnemar_p": binomtest(only_a, only_a + only_b).pvalue if only_a + only_b else 1.0,
                 "median_share": [statistics.median(x["ai_share"] for x, _ in pairs), statistics.median(y["ai_share"] for _, y in pairs)]}
 
-    prim, sec = contrast("C100", "C50"), contrast("S50", "C50")
-    ps = sorted([("prim", prim["p"]), ("sec", sec["p"])], key=lambda x: x[1])
-    adj = {ps[0][0]: min(1, ps[0][1] * 2), ps[1][0]: min(1, max(ps[0][1] * 2, ps[1][1]))}
-    prim["p_holm"], sec["p_holm"] = adj["prim"], adj["sec"]
+    prim = contrast("C100", "C50")
+    sec = contrast("S50", "C50") if any(k.startswith("S50_") for k in sh) else None
+    if sec:
+        ps = sorted([("prim", prim["p"]), ("sec", sec["p"])], key=lambda x: x[1])
+        adj = {ps[0][0]: min(1, ps[0][1] * 2), ps[1][0]: min(1, max(ps[0][1] * 2, ps[1][1]))}
+        prim["p_holm"], sec["p_holm"] = adj["prim"], adj["sec"]
+    else:  # S50 deferred: Holm over two, with S50's p taken as 1 until it is scanned (conservative: p doubled)
+        prim["p_holm"] = min(1, prim["p"] * 2)
     d, (lo, hi) = prim["mean_diff"], prim["ci95"]
     if prim["p_holm"] < 0.05 and d < 0:
         band = "large content effect" if d <= -0.10 else "small content effect"
@@ -263,7 +269,7 @@ def analyze():
         band = "content hurts"
     else:
         band = "no useful content effect" if lo > -0.10 else "inconclusive"
-    smaug = sec["p_holm"] < 0.05 and sec["mean_diff"] <= -0.05
+    smaug = bool(sec) and sec["p_holm"] < 0.05 and sec["mean_diff"] <= -0.05
     cells = {}
     for cell in ("C100", "C50", "S50", "CAN"):
         cr = [r for r in rows if r["cell"] == cell]
