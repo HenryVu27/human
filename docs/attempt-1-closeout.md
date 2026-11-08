@@ -253,8 +253,19 @@ All under `data/` (gitignored; local to the Mac):
   - **Sharing.** The GPU is shared with Henry's umwelt project. Never touch its processes, its lock or
     `C:\gpu-pause`, which belongs to umwelt.
   - **Speed.** About 7.5 tokens a second for the 13B writer in 4 bits.
-  - **Not written down.** The exact command earlier sessions used to launch jobs detached over SSH was not recorded.
-    Check `status.ps1` and the lock before starting anything.
+  - **Launching detached (recorded 2026-11-07, attempt 2).**
+    1. Check Tailscale first: `tailscale status` must show `henryspc` active. "Offline" means the PC's Tailscale
+       client is disconnected even when the PC is on.
+    2. Copy files with `scp -O` (the legacy protocol). Plain `scp` fails with "Connection closed" on this Windows
+       OpenSSH.
+    3. Give .cmd files CRLF line endings.
+    4. Append a line to `C:\gpu-schedule.txt`.
+    5. Launch with a scheduled task, which survives the SSH session:
+       `schtasks /create /tn <name> /tr "cmd /c C:\hgpu\<job>.cmd > C:\hgpu\<job>_run.log 2>&1" /sc once /st 23:59 /f`,
+       then `schtasks /run /tn <name>`.
+    6. Check `C:\gpu-lock\owner` and the run log.
+
+    Always check `status.ps1` and the lock before starting anything.
 
 ### 6.5 Modal
 
