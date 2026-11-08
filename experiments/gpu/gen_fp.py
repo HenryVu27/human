@@ -87,6 +87,7 @@ def main():
         with open(a.out, "a", encoding="utf-8") as f:
             f.write(json.dumps({"doc": p["doc"], "sections": out_secs}) + "\n")
         print(f"done {p['doc']} ({len(out_secs)} sections) {time.time() - start:.0f}s", flush=True)
+    print("GEN_OK", flush=True)
 
 
 if __name__ == "__main__":
