@@ -1,0 +1,29 @@
+{
+ "generation_diagnosis": {
+  "posts": 30,
+  "sections": 132,
+  "candidates": 264,
+  "loop_rule": "over 25% of word 4-grams repeated within the text",
+  "candidates_looped": 110,
+  "chosen_looped": 68,
+  "chosen_hit_token_cap": 70,
+  "post_words_over_draft_mean": 1.78,
+  "sections_with_a_clean_stopped_candidate": 90,
+  "chose_loop_despite_clean_candidate": 27,
+  "posts_with_no_looped_section": 6,
+  "candidate_loop_rate": {
+   "k0": 0.22,
+   "k_over_0": 0.48
+  },
+  "k_over_0_chosen_loop_rate": {
+   "prefix_clean": "16/50",
+   "prefix_looped": "44/52"
+  },
+  "a1_c100_raw_for_comparison": {
+   "looped": "50/328",
+   "all_loops_among_capped": true,
+   "final_texts_looped": "0/32"
+  },
+  "outcome": "cell invalid; not repaired, not read, not scanned; 0 credits"
+ }
+}

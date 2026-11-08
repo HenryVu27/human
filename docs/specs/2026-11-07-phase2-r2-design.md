@@ -182,3 +182,21 @@ The R2 data pilot was stopped after selection; no pairs exist.
 - **The product reading so far:** a base-model rewrite of an all-notes draft, plus a capped repair pass, reads Human at
   full length. Faithfulness, coverage and coherence still fall short of publishable. The repair pass stays in every
   later pipeline.
+
+## Amendment 2026-11-08 12:52 CST: P2c generation failed its first check; cell not scanned
+
+- **What happened.** The PC run finished (30 posts, 132 sections, 2 seeds, 2026-11-08 06:10). 68 of the 132 chosen
+  sections degenerate into loops (over 25% of word 4-grams repeated), 70 hit the token cap, and posts average 1.78
+  times the draft's length. Only 6 of 30 posts are loop-free. The cell is invalid, so the repair pass, reader and scan
+  did not run. No credits were spent.
+- **Causes, from the raw file (`results/p2c_bakeoff.json`):**
+  - The pick rule had no loop check. A looping text copies almost nothing, so "least copying" preferred it, 27 times
+    over a clean stopped candidate. This was a design error: B34 had already recorded that long continuations loop.
+  - A looped section poisons the next one through the prefix: 44 of 52 sections after a looped prefix loop, against 16
+    of 50 after a clean one.
+  - Forced prefix itself raises looping: 48% of candidates at k > 0 against 22% at k = 0, and 15% in A1's raw
+    generations.
+- **Correction to an earlier reading.** The 22% of sentences A1's cleanup deleted was not only damage. A1's raw
+  generations looped 50 of 328 times, all at the token cap, and its pick and cleanup removed them (0 of 32 final texts
+  loop). "No silent deletion" needs a loop check in its place.
+- **Not tested by this run:** whether forced prefix fixes joins or dropped content. Those questions stay open.
