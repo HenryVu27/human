@@ -36,3 +36,5 @@ models/
 /results/z[0-9]*_*.jsonl
 # Phase 2 R2 training data: corpus posts, notes, drafts and pairs stay local (2026-11-07).
 /results/r2_*.jsonl
+# Phase 2 P-series texts stay local (2026-11-07).
+/results/p2[a-z]*_*.jsonl
