@@ -1,0 +1,14 @@
+{
+ "repair": {
+  "problems": 10.7667,
+  "edits": 6.0667,
+  "rejected": 2.6333,
+  "deleted": 1.8667,
+  "replaced": 4.2,
+  "words_changed_share": 0.0383,
+  "support_before": 0.9621,
+  "support_after": 0.9765,
+  "defects_before": 2.9,
+  "n": 30
+ }
+}

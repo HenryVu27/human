@@ -1,0 +1,254 @@
+{
+ "81fdecb7": {
+  "key": "R100_pd2849dd1e5",
+  "cell": "R100",
+  "doc": "pd2849dd1e5",
+  "words": 855,
+  "sha": "9b2e735fe5363783"
+ },
+ "17eb6278": {
+  "key": "R100_p0f92b38ac3",
+  "cell": "R100",
+  "doc": "p0f92b38ac3",
+  "words": 588,
+  "sha": "363ad6524b0e9c16"
+ },
+ "9091b25e": {
+  "key": "R100_pa2b84bf758",
+  "cell": "R100",
+  "doc": "pa2b84bf758",
+  "words": 1181,
+  "sha": "1423181d4b9238f3"
+ },
+ "277dcde0": {
+  "key": "R100_pbfd12ded77",
+  "cell": "R100",
+  "doc": "pbfd12ded77",
+  "words": 1636,
+  "sha": "87024f8e6283f7e1"
+ },
+ "08acaf43": {
+  "key": "R100_pa5fd792f87",
+  "cell": "R100",
+  "doc": "pa5fd792f87",
+  "words": 1252,
+  "sha": "385d225e8d9cc2c3"
+ },
+ "2fad8b99": {
+  "key": "R100_p10267ee0c0",
+  "cell": "R100",
+  "doc": "p10267ee0c0",
+  "words": 1802,
+  "sha": "f407cd7e262142fe"
+ },
+ "b91084c3": {
+  "key": "R100_pae98db1f7a",
+  "cell": "R100",
+  "doc": "pae98db1f7a",
+  "words": 1044,
+  "sha": "be66d79e05077658"
+ },
+ "aaad6b51": {
+  "key": "R100_p25d4111207",
+  "cell": "R100",
+  "doc": "p25d4111207",
+  "words": 1325,
+  "sha": "0b2b6caaac46c9d3"
+ },
+ "a2ff2898": {
+  "key": "CAN_hfull",
+  "cell": "CAN",
+  "doc": "CAN_hfull",
+  "words": 2009,
+  "sha": "311e6d9e196dc7dd"
+ },
+ "abeb1824": {
+  "key": "CAN_h300",
+  "cell": "CAN",
+  "doc": "CAN_h300",
+  "words": 287,
+  "sha": "15814f2097e6ddc3"
+ },
+ "1ed9d5c0": {
+  "key": "R100_pd3f07c3e66",
+  "cell": "R100",
+  "doc": "pd3f07c3e66",
+  "words": 1089,
+  "sha": "0e3e53ac4e4e8766"
+ },
+ "49abc022": {
+  "key": "R100_p8fb3502483",
+  "cell": "R100",
+  "doc": "p8fb3502483",
+  "words": 1176,
+  "sha": "c8ebb92f48ef2ad9"
+ },
+ "eb6c302e": {
+  "key": "R100_p3bfd623027",
+  "cell": "R100",
+  "doc": "p3bfd623027",
+  "words": 1337,
+  "sha": "004ad9e283e5852d"
+ },
+ "8efc1b8d": {
+  "key": "CAN_rewrite",
+  "cell": "CAN",
+  "doc": "CAN_rewrite",
+  "words": 1300,
+  "sha": "206e324e42c4c63a"
+ },
+ "76228a51": {
+  "key": "R100_p760e0a2d40",
+  "cell": "R100",
+  "doc": "p760e0a2d40",
+  "words": 1410,
+  "sha": "fea3425fd26c103c"
+ },
+ "1cfdfc73": {
+  "key": "R100_pfe6789384f",
+  "cell": "R100",
+  "doc": "pfe6789384f",
+  "words": 1055,
+  "sha": "f6b254865aebfa36"
+ },
+ "4560ee09": {
+  "key": "CAN_splice",
+  "cell": "CAN",
+  "doc": "CAN_splice",
+  "words": 1327,
+  "sha": "82e9c914a7537250"
+ },
+ "2847c57c": {
+  "key": "R100_pe9ea594c27",
+  "cell": "R100",
+  "doc": "pe9ea594c27",
+  "words": 1236,
+  "sha": "7375c1c7a6de4876"
+ },
+ "2b2152cf": {
+  "key": "CAN_h300_perturbed_2026-11-07",
+  "cell": "CAN",
+  "doc": "CAN_h300_perturbed_2026-11-07",
+  "words": 287,
+  "sha": "f5d08edd376996e2"
+ },
+ "070c1a02": {
+  "key": "R100_p8e28b03c67",
+  "cell": "R100",
+  "doc": "p8e28b03c67",
+  "words": 1022,
+  "sha": "194e7a5e47fb4bdc"
+ },
+ "2870c937": {
+  "key": "CAN_sonnet",
+  "cell": "CAN",
+  "doc": "CAN_sonnet",
+  "words": 1795,
+  "sha": "cf6bb6596a99168d"
+ },
+ "72828803": {
+  "key": "R100_pd870408b22",
+  "cell": "R100",
+  "doc": "pd870408b22",
+  "words": 1438,
+  "sha": "6719d2ec08fc6c89"
+ },
+ "43526c30": {
+  "key": "R100_p4b8e886641",
+  "cell": "R100",
+  "doc": "p4b8e886641",
+  "words": 1227,
+  "sha": "ca8e975b910f9afe"
+ },
+ "48ff5fe5": {
+  "key": "R100_p827b1c285d",
+  "cell": "R100",
+  "doc": "p827b1c285d",
+  "words": 1578,
+  "sha": "1ccbfe264b95faf7"
+ },
+ "840f703e": {
+  "key": "R100_pc181d8f08b",
+  "cell": "R100",
+  "doc": "pc181d8f08b",
+  "words": 1465,
+  "sha": "ddc35bf28fbdab65"
+ },
+ "6362659a": {
+  "key": "R100_p4c5be6086d",
+  "cell": "R100",
+  "doc": "p4c5be6086d",
+  "words": 1451,
+  "sha": "34b7b60e08eb60cd"
+ },
+ "f8c5272f": {
+  "key": "R100_p2a4982704f",
+  "cell": "R100",
+  "doc": "p2a4982704f",
+  "words": 972,
+  "sha": "668e1758c10ac4ff"
+ },
+ "ee79bdf9": {
+  "key": "R100_p4ad56d5750",
+  "cell": "R100",
+  "doc": "p4ad56d5750",
+  "words": 1515,
+  "sha": "37301e211647db2b"
+ },
+ "935f5cee": {
+  "key": "R100_p89e48932f5",
+  "cell": "R100",
+  "doc": "p89e48932f5",
+  "words": 1514,
+  "sha": "8dc6cd6fc291a550"
+ },
+ "f67a5967": {
+  "key": "R100_pce9bcaba2a",
+  "cell": "R100",
+  "doc": "pce9bcaba2a",
+  "words": 1244,
+  "sha": "ccaeb31e51d72e2c"
+ },
+ "653b818a": {
+  "key": "R100_pd64b3e3aae",
+  "cell": "R100",
+  "doc": "pd64b3e3aae",
+  "words": 1309,
+  "sha": "c5c32da0d1853b33"
+ },
+ "7135e283": {
+  "key": "R100_p01004974c5",
+  "cell": "R100",
+  "doc": "p01004974c5",
+  "words": 1150,
+  "sha": "712d306845819487"
+ },
+ "34020f78": {
+  "key": "R100_p40c33738de",
+  "cell": "R100",
+  "doc": "p40c33738de",
+  "words": 1572,
+  "sha": "029616444aab6521"
+ },
+ "feafe541": {
+  "key": "R100_p9ae3b6a467",
+  "cell": "R100",
+  "doc": "p9ae3b6a467",
+  "words": 2447,
+  "sha": "739930aa77ef690a"
+ },
+ "1d3f80dd": {
+  "key": "R100_p3a84b9ccbc",
+  "cell": "R100",
+  "doc": "p3a84b9ccbc",
+  "words": 1411,
+  "sha": "a49d6f89f8d774f2"
+ },
+ "89dcaed0": {
+  "key": "R100_p1c9cb11d31",
+  "cell": "R100",
+  "doc": "p1c9cb11d31",
+  "words": 891,
+  "sha": "02ac8a0094a58f55"
+ }
+}
