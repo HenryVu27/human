@@ -22,5 +22,23 @@
   "p": 0.06788915486182899,
   "spearman_rise_vs_words_changed": 0.058,
   "pangram_part_of_band": "holds"
- }
+ },
+ "reader_unblinded": {
+  "original": {
+   "invented": 52,
+   "garbled": 11,
+   "joins": 32,
+   "dropped": 54,
+   "publish_yes": 2
+  },
+  "repaired": {
+   "invented": 30,
+   "garbled": 7,
+   "joins": 23,
+   "dropped": 53,
+   "publish_yes": 2
+  }
+ },
+ "invented_repaired_lower_docs": 10,
+ "invented_repaired_higher_docs": 0
 }

@@ -164,3 +164,21 @@ The R2 data pilot was stopped after selection; no pairs exist.
    - both evaluated under a powered rule.
 4. **R2 training only if 1 to 3 leave a gap.** With all-notes drafts only, source repair (Sonnet rewrites the human
    section into AI style, Smaug's pairs) instead of target deletion, mid-post pairs, and the context ablated.
+
+## Amendment 2026-11-07 23:21 CST: P2a result
+
+- **Pangram holds under repair.** Minimal faithful edits to 3.8% of words keep 26 of 30 Human (mean 0.039, against
+  C100's 0.032).
+- **Repair improves quality, but not enough.** Invented items halve (52 to 30, lower in 10 of 10 posts), but average 3
+  per post against the bar of 1. Dropped content does not move (54 to 53), and publishable posts stay at 2 of 10.
+- **The largest remaining defect is dropped content.** It comes from A1's after-generation prune and cleanup (22% of
+  sentences deleted) and from generations cut at the token cap (73 of 328). Both need regeneration:
+  - no silent deletion;
+  - a higher token cap;
+  - forced-prefix continuation for later sections;
+  - code and headings as fixed blocks.
+- **That is step 3 of the revised order (the zero-training bake-off), and it waits for GPU compute:** the PC, or
+  Modal's reset on 2026-12-01. November's credit has $3.22 left.
+- **The product reading so far:** a base-model rewrite of an all-notes draft, plus a capped repair pass, reads Human at
+  full length. Faithfulness, coverage and coherence still fall short of publishable. The repair pass stays in every
+  later pipeline.
