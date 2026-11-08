@@ -4,7 +4,7 @@
   "sections": 132,
   "candidates": 264,
   "loop_rule": "over 25% of word 4-grams repeated within the text",
-  "candidates_looped": 110,
+  "candidates_looped": 106,
   "chosen_looped": 68,
   "chosen_hit_token_cap": 70,
   "post_words_over_draft_mean": 1.78,
@@ -24,6 +24,7 @@
    "all_loops_among_capped": true,
    "final_texts_looped": "0/32"
   },
-  "outcome": "cell invalid; not repaired, not read, not scanned; 0 credits"
+  "outcome": "cell invalid; not repaired, not read, not scanned; 0 credits",
+  "candidates_empty": 4
  }
 }

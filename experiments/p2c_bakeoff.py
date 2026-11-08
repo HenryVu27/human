@@ -46,6 +46,7 @@ from humanizer.checks.copying import copied_share  # noqa: E402
 from humanizer.eval import scan  # noqa: E402
 
 RES = Path("results")
+EXP = "p2c"
 POSTS = RES / "p2c_posts.jsonl"
 GEN = RES / "p2c_gen.jsonl"
 TEXTS = RES / "p2c_texts.jsonl"
@@ -70,7 +71,7 @@ def assemble():
         if doc not in gen:
             continue
         secs = gen[doc]["sections"]
-        text = "\n\n".join(next(c for c in s["candidates"] if c["seed"] == s["chosen"])["text"] for s in secs)
+        text = "\n\n".join(t for t in (next(c for c in s["candidates"] if c["seed"] == s["chosen"])["text"] for s in secs) if t)
         F.append({"doc": doc, "text": text, "draft": draft, "fallbacks": sum(s["rule"] != "eligible" for s in secs),
                   "truncated": sum(not next(c for c in s["candidates"] if c["seed"] == s["chosen"])["hit_eos"]
                                    for s in secs)})
@@ -88,10 +89,10 @@ def assemble():
     fr = {r["doc"]: r["text"] for r in rows if r["cell"] == "FR"}
     pack = [{"doc": d, "version": v, "text": (fr if v == "FR" else r100)[d]} for d in read_docs if d in fr
             for v in ("FR", "R100")]
-    random.Random("p2c-read").shuffle(pack)
-    (RES / "p2c_read_pack.jsonl").write_text("".join(json.dumps({"item": i, "doc": p["doc"], "text": p["text"]}) + "\n"
+    random.Random(f"{EXP}-read").shuffle(pack)
+    (RES / f"{EXP}_read_pack.jsonl").write_text("".join(json.dumps({"item": i, "doc": p["doc"], "text": p["text"]}) + "\n"
                                                     for i, p in enumerate(pack)))
-    (RES / "p2c_read_key.json").write_text(json.dumps([{"item": i, "doc": p["doc"], "version": p["version"]}
+    (RES / f"{EXP}_read_key.json").write_text(json.dumps([{"item": i, "doc": p["doc"], "version": p["version"]}
                                                         for i, p in enumerate(pack)]))
     fcell = [r for r in rows if r["cell"] == "F"]
     summ = {"posts": len(fcell), "F_words": round(statistics.mean(r["words"] for r in fcell)),
@@ -108,12 +109,12 @@ def scanfiles(dest):
     texts = [{"key": r["id"], "cell": r["cell"], "doc": r["doc"], "text": r["text"]} for r in _load(TEXTS)
              if r["cell"] == "FR"]
     texts += scan.canaries()
-    print(len(texts), "files, about", scan.write_batch("p2c", texts, dest, max_credits=600), "credits")
+    print(len(texts), "files, about", scan.write_batch(EXP, texts, dest, max_credits=600), "credits")
 
 
 def analyze():
     from scipy.stats import wilcoxon
-    rows = scan.record("p2c")
+    rows = scan.record(EXP)
     now = {r["key"]: r for r in rows}
     a1 = {r["key"]: r for r in _load(RES / "a1_pangram.jsonl")}
     p2a = {r["key"]: r for r in _load(RES / "p2a_pangram.jsonl")}

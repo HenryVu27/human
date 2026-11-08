@@ -200,3 +200,11 @@ The R2 data pilot was stopped after selection; no pairs exist.
   generations looped 50 of 328 times, all at the token cap, and its pick and cleanup removed them (0 of 32 final texts
   loop). "No silent deletion" needs a loop check in its place.
 - **Not tested by this run:** whether forced prefix fixes joins or dropped content. Those questions stay open.
+
+## Amendment 2026-11-08 13:02 CST: P2d, P2c rerun with loop protection (before any P2d text exists)
+
+Henry asked to continue. `experiments/p2d_bakeoff.py` holds the rules and `experiments/gpu/gen_fp2.py` the generator:
+early stop at a loop, up to 4 seeds a section, a clean-candidate gate before least copying, a lower token cap, and no
+looped text carried forward. Gate before any Claude call or scan: at most 20% of sections without a clean candidate, no
+final post looping, mean length at most 1.4 times the draft. A failed gate means returning to independent sections with
+the loop gate. Correction to the 11-08 amendment's count: 106 of P2c's 264 candidates loop and 4 are empty.
