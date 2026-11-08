@@ -10,5 +10,17 @@
   "support_after": 0.9765,
   "defects_before": 2.9,
   "n": 30
+ },
+ "analysis": {
+  "canaries_identical": true,
+  "canary_changes": [],
+  "n": 30,
+  "human_repaired": 26,
+  "human_c100": 26,
+  "mean_share_repaired": 0.0393,
+  "mean_diff": 0.0053,
+  "p": 0.06788915486182899,
+  "spearman_rise_vs_words_changed": 0.058,
+  "pangram_part_of_band": "holds"
  }
 }

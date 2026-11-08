@@ -147,6 +147,7 @@ One index of every experiment and every literature search: what was asked, how i
 | B38 (calibration candidates and Henry's bandits post with and without math, one blinded batch, 13:33) | 57 | 362 (dashboard 9,079 to 8,717; per-file charges sum to 386) |
 | A1 (C100, C50 and 6 canaries, one blinded batch; key committed 21:13, upload about 21:15, verdicts saved 21:17) | 70 | 966 (dashboard 8,717 to 7,751; per-file charges sum to 996) |
 | A1b and A1c (D100, C100d and 6 canaries, one blinded batch; key 21:33, verdicts 21:35) | 66 | 962 (dashboard 7,751 to 6,789; per-file charges sum to 989) |
+| P2a (30 repaired C100 texts and 6 canaries, one blinded batch; key 23:12, verdicts 23:14) | 36 | 479 (dashboard 6,789 to 6,310; per-file charges sum to 488) |
 
 ## Reading at the close of attempt 1 (2026-11-06)
 
