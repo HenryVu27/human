@@ -135,3 +135,32 @@ Each step gets an outside check before it is reported:
 - **The data pilot:** an agent audits 10 pairs (alignment, cleaning, leakage against the reserve).
 - **The bake-off:** a reader agent blind to cell, and a statistics recompute.
 - **The Pangram check:** a statistics and order audit, and a red team.
+
+## Amendment 2026-11-07 22:59 CST: red team, revised order (`results/research/a2-redteam-phase2.md`)
+
+**What the red team found:**
+- The development rule could not pick a winner: a rewriter that truly halves invention passes the gate 2% of the
+  time.
+- A1's after-generation prune and cleanup deleted 22% of output sentences, which left dangling references, and 12 of
+  82 sections were cut off at the token cap.
+- Deleting target sentences fixes about a third of the invention types.
+- The 50% dose third mostly fails alignment.
+- The restarts come from training on essay openings only (all 630 B30 targets start at word 1).
+- The Claude-call estimate was about three times too low.
+
+The R2 data pilot was stopped after selection; no pairs exist.
+
+**Revised order:**
+1. **P2a, the repair test (now, no GPU; about 150 Claude calls, about 520 credits).**
+   - A1's 30 C100 texts are flagged by the claim check, `prose_defects` and a coherence check.
+   - Each is then repaired with minimal, capped edits that bring flagged spans back to the draft.
+   - A reader re-reads 10, and Pangram scans all 30 once.
+   - **Question:** how much Human verdict does a faithful, coherent post cost? If it holds, the B30 rewriter plus a
+     repair pass is a product path with no training.
+2. **P2b, re-pick from the existing 4 seeds** (no GPU, reader time). How far is the best of 4 from the gate?
+3. **When compute exists, a zero-training bake-off:**
+   - B30 with forced-prefix continuation, no silent deletion and a higher token cap;
+   - Smaug-Humanizer on D100;
+   - both evaluated under a powered rule.
+4. **R2 training only if 1 to 3 leave a gap.** With all-notes drafts only, source repair (Sonnet rewrites the human
+   section into AI style, Smaug's pairs) instead of target deletion, mid-post pairs, and the context ablated.
