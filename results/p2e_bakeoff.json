@@ -1,0 +1,23 @@
+{
+ "check": {
+  "posts": 30,
+  "sections": 77,
+  "rules": {
+   "eligible": 71,
+   "cut": 2,
+   "short": 4
+  },
+  "share_not_clean": 0.078,
+  "tried_mean": 2.36,
+  "raw_candidate_loop_rate_k_over_0": 0.111,
+  "final_posts_looping": 0,
+  "post_words_over_draft": 1.007,
+  "post_words_over_draft_range": [
+   0.61,
+   1.33
+  ],
+  "mean_repeat_share_chosen": 0.025,
+  "empty_sections": 0,
+  "gate": "pass"
+ }
+}
