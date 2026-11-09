@@ -215,3 +215,12 @@ P2d passed two of its three gate conditions and failed the third: 4 of 30 final 
 sections re-write earlier ones. By its pre-registered rule the cell stopped with no Claude call or scan, and the next
 step is independent sections with the loop gate: `experiments/p2e_bakeoff.py`, using A1's own sections, plus a gate
 against a section repeating more than 15% of the post's earlier chosen text.
+
+## Amendment 2026-11-09 08:53 CST: P2e quality result (scan pending)
+
+P2e passed its generation gate and failed its quality band. Against P2a's repaired posts, the same blind reader counted
+more invented items (69 against 49), no less dropped content (48 against 43) and 2 of 10 publishable against 0. Length
+returned to the draft's without the content, so deleting sentences was not the main cause of dropped content: the B30
+rewriter itself skips points and adds others. Reader noise is large: the same R100 texts drew 30 invented items from
+P2a's reader and 49 from this one, so comparisons are valid only within one reader. The registered scan still runs when
+Chrome is back; it measures whether repairs touching 12.8% of words keep the Human verdict.
