@@ -38,3 +38,5 @@ models/
 /results/r2_*.jsonl
 # Phase 2 P-series texts stay local (2026-11-07).
 /results/p2[a-z]*_*.jsonl
+# Site-copy runs: third-party-free, but local until reviewed (2026-11-09).
+/results/s1_*.jsonl
