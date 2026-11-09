@@ -28,5 +28,23 @@
   "F_copied_from_draft": 0.153,
   "FR_words_changed": 0.1276,
   "FR_support_after": 0.9537
+ },
+ "reader_unblinded": {
+  "FR": {
+   "words": 14153,
+   "invented": 69,
+   "garbled": 23,
+   "joins": 37,
+   "dropped": 48,
+   "publish": 2
+  },
+  "R100": {
+   "words": 12563,
+   "invented": 49,
+   "garbled": 16,
+   "joins": 32,
+   "dropped": 43,
+   "publish": 0
+  }
  }
 }
