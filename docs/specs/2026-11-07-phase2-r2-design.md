@@ -208,3 +208,10 @@ early stop at a loop, up to 4 seeds a section, a clean-candidate gate before lea
 looped text carried forward. Gate before any Claude call or scan: at most 20% of sections without a clean candidate, no
 final post looping, mean length at most 1.4 times the draft. A failed gate means returning to independent sections with
 the loop gate. Correction to the 11-08 amendment's count: 106 of P2c's 264 candidates loop and 4 are empty.
+
+## Amendment 2026-11-09 01:47 CST: P2d gate failed; P2e (independent sections) next
+
+P2d passed two of its three gate conditions and failed the third: 4 of 30 final posts repeat themselves, because later
+sections re-write earlier ones. By its pre-registered rule the cell stopped with no Claude call or scan, and the next
+step is independent sections with the loop gate: `experiments/p2e_bakeoff.py`, using A1's own sections, plus a gate
+against a section repeating more than 15% of the post's earlier chosen text.

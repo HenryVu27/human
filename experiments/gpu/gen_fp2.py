@@ -28,7 +28,7 @@ import torch
 from copying import copied_share
 from form import check_form
 from guard import QUOTES, Guard, TorchGuard, allowed_specifics
-from loops import cut_loop, is_loop, last_sentence, trailing_loop
+from loops import cut_loop, is_loop, last_sentence, overlap_share, trailing_loop
 
 MODEL = "allenai/OLMo-2-1124-13B"
 CONTEXT = 4096
@@ -42,6 +42,9 @@ def main():
     ap.add_argument("--common", default="common.json")
     ap.add_argument("--hours", type=float, default=1.8)
     ap.add_argument("--limit", type=int, default=0, help="stop after this many posts (smoke test)")
+    ap.add_argument("--independent", action="store_true", help="P2e: each section alone, no prefix (B30's own shape)")
+    ap.add_argument("--max-overlap", type=float, default=1.0, help="P2e: reject a candidate sharing more than this "
+                    "share of its word 4-grams with the post's earlier chosen sections")
     a = ap.parse_args()
     from peft import PeftModel
     from transformers import (AutoModelForCausalLM, AutoTokenizer, BitsAndBytesConfig, LogitsProcessorList,
@@ -93,13 +96,17 @@ def main():
         prev_out, out_secs = "", []
         for k, sec in enumerate(p["sections"]):
             n = len(sec.split())
+            if a.independent:
+                prev_out = ""
             draft = (p["sections"][k - 1] + "\n" + sec) if k and prev_out else sec
             prompt = f"Draft:\n{draft}\n\nRewrite:\n" + (prev_out + "\n" if prev_out else "")
+            earlier = " ".join(s["_text"] for s in out_secs)
             enc = tok(prompt, return_tensors="pt").to("cuda")
             room = CONTEXT - enc["input_ids"].shape[1] - 8
             max_new = max(64, min(int(n * 2.4) + 64, room))
             allowed = draft + "\n" + prev_out
-            clean = lambda c: c["hit_eos"] and not c["loop"] and c["form_ok"] and 0.5 * n <= c["words"] <= 1.6 * n
+            clean = lambda c: (c["hit_eos"] and not c["loop"] and c["form_ok"] and 0.5 * n <= c["words"] <= 1.6 * n
+                               and overlap_share(c["text"], earlier) <= a.max_overlap)
             cands = []
             for seed in (0, 1, 2, 3):
                 if seed == 2 and any(clean(c) for c in cands):
@@ -115,15 +122,19 @@ def main():
                     t = "" if is_loop(t) else t
                     form = check_form(t, sec, later_section=k > 0, max_new_code=0) if t else {"ok": False}
                     c.update(text=t, words=len(t.split()), form_ok=form["ok"], copied=copied_share(t, sec) if t else 0.0)
-                cut_ok = [c for c in cands if c["form_ok"] and c["words"] >= 0.5 * n]
+                cut_ok = [c for c in cands if c["form_ok"] and c["words"] >= 0.5 * n
+                          and overlap_share(c["text"], earlier) <= a.max_overlap]
                 if cut_ok:
                     chosen, rule = min(cut_ok, key=lambda c: c["copied"]), "cut"
                 else:
-                    chosen, rule = max(cands, key=lambda c: c["words"]), "short"
-            out_secs.append({"k": k, "chosen": chosen["seed"], "rule": rule, "tried": len(cands), "candidates": cands})
+                    pool = [c for c in cands if overlap_share(c["text"], earlier) <= a.max_overlap] or cands
+                    chosen, rule = max(pool, key=lambda c: c["words"]), "short"
+            out_secs.append({"k": k, "chosen": chosen["seed"], "rule": rule, "tried": len(cands), "candidates": cands,
+                             "_text": chosen["text"]})
             prev_out = chosen["text"]
         with open(a.out, "a", encoding="utf-8") as f:
-            f.write(json.dumps({"doc": p["doc"], "sections": out_secs}) + "\n")
+            f.write(json.dumps({"doc": p["doc"], "sections": [{k2: v for k2, v in s.items() if k2 != "_text"}
+                                                              for s in out_secs]}) + "\n")
         rules = [s["rule"] for s in out_secs]
         print(f"done {p['doc']} ({len(out_secs)} sections; eligible {rules.count('eligible')}, cut {rules.count('cut')}, "
               f"short {rules.count('short')}) {time.time() - start:.0f}s", flush=True)

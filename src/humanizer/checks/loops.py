@@ -25,6 +25,13 @@ def repeat_share(text: str) -> float:
     return 1 - len(set(g)) / len(g) if g else 0.0
 
 
+def overlap_share(text: str, earlier: str) -> float:
+    """Share of the text's word 4-grams already present in `earlier` (P2d: sections re-writing an earlier section)."""
+    g = _grams(WORD.findall(text.lower()))
+    seen = set(_grams(WORD.findall(earlier.lower())))
+    return sum(x in seen for x in g) / len(g) if g else 0.0
+
+
 def is_loop(text: str, limit: float = LIMIT) -> bool:
     return repeat_share(text) > limit
 
