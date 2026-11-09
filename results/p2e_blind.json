@@ -1,0 +1,254 @@
+{
+ "3cc21f38": {
+  "key": "FR_pd870408b22",
+  "cell": "FR",
+  "doc": "pd870408b22",
+  "words": 1276,
+  "sha": "560f57b248198d00"
+ },
+ "c81aa17e": {
+  "key": "CAN_h300_perturbed_2026-11-09",
+  "cell": "CAN",
+  "doc": "CAN_h300_perturbed_2026-11-09",
+  "words": 287,
+  "sha": "0af2ecb12e31a65e"
+ },
+ "ff1e25fa": {
+  "key": "CAN_splice",
+  "cell": "CAN",
+  "doc": "CAN_splice",
+  "words": 1327,
+  "sha": "82e9c914a7537250"
+ },
+ "1d1bc4e7": {
+  "key": "CAN_rewrite",
+  "cell": "CAN",
+  "doc": "CAN_rewrite",
+  "words": 1300,
+  "sha": "206e324e42c4c63a"
+ },
+ "d5539d69": {
+  "key": "FR_pa5fd792f87",
+  "cell": "FR",
+  "doc": "pa5fd792f87",
+  "words": 1407,
+  "sha": "8d65e3fef43bf1e1"
+ },
+ "9b24adb2": {
+  "key": "FR_p3a84b9ccbc",
+  "cell": "FR",
+  "doc": "p3a84b9ccbc",
+  "words": 1323,
+  "sha": "e665af1551fb9f85"
+ },
+ "f3f12e4f": {
+  "key": "FR_p4b8e886641",
+  "cell": "FR",
+  "doc": "p4b8e886641",
+  "words": 1416,
+  "sha": "7a50d0c5486cbb6a"
+ },
+ "e9f2dee7": {
+  "key": "FR_pd2849dd1e5",
+  "cell": "FR",
+  "doc": "pd2849dd1e5",
+  "words": 1278,
+  "sha": "288386eb611318cc"
+ },
+ "8d434af9": {
+  "key": "FR_p0f92b38ac3",
+  "cell": "FR",
+  "doc": "p0f92b38ac3",
+  "words": 1207,
+  "sha": "100b29777af12d62"
+ },
+ "35cbf140": {
+  "key": "FR_p9ae3b6a467",
+  "cell": "FR",
+  "doc": "p9ae3b6a467",
+  "words": 2785,
+  "sha": "5a3fa534f8960ab7"
+ },
+ "86cce6da": {
+  "key": "FR_pce9bcaba2a",
+  "cell": "FR",
+  "doc": "pce9bcaba2a",
+  "words": 998,
+  "sha": "4ee31a24993a6844"
+ },
+ "b6c05a58": {
+  "key": "CAN_sonnet",
+  "cell": "CAN",
+  "doc": "CAN_sonnet",
+  "words": 1795,
+  "sha": "cf6bb6596a99168d"
+ },
+ "2f9f821e": {
+  "key": "FR_p25d4111207",
+  "cell": "FR",
+  "doc": "p25d4111207",
+  "words": 1434,
+  "sha": "1c70cdf0fc0d75d5"
+ },
+ "a2c4ed0c": {
+  "key": "FR_pd3f07c3e66",
+  "cell": "FR",
+  "doc": "pd3f07c3e66",
+  "words": 1476,
+  "sha": "5968b7ae72ef0cd1"
+ },
+ "a7e84696": {
+  "key": "FR_p4ad56d5750",
+  "cell": "FR",
+  "doc": "p4ad56d5750",
+  "words": 1539,
+  "sha": "3e72f5df8f0ee9a2"
+ },
+ "1ac3f000": {
+  "key": "FR_p760e0a2d40",
+  "cell": "FR",
+  "doc": "p760e0a2d40",
+  "words": 1550,
+  "sha": "8e98fa44c3979800"
+ },
+ "a6be2e6f": {
+  "key": "FR_p89e48932f5",
+  "cell": "FR",
+  "doc": "p89e48932f5",
+  "words": 1432,
+  "sha": "80381d4d1535ad99"
+ },
+ "eed3cce8": {
+  "key": "FR_pe9ea594c27",
+  "cell": "FR",
+  "doc": "pe9ea594c27",
+  "words": 1478,
+  "sha": "0bdf825502c87491"
+ },
+ "c7ebd20b": {
+  "key": "FR_p01004974c5",
+  "cell": "FR",
+  "doc": "p01004974c5",
+  "words": 1287,
+  "sha": "71b983a0ee9ed7bd"
+ },
+ "c636ae0b": {
+  "key": "FR_p40c33738de",
+  "cell": "FR",
+  "doc": "p40c33738de",
+  "words": 1239,
+  "sha": "4bfe4a6b8d91ead7"
+ },
+ "c2b6639c": {
+  "key": "FR_pae98db1f7a",
+  "cell": "FR",
+  "doc": "pae98db1f7a",
+  "words": 1259,
+  "sha": "fa9eebda88a47ee9"
+ },
+ "a86c9d6b": {
+  "key": "FR_pbfd12ded77",
+  "cell": "FR",
+  "doc": "pbfd12ded77",
+  "words": 1479,
+  "sha": "11d11797d48bdd66"
+ },
+ "fe0bc417": {
+  "key": "FR_p2a4982704f",
+  "cell": "FR",
+  "doc": "p2a4982704f",
+  "words": 1563,
+  "sha": "e3f742418afdbce2"
+ },
+ "bbb9ca88": {
+  "key": "CAN_hfull",
+  "cell": "CAN",
+  "doc": "CAN_hfull",
+  "words": 2009,
+  "sha": "311e6d9e196dc7dd"
+ },
+ "5db3fbff": {
+  "key": "FR_pa2b84bf758",
+  "cell": "FR",
+  "doc": "pa2b84bf758",
+  "words": 680,
+  "sha": "3473aa8bda335d94"
+ },
+ "7d5cf636": {
+  "key": "FR_p4c5be6086d",
+  "cell": "FR",
+  "doc": "p4c5be6086d",
+  "words": 1783,
+  "sha": "b18a8f3cb8dc0c5e"
+ },
+ "ac7d816e": {
+  "key": "FR_p10267ee0c0",
+  "cell": "FR",
+  "doc": "p10267ee0c0",
+  "words": 2137,
+  "sha": "2d4be5cb16229390"
+ },
+ "670ed82e": {
+  "key": "FR_p3bfd623027",
+  "cell": "FR",
+  "doc": "p3bfd623027",
+  "words": 1240,
+  "sha": "c6fd23b0df2939be"
+ },
+ "388e391f": {
+  "key": "FR_p8e28b03c67",
+  "cell": "FR",
+  "doc": "p8e28b03c67",
+  "words": 996,
+  "sha": "1db36fe8401779ac"
+ },
+ "b6935f19": {
+  "key": "FR_pfe6789384f",
+  "cell": "FR",
+  "doc": "pfe6789384f",
+  "words": 1215,
+  "sha": "81dc668862df2818"
+ },
+ "71bca177": {
+  "key": "CAN_h300",
+  "cell": "CAN",
+  "doc": "CAN_h300",
+  "words": 287,
+  "sha": "15814f2097e6ddc3"
+ },
+ "9f533c07": {
+  "key": "FR_pd64b3e3aae",
+  "cell": "FR",
+  "doc": "pd64b3e3aae",
+  "words": 1185,
+  "sha": "633e9d8c05a0abca"
+ },
+ "d7a9b014": {
+  "key": "FR_p8fb3502483",
+  "cell": "FR",
+  "doc": "p8fb3502483",
+  "words": 1513,
+  "sha": "07874e6102341013"
+ },
+ "1165ac7a": {
+  "key": "FR_p827b1c285d",
+  "cell": "FR",
+  "doc": "p827b1c285d",
+  "words": 1728,
+  "sha": "55f4c21266a5c35c"
+ },
+ "f3f60d5d": {
+  "key": "FR_pc181d8f08b",
+  "cell": "FR",
+  "doc": "pc181d8f08b",
+  "words": 1513,
+  "sha": "6b651d6a50b7729c"
+ },
+ "6a55f9c4": {
+  "key": "FR_p1c9cb11d31",
+  "cell": "FR",
+  "doc": "p1c9cb11d31",
+  "words": 1184,
+  "sha": "9a7a32a290336ec8"
+ }
+}

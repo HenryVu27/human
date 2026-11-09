@@ -19,5 +19,14 @@
   "mean_repeat_share_chosen": 0.025,
   "empty_sections": 0,
   "gate": "pass"
+ },
+ "assemble": {
+  "posts": 30,
+  "F_words": 1609,
+  "F_fallback_sections": 6,
+  "F_truncated_sections": 3,
+  "F_copied_from_draft": 0.153,
+  "FR_words_changed": 0.1276,
+  "FR_support_after": 0.9537
  }
 }
