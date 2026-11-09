@@ -2,7 +2,7 @@
 
 **Attempt 1 is closed (2026-11-06). Start from `docs/attempt-1-closeout.md`: findings, dead ends, open questions and how to set up the Mac, the PC, Modal and Pangram.**
 
-**Attempt 2 design: `docs/specs/2026-11-06-attempt-2-design.md` (proposal, waiting for Henry's decisions in its section 13; nothing run).**
+**Start from `docs/handoff-2026-11-09.md`: current state, results, next steps and operational traps. Attempt 2 design and amendments: `docs/specs/2026-11-06-attempt-2-design.md`, `docs/specs/2026-11-07-phase2-r2-design.md`.**
 
 Research project: turn any AI draft into prose that Pangram 4.x and blind expert readers judge human-written, editing like a human editor and inventing nothing. Spec: `docs/specs/2026-11-04-humanizer-design.md`. Plan: `docs/plans/2026-11-04-humanizer-phase1.md`. Index of every experiment and search: `results/LABNOTEBOOK.md`. Latest status: `results/REPORT-2026-11-04-lora.md` (the overnight report `REPORT-2026-11-05.md` is misdated; it came first).
 
